@@ -69,6 +69,224 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2021-04-05T08:02:00.000Z"><a href="/2021/04/05/PHP-7正規表達式/">2021-04-05</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2021/04/05/PHP-7正規表達式/">PHP 7後盾人教學</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1><span id="後盾人php7视频教程">後盾人PHP7视频教程</span></h1>
+<h6><span id="tags-向老師-php7-regular-expression">tags: <code>向老師</code> <code>php7</code> <code>regular expression</code></span></h6>
+<h3><span id="數學函數">數學函數</span></h3>
+<ul>
+<li>ceil 向上取整</li>
+<li>floor 向下取整</li>
+<li>round 四捨五入</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">var_dump(ceil(<span class="number">10.5</span>), floor(<span class="number">10.5</span>), round(<span class="number">10.5</span>));</span><br></pre></td></tr></table></figure></p>
+<p>https://www.tehplayground.com/1rW38y5Q6skRZVSo</p>
+<ul>
+<li>生成驗證碼
+<ul>
+<li>mt_rand
+<ul>
+<li>用陣列的長度來判斷需要取出的個數</li>
+<li>最後輸出轉大寫</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCode</span><span class="params">($len = <span class="number">5</span>)</span> </span>&#123;</span><br><span class="line"> $nums = <span class="string">'0123456789abc'</span>; </span><br><span class="line"> $code = <span class="string">''</span>;</span><br><span class="line"> <span class="keyword">for</span>($i=<span class="number">0</span>; $i&lt;$len; $i++) &#123;</span><br><span class="line">    $index = mt_rand(<span class="number">0</span>, strlen($nums)<span class="number">-1</span>);</span><br><span class="line">    $code .= strtoupper($nums[$index]);</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">return</span> $code;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$result = getCode(<span class="number">3</span>);</span><br><span class="line">var_dump($result);</span><br></pre></td></tr></table></figure></p>
+<p>https://www.tehplayground.com/lQ3nCrcF9pnMJWKR</p>
+<ul>
+<li>分頁當前頁取法
+<ul>
+<li>裡面: 使用者的輸入和1取最大值
+<ul>
+<li>取最大值</li>
+</ul>
+</li>
+<li>外面: 最大值和總頁數相比
+<ul>
+<li>取最小值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$total = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">$_GET[<span class="string">'page'</span>] = <span class="number">333</span>;</span><br><span class="line">$_GET[<span class="string">'page'</span>] = <span class="number">-1</span>;</span><br><span class="line">$page = min($total, max($_GET[<span class="string">'page'</span>] ?? <span class="number">1</span>, <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">var_dump($page);</span><br></pre></td></tr></table></figure></p>
+<p>https://www.tehplayground.com/tvXA2AeYPzpTSiOa</p>
+<p>https://www.bilibili.com/video/BV1A4411M7iA?p=60</p>
+<h3><span id="61-php7视频教程-正则表达式的边界符与元字符详解">61 [PHP7视频教程] 正则表达式的边界符与元字符详解</span></h3>
+<ul>
+<li>邊界符號
+<ul>
+<li>/</li>
+<li>@ : 用於判斷html tag標籤是否存在</li>
+<li>
+<h1><span id=""></span></h1>
+</li>
+</ul>
+</li>
+<li>小寫:
+<ul>
+<li>/w: 文字(a-zA-Z0-9_)</li>
+<li>/d: 數字(0-9)</li>
+<li>/s: 任何空白字元</li>
+<li>/n: 換行(next line)</li>
+<li>/t: tab</li>
+</ul>
+</li>
+<li>大寫取反
+<ul>
+<li>/W: 不含特殊符號</li>
+<li>/D: 不含數字</li>
+<li>/S: 不含空白符號</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/2DAHHwZ.png" alt=""></p>
+<p>https://www.tehplayground.com/HWbqkeCqR5MzkoJQ</p>
+<p>https://www.bilibili.com/video/BV1A4411M7iA?p=61</p>
+<h3><span id="62-php7视频教程-正则表达式原子表原来这么玩">62 [PHP7视频教程] 正则表达式原子表原来这么玩</span></h3>
+<ul>
+<li>把要匹配的字分組</li>
+<li>.:
+<ul>
+<li>取任意的字元</li>
+</ul>
+</li>
+<li>^:
+<ul>
+<li>取反</li>
+</ul>
+</li>
+<li>可以用於過濾全形和半形的字
+<ul>
+<li>,，</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$status = preg_match(<span class="string">'/[abc]/'</span>, <span class="string">'abcd'</span>);</span><br><span class="line"></span><br><span class="line">var_dump($status);</span><br><span class="line"></span><br><span class="line">$status = preg_match(<span class="string">'/./'</span>, <span class="string">'abcd'</span>);</span><br><span class="line"></span><br><span class="line">var_dump($status);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$status = preg_match(<span class="string">'/[^abcd]/'</span>, <span class="string">'eeee'</span>);</span><br><span class="line"></span><br><span class="line">var_dump($status);</span><br><span class="line"></span><br><span class="line">$imageList = preg_split(<span class="string">'/[@,]/'</span>, <span class="string">'a.jpg@b.jpg,c.jpg'</span>);</span><br><span class="line"></span><br><span class="line">var_dump(implode($imageList, <span class="string">','</span>));</span><br></pre></td></tr></table></figure></p>
+<p>https://www.tehplayground.com/nur68My5PH1Ozcd1</p>
+<p>https://www.bilibili.com/video/BV1A4411M7iA?p=62</p>
+<h3><span id="63-php7视频教程-原子组和匹配限定真好用">63 [PHP7视频教程] 原子组和匹配限定真好用</span></h3>
+<ul>
+<li>原子組必須要同時出現</li>
+<li>preg_replace
+<ul>
+<li>第二個要取帶的參數用反斜線取得匹配到的字
+<ul>
+<li>匹配到的內容
+<ul>
+<li>0: 所有匹配到的東西</li>
+<li>1: 代表匹配到第一個位置的值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$status = preg_match(<span class="string">'/(123)/'</span>, <span class="number">123</span>);</span><br><span class="line"></span><br><span class="line">var_dump($status);</span><br><span class="line"></span><br><span class="line">$websiteList = <span class="string">'yahoo.com.tw google.com.tw baidu.com'</span>;</span><br><span class="line"></span><br><span class="line">$status = preg_replace(<span class="string">'/(\.)(com)(\.)/'</span>, <span class="string">'\1&lt;span style="color: red;"&gt;\2&lt;/span&gt;\3'</span>, $websiteList);</span><br><span class="line">var_dump($status);</span><br></pre></td></tr></table></figure></p>
+<p>https://www.tehplayground.com/8XXWNukX4Dm8etXm</p>
+<p>https://www.bilibili.com/video/BV1A4411M7iA?p=63</p>
+<h3><span id="64-php7-选择修释符实例讲解">64 [PHP7] 选择修释符实例讲解</span></h3>
+<ul>
+<li>把匹配到的值放到html tag裡面</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$websiteList = <span class="string">'yahoo.com.tw line.com.tw google.com.tw'</span>;</span><br><span class="line"></span><br><span class="line">$result = preg_replace(<span class="string">'/(yahoo|line|google)\.com\.tw/'</span>,<span class="string">'&lt;a href="http://www.\0"&gt;\1&lt;/a&gt;"'</span>, $websiteList);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var_dump($result);</span><br></pre></td></tr></table></figure></p>
+<p>https://www.tehplayground.com/dfolFMQTpMe9XuhD</p>
+<p>https://www.bilibili.com/video/BV1A4411M7iA?p=64</p>
+<h3><span id="66-php7-原来禁止贪婪匹配是这么用的">66 [PHP7] 原来禁止贪婪匹配是这么用的</span></h3>
+<ul>
+<li>?
+<ul>
+<li>在重複的地方只取一次</li>
+<li>使用時機:
+<ul>
+<li>在多重嵌套的的時候可以使用</li>
+<li>只會取第一次匹配到的內容做為回傳值</li>
+</ul>
+</li>
+<li>注意:
+<ul>
+<li>需放在分組括號中一起匹配</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>\d:
+<ul>
+<li>取一個以上的數字</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$preg = <span class="string">'/\d+?/'</span>;</span><br><span class="line"></span><br><span class="line">preg_match($preg, <span class="string">'123456ddd'</span>, $matched);</span><br><span class="line"></span><br><span class="line">var_dump($matched);</span><br><span class="line"></span><br><span class="line">$htmlTag = <span class="string">'&lt;span&gt;test 1&lt;/span&gt;&lt;span&gt;test 2&lt;/span&gt;'</span>;</span><br><span class="line"></span><br><span class="line">$preg = <span class="string">'/&lt;span&gt;(.+?)&lt;\/span&gt;/'</span>;</span><br><span class="line"></span><br><span class="line">preg_match_all($preg, $htmlTag, $matched);</span><br><span class="line"></span><br><span class="line">var_dump($matched);</span><br><span class="line"></span><br><span class="line">$result = preg_replace($preg, <span class="string">'&lt;h6&gt;\1&lt;/h6&gt;'</span>, $htmlTag);</span><br><span class="line"></span><br><span class="line">var_dump($result);</span><br></pre></td></tr></table></figure></p>
+<p>https://www.tehplayground.com/WDvx6pLM7j8wdiNW</p>
+<p>https://www.bilibili.com/video/BV1A4411M7iA?p=66</p>
+<h3><span id="67-php7-模式修正符i与s巧妙运用">67 [PHP7] 模式修正符i与s巧妙运用</span></h3>
+<ul>
+<li>i:不區分大小寫</li>
+<li>s:不區分換行(視為單行處理)</li>
+<li>匹配規則裡面也可以用匹配值來替換
+<ul>
+<li>'@&lt;h([1-6])&gt;(.*?)&lt;/h\1&gt;@is'</li>
+<li>後面的\1就是前面匹配到的值</li>
+</ul>
+</li>
+<li>用preg_replace
+<ul>
+<li>第二個參數帶\2，代表只留下第二個匹配到的值(字元組)</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$htmlTags = <span class="string">'&lt;h1&gt;Heading 1</span></span><br><span class="line"><span class="string">&lt;/h1&gt; &lt;H2&gt;Heading 2&lt;/H2&gt;'</span>;</span><br><span class="line">$preg = <span class="string">'@&lt;h([1-6])&gt;(.*?)&lt;/h\1&gt;@is'</span>;</span><br><span class="line"></span><br><span class="line">preg_match_all($preg, $htmlTags, $matched);</span><br><span class="line">var_dump($matched);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** remove matched string */</span></span><br><span class="line">$result = preg_replace($preg, <span class="string">'\2'</span>, $htmlTags);</span><br><span class="line"></span><br><span class="line">var_dump($result);</span><br></pre></td></tr></table></figure></p>
+<p>https://www.tehplayground.com/MNPbRpBxnKrmNyPX</p>
+<p>https://www.bilibili.com/video/BV1A4411M7iA?p=67</p>
+<h3><span id="68-php7-模式修正符m多行处理与x为复杂表达式添加注释">68 [PHP7] 模式修正符m多行处理与x为复杂表达式添加注释</span></h3>
+<ul>
+<li>m: 將每一行單獨處理
+<ul>
+<li>不會將整個字串視為一整行</li>
+<li>如果單純只用^判斷，只會去除第一個符合條件的字串</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$str = <span class="string">&lt;&lt;&lt;php</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#1</span></span><br><span class="line"><span class="string">測試1</span></span><br><span class="line"><span class="string">@#2</span></span><br><span class="line"><span class="string">測試2</span></span><br><span class="line"><span class="string">#3</span></span><br><span class="line"><span class="string">測試3</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">php;</span></span><br><span class="line"></span><br><span class="line">$preg = <span class="string">'/#\d+/m'</span>;</span><br><span class="line"></span><br><span class="line">$result = preg_replace($preg, <span class="string">''</span>, $str);</span><br><span class="line"></span><br><span class="line">var_dump($result);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>x: 將需匹配的規則中的#與空格忽略不處理</li>
+</ul>
+<p>https://www.tehplayground.com/af1PHPObtYXZ2tPJ</p>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$str = <span class="string">'abc'</span>;</span><br><span class="line">$preg = <span class="string">'/abc#這是一個註解/x'</span>;</span><br><span class="line"></span><br><span class="line">$result = preg_replace($preg, <span class="string">''</span>, $str);</span><br><span class="line">var_dump($result);</span><br></pre></td></tr></table></figure></p>
+<p>https://www.bilibili.com/video/BV1A4411M7iA?p=68</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2019-03-24T19:56:00.000Z"><a href="/2019/03/24/The-power-of-language-1/">2019-03-24</a></time>
       
       
@@ -874,62 +1092,6 @@
 
 
 
-  
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-12-13T13:46:00.000Z"><a href="/2018/12/13/Find-The-Parity-Outlier/">2018-12-13</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/12/13/Find-The-Parity-Outlier/">Find The Parity Outlier</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <ul>
-<li>Find The Parity Outlier
-<ul>
-<li>javascript filter練習</li>
-</ul>
-</li>
-<li>考慮
-<ul>
-<li>陣列的總個數會影響加總最後是奇數還是偶數的結果
-<ul>
-<li>偶數個奇數相加會變成偶數</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>測試
-<ul>
-<li>針對奇數個數的情況進行確認</li>
-<li>測試順序互換是否影響最後的結果</li>
-</ul>
-</li>
-</ul>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function findOutlier(integers)&#123;</span><br><span class="line">   let evenNum = 0, oddNum = 0;</span><br><span class="line">   for(let i=0; i&lt;integers.length;i++) &#123;</span><br><span class="line">      if(integers[i] % 2 == 0) &#123;</span><br><span class="line">         evenNum++;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">         oddNum++;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   return integers.filter(val =&gt; &#123;</span><br><span class="line">     val = val &lt; 0 ? -val : val</span><br><span class="line">     return (val % 2==0 &amp;&amp; evenNum == 1) ||</span><br><span class="line">            (val % 2==1 &amp;&amp; oddNum == 1)</span><br><span class="line">   &#125;)[0]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Test.assertEquals(findOutlier([ 0, 2 ,-1]), -1)</span><br><span class="line">Test.assertEquals(findOutlier([1, 2, 3]), 2)</span><br><span class="line">Test.assertEquals(findOutlier([2,6,8,10,3]), 3)</span><br><span class="line">Test.assertEquals(findOutlier([0,0,3,0,0]), 3)</span><br><span class="line">Test.assertEquals(findOutlier([1,1,1,0,1,7,7,1]), 0)</span><br><span class="line">Test.assertEquals(findOutlier([17,6,8,10,6,12,24,36]),17)</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
 
 <nav id="pagination">
   
@@ -994,6 +1156,17 @@
 
 
   
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/php7/">php7</a><small>1</small></li>
+  
+    <li><a href="/tags/後盾人/">後盾人</a><small>1</small></li>
+  
+  </ul>
+</div>
+
 
   <script type="text/javascript">
     amzn_assoc_placement = "adunit0";

@@ -69,6 +69,99 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2018-10-30T02:58:00.000Z"><a href="/2018/10/30/Using-Composer-Learning-Unit-Test-Part-2/">2018-10-30</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/30/Using-Composer-Learning-Unit-Test-Part-2/">Using Composer Learning Unit Test Part 2</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>PHP Unit Test</em></p>
+<ul>
+<li>要如何直接用assertEquals的function呢?
+<ul>
+<li>因為每一次都會用到$this-&gt;assertEquals()有點多餘</li>
+<li>找到實際定義assertEquals的function整理成一個檔案</li>
+<li>讓phpunit.xml直接參考到bootstrap.php自定義的檔案</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tests/bootstrap.php</span></span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">'/../vendor/autoload.php'</span>;</span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">'/../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php'</span>;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>
+<p>測試的種類</p>
+<ul>
+<li>Unit Test &lt; Integration Test &lt; Function Test &lt; Acceptance Test</li>
+<li>Unit Test
+<ul>
+<li>Basic Test</li>
+</ul>
+</li>
+<li>Integration Test
+<ul>
+<li>測試兩個獨立系統是否能正常運作</li>
+</ul>
+</li>
+<li>Function/Acceptance Test
+<ul>
+<li>測試過Unit Test和Integration Test不一定這一階段就會過</li>
+<li>Acceptance Test/配合Selenium測試UI</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>mock的概念</p>
+<ul>
+<li>不在乎run的內容,只關注那個function是否有被呼叫到了</li>
+<li>swap out the actual action</li>
+<li>和new 物件的作法比較(會實際呼叫到物件定義的方法)</li>
+<li>可以用於依賴注入(controller有使用到其他物件的資料)</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$mock = Mockery::mock(<span class="string">'MockDependency\Type\StripeBilling'</span>); <span class="comment">//要寫完整路徑</span></span><br><span class="line">$mock-&gt;shouldReceive(<span class="string">'charge'</span>)-&gt;once()-&gt;andReturn(<span class="string">'mocked Billing by Test'</span>);</span><br><span class="line">$purchase = <span class="keyword">new</span> PurcharseController($mock);</span><br><span class="line">$result = $purchase-&gt;buy();</span><br><span class="line">var_dump($result);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>依賴注入
+<ul>
+<li>如果有定義新的namespace，記得先用composer dump，autoload才找的到檔案</li>
+<li>如果程式有在classmap中定義，require的時候就不用寫__DIR__取路徑</li>
+<li>Single Responsibility</li>
+</ul>
+</li>
+<li>驗證controller的時候，記得加上return返回結果
+<ul>
+<li>mock andReturn最後不會返回一個值，不需要再用一個變數來接</li>
+<li>用<em>php指令+檔案位置</em>來確認是否頁面能正常執行</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法1:未使用依賴注入的寫法</span></span><br><span class="line"> <span class="keyword">require</span> <span class="string">'vendor/autoload.php'</span>;</span><br><span class="line"> $controller = <span class="keyword">new</span> PurcharseController();</span><br><span class="line"> var_dump($controller-&gt;buy());</span><br><span class="line"><span class="comment">// 方法2:使用依賴注入</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'vendor/autoload.php'</span>;</span><br><span class="line">var_dump((<span class="keyword">new</span> PurcharseController(<span class="keyword">new</span> StripeBilling))-&gt;buy());</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2018-10-29T09:06:00.000Z"><a href="/2018/10/29/Composer-Unit-Test/">2018-10-29</a></time>
       
       
@@ -874,6 +967,17 @@
 
 
   
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/php7/">php7</a><small>1</small></li>
+  
+    <li><a href="/tags/後盾人/">後盾人</a><small>1</small></li>
+  
+  </ul>
+</div>
+
 
   <script type="text/javascript">
     amzn_assoc_placement = "adunit0";

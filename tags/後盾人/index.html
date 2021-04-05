@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Bootstrap 4 | Edwardyi Blog</title>
+  <title>後盾人 | Edwardyi Blog</title>
   <meta name="author" content="Edwardyi">
   
   <meta name="description" content="年少輕狂的好日子，一懂事就結束">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Bootstrap 4"/>
+  
   <meta property="og:site_name" content="Edwardyi Blog"/>
 
   
@@ -62,198 +62,24 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-11-02T11:00:00.000Z"><a href="/2018/11/02/Bootstrap-4/">2018-11-02</a></time>
-      
-      
-  
-    <h1 class="title">Bootstrap 4</h1>
-  
+<h2 class="archive-title tag">後盾人</h2>
 
-    </header>
-    <div class="entry">
-      
-        <ul>
-<li>一般不要去改依賴庫的程式，那個工作讓依賴包管理來處理就好
-<ul>
-<li>對修改封閉</li>
-</ul>
-</li>
-<li>快捷鍵
-<ul>
-<li>ctrl+delete:刪除一個單詞</li>
-<li>lipsum:產生dumy words
-<ul>
-<li>不知道為什麼一開始cloud9會沒有辦法識別</li>
-<li>之後反而要打Lorem了，怪怪的</li>
-</ul>
-</li>
-<li>cloud 9預設Emmet plugin</li>
-</ul>
-</li>
-<li>三塊的布局
-<ul>
-<li>col-sm-xx(加起來要是12)</li>
-</ul>
-</li>
-<li>導覽列
-<ul>
-<li>上方navbar
-<ul>
-<li>最外層用div.navbar</li>
-<li>內層有個div.nav.navbar-header</li>
-<li>導航列用ul.nav.navbar-nav</li>
-</ul>
-</li>
-<li>bootstrap 4:
-<ul>
-<li>mr-auto:向左靠(margin-right-auto)</li>
-<li>ml-auto:向右靠(margin-left-auto)</li>
-<li>navbar-expand-lg:當網頁是一般螢幕的時候展開</li>
-<li>navbar-collapse:隱藏起來</li>
-<li>navbar-toggler-icon</li>
-</ul>
-</li>
-<li>和上方文字對齊，加上row的div
-<ul>
-<li>因為row有css的樣式，把他的margin和padding覆蓋掉</li>
-</ul>
-</li>
-<li>踩到官網3.3.1 slim.js的問題
-<ul>
-<li>用的太新了，改用六角學院的連結就有用(3.2.1.slim)</li>
-<li>小畫面的時候會沒有辦法toggle導覽列</li>
-</ul>
-</li>
-<li>修改Logo
-<ul>
-<li>background-image:url(設定圖片位置)</li>
-<li>background-size:
-<ul>
-<li>cover(圖片填充，會發現整個圖片重複了，而且覺得太滿了一點)</li>
-<li>80%</li>
-</ul>
-</li>
-<li>background-repeat:no-repeat
-<ul>
-<li>調整background-size圖片重複的問題</li>
-</ul>
-</li>
-<li>background-position:調整圖片位置</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>左方sidebar
-<ul>
-<li>多增加一個sidebar的類，比較明確，避免改到其他的地方的樣式</li>
-<li>list-group-item</li>
-<li>學會了怎麼用emmet添加多個假的item
-<ul>
-<li>div.list-group&gt;(a[#].list-group-item.list-group-item-hover{item$})*5</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>中間區塊
-<ul>
-<li>圖片設置
-<ul>
-<li>讓圖片限制在一個範圍內</li>
-<li>max-width:100%(讓他不會超過外面元素的100%)</li>
-<li>col-xs-xx:在bootstrap 4不管用拉(用col-md-{})</li>
-</ul>
-</li>
-<li>整理共用樣式用逗號串接</li>
-<li>grid system如果要顯示在同一列要用row包起來</li>
-<li>用一個div包起來info
-<ul>
-<li>也方便統一裡面的樣式</li>
-</ul>
-</li>
-<li>調整title行距
-<ul>
-<li>改成超連結，display:block</li>
-</ul>
-</li>
-<li>clearfix:bootstrap 3需要清除float</li>
-</ul>
-</li>
-<li>右方區塊
-<ul>
-<li>一般放業務有關的訊息</li>
-<li>不能用數字命名阿</li>
-<li>把標題字調大</li>
-<li>不確定怎麼把右方標題的上下間距調大一些</li>
-</ul>
-</li>
-<li>新聞詳細頁
-<ul>
-<li>lorem*10</li>
-<li>Label用法</li>
-</ul>
-</li>
-</ul>
-<p><em>參考連結</em></p>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=23bpce-5s8I" target="_blank" rel="noopener">bootstrap 4教學</a></li>
-<li><a href="https://designshack.net/articles/css/7-awesome-emmet-html-time-saving-tips/" target="_blank" rel="noopener">Awesome emmet</a></li>
-<li><a href="https://dummyimage.com/" target="_blank" rel="noopener">dummyimage</a></li>
-<li><a href="https://stackoverflow.com/questions/41794746/col-xs-not-working-in-bootstrap-4" target="_blank" rel="noopener">col-xs in bootstrap 4</a></li>
-<li><a href="https://www.youtube.com/watch?v=qmPmwdshCMw" target="_blank" rel="noopener">Grid System bootstrap 4</a></li>
-<li><a href="https://getbootstrap.com/docs/4.0/migration/" target="_blank" rel="noopener">Migration to bootstrap 4</a></li>
-</ul>
 
-      
-    </div>
-    <footer>
-      
-        
-  
-  <div class="categories">
-    <a href="/Bootstrap/">Bootstrap</a>
+  <div class="archive">
+    
+      <article class="post">
+        <div class="post-content">
+          <header>
+            <div class="icon"></div>
+            <time datetime="2021-04-05T08:02:00.000Z"><a href="/2021/04/05/PHP-7正規表達式/">2021-04-05</a></time>
+            
+              <h1 class="title"><a href="/2021/04/05/PHP-7正規表達式/">PHP 7後盾人教學</a></h1>
+            
+          </header>
+        </div>
+      </article>
+    
   </div>
-
-        
-        
-  <div class="addthis addthis_toolbox addthis_default_style">
-    
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-<section id="comment">
-  <h1 class="title">Comments</h1>
-
-  
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-  
-</section>
-
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
@@ -361,7 +187,7 @@ var disqus_shortname = 'edwardyi-blog';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>
