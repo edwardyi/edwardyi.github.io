@@ -1,0 +1,932 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Page 3 | Edwardyi Blog</title>
+  <meta name="author" content="Edwardyi">
+  
+  <meta name="description" content="年少輕狂的好日子，一懂事就結束">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Edwardyi Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Edwardyi Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer',theme.google_tag);</script>
+	<!-- End Google Tag Manager -->
+
+	
+</head>
+
+
+<body>
+  
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57XKRCL"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Edwardyi Blog</a></h1>
+  <h2><a href="/">To go forward you must backup</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/works">Works</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-29T09:06:00.000Z"><a href="/2018/10/29/Composer-Unit-Test/">2018-10-29</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/29/Composer-Unit-Test/">Using Composer Learning Unit Test</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>PHPUnit Test卡關了</em></p>
+<ul>
+<li>定義了User的Model還是找不到?
+<ul>
+<li>用Classmap的寫法來找到對應的model</li>
+</ul>
+</li>
+<li>定義classmap
+<ul>
+<li>composer install:產生compsoer.json</li>
+<li>composer dump-autoload
+<ul>
+<li>每次有新的class的時候記得要用dump-autoload一次</li>
+<li>定義好namespace的時候也要使用</li>
+<li>用找歌曲的概念來解釋,一開始只有說要找甚麼歌,但是沒有說要找哪個歌手的甚麼專輯</li>
+</ul>
+</li>
+<li>alias p=./vendor/bin/phpunit</li>
+</ul>
+</li>
+<li>盡量把要測試的方法名稱寫&lt;b&gt;清楚一點&lt;/b&gt;
+<ul>
+<li>寫的長沒有關係,要有描述性</li>
+<li>用&lt;b&gt;Annotation&lt;/b&gt;可以達到
+<ul>
+<li>把資料抽離出來</li>
+<li>處理例外狀況</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>踩到exception的坑了
+<ul>
+<li>如果傳入錯誤的參數進去,拋出例外的時候要用多行註解,格式錯誤就無法正確的判斷拋出的例外類型</li>
+</ul>
+</li>
+<li>alias 是一個好東西,可以打很少的指令達到一樣的效果
+<ul>
+<li>alias p=./vendor/bin/phpunit</li>
+<li>alias hexoServer='hexo server --port $PORT --host $IP'</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"require"</span>: &#123;</span><br><span class="line">        <span class="string">"phpunit/phpunit"</span>: <span class="string">"^7.4"</span>,</span><br><span class="line">        <span class="string">"codeception/codeception"</span>: <span class="string">"^2.5"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    <span class="string">"autoload"</span>: &#123;</span><br><span class="line">        <span class="string">"classmap"</span> : [</span><br><span class="line">            <span class="string">"App/Models"</span>,</span><br><span class="line">            <span class="string">"App/Libraries"</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">"psr-4"</span>: &#123;</span><br><span class="line">            <span class="string">"App\\"</span>: <span class="string">"app"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><em>Testing System Functions</em>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 用namespace把Foo用到的time重新定義過</span></span><br><span class="line"><span class="comment">// 注意:如果使用use的話會有重複定義的問題</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Libraries</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">time</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'stud'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FooTest</span> <span class="keyword">extends</span> \<span class="title">PHPUnit</span>\<span class="title">Framework</span>\<span class="title">TestCase</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setUp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testDynamicFooTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;assertEquals(<span class="string">'stud'</span>, (<span class="keyword">new</span> Foo)-&gt;go());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>參考教學:
+<a href="https://www.youtube.com/watch?v=AXh8kc76hCo&amp;list=PLH9Ysf6G9Ue3libSiqkuSju7_2OnQSz1w&amp;index=4" target="_blank" rel="noopener">Testing System Functions</a>
+<a href="https://www.youtube.com/watch?v=84j61_aI0q8" target="_blank" rel="noopener">Composer, Autoloading, Namespacing, and PHPUnit</a>
+<a href="https://phpunit.de/manual/6.5/en/appendixes.annotations.html#appendixes.annotations.expectedException" target="_blank" rel="noopener">Phpunit Annotations</a>
+<a href="https://blog.hsin.tw/2015/linux-alias-works-always/" target="_blank" rel="noopener">Linux Alias</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-28T02:40:00.000Z"><a href="/2018/10/28/CodeIgniter-CRUD/">2018-10-28</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/28/CodeIgniter-CRUD/">CodeIgniter CRUD</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>CodeIgniter 3.1</em></p>
+<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> news (</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    title <span class="built_in">varchar</span>(<span class="number">128</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    slug <span class="built_in">varchar</span>(<span class="number">128</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="built_in">text</span> <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    create_at <span class="keyword">TIMESTAMP</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'新增貼文時間'</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span>(<span class="keyword">id</span>),</span><br><span class="line">    <span class="keyword">KEY</span> slug (slug)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> posts (</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    title <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    slug <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="keyword">body</span> <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    create_at <span class="keyword">TIMESTAMP</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'新增貼文時間'</span></span><br><span class="line">    PRIMARY <span class="keyword">KEY</span>(<span class="keyword">id</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine On</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">RewriteRule ^(.*)$ index.php/$1 [L]</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight html"><figcaption><span>準備</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://code.jquery.com/jquery-3.3.1.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>為什麼要用單一路口文件?
+<ul>
+<li>這樣使用會有甚麼問題</li>
+<li>路徑長的醜醜的=&gt;才會有route的規則需要定義</li>
+<li>http://localhost/codeIgniter/index.php/pages/view/</li>
+<li>http://localhost/codeIgniter/index.php/news/index/</li>
+</ul>
+</li>
+<li>建立controller和route
+<ul>
+<li>讓url變得好看</li>
+<li>定義route規則</li>
+</ul>
+</li>
+<li>建立model
+<ul>
+<li>slug把url去掉,只留下小寫的英文字母</li>
+<li>有點像是簡單的描述,例如:/車子/帥氣的法拉利</li>
+<li>可以用來當作唯一值用來識別某個資源(entry/resource)</li>
+<li>詳細說明可以看stackoverflow解釋(what-is-a-slug)</li>
+</ul>
+</li>
+<li>和我想的比較不一樣的是,他把新聞系統的controller另外拆開
+<ul>
+<li>本來想說寫在一起的</li>
+<li>分開也比較清楚</li>
+</ul>
+</li>
+<li>建立列表頁和檢視頁面</li>
+<li>踩到的第一個坑是自己打錯字,找template的路徑
+<ul>
+<li>不需要為繼承的父類別加上namespace</li>
+<li>改完route發現news不好使了
+<ul>
+<li>先註解起來查原因</li>
+<li>檢視頁面的位置沒有改到view,從index那邊複製過來沒有修改到</li>
+</ul>
+</li>
+<li>原來是沒有加htaccess的關係阿
+<ul>
+<li>當發現怎麼改route都沒有用</li>
+<li>印出來看有設定,而且怎麼敲url就是不出來這時候就該設定htaccess了</li>
+</ul>
+</li>
+<li>新增表單
+<ul>
+<li>把檢視的route設定放到最後面</li>
+</ul>
+</li>
+<li>刪除的坑(id)
+<ul>
+<li>加上要刪除的編號之後,突然發現沒有辦法用open_form的方法了</li>
+<li>原先以為是因為寫法的關係造成的,結果是因為autoload沒有load到那個form的helper,殘念</li>
+<li>沒有對應到controller的method名稱</li>
+</ul>
+</li>
+<li>編輯(slug)=&gt;和view帶一樣的
+<ul>
+<li>bootstrap pull left把放在右邊的顯示到左邊</li>
+<li>要帶入view的slug進去,而不是用id</li>
+<li>少input hidden的id也想成功?</li>
+</ul>
+</li>
+<li>新增navbar-right往右放</li>
+</ul>
+</li>
+<li>小bug
+<ul>
+<li>沒有取到URL參數的時候是取全部的文章</li>
+<li>route的順序很重要,放錯了,url出不來,範圍比較小的放前面</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-26T01:39:23.000Z"><a href="/2018/10/26/experience/">2018-10-26</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/26/experience/">踩坑特集</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>踩坑特集</em></p>
+<ul>
+<li>原本以為直接用bootstrap上面的jquery一定沒有問題，想不到ajax的時候出事了
+<ul>
+<li><a href="https://stackoverflow.com/questions/18271251/typeerror-ajax-is-not-a-function" target="_blank" rel="noopener">typeError slim</a></li>
+</ul>
+</li>
+<li>踩到自己的坑，剛好把洞洞填起來
+<ul>
+<li>統一認action的post來決定要走哪一個表單</li>
+<li>沒有在最開始加上session_start就在那邊用session</li>
+<li>存在server的記憶體</li>
+</ul>
+</li>
+<li>JSON.parse回傳過來的值</li>
+<li>require_once只有引入一次，結果需要引用多次(子留言)
+<ul>
+<li>mysql_timezone
+<ul>
+<li>在mysql命令列中輸入，SET GLOBAL time_zone = 'Asia/Taipei';</li>
+</ul>
+</li>
+<li>SQL處理
+<ul>
+<li>real_escape_string($city); //PHP 7</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>建立第一個Sample就踩坑
+<ul>
+<li>用的是PHPUnit 7.4.3，貌似更新到PHPUnit 6之後的版本就要extends新的類別</li>
+<li>原本以為是路徑的問題，但聰明的phpunit會把tests資料夾下的所有檔案都跑過一次</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-15T17:43:00.000Z"><a href="/2018/10/15/Installing-Ubuntu-Laravel-Environment/">2018-10-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/15/Installing-Ubuntu-Laravel-Environment/">Installing Ubuntu Laravel Environment</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2><span id="prerequisite">Prerequisite</span></h2>
+<ul>
+<li>If you want to get latest version of php, you need to update first.</li>
+<li>Otherwise the lamp server will install older php version to your environment</li>
+</ul>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-add-repository ppa:ondrej/php</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install php7.0</span><br></pre></td></tr></table></figure></p>
+<h2><span id="usefull-command">Usefull Command</span></h2>
+<ul>
+<li>sometime you need to check the installed packages in Ubuntu, you can use dpkg to list the packages status</li>
+</ul>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg --get-selections | grep php</span><br></pre></td></tr></table></figure></p>
+<h2><span id="reference">Reference</span></h2>
+<p><a href="https://gist.github.com/santoshachari/87bf77baeb45a65eb83b553aceb135a3" target="_blank" rel="noopener">Laravel PHP 7</a>
+<a href="https://ithelp.ithome.com.tw/questions/10185637" target="_blank" rel="noopener">ubuntu 14.04版本無法安裝my sql 5.6</a></p>
+<p><a href="https://askubuntu.com/questions/715944/unable-to-locate-package-php7-0" target="_blank" rel="noopener">unable to locate php7</a></p>
+<p><a href="http://seanphpbook.blogspot.com/2016/08/linuxlaravel-ubuntu-1604-laravel-52.html" target="_blank" rel="noopener">laravel Ubuntu</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-11T12:24:00.000Z"><a href="/2018/10/11/Laravel-Create-Article-1/">2018-10-11</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/11/Laravel-Create-Article-1/">Laravel Create Article</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3><span id="migrations">migrations</span></h3>
+<ul>
+<li>use increments to auto_increment id's value
+<ul>
+<li>string type can not be null when applying to id</li>
+</ul>
+</li>
+<li>use timestamp to create two fields
+<ul>
+<li>created_at</li>
+<li>updated_at</li>
+</ul>
+</li>
+<li>when using factory, the table will be automately filled update time and create date to the relative fields</li>
+</ul>
+<h3><span id="create-article">Create Article</span></h3>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// create controller with resource methods</span><br><span class="line">&gt; php artisan make:controller ArticleController --resource</span><br><span class="line">// create model along with migration</span><br><span class="line">&gt; php artisan make:model Article --migration</span><br></pre></td></tr></table></figure></p>
+<h3><span id="seeder">seeder</span></h3>
+<ul>
+<li>there are two ways to insert data to table via command line</li>
+</ul>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; php artisan db:seed</span><br><span class="line">&gt; php artisan migrate:refresh --seed</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>both ways need adding customed seeder to Databaseseeder.php
+<ul>
+<li>db:seed however only execute seeds run() function</li>
+</ul>
+</li>
+<li>if you don't want to use factory to get fake data, you can just use db:seed command to insert your customed data.</li>
+<li>remember to add the seeder you create to Databaseseeder.php</li>
+</ul>
+<h3><span id="set-index-to-fieldmigrations">set index to field(migrations)</span></h3>
+<ul>
+<li>belongsTo</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// \database\migrations\2018_10_05_094912_message_board_table.php</span></span><br><span class="line"></span><br><span class="line">$table-&gt;unsignedInteger(<span class="string">'user_id'</span>)-&gt;index();</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app\Messageboard.php</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">user</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;belongsTo(User::class);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-09T15:56:26.000Z"><a href="/2018/10/09/torials/">2018-10-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/09/torials/">Tutorials</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2><span id="frontend">Frontend</span></h2>
+<p><a href="https://www.youtube.com/channel/UCJw78bnBvSEZBChEWvwWbGQ/playlists" target="_blank" rel="noopener">Lidemy PlayList</a></p>
+<h2><span id="ngnix">Ngnix</span></h2>
+<p><a href="https://www.youtube.com/watch?v=ys54MOtlwhs&amp;list=PLKKWlNc5I5bTOvpUoGZW9DtHbMq5ZC-g9" target="_blank" rel="noopener">Ngnix Fundamentals</a></p>
+<h2><span id="linux">Linux</span></h2>
+<h4><span id="吳光科老師">吳光科老師</span></h4>
+<p><a href="https://www.bilibili.com/video/av18372532/" target="_blank" rel="noopener">Linux下Nginx+PHP+MYSQL架构实战</a></p>
+<p><a href="https://ke.qq.com/webcourse/index.html#cid=85810&amp;term_id=100084133&amp;taid=149198574014258&amp;vid=f1404qechrb" target="_blank" rel="noopener">Linux下Shell編程</a></p>
+<h2><span id="laravel">Laravel</span></h2>
+<p><a href="https://www.youtube.com/watch?v=o5PWIuDTgxg&amp;list=PLEhEHUEU3x5oPTli631ZX9cxl6cU_sDaR" target="_blank" rel="noopener">Laravel E-commerce</a></p>
+<p><a href="https://www.youtube.com/watch?v=wM4L_yDGqpo&amp;list=PLB4AdipoHpxaHDLIaMdtro1eXnQtl_UvE" target="_blank" rel="noopener">Let's Build a Multi-Purpose Laravel + Vue Application</a></p>
+<p><a href="https://www.youtube.com/watch?v=tl_9igRwRME" target="_blank" rel="noopener">用 Laravel + Vue js 打造即時資訊看板</a></p>
+<p><a href="https://gitee.com/houdunwang/video" target="_blank" rel="noopener">後盾人代碼</a></p>
+<p><a href="https://space.bilibili.com/277339333/#/video" target="_blank" rel="noopener">Laravel開發</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-09T15:17:00.000Z"><a href="/2018/10/09/sing-Laravel-AdminLTE/">2018-10-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/09/sing-Laravel-AdminLTE/">Using Laravel AdminLTE</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h4><span id="使用composer-require引用套件">使用composer require引用套件</span></h4>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require jeroennoten/laravel-adminlte</span><br></pre></td></tr></table></figure></p>
+<h4><span id="配置configappphp">配置config/app.php</span></h4>
+<ul>
+<li>找尋使用的套件包</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JeroenNoten\LaravelAdminLte\ServiceProvider::class,</span><br></pre></td></tr></table></figure></p>
+<h4><span id="執行publish命令">執行publish命令</span></h4>
+<ul>
+<li>將vendor產生的template複製一份到public資料夾</li>
+</ul>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan vendor:publish --provider=<span class="string">"JeroenNoten\LaravelAdminLte\ServiceProvider"</span> --tag=assets</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://github.com/jeroennoten/Laravel-AdminLTE" target="_blank" rel="noopener">AdminLTE</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-09T08:23:00.000Z"><a href="/2018/10/09/aravel-Intro/">2018-10-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/09/aravel-Intro/">Laravel Intro</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2><span id="安裝完設定主目錄到documentroot">安裝完設定主目錄到documentRoot</span></h2>
+<h2><span id="資料夾">資料夾</span></h2>
+<ul>
+<li>storage:編譯後產生的檔案、log檔案，設定為可以寫入的權限</li>
+<li>bootstrap:框架啟動加載的檔案</li>
+<li>cache:加載後產生的檔案</li>
+<li>vendor:composer命令模組</li>
+<li>app:系統核心代碼</li>
+</ul>
+<h2><span id="開權限">開權限</span></h2>
+<ul>
+<li>chmod -R 777 storage</li>
+<li>chmod -R 777 bootstrap/cache</li>
+</ul>
+<h2><span id="artisan工匠">Artisan工匠</span></h2>
+<ul>
+<li>symfony console元件為基礎架構</li>
+<li>php artisan list</li>
+<li>php artisan --version</li>
+<li>php artisan make:command SendEmails</li>
+<li>php artisan make:controller CustomerController</li>
+</ul>
+<h2><span id="定義路由">定義路由</span></h2>
+<ul>
+<li>與客戶端互動</li>
+<li>用routes/web.php定義web相關的routes</li>
+<li>用routes/api.php定義api相關的routes</li>
+</ul>
+<h2><span id="路由動詞">路由動詞</span></h2>
+<ul>
+<li>get/post/delete/put</li>
+<li>符合所有any</li>
+<li>符合一部分match</li>
+<li>url helper透過url()轉向</li>
+</ul>
+<h1><span id="laravel-eloquent">Laravel Eloquent</span></h1>
+<h2><span id="繼承了eloquent就相當於幹了很多事情">繼承了Eloquent就相當於幹了很多事情</span></h2>
+<h2><span id="中間流builder">中間流(Builder)</span></h2>
+<ul>
+<li>建立了一個對象，在中間不斷地去改變它</li>
+<li>用::訪問某個function，無論是否為static，__construct()都不會被調用</li>
+<li>Builder對象不能直接存取Article對象，需要轉成終結對象，才能調用到裡面的屬性</li>
+</ul>
+<h2><span id="模型關係">模型關係</span></h2>
+<h3><span id="orm">ORM</span></h3>
+<ul>
+<li>一對一:不需要中間表</li>
+<li>多對多:用take優化性能</li>
+</ul>
+<h2><span id="php的問題">PHP的問題</span></h2>
+<ul>
+<li>一個網頁一個PHP:使用漏洞攻擊(MVC)</li>
+<li>缺乏統一寫法:一個人離開要了解寫法(Framework)</li>
+<li>每次都從頭開始:開發效率低(不用重新造輪子)</li>
+</ul>
+<h2><span id="framework和library差異">Framework和Library差異</span></h2>
+<ul>
+<li>由開發者決定是否要用方法</li>
+</ul>
+<h2><span id="四類framework">四類Framework</span></h2>
+<ul>
+<li>codeIgniter:支援最廣(適合接案使用)</li>
+<li>laravel:全功能(學習門檻高，底層用symfony)</li>
+<li>slim:簡約(restful API使用)</li>
+<li>phalcon:快速(C語言開發)</li>
+</ul>
+<h2><span id="laravel環境難裝">Laravel環境難裝</span></h2>
+<ul>
+<li>用最新的PHP新功能</li>
+<li>用罕見的Extension</li>
+</ul>
+<h2><span id="指令很多">指令很多</span></h2>
+<ul>
+<li>composer:安裝套件</li>
+<li>artisan:cli tool</li>
+</ul>
+<h2><span id="體驗高手如何寫出oop">體驗高手如何寫出OOP</span></h2>
+<ul>
+<li>把商業邏輯無關又常常用到的功能抽出來</li>
+<li>套件為主的開發方式，名稱衝突問題(NameSpace)</li>
+<li>ORM:SQL物件化</li>
+<li>Migration:欄位開錯，版本控管</li>
+<li>TDD:先寫測試在寫開發</li>
+</ul>
+<h2><span id="tdd好處">TDD好處</span></h2>
+<ul>
+<li>對Spec更加了解</li>
+<li>不用擔心重構的問題</li>
+<li>提早發現架構的問題</li>
+</ul>
+<h3><span id="參考">參考</span></h3>
+<ul>
+<li>https://oomusou.io/laravel/laravel-for-newbie/</li>
+<li>https://lvwenhan.com/laravel/421.html(Eloqent)</li>
+<li>https://lvwenhan.com/laravel/422.html(中間流)</li>
+<li>https://lvwenhan.com/laravel/423.html(模型關係)</li>
+<li>https://github.com/johnlui/Learn-Laravel-4</li>
+<li>https://github.com/johnlui/Learn-Laravel-5/issues/16</li>
+<li>https://www.jianshu.com/p/b0900bed6de8</li>
+<li>https://gist.github.com/hootlex/da59b91c628a6688ceb1(run locally)</li>
+<li>http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-2-class-configuration-structure/</li>
+<li>http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-3-class-artisan/</li>
+<li>http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-4-class-routes/</li>
+<li>https://medium.com/@shengyou/2018ironman-eos-for-php-developer-day14-4c5424fc7232(30天鐵人)</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-09T07:57:00.000Z"><a href="/2018/10/09/st/">2018-10-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/09/st/">Laravel Command</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2><span id="tools">Tools</span></h2>
+<ul>
+<li><a href="https://laragon.org/" target="_blank" rel="noopener">Laragon</a></li>
+<li><a href="https://packagecontrol.io/packages/Bootstrap%204%20Snippets" target="_blank" rel="noopener">Sublime Bootstrap Snippets</a></li>
+<li><a href="https://github.com/fzaninotto/Faker#installation" target="_blank" rel="noopener">composer require fzaninotto/faker</a></li>
+</ul>
+<h2><span id="lang">Lang</span></h2>
+<ul>
+<li><a href="https://github.com/caouecs/Laravel-lang" target="_blank" rel="noopener">Laravel Lang</a></li>
+<li>composer require caouecs/laravel-lang:~3.0</li>
+<li>second way to change language is to put json language file to lang folder</li>
+</ul>
+<h2><span id="services">Services</span></h2>
+<ul>
+<li>Auth
+<ul>
+<li>attempt(): to login and register session data. Verify email and unencrypted password</li>
+<li>logout()</li>
+</ul>
+</li>
+</ul>
+<h2><span id="migration">Migration</span></h2>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* php artisan make:migration UserTestTable</span><br><span class="line">* php artisan make:seeder UserTestSeeder</span><br><span class="line">* php artisan make:model UserTestSeeder</span><br><span class="line">* php artisan migrate:refresh --model=UserTestSeeder --seed</span><br></pre></td></tr></table></figure></p>
+<h2><span id="form-crud">FORM CRUD</span></h2>
+<ul>
+<li>@csrf @method('DELETE'): filter request</li>
+<li><a href="https://laravel.com/docs/5.7/csrf" target="_blank" rel="noopener">csrf</a></li>
+<li>php artisan make:policy PostPolicy: to avoid not authorize user to delete</li>
+<li>using @can('delete', $user) to toggle delete button</li>
+<li>@csrf @method('PUT'): fake update method using put instead</li>
+<li><a href="https://laravel.tw/docs/5.2/helpers#method-method-field" target="_blank" rel="noopener">Method Field</a></li>
+</ul>
+<h2><span id="helpers">Helpers</span></h2>
+<ul>
+<li><a href="https://github.com/barryvdh/laravel-ide-helper" target="_blank" rel="noopener">Laravel Ide Helper</a></li>
+</ul>
+<h2><span id="artisan-command">Artisan Command</span></h2>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:controller IndexController</span><br><span class="line">php artisan make:controller UserController --resource</span><br><span class="line">php artisan route:list</span><br><span class="line">php artisan migrate</span><br><span class="line">php artisan make:policy --model=User UserPolicy</span><br></pre></td></tr></table></figure></p>
+<h2><span id="session-driver">Session Driver</span></h2>
+<ul>
+<li>change .env session_driver to session
+<ul>
+<li>laravel will create sessoin table to record user login message</li>
+<li>once you change the driver type, you need to refresh all record to get the correct result</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php artisan session:table</span><br><span class="line">php artisan migrate:refresh --seed</span><br></pre></td></tr></table></figure></p>
+<h2><span id="create-app-key-amp-smtp-setting">Create App Key &amp; Smtp Setting</span></h2>
+<p><a href="https://support.google.com/mail/answer/7126229?hl=zh-Hant" target="_blank" rel="noopener">smtp gmail setting</a></p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php artisan key:generate</span><br><span class="line">php artisan make:mail RegMail</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>env.php
+<ul>
+<li>MAIL_DRIVER=smtp</li>
+<li>MAIL_HOST=smtp.gmail.com</li>
+<li>MAIL_PORT=587</li>
+<li>MAIL_USERNAME=your@gmail.com</li>
+<li>MAIL_PASSWORD=yourgmailpassword</li>
+<li>MAIL_ENCRYPTION=tls</li>
+</ul>
+</li>
+</ul>
+<h3><span id="create-factory-data">create factory data</span></h3>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// manually added records</span><br><span class="line"> php artisan tinker</span><br><span class="line"> factory(App\User::class, 20)-&gt;create();</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// execute by db:seed</span><br><span class="line"> php artisan make:seeder UsersSeeder</span><br><span class="line">// rewrite the DatabaseSeeder.php run method by using factory</span><br><span class="line">// factory(App\User::class, 20)-&gt;create();</span><br><span class="line"> php artisan db:seed</span><br><span class="line"> php artisan migrate:refresh --seed</span><br></pre></td></tr></table></figure></p>
+<h2><span id="using-policy">Using Policy</span></h2>
+<ul>
+<li>create policy
+<ul>
+<li>php artisan make:policy --model=user UserPolicy</li>
+</ul>
+</li>
+<li>AuthServiceProvider add Policy
+<ul>
+<li>'App\User' =&gt; UserPolicy::class,</li>
+<li>remember to add namespace before using this policy</li>
+</ul>
+</li>
+<li>authorize controller destroy method to execute delete method
+<ul>
+<li>$this-&gt;authorize('delete', $user);</li>
+</ul>
+</li>
+</ul>
+<h2><span id="notice">Notice</span></h2>
+<ul>
+<li>routes/web.php</li>
+</ul>
+<ol>
+<li>use get to access controller function
+<ul>
+<li>alias name for changing back to home page</li>
+</ul>
+</li>
+<li>use resource to create default CRUD method
+<ul>
+<li>no need to create additional view blade files</li>
+</ul>
+</li>
+<li>laravel 5.4 support emoji for MySQL 5.7.7
+<ul>
+<li>every time start the app</li>
+<li>Providers\AppServiceProvider.php</li>
+<li>config\app.php</li>
+</ul>
+</li>
+</ol>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Route::get(<span class="string">'/'</span>, <span class="string">'IndexController@home'</span>)-&gt;name(<span class="string">'home'</span>);</span><br><span class="line">Route::resource(<span class="string">'user'</span>, <span class="string">'UserController'</span>);</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public function boot()</span><br><span class="line">&#123;</span><br><span class="line">    Schema::defaultStringLength(191);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/2/" class="alignleft prev">Prev</a>
+  
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:edwardyi.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/Algorithm/">Algorithm</a><small>1</small></li>
+  
+    <li><a href="/Book-Reviews/">Book Reviews</a><small>1</small></li>
+  
+    <li><a href="/Bootstrap/">Bootstrap</a><small>2</small></li>
+  
+    <li><a href="/CodeIgniter/">CodeIgniter</a><small>1</small></li>
+  
+    <li><a href="/Codewars/">Codewars</a><small>1</small></li>
+  
+    <li><a href="/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/Java/">Java</a><small>1</small></li>
+  
+    <li><a href="/Javascript/">Javascript</a><small>1</small></li>
+  
+    <li><a href="/Jquery/">Jquery</a><small>1</small></li>
+  
+    <li><a href="/Laravel/">Laravel</a><small>4</small></li>
+  
+    <li><a href="/NodeJs/">NodeJs</a><small>1</small></li>
+  
+    <li><a href="/ReactJs/">ReactJs</a><small>2</small></li>
+  
+    <li><a href="/Regular-Expressions/">Regular Expressions</a><small>1</small></li>
+  
+    <li><a href="/Unit-Test/">Unit Test</a><small>3</small></li>
+  
+    <li><a href="/Virtualbox/">Virtualbox</a><small>1</small></li>
+  
+    <li><a href="/ReactJs/VueJs/">VueJs</a><small>2</small></li>
+  
+    <li><a href="/language/">language</a><small>1</small></li>
+  
+    <li><a href="/postman/">postman</a><small>1</small></li>
+  
+    <li><a href="/scrimba/">scrimba</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  <script type="text/javascript">
+    amzn_assoc_placement = "adunit0";
+    amzn_assoc_search_bar = "true";
+    amzn_assoc_tracking_id = "edwardyispace-20";
+    amzn_assoc_search_bar_position = "bottom";
+    amzn_assoc_ad_mode = "search";
+    amzn_assoc_ad_type = "smart";
+    amzn_assoc_marketplace = "amazon";
+    amzn_assoc_region = "US";
+    amzn_assoc_title = "Shop Related Products";
+    amzn_assoc_default_search_phrase = "WD SSD";
+    amzn_assoc_default_category = "All";
+    amzn_assoc_linkid = "37b2ee2b21e636afb10606fa741d8491";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2021 Edwardyi
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'edwardyi-blog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

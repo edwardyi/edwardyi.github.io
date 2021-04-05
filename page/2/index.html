@@ -1,0 +1,1274 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Page 2 | Edwardyi Blog</title>
+  <meta name="author" content="Edwardyi">
+  
+  <meta name="description" content="年少輕狂的好日子，一懂事就結束">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Edwardyi Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Edwardyi Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer',theme.google_tag);</script>
+	<!-- End Google Tag Manager -->
+
+	
+</head>
+
+
+<body>
+  
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57XKRCL"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Edwardyi Blog</a></h1>
+  <h2><a href="/">To go forward you must backup</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/works">Works</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-12-07T05:19:00.000Z"><a href="/2018/12/07/NPM-Portable/">2018-12-07</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/12/07/NPM-Portable/">NPM Portable</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h5><span id="情境">情境:</span></h5>
+<ul>
+<li>為了在不同的電腦都能使用nodejs搭配sublime text 3開發,如果是windows系統可以嘗試以下步驟:</li>
+</ul>
+<h5><span id="配置">配置:</span></h5>
+<ul>
+<li>
+<p>先在官網下載最新的nodejs zip</p>
+</li>
+<li>
+<p>https://nodejs.org/en/download/</p>
+</li>
+<li>
+<p>解壓縮後,切換到資料夾下確認版本</p>
+</li>
+<li>
+<p>node -v</p>
+</li>
+<li>
+<p>npm version:查看所有版本號</p>
+</li>
+<li>
+<p>設定環境變數</p>
+<ul>
+<li>echo %PATH%</li>
+<li>set PATH=%PATH%;%cd%</li>
+<li>當前解壓縮後的nodejs路徑</li>
+</ul>
+</li>
+<li>
+<p>sublime text 3
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = &apos;6f4c264a24d933ce70df5dedcf1dcaee&apos; + &apos;ebe013ee18cced0ef93d5f746d80ef60&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)</span><br></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>https://packagecontrol.io/installation</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-11-15T08:43:00.000Z"><a href="/2018/11/15/TDD-Using-PHPUnit/">2018-11-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/11/15/TDD-Using-PHPUnit/">TDD Using PHPUnit</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3><span id="phpunit-test">PHPUnit Test</span></h3>
+<ul>
+<li>Composer.json定義版本號</li>
+<li>PHPUnit.xml定義單元測試的規則
+<ul>
+<li>檔案名稱用Test當後綴</li>
+<li>方法名稱用test當前綴</li>
+</ul>
+</li>
+<li>增加可讀性
+<ul>
+<li>@test註解</li>
+<li>function的名稱可以用底線來連結</li>
+<li>CamelCase plugin
+<ul>
+<li>(V) a_product_has_a_name</li>
+<li>(X) AProductHasAName</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>新增一個屬性,結果原先的unit test變成不通過
+<ul>
+<li>construct少傳一個參數,兩種解法
+<ul>
+<li>給預設值</li>
+<li>修改舊的測試方法,把要傳的參數也加上去</li>
+</ul>
+</li>
+<li>filter方法,可以針對要測試的方法指定方法名稱或類別名稱</li>
+</ul>
+</li>
+<li>原則
+<ul>
+<li>根據unit test回傳的錯誤訊息來調整代碼</li>
+</ul>
+</li>
+<li>測試Order
+<ul>
+<li>一個Order有多個商品,加總起來個數和總經額要經過測試</li>
+<li>assertCount()計算陣列元素個數</li>
+</ul>
+</li>
+<li>重構
+<ul>
+<li>setUp()把物件整理出來,單元測試在執行前會先執行setUp的方法</li>
+<li>缺點:耦合度提高,牽一髮動全身</li>
+<li>stop-on-error:Stop execution upon first error</li>
+</ul>
+</li>
+<li>測試Model的資料
+<ul>
+<li>測試最多觀看文章資料</li>
+<li>use DatabaseTransaction,執行完之後會在執行rollback</li>
+<li>安裝sqlite
+<ul>
+<li>sudo apt-get install php7.2-sqlite</li>
+<li>修改/etc/php/php7.2/php.ini的,把分號拿掉</li>
+</ul>
+</li>
+<li>自己做一次發現卡住
+<ul>
+<li>少做了修改database的預設配置文件(config/database.php)
+<ul>
+<li>env('DB_CONNECTION', 'sqlite'),</li>
+</ul>
+</li>
+<li>php artisan make:modol Article -m
+<ul>
+<li>建立model文件和migration文件</li>
+<li>修改migration的定義</li>
+</ul>
+</li>
+<li>用model::class來創建紀錄</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>新增團隊案例
+<ul>
+<li>一個團隊可以加入多個User,多對多關係</li>
+<li>拋出例外可以整理成protected的function比較容易閱讀</li>
+</ul>
+</li>
+<li>Feature和Unit Test的差異
+<ul>
+<li>Feature測試模仿實際操作的過程</li>
+<li>Unit Test則是每一個拆開的方法(向洋蔥一樣,最核心的部分就是單元測試)</li>
+</ul>
+</li>
+<li>安裝phpunit watch
+<ul>
+<li>composer global require spatie/phpunit-watcher</li>
+<li>composer require spatie/phpunit-watcher --dev
+<ul>
+<li>要require進來才可以用,光是安裝是沒有用的</li>
+</ul>
+</li>
+<li>phpunit-watcher watch</li>
+</ul>
+</li>
+<li>laravel 5.4之後才支持dusk針對瀏覽器的測試</li>
+</ul>
+<h3><span id="phpunit-in-action">PHPUnit In Action</span></h3>
+<ul>
+<li>踩坑了,結果書中已經有說這個問題
+<ul>
+<li>使用了 Data Provider 的測試，它的輸出將無法注入到其他相依於它的測試</li>
+</ul>
+</li>
+<li>加上namespace測試一下會不會重現laravel例外的問題
+<ul>
+<li>結果依然沒有辦法重現QQ</li>
+<li>用get_class打上完整的namespace類別名稱,有取到那個類別,但是單元測試不給過</li>
+</ul>
+</li>
+<li>測試了一般的Exception才給過,感動</li>
+<li>phpunit --configuration
+<ul>
+<li>產生phpunit.xml</li>
+<li>方便整合測試使用(CI)</li>
+</ul>
+</li>
+<li>產生測試報告
+<ul>
+<li>phpunit --coverage-html ./report tests</li>
+</ul>
+</li>
+</ul>
+<h3><span id="移除團隊成員unit-test">移除團隊成員(Unit Test)</span></h3>
+<ul>
+<li>一個團隊有多個人,每個人記錄一組team_id(所屬的團隊)</li>
+<li>新增多個團隊成員
+<ul>
+<li>instanceof判斷是不是User的Model</li>
+<li>如果是的話就用save,不是就用saveMany(Collection)</li>
+</ul>
+</li>
+<li>移除多個團隊成員
+<ul>
+<li>remove():移除User的team_id</li>
+<li>注意:User的team_id要是fillable才可以</li>
+<li>兩種方法可以移除collection的team_id
+<ul>
+<li>參數法:each每一個user做update</li>
+<li>關聯法:透過members()關聯,whereIn條件搭配使用pluck update</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>php 7.2會有count不能count collection的問題
+<ul>
+<li><a href="https://github.com/Automattic/jetpack/issues/8420" target="_blank" rel="noopener">PHP 7.2: Warning: count()</a></li>
+<li><a href="https://secure.php.net/manual/en/migration72.incompatible.php" target="_blank" rel="noopener">Backward incompatible changes ¶</a></li>
+</ul>
+</li>
+<li><a href="https://www.codecasts.com/series/learn-to-write-php-unit-test/episodes/8" target="_blank" rel="noopener">测试团队移除成员的功能</a></li>
+</ul>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 方法1:參數法</span><br><span class="line">$users-&gt;each(function($user)&#123;</span><br><span class="line">  return $user-&gt;update([&apos;team_id&apos;=&gt;null]);</span><br><span class="line">&#125;);</span><br><span class="line">// 方法2:關聯法pluck</span><br><span class="line">return $this-&gt;members()-&gt;whereIn(&apos;id&apos;, $users-&gt;pluck(&apos;id&apos;))-&gt;update([&apos;team_id&apos;=&gt;null]);</span><br></pre></td></tr></table></figure></p>
+<h3><span id="參考連結">參考連結</span></h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=R1aO4Tmw3zA&amp;list=PLKERDLXpXl_jJQiQOHDLimnulasAK3T5b" target="_blank" rel="noopener">TDD in Unity</a></li>
+<li><a href="https://www.youtube.com/watch?v=o-C_2ZELZHY" target="_blank" rel="noopener">Laravel E-Commerce - Testing with PHPUnit - Part 29</a></li>
+<li><a href="https://www.codecasts.com/" target="_blank" rel="noopener">codecasts</a></li>
+<li><a href="https://www.codecasts.com/series/learn-to-write-php-unit-test/episodes/1" target="_blank" rel="noopener">learn-to-write-php-unit-test</a></li>
+<li><a href="https://www.youtube.com/watch?v=YjvSyWInHeE" target="_blank" rel="noopener">Laravel Dusk Tutorials | Introduction and Installation #1</a></li>
+<li><a href="https://stackoverflow.com/questions/38949781/pdo-exception-driver-not-found-in-laravel-for-sqlite/41545116" target="_blank" rel="noopener">driver not found的問題</a></li>
+<li><a href="https://www.youtube.com/watch?time_continue=3&amp;v=eE3-COBmE1g" target="_blank" rel="noopener">Eloquont unit test laravel 5.7</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-11-08T10:07:00.000Z"><a href="/2018/11/08/Using-NodeJs-Unit-Testing-Jest/">2018-11-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/11/08/Using-NodeJs-Unit-Testing-Jest/">Using NodeJs Unit Testing(Jest)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <ul>
+<li>Why Unit Testing
+<ul>
+<li>project starts simple, but grows more and more complex</li>
+<li>horrifying functions start a simple way</li>
+<li>You must think longer than your nose goes(Swedish sayings proverb)</li>
+</ul>
+</li>
+<li>add shipping
+<ul>
+<li>if the total amount is greater than 1000, then it's free</li>
+<li>instead of thinking lots of cases at the same time, we break it down by several isolated steps</li>
+</ul>
+</li>
+<li>add taxes</li>
+<li>Happy Test
+<ul>
+<li>the main function the most time program spend</li>
+</ul>
+</li>
+</ul>
+<h3><span id="tdd-3-ways">TDD 3 ways</span></h3>
+<pre><code>- obvious implementation
+- fake it until you make it
+- triangalation
+</code></pre>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">function orderFilterTotal(order) &#123;</span><br><span class="line">    // 直接返回結果不需要再用一個變數來接</span><br><span class="line">    // 三元表達式(item.quantity ? item.quantity : 1)</span><br><span class="line">    return order.items</span><br><span class="line">    .reduce((total, item) =&gt; &#123;return (item.price * (item.quantity || 1) + total) &#125;, 0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if(orderFilterTotal(&#123;</span><br><span class="line">    items: [</span><br><span class="line">        &#123;name:&apos;cat food&apos;, price: 8, quantity: 2&#125;,</span><br><span class="line">        &#123;name:&apos;cat cage&apos;, price: 800, quantity: 3&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;) != 2416) &#123;</span><br><span class="line">    throw new Error(&quot;Check Fail: Quantity Error)&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(orderFilterTotal(&#123;</span><br><span class="line">    items: [</span><br><span class="line">        &#123;name:&apos;cat food&apos;, price: 3&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;) != 3) &#123;</span><br><span class="line">    throw new Error(&quot;Check Fail: No Quantity&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if(orderFilterTotal(&#123;</span><br><span class="line">    items: [</span><br><span class="line">        &#123;name:&apos;cat food&apos;, price: 8&#125;,</span><br><span class="line">        &#123;name:&apos;cat cage&apos;, price: 800&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;) != 808) &#123;</span><br><span class="line">    throw new Error(&quot;Check Fail: Happy Test(Example 1)&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(orderFilterTotal(&#123;</span><br><span class="line">    items: [</span><br><span class="line">        &#123;name:&apos;cat toy&apos;, price: 30&#125;,</span><br><span class="line">        &#123;name:&apos;cat towel&apos;, price: 40&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;) != 70) &#123;</span><br><span class="line">    throw new Error(&quot;Check Fail: Happy Test(Example 2)&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3><span id="jest-auto-test">Jest Auto Test</span></h3>
+<ul>
+<li>You need to notice your test file name to be xxxx.test.js format
+<ul>
+<li>it doesn't matter the test file goes, but the file name matter</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Happy Path</span><br><span class="line">it(&apos;works&apos;, () =&gt; &#123;</span><br><span class="line">    expect(1).toBe(1);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-11-07T08:53:00.000Z"><a href="/2018/11/07/Javascript-Functional-Programming/">2018-11-07</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/11/07/Javascript-Functional-Programming/">Javascript Functional Programming</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1><span id="functional-programming">Functional Programming</span></h1>
+<ul>
+<li>Less Bug/Code
+<ul>
+<li>Composable High order function(filter、map、reduce)</li>
+<li>Functions are values</li>
+<li>function inside a function, we call callback(stack)</li>
+</ul>
+</li>
+<li>Map
+<ul>
+<li>Arrow Function can write less code. It means less bug
+<ul>
+<li>you can remove function &amp; return keyword when using arrow function</li>
+<li>if you have multiple operations in our reduce function need return keyword</li>
+</ul>
+</li>
+<li>map function just like filter function and it takes callback function as parameter</li>
+</ul>
+</li>
+<li>Reduce
+<ul>
+<li>can do anything like find, map or filter do</li>
+<li>the difference between map and reduce is that it need initial value behind the function</li>
+<li>the second parameter must be value, can not be variable</li>
+</ul>
+</li>
+</ul>
+<h3><span id="csv-to-json-formatusing-nodejs">CSV to json format(Using NodeJS)</span></h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&apos;fs&apos;);</span><br><span class="line">var output = fs.readFileSync(&apos;data/data.txt&apos;, &apos;utf8&apos;)</span><br><span class="line">            .trim()</span><br><span class="line">            .split(&quot;\n&quot;)</span><br><span class="line">            .map((row) =&gt; row.split(&apos;,&apos;))</span><br><span class="line">            .reduce((customers,row)=&gt;&#123;</span><br><span class="line">                // 如果沒有值就用空的當預設值，之後push才不會有問題</span><br><span class="line">                customers[row[0]] = customers[row[0]] || [];</span><br><span class="line">                customers[row[0]].push(&#123;</span><br><span class="line">                     &apos;product&apos;:row[1],</span><br><span class="line">                     &apos;price&apos;:row[2],</span><br><span class="line">                     &apos;amount&apos;:row[3]</span><br><span class="line">                &#125;);</span><br><span class="line">                return customers;</span><br><span class="line">            &#125;, &#123;&#125;);</span><br><span class="line"></span><br><span class="line">console.log(&apos;output&apos;,JSON.stringify(output, null, 2));</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mark johansson,waffle iron,80,2</span><br><span class="line">mark johansson,blender,200,1</span><br><span class="line">mark johansson,knife,10,4</span><br><span class="line">Nikita Smith,waffle iron,80,1</span><br><span class="line">Nikita Smith,knife,10,2</span><br><span class="line">Nikita Smith,pot,20,3</span><br></pre></td></tr></table></figure></p>
+<h3><span id="recursive">recursive</span></h3>
+<pre><code>- maxium call of stack
+- es5 having the maxium call of stack limitation, but es6 removed this limitation by using bubble simulation
+    -  tail call optimization.
+</code></pre>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var getMenuTree = (category, parent) =&gt; &#123;</span><br><span class="line">    let nodeResult = &#123;&#125;;</span><br><span class="line">    category</span><br><span class="line">    .filter((c) =&gt; c.parent_id == parent)</span><br><span class="line">    .forEach((c) =&gt; nodeResult[c.id] = getMenuTree(category, c.id));</span><br><span class="line">    return nodeResult;</span><br><span class="line">&#125;;</span><br><span class="line">var categories = JSON.parse(fs.readFileSync(&apos;data/menutree.json&apos;, &apos;utf8&apos;));</span><br><span class="line"></span><br><span class="line">//&apos;hello&apos;,categories,</span><br><span class="line">console.log(JSON.stringify(getMenuTree(categories, null), null, 2));</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#123;&quot;id&quot;:&quot;animals&quot;,&quot;parent_id&quot;:null&#125;,&#123;&quot;id&quot;:&quot;mammals&quot;,&quot;parent_id&quot;:&quot;animals&quot;&#125;,&#123;&quot;id&quot;:&quot;cats&quot;,&quot;parent_id&quot;:&quot;mammals&quot;&#125;,&#123;&quot;id&quot;:&quot;dogs&quot;,&quot;parent_id&quot;:&quot;mammals&quot;&#125;,&#123;&quot;id&quot;:&quot;chihuahua&quot;,&quot;parent_id&quot;:&quot;dogs&quot;&#125;,&#123;&quot;id&quot;:&quot;labrador&quot;,&quot;parent_id&quot;:&quot;dogs&quot;&#125;,&#123;&quot;id&quot;:&quot;persian&quot;,&quot;parent_id&quot;:&quot;cats&quot;&#125;,&#123;&quot;id&quot;:&quot;siamese&quot;,&quot;parent_id&quot;:&quot;cats&quot;&#125;]</span><br></pre></td></tr></table></figure></p>
+<h3><span id="funcdoor">FuncDoor</span></h3>
+<ul>
+<li>Using FuncDoor
+<ul>
+<li>need passing one string parameter and one function parameter</li>
+<li>they will map together when be called</li>
+<li>pass each value to each function and return the new structures</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&apos;fs&apos;);</span><br><span class="line"></span><br><span class="line">var reduceCustomer = (output) =&gt; output.reduce((output,row)=&gt;&#123;</span><br><span class="line">    // 如果沒有值就用空的當預設值，之後push才不會有問題</span><br><span class="line">    output[row[0]] = output[row[0]] || [];</span><br><span class="line">    output[row[0]].push(&#123;</span><br><span class="line">         &apos;product&apos;:row[1],</span><br><span class="line">         &apos;price&apos;:row[2],</span><br><span class="line">         &apos;amount&apos;:row[3]</span><br><span class="line">    &#125;);</span><br><span class="line">    return output;</span><br><span class="line">&#125;, &#123;&#125;);</span><br><span class="line"></span><br><span class="line">var funcDoor = (path, fn) =&gt; &#123;</span><br><span class="line">    var rawData = (path) =&gt;  fs.readFileSync(path, &apos;utf8&apos;)</span><br><span class="line">            .trim()</span><br><span class="line">            .split(&quot;\n&quot;);</span><br><span class="line">    // 要傳入參數，否則最後的結果還是function</span><br><span class="line">    var result = (path)=&gt;fn(rawData(path).map((row) =&gt; &#123;</span><br><span class="line">      return row.split(&apos;,&apos;)</span><br><span class="line">    &#125; ));</span><br><span class="line">    return result(path);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">console.log( funcDoor(&apos;data/data.txt&apos;, reduceCustomer));</span><br><span class="line">// return;</span><br><span class="line">// console.log(&apos;output&apos;,JSON.stringify(convertJson(&apos;data/data.txt&apos;), null, 2));</span><br><span class="line"></span><br><span class="line">var reduceCsv = (output) =&gt; output.reduce((output, row) =&gt; &#123;</span><br><span class="line">        // 直接整理到一個result的key，之後就不用煩惱怎麼把key移掉</span><br><span class="line">        output[&apos;result&apos;] =  output[&apos;result&apos;]||[];</span><br><span class="line">        let input = &#123;</span><br><span class="line">            &apos;id&apos;:row[0],</span><br><span class="line">            &apos;parent_id&apos;:row[1]!=&apos;null&apos; ? row[1] : JSON.parse(row[1])</span><br><span class="line">        &#125;;</span><br><span class="line">        output[&apos;result&apos;].push(input);</span><br><span class="line">        // output[i] = input;</span><br><span class="line">        return output</span><br><span class="line">    &#125; ,&#123;&#125;)[&apos;result&apos;]</span><br><span class="line">let menuTreeResult;</span><br><span class="line">console.log(menuTreeResult = funcDoor(&apos;data/menutree.txt&apos;, reduceCsv));</span><br><span class="line">fs.writeFile(&apos;./data/menutree.json&apos;,JSON.stringify(menuTreeResult, null ,2));</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Wl98eZpkp-c&amp;list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84" target="_blank" rel="noopener">Reduce basics - Part 3 of Functional Programming in JavaScript</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-11-06T10:59:00.000Z"><a href="/2018/11/06/Jquery-Form-Validate/">2018-11-06</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/11/06/Jquery-Form-Validate/">Jquery Form Validate</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <ul>
+<li>normalize css和jquery來製作表單
+<ul>
+<li>能夠在各個瀏覽器呈現差不多的結果</li>
+<li>用input-control而不是form-control，比較清楚</li>
+</ul>
+</li>
+<li>版面居中
+<ul>
+<li>wrap定義max-width不一定會用到</li>
+<li>實際用到的是wrap-sm</li>
+</ul>
+</li>
+<li>使用*確認每個元素的布局
+<ul>
+<li>先把結構確定下來，具體的不在乎</li>
+</ul>
+</li>
+<li>搞清楚我們要甚麼?
+<ul>
+<li>可以直接挖一口井就完事了
+<ul>
+<li>直接定義到main.js</li>
+</ul>
+</li>
+<li>也可以搞一個自然水系統，雖然一開始要照顧的情況比較多，之後只要幾個設定就完事了
+<ul>
+<li>在input裡面建立data-rule</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>'use strict'
+<ul>
+<li>不汙染全局變量</li>
+<li>main.js中負責傳入string和驗證規則</li>
+<li>另外建立一個validate.js來接收string和驗證規則</li>
+</ul>
+</li>
+<li>使用jquery內建的方法過濾資料
+<ul>
+<li>trim()和isNumeric()</li>
+<li>val!==0的判斷是用來處理trim之後為空的情況</li>
+<li>use strict其實用前面!val的寫法來判斷即可</li>
+</ul>
+</li>
+<li>JSON.parse
+<ul>
+<li>如果要讓值變成字串，要用雙引號</li>
+<li>會用到正規表達式</li>
+</ul>
+</li>
+<li>寫一個專門找Input的模組
+<ul>
+<li>*:至少0個以上的字元</li>
+<li>+:至少1個以上的字元(因為有require的規則可以驗證，不用+)</li>
+<li>isValid的方法寫道validate的模組裡面</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-11-05T09:54:00.000Z"><a href="/2018/11/05/Bootstrap-4-Navbar-Dropdown-Cheatsheet/">2018-11-05</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/11/05/Bootstrap-4-Navbar-Dropdown-Cheatsheet/">Bootstrap 4 Navbar/Dropdown Cheatsheet</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3><span id="navbar導行列">Navbar導行列</span></h3>
+<p><em>分結構和樣式</em></p>
+<ul>
+<li>結構
+<ul>
+<li>nav.navbar</li>
+<li>nav.navbar-expand-xl</li>
+<li>ul.navbar-nav</li>
+<li>li.nav-item</li>
+<li>a.nav-link</li>
+</ul>
+</li>
+<li>樣式
+<ul>
+<li>nav.navbar-dark</li>
+<li>nav.navbar-light</li>
+<li>nav.bg-dark</li>
+<li>nav.bg-light</li>
+</ul>
+</li>
+<li>位置
+<ul>
+<li>nav.fixed-top</li>
+<li>nav.fixed-bottom</li>
+<li>nav.sticky-top</li>
+</ul>
+</li>
+<li>顯示/隱藏
+<ul>
+<li>button.navbar-toggler
+<ul>
+<li>data-toggle = &quot;collapse&quot;</li>
+<li>data-target = &quot;#target_name&quot;</li>
+</ul>
+</li>
+<li>span.navbar-toggler-icon</li>
+<li>div.collapse</li>
+<li>div.navbar-collapse</li>
+<li>id = &quot;target_name&quot;</li>
+</ul>
+</li>
+<li>下拉選單
+<ul>
+<li>li.dropdown</li>
+<li>a.dropdown-toggle
+<ul>
+<li>data-toggle = 'dropdown'</li>
+<li>id = '#target_name'</li>
+</ul>
+</li>
+<li>div.dropdown-menu</li>
+<li>div.dropdown-divider
+<ul>
+<li>aria-labelledby = target_name</li>
+</ul>
+</li>
+<li>a.dropdown-item</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>踩坑</em></strong></p>
+<ul>
+<li>如果沒有加上下拉選單的aria-labelledby的屬性，會出現只能展開無法收合的問題</li>
+<li>caret已經不支持了，改用dropdown-toggle的class</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-11-02T11:00:00.000Z"><a href="/2018/11/02/Bootstrap-4/">2018-11-02</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/11/02/Bootstrap-4/">Bootstrap 4</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <ul>
+<li>一般不要去改依賴庫的程式，那個工作讓依賴包管理來處理就好
+<ul>
+<li>對修改封閉</li>
+</ul>
+</li>
+<li>快捷鍵
+<ul>
+<li>ctrl+delete:刪除一個單詞</li>
+<li>lipsum:產生dumy words
+<ul>
+<li>不知道為什麼一開始cloud9會沒有辦法識別</li>
+<li>之後反而要打Lorem了，怪怪的</li>
+</ul>
+</li>
+<li>cloud 9預設Emmet plugin</li>
+</ul>
+</li>
+<li>三塊的布局
+<ul>
+<li>col-sm-xx(加起來要是12)</li>
+</ul>
+</li>
+<li>導覽列
+<ul>
+<li>上方navbar
+<ul>
+<li>最外層用div.navbar</li>
+<li>內層有個div.nav.navbar-header</li>
+<li>導航列用ul.nav.navbar-nav</li>
+</ul>
+</li>
+<li>bootstrap 4:
+<ul>
+<li>mr-auto:向左靠(margin-right-auto)</li>
+<li>ml-auto:向右靠(margin-left-auto)</li>
+<li>navbar-expand-lg:當網頁是一般螢幕的時候展開</li>
+<li>navbar-collapse:隱藏起來</li>
+<li>navbar-toggler-icon</li>
+</ul>
+</li>
+<li>和上方文字對齊，加上row的div
+<ul>
+<li>因為row有css的樣式，把他的margin和padding覆蓋掉</li>
+</ul>
+</li>
+<li>踩到官網3.3.1 slim.js的問題
+<ul>
+<li>用的太新了，改用六角學院的連結就有用(3.2.1.slim)</li>
+<li>小畫面的時候會沒有辦法toggle導覽列</li>
+</ul>
+</li>
+<li>修改Logo
+<ul>
+<li>background-image:url(設定圖片位置)</li>
+<li>background-size:
+<ul>
+<li>cover(圖片填充，會發現整個圖片重複了，而且覺得太滿了一點)</li>
+<li>80%</li>
+</ul>
+</li>
+<li>background-repeat:no-repeat
+<ul>
+<li>調整background-size圖片重複的問題</li>
+</ul>
+</li>
+<li>background-position:調整圖片位置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>左方sidebar
+<ul>
+<li>多增加一個sidebar的類，比較明確，避免改到其他的地方的樣式</li>
+<li>list-group-item</li>
+<li>學會了怎麼用emmet添加多個假的item
+<ul>
+<li>div.list-group&gt;(a[#].list-group-item.list-group-item-hover{item$})*5</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>中間區塊
+<ul>
+<li>圖片設置
+<ul>
+<li>讓圖片限制在一個範圍內</li>
+<li>max-width:100%(讓他不會超過外面元素的100%)</li>
+<li>col-xs-xx:在bootstrap 4不管用拉(用col-md-{})</li>
+</ul>
+</li>
+<li>整理共用樣式用逗號串接</li>
+<li>grid system如果要顯示在同一列要用row包起來</li>
+<li>用一個div包起來info
+<ul>
+<li>也方便統一裡面的樣式</li>
+</ul>
+</li>
+<li>調整title行距
+<ul>
+<li>改成超連結，display:block</li>
+</ul>
+</li>
+<li>clearfix:bootstrap 3需要清除float</li>
+</ul>
+</li>
+<li>右方區塊
+<ul>
+<li>一般放業務有關的訊息</li>
+<li>不能用數字命名阿</li>
+<li>把標題字調大</li>
+<li>不確定怎麼把右方標題的上下間距調大一些</li>
+</ul>
+</li>
+<li>新聞詳細頁
+<ul>
+<li>lorem*10</li>
+<li>Label用法</li>
+</ul>
+</li>
+</ul>
+<p><em>參考連結</em></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=23bpce-5s8I" target="_blank" rel="noopener">bootstrap 4教學</a></li>
+<li><a href="https://designshack.net/articles/css/7-awesome-emmet-html-time-saving-tips/" target="_blank" rel="noopener">Awesome emmet</a></li>
+<li><a href="https://dummyimage.com/" target="_blank" rel="noopener">dummyimage</a></li>
+<li><a href="https://stackoverflow.com/questions/41794746/col-xs-not-working-in-bootstrap-4" target="_blank" rel="noopener">col-xs in bootstrap 4</a></li>
+<li><a href="https://www.youtube.com/watch?v=qmPmwdshCMw" target="_blank" rel="noopener">Grid System bootstrap 4</a></li>
+<li><a href="https://getbootstrap.com/docs/4.0/migration/" target="_blank" rel="noopener">Migration to bootstrap 4</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-11-02T10:58:00.000Z"><a href="/2018/11/02/it-Memo/">2018-11-02</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/11/02/it-Memo/">Git Memo</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>還魂藥Git</em></p>
+<ul>
+<li>兩個方法建立repository
+<ul>
+<li>git init:沒有資料夾會創建一個以repository為名稱的資料夾</li>
+<li>git clone:從既有的專案取得檔案</li>
+</ul>
+</li>
+<li>基本用法
+<ul>
+<li>git diff:比對差異</li>
+<li>git log -p:查看commit的結果(把差異也顯示到命令提示字元上)</li>
+<li>git add .:把異動加到暫存區()</li>
+<li>git commit -m &quot;[init]在這裡打上異動&quot;</li>
+<li>git status:查看commit狀態</li>
+<li>git checkout 1234567(七位以上commit-id) #還原到哪一個版本</li>
+</ul>
+</li>
+<li>異動的三個狀態
+<ul>
+<li>修改(modified)  =&gt; add改變狀態到staged</li>
+<li>暫存(staged)    =&gt; commit改變狀態到committed</li>
+<li>提交(committed) =&gt; log -p看修改紀錄</li>
+<li>還原(checkout)  =&gt; checkout 1234567</li>
+</ul>
+</li>
+<li>git log
+<ul>
+<li>--oneline:全部一行顯示</li>
+<li>p:查看異動內容</li>
+<li>--all顯示所有</li>
+</ul>
+</li>
+<li>git tag
+<ul>
+<li>在當前的分支中建立tag，和commit一樣也可以加上描述</li>
+<li>應用情境:非常複雜的節點</li>
+<li>-a v1 -m &quot;第一版完成&quot;</li>
+<li>
+<ul>
+<li>a:annotation(加了之後訊息比較全面)</li>
+</ul>
+</li>
+<li>--delete v1</li>
+<li>checkout v1</li>
+</ul>
+</li>
+<li>git show v1(標籤名稱)
+<ul>
+<li>列出所有commit和tag標籤的描述</li>
+</ul>
+</li>
+<li>git remote
+<ul>
+<li>都不輸入查看remote，預設是origin</li>
+<li>add localName http://github.com/userId/project.git</li>
+<li>-v顯示fetch和push的位置</li>
+</ul>
+</li>
+<li>git push
+<ul>
+<li>origin branch</li>
+</ul>
+</li>
+<li>git pull
+<ul>
+<li>git fetch &amp;&amp; git merge</li>
+<li>同步資料</li>
+</ul>
+</li>
+<li>git merge
+<ul>
+<li>上面的異動是自己的</li>
+<li>下面的是已經在master上面的異動</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-11-01T08:13:00.000Z"><a href="/2018/11/01/Using-RegExr/">2018-11-01</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/11/01/Using-RegExr/">Using RegExr</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3><span id="正規表達式">正規表達式</span></h3>
+<ul>
+<li>.+:某
+<ul>
+<li>.+searchItem</li>
+</ul>
+</li>
+<li>.:代表任何東西
+<ul>
+<li>任意一個東西</li>
+<li>小丑卡，可以代表任何東西</li>
+<li>萬用任意(wildcard)</li>
+<li>如果想要match到點的話,要跳脫/.</li>
+<li>王..</li>
+<li>匹配3.14 =&gt; 3.14</li>
+</ul>
+</li>
+<li>\w:
+<ul>
+<li>所有的數字、文字和底線(可以用來檢查用戶名稱)</li>
+<li>\W:\w的補集(加減乘除)</li>
+</ul>
+</li>
+<li>\d:
+<ul>
+<li>匹配數字</li>
+<li>\D:\d的補集(除了數字以外)</li>
+</ul>
+</li>
+<li>\s:
+<ul>
+<li>匹配空格、tab</li>
+<li>\S:\s的補集(除了空白以外)</li>
+</ul>
+</li>
+<li>[]:可以是甚麼的字元
+<ul>
+<li>[^b]og:不是b</li>
+<li></li>
+<li></li>
+<li>轉成unicode:19968-40869</li>
+</ul>
+</li>
+<li>():分組(常用)
+<ul>
+<li>(\w+)</li>
+</ul>
+</li>
+<li>*:匹配所有
+<ul>
+<li>{0,}</li>
+</ul>
+</li>
+<li>+:匹配至少一個字元
+<ul>
+<li>{1,} at least 1</li>
+</ul>
+</li>
+<li>?:匹配零個或1個
+<ul>
+<li>{0,1}</li>
+</ul>
+</li>
+<li>{}:要出現幾次甚麼東西
+<ul>
+<li>z{3}:zzz</li>
+</ul>
+</li>
+</ul>
+<p><em>範例</em></p>
+<ul>
+<li><a href="regexr.com/42ajm">Yo後面有文字</a></li>
+</ul>
+<p><em>參考連結</em></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=EkluES9Rvak" target="_blank" rel="noopener">Best of Fluent 2012</a></li>
+<li><a href="https://regexr.com/" target="_blank" rel="noopener">regexr</a></li>
+<li><a href="https://www.bilibili.com/video/av18182693" target="_blank" rel="noopener">bilibili表嚴肅</a></li>
+<li><a href="https://regexone.com/lesson/wildcards_dot?" target="_blank" rel="noopener">regexone學習正規表達式的好地方</a></li>
+<li><a href="https://www.youtube.com/watch?v=2CwzOjYbi-w&amp;list=PLXbU-2B80FvCKj0aqdpudCqpif2vNuING" target="_blank" rel="noopener">正規表達式</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-30T02:58:00.000Z"><a href="/2018/10/30/Using-Composer-Learning-Unit-Test-Part-2/">2018-10-30</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/30/Using-Composer-Learning-Unit-Test-Part-2/">Using Composer Learning Unit Test Part 2</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>PHP Unit Test</em></p>
+<ul>
+<li>要如何直接用assertEquals的function呢?
+<ul>
+<li>因為每一次都會用到$this-&gt;assertEquals()有點多餘</li>
+<li>找到實際定義assertEquals的function整理成一個檔案</li>
+<li>讓phpunit.xml直接參考到bootstrap.php自定義的檔案</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tests/bootstrap.php</span></span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">'/../vendor/autoload.php'</span>;</span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">'/../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php'</span>;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>
+<p>測試的種類</p>
+<ul>
+<li>Unit Test &lt; Integration Test &lt; Function Test &lt; Acceptance Test</li>
+<li>Unit Test
+<ul>
+<li>Basic Test</li>
+</ul>
+</li>
+<li>Integration Test
+<ul>
+<li>測試兩個獨立系統是否能正常運作</li>
+</ul>
+</li>
+<li>Function/Acceptance Test
+<ul>
+<li>測試過Unit Test和Integration Test不一定這一階段就會過</li>
+<li>Acceptance Test/配合Selenium測試UI</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>mock的概念</p>
+<ul>
+<li>不在乎run的內容,只關注那個function是否有被呼叫到了</li>
+<li>swap out the actual action</li>
+<li>和new 物件的作法比較(會實際呼叫到物件定義的方法)</li>
+<li>可以用於依賴注入(controller有使用到其他物件的資料)</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$mock = Mockery::mock(<span class="string">'MockDependency\Type\StripeBilling'</span>); <span class="comment">//要寫完整路徑</span></span><br><span class="line">$mock-&gt;shouldReceive(<span class="string">'charge'</span>)-&gt;once()-&gt;andReturn(<span class="string">'mocked Billing by Test'</span>);</span><br><span class="line">$purchase = <span class="keyword">new</span> PurcharseController($mock);</span><br><span class="line">$result = $purchase-&gt;buy();</span><br><span class="line">var_dump($result);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>依賴注入
+<ul>
+<li>如果有定義新的namespace，記得先用composer dump，autoload才找的到檔案</li>
+<li>如果程式有在classmap中定義，require的時候就不用寫__DIR__取路徑</li>
+<li>Single Responsibility</li>
+</ul>
+</li>
+<li>驗證controller的時候，記得加上return返回結果
+<ul>
+<li>mock andReturn最後不會返回一個值，不需要再用一個變數來接</li>
+<li>用<em>php指令+檔案位置</em>來確認是否頁面能正常執行</li>
+</ul>
+</li>
+</ul>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法1:未使用依賴注入的寫法</span></span><br><span class="line"> <span class="keyword">require</span> <span class="string">'vendor/autoload.php'</span>;</span><br><span class="line"> $controller = <span class="keyword">new</span> PurcharseController();</span><br><span class="line"> var_dump($controller-&gt;buy());</span><br><span class="line"><span class="comment">// 方法2:使用依賴注入</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'vendor/autoload.php'</span>;</span><br><span class="line">var_dump((<span class="keyword">new</span> PurcharseController(<span class="keyword">new</span> StripeBilling))-&gt;buy());</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/" class="alignleft prev">Prev</a>
+  
+  
+    <a href="/page/3/" class="alignright next">Next</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:edwardyi.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/Algorithm/">Algorithm</a><small>1</small></li>
+  
+    <li><a href="/Book-Reviews/">Book Reviews</a><small>1</small></li>
+  
+    <li><a href="/Bootstrap/">Bootstrap</a><small>2</small></li>
+  
+    <li><a href="/CodeIgniter/">CodeIgniter</a><small>1</small></li>
+  
+    <li><a href="/Codewars/">Codewars</a><small>1</small></li>
+  
+    <li><a href="/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/Java/">Java</a><small>1</small></li>
+  
+    <li><a href="/Javascript/">Javascript</a><small>1</small></li>
+  
+    <li><a href="/Jquery/">Jquery</a><small>1</small></li>
+  
+    <li><a href="/Laravel/">Laravel</a><small>4</small></li>
+  
+    <li><a href="/NodeJs/">NodeJs</a><small>1</small></li>
+  
+    <li><a href="/ReactJs/">ReactJs</a><small>2</small></li>
+  
+    <li><a href="/Regular-Expressions/">Regular Expressions</a><small>1</small></li>
+  
+    <li><a href="/Unit-Test/">Unit Test</a><small>3</small></li>
+  
+    <li><a href="/Virtualbox/">Virtualbox</a><small>1</small></li>
+  
+    <li><a href="/ReactJs/VueJs/">VueJs</a><small>2</small></li>
+  
+    <li><a href="/language/">language</a><small>1</small></li>
+  
+    <li><a href="/postman/">postman</a><small>1</small></li>
+  
+    <li><a href="/scrimba/">scrimba</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  <script type="text/javascript">
+    amzn_assoc_placement = "adunit0";
+    amzn_assoc_search_bar = "true";
+    amzn_assoc_tracking_id = "edwardyispace-20";
+    amzn_assoc_search_bar_position = "bottom";
+    amzn_assoc_ad_mode = "search";
+    amzn_assoc_ad_type = "smart";
+    amzn_assoc_marketplace = "amazon";
+    amzn_assoc_region = "US";
+    amzn_assoc_title = "Shop Related Products";
+    amzn_assoc_default_search_phrase = "WD SSD";
+    amzn_assoc_default_category = "All";
+    amzn_assoc_linkid = "37b2ee2b21e636afb10606fa741d8491";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2021 Edwardyi
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'edwardyi-blog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

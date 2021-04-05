@@ -1,0 +1,306 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Color Picker Tool In React/Vue.js | Edwardyi Blog</title>
+  <meta name="author" content="Edwardyi">
+  
+  <meta name="description" content="年少輕狂的好日子，一懂事就結束">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Color Picker Tool In React/Vue.js"/>
+  <meta property="og:site_name" content="Edwardyi Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Edwardyi Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer',theme.google_tag);</script>
+	<!-- End Google Tag Manager -->
+
+	
+</head>
+
+
+<body>
+  
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57XKRCL"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Edwardyi Blog</a></h1>
+  <h2><a href="/">To go forward you must backup</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/works">Works</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-02-15T07:47:00.000Z"><a href="/2019/02/15/Color-Picker-In-React/">2019-02-15</a></time>
+      
+      
+  
+    <h1 class="title">Color Picker Tool In React/Vue.js</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>這次的練習在於熟悉Vue元件的寫法，以及Bootstrap 4版面布局，Vue的元件第一個參數必須全部小寫，這點要特別注意。</p>
+<ul>
+<li>Html
+<ul>
+<li>注意codepen引用bootstrap時使用的版本(bootstrap 4)
+<ul>
+<li>如果想要同一行顯示用row包起來</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>React
+<ul>
+<li>思考如何取得與處理textarea的內容</li>
+</ul>
+</li>
+<li>Vue
+<ul>
+<li>元件:第一個元件的參數開頭需要全部小寫
+<ul>
+<li>使用元件的好處，能夠有自己的計算屬性</li>
+<li>從父類別繼承下來的屬性可以再重新計算成新的屬性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Javascript
+<ul>
+<li>Vue裡面的東西都是物件</li>
+<li>html中都是用等號和引號取得vue的物件或資料</li>
+<li>用:style屬性接收物件的css設定的物件
+<ul>
+<li>:style=&quot;card.csscolor&quot;</li>
+<li>:v-model=&quot;color_cards&quot;</li>
+<li>:v-for=&quot;card in color_cards&quot;</li>
+</ul>
+</li>
+<li>computed裡面接的是object類型的東西
+<ul>
+<li>計算出color_card字串切割後的值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CSS
+<ul>
+<li>hover:設定移動效果
+<ul>
+<li>transform: translate(5px, 5px);</li>
+<li>transition: 4s</li>
+</ul>
+</li>
+<li>codepen編譯pug和sass差異
+<ul>
+<li>編譯pug會重新整理頁面</li>
+<li>編譯sass不重新整理頁面,但會動態替換頁面的內容</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Source Code如下:</p>
+<ul>
+<li><a href="https://codesandbox.io/s/github/edwardyi/ColorCardPicker" target="_blank" rel="noopener">Color Card Picker In React</a></li>
+<li><a href="https://codepen.io/edwardyi/pen/PVdNOz" target="_blank" rel="noopener">Color Card Picker In Vue.js</a></li>
+</ul>
+<p>📗:<a href="https://www.youtube.com/watch?v=P_Q76_hV1L4" target="_blank" rel="noopener">使用Vue.js建立sass色票工具</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/ReactJs/">ReactJs</a>, <a href="/ReactJs/VueJs/">VueJs</a>
+  </div>
+
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:edwardyi.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/Algorithm/">Algorithm</a><small>1</small></li>
+  
+    <li><a href="/Book-Reviews/">Book Reviews</a><small>1</small></li>
+  
+    <li><a href="/Bootstrap/">Bootstrap</a><small>2</small></li>
+  
+    <li><a href="/CodeIgniter/">CodeIgniter</a><small>1</small></li>
+  
+    <li><a href="/Codewars/">Codewars</a><small>1</small></li>
+  
+    <li><a href="/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/Java/">Java</a><small>1</small></li>
+  
+    <li><a href="/Javascript/">Javascript</a><small>1</small></li>
+  
+    <li><a href="/Jquery/">Jquery</a><small>1</small></li>
+  
+    <li><a href="/Laravel/">Laravel</a><small>4</small></li>
+  
+    <li><a href="/NodeJs/">NodeJs</a><small>1</small></li>
+  
+    <li><a href="/ReactJs/">ReactJs</a><small>2</small></li>
+  
+    <li><a href="/Regular-Expressions/">Regular Expressions</a><small>1</small></li>
+  
+    <li><a href="/Unit-Test/">Unit Test</a><small>3</small></li>
+  
+    <li><a href="/Virtualbox/">Virtualbox</a><small>1</small></li>
+  
+    <li><a href="/ReactJs/VueJs/">VueJs</a><small>2</small></li>
+  
+    <li><a href="/language/">language</a><small>1</small></li>
+  
+    <li><a href="/postman/">postman</a><small>1</small></li>
+  
+    <li><a href="/scrimba/">scrimba</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  <script type="text/javascript">
+    amzn_assoc_placement = "adunit0";
+    amzn_assoc_search_bar = "true";
+    amzn_assoc_tracking_id = "edwardyispace-20";
+    amzn_assoc_search_bar_position = "bottom";
+    amzn_assoc_ad_mode = "search";
+    amzn_assoc_ad_type = "smart";
+    amzn_assoc_marketplace = "amazon";
+    amzn_assoc_region = "US";
+    amzn_assoc_title = "Shop Related Products";
+    amzn_assoc_default_search_phrase = "WD SSD";
+    amzn_assoc_default_category = "All";
+    amzn_assoc_linkid = "37b2ee2b21e636afb10606fa741d8491";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2021 Edwardyi
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'edwardyi-blog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

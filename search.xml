@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[The power of language]]></title>
+    <url>%2F2019%2F03%2F24%2FThe-power-of-language-1%2F</url>
+    <content type="text"><![CDATA[每一次挫折都是離成功更進一步，每一個成功都是藏在拐角後頭。如果你不多轉幾個彎，怎麼知道成功離你多遠。事實上，一次一步並不算遠，但你終將達成目標。 語言具有改變思想的魔法喔！]]></content>
+      <categories>
+        <category>language</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Postman Imgur OAuth 2.0 Setting]]></title>
+    <url>%2F2019%2F03%2F24%2FPostman-Imgur-OAuth-2-0-Setting%2F</url>
+    <content type="text"><![CDATA[postman - 建立變數 - global、collection、environment - 用環境管理不同的變數 - 每一個Oauth的請求都有自己的token_url、authorize_url、callback_url OAuth四個步驟: 註冊、授權、請求、取得token 註冊:獲得client_id和client_secret 授權 詢問使用者是否願意提供個人資料讓應用程式存取資料 refresh and access tokens, an authorization_code, or a PIN code. 用這些東西來換access_token and refresh_token. 授權種類: access token:把它想成是存取使用者資料的一組資訊(像帳號密碼一樣)，一個月之後會過期 refresh token:不會過期的access token authorization_code:伺服器用來取得access token和refresh token(存在只是為了交換token使用) PIN code:使用者用來取得access token和refresh token的方式(存在只是為了交換token使用) https://api.imgur.com/oauth2 Imgur PostMan Setting Uri:https://api.imgur.com/3/account/me/images Testing OAuth2 Authorization Flow with Postman]]></content>
+      <categories>
+        <category>postman</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Room Manager In React/Vue.js]]></title>
+    <url>%2F2019%2F02%2F20%2FRoom-Manager-In-React-Vue-js%2F</url>
+    <content type="text"><![CDATA[標題放置於圖片前面的技巧 外面圖片cover設定為relative 裡面設定absolute 就可以讓標題指定到想放的位置，通常一開始會跑到很上面的地方 把圖片置中，讓縮放不會怪怪的 background-size: cover background-position: center center 偽元素增加錢字號 讓使用者可以直接複製金額而不會複製到錢號 設置圖片滑鼠移入放大縮小效果 background-image: url(); background-size: 110% auto; 外框邊框效果與隱藏超出外框的設定 border-radius: 2px overflow: hidden 外框滑鼠滑入背景陰影 box-shadow: 0 10px 1px -5px rgba(0, 0, 0, 0.1) 利用標題屬性來排列元素，讓外面的元素可以設定邊距 h5英文說明欄位 h4排列下方的價錢(本身已經是粗體字，而且在同一行) Vue元件的第一個參數首字母可以是大寫也可以是小寫，之後一律小寫(把元件想成是自定義的html tag比較好明白) computed()方法沒有辦法用在background-image:url()，要改用methods 透過使用methods，可以在設定style的時候，把url傳入，此時會產生相對應的css設定 component目前還不知道要怎麼繼承父類別的methods，先將methods寫在component裡面 使用font-awesome加入小圖示 input是當行元素，要用v-model來綁定值 select的值要用:value關聯回去原本的data CSS hack room_edit:設定邊框和邊距 room_tag:呈現三個元素 h4:標題和垃圾桶 input.toggle-check(type=&quot;checkbox&quot;):利用checkbox的偽元素隱藏或顯示編輯區域 .edit_part:真正的編輯區域 ＊外層要用label包住所有作用的區塊checkbox才有作用 Room Manager In React Room Manager In Vue.js]]></content>
+      <categories>
+        <category>ReactJs</category>
+        <category>VueJs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Color Picker Tool In React/Vue.js]]></title>
+    <url>%2F2019%2F02%2F15%2FColor-Picker-In-React%2F</url>
+    <content type="text"><![CDATA[這次的練習在於熟悉Vue元件的寫法，以及Bootstrap 4版面布局，Vue的元件第一個參數必須全部小寫，這點要特別注意。 Html 注意codepen引用bootstrap時使用的版本(bootstrap 4) 如果想要同一行顯示用row包起來 React 思考如何取得與處理textarea的內容 Vue 元件:第一個元件的參數開頭需要全部小寫 使用元件的好處，能夠有自己的計算屬性 從父類別繼承下來的屬性可以再重新計算成新的屬性 Javascript Vue裡面的東西都是物件 html中都是用等號和引號取得vue的物件或資料 用:style屬性接收物件的css設定的物件 :style=&quot;card.csscolor&quot; :v-model=&quot;color_cards&quot; :v-for=&quot;card in color_cards&quot; computed裡面接的是object類型的東西 計算出color_card字串切割後的值 CSS hover:設定移動效果 transform: translate(5px, 5px); transition: 4s codepen編譯pug和sass差異 編譯pug會重新整理頁面 編譯sass不重新整理頁面,但會動態替換頁面的內容 Source Code如下: Color Card Picker In React Color Card Picker In Vue.js 📗:使用Vue.js建立sass色票工具]]></content>
+      <categories>
+        <category>ReactJs</category>
+        <category>VueJs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Introduction to Algorithms Third Edition]]></title>
+    <url>%2F2019%2F02%2F13%2FIntroduction-to-Algorithms-Third-Edition%2F</url>
+    <content type="text"><![CDATA[問題 問題的難度 由問題的規則決定問題的難度 會影響computation model 限制魔術方塊只能往前轉，就會增加解題的難度 解決問題的定義 用了兩個反證法來說明擂台法的正確性 證明j*是最大的 j*=1的情況，不需要執行for loop，直接return j j*&gt;1的情況，比j大執行for loop，j被換成j*，最後回傳j 證明困難度不能再比n-1更低 如果是n-2的話,就會存在有兩個第一名,沒有辦法分出勝負 problem instance就是input 任何的input都要能夠滿足rule(algorithm) problem instance:所有輸入的序列串 algorithm: problem-oriented programming 用執行的速度衡量演算法的好壞 多個輸入經過演算法的處理之後產生唯一正確答案 生活中的演算法，用最少做最好 評估東西的好壞 是不是盜版的商品 東西的CP值/性價比高不高 找出最佳路徑 少用遞迴，用for while代替 遞迴是用stack的方式來存放未處理的函式 不但當前的問題沒有解決還會產生很多子問題(以2的n次方產生問題) ADA Lecture 1: Introduction jessy 主講 圖說演算法]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Learning Object-Oriented Programming In Java]]></title>
+    <url>%2F2019%2F02%2F12%2FLearning-Object-Oriented-In-Java%2F</url>
+    <content type="text"><![CDATA[Class和Object的差別 class代表廣泛的非具體的抽象概念,可以是任何東西 例:IDE、圖書館、書 object是具體的東西 Netbeans、Eclipse、台北圖書館、倚天屠龍記 Java和C語言的差異 Java在編譯的時候需要和其他Java文件一起編譯成一個工程(package) C語言直接編譯即可(gcc test.c -o test) 定義類別的時候也不太一樣(全域變數) 兩個例子分別說明類的概念 張三和李四到銀行存錢 存款、提款 建立帳戶的時候就需要給名稱和存款的額度 二哈繼承狗的類別 一般會給狗取名字,而狗也有自己的年齡和性別 二哈繼承狗的類別,在eclipse當中可以直接override父類別建構方法 子類繼承父類 Eclipse產生的建構子會自動為相對應的成員變數進行賦值 UML類圖,哈士奇繼承狗的類別 overload:相同名稱不同參數會找到對應的方法呼叫 override:覆寫父類別的方法 當子類出現和父類別一樣的方法時,就用子類別的方法 子類只能夠存取protected的成員變量 ArrayListTest.javalink123456789101112131415161718192021222324// 沒有加會有小紅線提示import java.util.ArrayList;public class ArrayListTest&#123; public static void test1&#123; int[] arr = new int[10]; arr[0] = 2; arr[1] = 3; for(int i=0; i&lt; arr.length; i++)&#123; System.out.println(arr[i]); &#125; &#125; public static void main(String[] args)&#123; // 沒有指定型別的話會出現小黃線 ArrayList&lt;Integer&gt; arr = new ArrayList&lt;Integer&gt;(); arr.add(1); arr.add(3); arr.add(5); arr.remove(1); //移除第二個元素 for(int i=0; i&lt;arr.size(); i++)&#123; // 使用get來取得陣列的值 System.out.println(arr.get(i)); &#125; &#125;&#125; Java面向对象简介]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[A Brief History of Tomorrow]]></title>
+    <url>%2F2019%2F01%2F21%2FA-Brief-History-of-Tomorrow%2F</url>
+    <content type="text"><![CDATA[目前才看到40幾頁,就用好幾個有趣的例子來解釋人類的發展史,非常值得一看。 Ted演說筆記: Because we can create something that people believe , the fictional entities become more and more powerful rich people become god, poor people become useless Ted演說影片: Why humans run the world | Yuval Noah Harari 40幾頁的筆記:]]></content>
+      <categories>
+        <category>Book Reviews</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[SDL圖形編程]]></title>
+    <url>%2F2019%2F01%2F16%2FSDL%E5%9C%96%E5%BD%A2%E7%B7%A8%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[配置方法 Code Block 需要再Build Options中設定Libraries和Linkers 方便Code Block調用第三方函式庫 出現dll找不到的問題,需要把MinGw下的dll放到專案下 autocomplete配置 Settings可以配置libraries路徑,配置完成後重新開啟專案就有自動提示功能 主函數要傳兩個參數進去 int argc char** argv SDL_Create_Window 建立視窗 視窗標題 設定位置:x,y 不設定視窗位置,讓系統決定出現的位置 SDL_WINDOWPOS_UNDEFINED 設定視窗大小 設定狀態:SDL_WINDOW_SHOWN SDL_Surface生命週期 SDL_GETWindowSurface(window) SDL_FreeSurface(surface) SDL_DestoryWindow(window) SDL_Quit() 把窗口卡住 不利於動畫製作 SDL_Delay(3000) 用死循環卡住窗口 占用資源太大(CPU資源) 用事件比較好,窗口運行不斷查看事件 SDL_Event event SDL_POLLEvent(&amp;event) 沒有寫任何定義會關不掉窗口(因為不知道要幹嘛) SDL_FillRect(surface, NULL, 0) 把移動之後出現的空白軌跡給塗成黑色 更新Surface - 每一個圖片都需要貼到一個Surface上面 - 用SDL_BlitSurface()貼上去 - SDL_UpdateWindowSurface(window) 載入圖片 Load_BMP:24位圖(不支持alpha通道,不支援透明度) IMG_Load:載入Png(SDL_Image) 載入音效 mixer(SDL2-mixer) wav:無損壓縮,適合用於短的音樂 mp3:壓縮格式,適合用於長的音樂(背景音樂) SDL教程 SDL Render template 12345678910111213141516171819202122232425#include &lt;stdlib.h&gt;#include &lt;stdbool.h&gt;#include &lt;SDL2/SDL.h&gt;#define WINDOW_WIDTH 800;#define WINDOW_HEIGHT 600;int main(int args, char** argv) &#123; SDL_Window* window = SDL_CreateWindow("Hello", SDL_WINDOW_UNDEFINED, SDL_WINDOW_UNDEFINED, WINDOW_WIDTH,WINDOW_HEIGHT,SDL_WINDOW_SHOWN); SDL_Render* rend = SDL_CreateRender(window, -1, SDL_RENDER_ACCELERATED); bool quit = false; SDL_Event event; while(!quit)&#123; while(SDL_PollEvent(&amp;event))&#123; if(event.type == SDL_QUIT) &#123; quit = true; &#125; &#125; SDL_Delay(10); &#125; SDL_DestroyWindow(window); return 0;&#125;]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Learn React]]></title>
+    <url>%2F2018%2F12%2F28%2FLearn-React%2F</url>
+    <content type="text"><![CDATA[Why react Virtual DOM Reusable(and clearer) Web Components Maintained by Facebook Hirable jsx是甚麼? 可以用來把html轉換為javascript語法 所以在jsx裡面的class不能只寫class,要寫成className 通常一個html的元素會有很多class,叫做classList感覺比較符合使用的情境 一般的javascript是使用document DOM api進行元素的讀取與解析 import React from 'react'來解析jsx ReactDOM專門負責render virtual DOM component tree 只能定義一個元素,但互相嵌入的方式合併數個不同的元素 最後都會被jsx解析成一般的元素(html tag) 常用寫法 命名camelcase 命名的時候function的名稱和檔案名稱大小寫相同,方便之後維護 使用function直接return元素 不加路徑位置es6會找已經安裝的module 不同的寫法 單行寫法 可以使用arrow function、匿名函式 不加上分號(;) for loop要用分號,為了區別不同的statement 大括號用來解析Javascript 12&#123;`$&#123;variable&#125; $&#123;variable2&#125;`&#125;&#123;variable&#125; 在設定style的時候需要傳入object進去 用大括號刮起來的地方jsx會去解析 1&#123;&#123;color:#ccc, paddingTop:&apos;10px&apos;&#125;&#125; 設定元件的屬性可以透過props參數來取得 Anki React ReactDOMServer.renderToNodeStream(element) ReactDOMServer.renderToStaticNodeStream(element) simple static page React.createElemnt(type, [props], [...children]) React.cloneElement(element, [props], [...children]) 複製指定的元素,本身有的屬性會進行合併 React.isValidElement(object) Props and Styling Practice 彻底理解React 之React SSR、React服务端渲染，教你从零搭建配置]]></content>
+      <categories>
+        <category>scrimba</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Find The Parity Outlier]]></title>
+    <url>%2F2018%2F12%2F13%2FFind-The-Parity-Outlier%2F</url>
+    <content type="text"><![CDATA[Find The Parity Outlier javascript filter練習 考慮 陣列的總個數會影響加總最後是奇數還是偶數的結果 偶數個奇數相加會變成偶數 測試 針對奇數個數的情況進行確認 測試順序互換是否影響最後的結果 123456789101112131415function findOutlier(integers)&#123; let evenNum = 0, oddNum = 0; for(let i=0; i&lt;integers.length;i++) &#123; if(integers[i] % 2 == 0) &#123; evenNum++; &#125; else &#123; oddNum++; &#125; &#125; return integers.filter(val =&gt; &#123; val = val &lt; 0 ? -val : val return (val % 2==0 &amp;&amp; evenNum == 1) || (val % 2==1 &amp;&amp; oddNum == 1) &#125;)[0]&#125; 123456Test.assertEquals(findOutlier([ 0, 2 ,-1]), -1)Test.assertEquals(findOutlier([1, 2, 3]), 2)Test.assertEquals(findOutlier([2,6,8,10,3]), 3)Test.assertEquals(findOutlier([0,0,3,0,0]), 3)Test.assertEquals(findOutlier([1,1,1,0,1,7,7,1]), 0)Test.assertEquals(findOutlier([17,6,8,10,6,12,24,36]),17)]]></content>
+      <categories>
+        <category>Codewars</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[NPM Portable]]></title>
+    <url>%2F2018%2F12%2F07%2FNPM-Portable%2F</url>
+    <content type="text"><![CDATA[情境: 為了在不同的電腦都能使用nodejs搭配sublime text 3開發,如果是windows系統可以嘗試以下步驟: 配置: 先在官網下載最新的nodejs zip https://nodejs.org/en/download/ 解壓縮後,切換到資料夾下確認版本 node -v npm version:查看所有版本號 設定環境變數 echo %PATH% set PATH=%PATH%;%cd% 當前解壓縮後的nodejs路徑 sublime text 3 1import urllib.request,os,hashlib; h = &apos;6f4c264a24d933ce70df5dedcf1dcaee&apos; + &apos;ebe013ee18cced0ef93d5f746d80ef60&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by) https://packagecontrol.io/installation]]></content>
+      <categories>
+        <category>NodeJs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[TDD Using PHPUnit]]></title>
+    <url>%2F2018%2F11%2F15%2FTDD-Using-PHPUnit%2F</url>
+    <content type="text"><![CDATA[PHPUnit Test Composer.json定義版本號 PHPUnit.xml定義單元測試的規則 檔案名稱用Test當後綴 方法名稱用test當前綴 增加可讀性 @test註解 function的名稱可以用底線來連結 CamelCase plugin (V) a_product_has_a_name (X) AProductHasAName 新增一個屬性,結果原先的unit test變成不通過 construct少傳一個參數,兩種解法 給預設值 修改舊的測試方法,把要傳的參數也加上去 filter方法,可以針對要測試的方法指定方法名稱或類別名稱 原則 根據unit test回傳的錯誤訊息來調整代碼 測試Order 一個Order有多個商品,加總起來個數和總經額要經過測試 assertCount()計算陣列元素個數 重構 setUp()把物件整理出來,單元測試在執行前會先執行setUp的方法 缺點:耦合度提高,牽一髮動全身 stop-on-error:Stop execution upon first error 測試Model的資料 測試最多觀看文章資料 use DatabaseTransaction,執行完之後會在執行rollback 安裝sqlite sudo apt-get install php7.2-sqlite 修改/etc/php/php7.2/php.ini的,把分號拿掉 自己做一次發現卡住 少做了修改database的預設配置文件(config/database.php) env('DB_CONNECTION', 'sqlite'), php artisan make:modol Article -m 建立model文件和migration文件 修改migration的定義 用model::class來創建紀錄 新增團隊案例 一個團隊可以加入多個User,多對多關係 拋出例外可以整理成protected的function比較容易閱讀 Feature和Unit Test的差異 Feature測試模仿實際操作的過程 Unit Test則是每一個拆開的方法(向洋蔥一樣,最核心的部分就是單元測試) 安裝phpunit watch composer global require spatie/phpunit-watcher composer require spatie/phpunit-watcher --dev 要require進來才可以用,光是安裝是沒有用的 phpunit-watcher watch laravel 5.4之後才支持dusk針對瀏覽器的測試 PHPUnit In Action 踩坑了,結果書中已經有說這個問題 使用了 Data Provider 的測試，它的輸出將無法注入到其他相依於它的測試 加上namespace測試一下會不會重現laravel例外的問題 結果依然沒有辦法重現QQ 用get_class打上完整的namespace類別名稱,有取到那個類別,但是單元測試不給過 測試了一般的Exception才給過,感動 phpunit --configuration 產生phpunit.xml 方便整合測試使用(CI) 產生測試報告 phpunit --coverage-html ./report tests 移除團隊成員(Unit Test) 一個團隊有多個人,每個人記錄一組team_id(所屬的團隊) 新增多個團隊成員 instanceof判斷是不是User的Model 如果是的話就用save,不是就用saveMany(Collection) 移除多個團隊成員 remove():移除User的team_id 注意:User的team_id要是fillable才可以 兩種方法可以移除collection的team_id 參數法:each每一個user做update 關聯法:透過members()關聯,whereIn條件搭配使用pluck update php 7.2會有count不能count collection的問題 PHP 7.2: Warning: count() Backward incompatible changes ¶ 测试团队移除成员的功能 123456// 方法1:參數法$users-&gt;each(function($user)&#123; return $user-&gt;update([&apos;team_id&apos;=&gt;null]);&#125;);// 方法2:關聯法pluckreturn $this-&gt;members()-&gt;whereIn(&apos;id&apos;, $users-&gt;pluck(&apos;id&apos;))-&gt;update([&apos;team_id&apos;=&gt;null]); 參考連結 TDD in Unity Laravel E-Commerce - Testing with PHPUnit - Part 29 codecasts learn-to-write-php-unit-test Laravel Dusk Tutorials | Introduction and Installation #1 driver not found的問題 Eloquont unit test laravel 5.7]]></content>
+      <categories>
+        <category>Unit Test</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Using NodeJs Unit Testing(Jest)]]></title>
+    <url>%2F2018%2F11%2F08%2FUsing-NodeJs-Unit-Testing-Jest%2F</url>
+    <content type="text"><![CDATA[Why Unit Testing project starts simple, but grows more and more complex horrifying functions start a simple way You must think longer than your nose goes(Swedish sayings proverb) add shipping if the total amount is greater than 1000, then it's free instead of thinking lots of cases at the same time, we break it down by several isolated steps add taxes Happy Test the main function the most time program spend TDD 3 ways - obvious implementation - fake it until you make it - triangalation 1234567891011121314151617181920212223242526272829303132333435363738394041424344function orderFilterTotal(order) &#123; // 直接返回結果不需要再用一個變數來接 // 三元表達式(item.quantity ? item.quantity : 1) return order.items .reduce((total, item) =&gt; &#123;return (item.price * (item.quantity || 1) + total) &#125;, 0);&#125;if(orderFilterTotal(&#123; items: [ &#123;name:&apos;cat food&apos;, price: 8, quantity: 2&#125;, &#123;name:&apos;cat cage&apos;, price: 800, quantity: 3&#125; ]&#125;) != 2416) &#123; throw new Error(&quot;Check Fail: Quantity Error)&quot;)&#125;if(orderFilterTotal(&#123; items: [ &#123;name:&apos;cat food&apos;, price: 3&#125; ]&#125;) != 3) &#123; throw new Error(&quot;Check Fail: No Quantity&quot;)&#125;if(orderFilterTotal(&#123; items: [ &#123;name:&apos;cat food&apos;, price: 8&#125;, &#123;name:&apos;cat cage&apos;, price: 800&#125; ]&#125;) != 808) &#123; throw new Error(&quot;Check Fail: Happy Test(Example 1)&quot;)&#125;if(orderFilterTotal(&#123; items: [ &#123;name:&apos;cat toy&apos;, price: 30&#125;, &#123;name:&apos;cat towel&apos;, price: 40&#125; ]&#125;) != 70) &#123; throw new Error(&quot;Check Fail: Happy Test(Example 2)&quot;)&#125; Jest Auto Test You need to notice your test file name to be xxxx.test.js format it doesn't matter the test file goes, but the file name matter 1234// Happy Pathit(&apos;works&apos;, () =&gt; &#123; expect(1).toBe(1);&#125;)]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Javascript Functional Programming]]></title>
+    <url>%2F2018%2F11%2F07%2FJavascript-Functional-Programming%2F</url>
+    <content type="text"><![CDATA[Functional Programming Less Bug/Code Composable High order function(filter、map、reduce) Functions are values function inside a function, we call callback(stack) Map Arrow Function can write less code. It means less bug you can remove function &amp; return keyword when using arrow function if you have multiple operations in our reduce function need return keyword map function just like filter function and it takes callback function as parameter Reduce can do anything like find, map or filter do the difference between map and reduce is that it need initial value behind the function the second parameter must be value, can not be variable CSV to json format(Using NodeJS) 1234567891011121314151617var fs = require(&apos;fs&apos;);var output = fs.readFileSync(&apos;data/data.txt&apos;, &apos;utf8&apos;) .trim() .split(&quot;\n&quot;) .map((row) =&gt; row.split(&apos;,&apos;)) .reduce((customers,row)=&gt;&#123; // 如果沒有值就用空的當預設值，之後push才不會有問題 customers[row[0]] = customers[row[0]] || []; customers[row[0]].push(&#123; &apos;product&apos;:row[1], &apos;price&apos;:row[2], &apos;amount&apos;:row[3] &#125;); return customers; &#125;, &#123;&#125;);console.log(&apos;output&apos;,JSON.stringify(output, null, 2)); 123456mark johansson,waffle iron,80,2mark johansson,blender,200,1mark johansson,knife,10,4Nikita Smith,waffle iron,80,1Nikita Smith,knife,10,2Nikita Smith,pot,20,3 recursive - maxium call of stack - es5 having the maxium call of stack limitation, but es6 removed this limitation by using bubble simulation - tail call optimization. 1234567891011var getMenuTree = (category, parent) =&gt; &#123; let nodeResult = &#123;&#125;; category .filter((c) =&gt; c.parent_id == parent) .forEach((c) =&gt; nodeResult[c.id] = getMenuTree(category, c.id)); return nodeResult;&#125;;var categories = JSON.parse(fs.readFileSync(&apos;data/menutree.json&apos;, &apos;utf8&apos;));//&apos;hello&apos;,categories,console.log(JSON.stringify(getMenuTree(categories, null), null, 2)); 1[&#123;&quot;id&quot;:&quot;animals&quot;,&quot;parent_id&quot;:null&#125;,&#123;&quot;id&quot;:&quot;mammals&quot;,&quot;parent_id&quot;:&quot;animals&quot;&#125;,&#123;&quot;id&quot;:&quot;cats&quot;,&quot;parent_id&quot;:&quot;mammals&quot;&#125;,&#123;&quot;id&quot;:&quot;dogs&quot;,&quot;parent_id&quot;:&quot;mammals&quot;&#125;,&#123;&quot;id&quot;:&quot;chihuahua&quot;,&quot;parent_id&quot;:&quot;dogs&quot;&#125;,&#123;&quot;id&quot;:&quot;labrador&quot;,&quot;parent_id&quot;:&quot;dogs&quot;&#125;,&#123;&quot;id&quot;:&quot;persian&quot;,&quot;parent_id&quot;:&quot;cats&quot;&#125;,&#123;&quot;id&quot;:&quot;siamese&quot;,&quot;parent_id&quot;:&quot;cats&quot;&#125;] FuncDoor Using FuncDoor need passing one string parameter and one function parameter they will map together when be called pass each value to each function and return the new structures 12345678910111213141516171819202122232425262728293031323334353637383940414243var fs = require(&apos;fs&apos;);var reduceCustomer = (output) =&gt; output.reduce((output,row)=&gt;&#123; // 如果沒有值就用空的當預設值，之後push才不會有問題 output[row[0]] = output[row[0]] || []; output[row[0]].push(&#123; &apos;product&apos;:row[1], &apos;price&apos;:row[2], &apos;amount&apos;:row[3] &#125;); return output;&#125;, &#123;&#125;);var funcDoor = (path, fn) =&gt; &#123; var rawData = (path) =&gt; fs.readFileSync(path, &apos;utf8&apos;) .trim() .split(&quot;\n&quot;); // 要傳入參數，否則最後的結果還是function var result = (path)=&gt;fn(rawData(path).map((row) =&gt; &#123; return row.split(&apos;,&apos;) &#125; )); return result(path);&#125;console.log( funcDoor(&apos;data/data.txt&apos;, reduceCustomer));// return;// console.log(&apos;output&apos;,JSON.stringify(convertJson(&apos;data/data.txt&apos;), null, 2));var reduceCsv = (output) =&gt; output.reduce((output, row) =&gt; &#123; // 直接整理到一個result的key，之後就不用煩惱怎麼把key移掉 output[&apos;result&apos;] = output[&apos;result&apos;]||[]; let input = &#123; &apos;id&apos;:row[0], &apos;parent_id&apos;:row[1]!=&apos;null&apos; ? row[1] : JSON.parse(row[1]) &#125;; output[&apos;result&apos;].push(input); // output[i] = input; return output &#125; ,&#123;&#125;)[&apos;result&apos;]let menuTreeResult;console.log(menuTreeResult = funcDoor(&apos;data/menutree.txt&apos;, reduceCsv));fs.writeFile(&apos;./data/menutree.json&apos;,JSON.stringify(menuTreeResult, null ,2)); Reduce basics - Part 3 of Functional Programming in JavaScript]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Jquery Form Validate]]></title>
+    <url>%2F2018%2F11%2F06%2FJquery-Form-Validate%2F</url>
+    <content type="text"><![CDATA[normalize css和jquery來製作表單 能夠在各個瀏覽器呈現差不多的結果 用input-control而不是form-control，比較清楚 版面居中 wrap定義max-width不一定會用到 實際用到的是wrap-sm 使用*確認每個元素的布局 先把結構確定下來，具體的不在乎 搞清楚我們要甚麼? 可以直接挖一口井就完事了 直接定義到main.js 也可以搞一個自然水系統，雖然一開始要照顧的情況比較多，之後只要幾個設定就完事了 在input裡面建立data-rule 'use strict' 不汙染全局變量 main.js中負責傳入string和驗證規則 另外建立一個validate.js來接收string和驗證規則 使用jquery內建的方法過濾資料 trim()和isNumeric() val!==0的判斷是用來處理trim之後為空的情況 use strict其實用前面!val的寫法來判斷即可 JSON.parse 如果要讓值變成字串，要用雙引號 會用到正規表達式 寫一個專門找Input的模組 *:至少0個以上的字元 +:至少1個以上的字元(因為有require的規則可以驗證，不用+) isValid的方法寫道validate的模組裡面]]></content>
+      <categories>
+        <category>Jquery</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Bootstrap 4 Navbar/Dropdown Cheatsheet]]></title>
+    <url>%2F2018%2F11%2F05%2FBootstrap-4-Navbar-Dropdown-Cheatsheet%2F</url>
+    <content type="text"><![CDATA[Navbar導行列 分結構和樣式 結構 nav.navbar nav.navbar-expand-xl ul.navbar-nav li.nav-item a.nav-link 樣式 nav.navbar-dark nav.navbar-light nav.bg-dark nav.bg-light 位置 nav.fixed-top nav.fixed-bottom nav.sticky-top 顯示/隱藏 button.navbar-toggler data-toggle = &quot;collapse&quot; data-target = &quot;#target_name&quot; span.navbar-toggler-icon div.collapse div.navbar-collapse id = &quot;target_name&quot; 下拉選單 li.dropdown a.dropdown-toggle data-toggle = 'dropdown' id = '#target_name' div.dropdown-menu div.dropdown-divider aria-labelledby = target_name a.dropdown-item 踩坑 如果沒有加上下拉選單的aria-labelledby的屬性，會出現只能展開無法收合的問題 caret已經不支持了，改用dropdown-toggle的class]]></content>
+      <categories>
+        <category>Bootstrap</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Bootstrap 4]]></title>
+    <url>%2F2018%2F11%2F02%2FBootstrap-4%2F</url>
+    <content type="text"><![CDATA[一般不要去改依賴庫的程式，那個工作讓依賴包管理來處理就好 對修改封閉 快捷鍵 ctrl+delete:刪除一個單詞 lipsum:產生dumy words 不知道為什麼一開始cloud9會沒有辦法識別 之後反而要打Lorem了，怪怪的 cloud 9預設Emmet plugin 三塊的布局 col-sm-xx(加起來要是12) 導覽列 上方navbar 最外層用div.navbar 內層有個div.nav.navbar-header 導航列用ul.nav.navbar-nav bootstrap 4: mr-auto:向左靠(margin-right-auto) ml-auto:向右靠(margin-left-auto) navbar-expand-lg:當網頁是一般螢幕的時候展開 navbar-collapse:隱藏起來 navbar-toggler-icon 和上方文字對齊，加上row的div 因為row有css的樣式，把他的margin和padding覆蓋掉 踩到官網3.3.1 slim.js的問題 用的太新了，改用六角學院的連結就有用(3.2.1.slim) 小畫面的時候會沒有辦法toggle導覽列 修改Logo background-image:url(設定圖片位置) background-size: cover(圖片填充，會發現整個圖片重複了，而且覺得太滿了一點) 80% background-repeat:no-repeat 調整background-size圖片重複的問題 background-position:調整圖片位置 左方sidebar 多增加一個sidebar的類，比較明確，避免改到其他的地方的樣式 list-group-item 學會了怎麼用emmet添加多個假的item div.list-group&gt;(a[#].list-group-item.list-group-item-hover{item$})*5 中間區塊 圖片設置 讓圖片限制在一個範圍內 max-width:100%(讓他不會超過外面元素的100%) col-xs-xx:在bootstrap 4不管用拉(用col-md-{}) 整理共用樣式用逗號串接 grid system如果要顯示在同一列要用row包起來 用一個div包起來info 也方便統一裡面的樣式 調整title行距 改成超連結，display:block clearfix:bootstrap 3需要清除float 右方區塊 一般放業務有關的訊息 不能用數字命名阿 把標題字調大 不確定怎麼把右方標題的上下間距調大一些 新聞詳細頁 lorem*10 Label用法 參考連結 bootstrap 4教學 Awesome emmet dummyimage col-xs in bootstrap 4 Grid System bootstrap 4 Migration to bootstrap 4]]></content>
+      <categories>
+        <category>Bootstrap</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Git Memo]]></title>
+    <url>%2F2018%2F11%2F02%2Fit-Memo%2F</url>
+    <content type="text"><![CDATA[還魂藥Git 兩個方法建立repository git init:沒有資料夾會創建一個以repository為名稱的資料夾 git clone:從既有的專案取得檔案 基本用法 git diff:比對差異 git log -p:查看commit的結果(把差異也顯示到命令提示字元上) git add .:把異動加到暫存區() git commit -m &quot;[init]在這裡打上異動&quot; git status:查看commit狀態 git checkout 1234567(七位以上commit-id) #還原到哪一個版本 異動的三個狀態 修改(modified) =&gt; add改變狀態到staged 暫存(staged) =&gt; commit改變狀態到committed 提交(committed) =&gt; log -p看修改紀錄 還原(checkout) =&gt; checkout 1234567 git log --oneline:全部一行顯示 p:查看異動內容 --all顯示所有 git tag 在當前的分支中建立tag，和commit一樣也可以加上描述 應用情境:非常複雜的節點 -a v1 -m &quot;第一版完成&quot; a:annotation(加了之後訊息比較全面) --delete v1 checkout v1 git show v1(標籤名稱) 列出所有commit和tag標籤的描述 git remote 都不輸入查看remote，預設是origin add localName http://github.com/userId/project.git -v顯示fetch和push的位置 git push origin branch git pull git fetch &amp;&amp; git merge 同步資料 git merge 上面的異動是自己的 下面的是已經在master上面的異動]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Using RegExr]]></title>
+    <url>%2F2018%2F11%2F01%2FUsing-RegExr%2F</url>
+    <content type="text"><![CDATA[正規表達式 .+:某 .+searchItem .:代表任何東西 任意一個東西 小丑卡，可以代表任何東西 萬用任意(wildcard) 如果想要match到點的話,要跳脫/. 王.. 匹配3.14 =&gt; 3.14 \w: 所有的數字、文字和底線(可以用來檢查用戶名稱) \W:\w的補集(加減乘除) \d: 匹配數字 \D:\d的補集(除了數字以外) \s: 匹配空格、tab \S:\s的補集(除了空白以外) []:可以是甚麼的字元 [^b]og:不是b 轉成unicode:19968-40869 ():分組(常用) (\w+) *:匹配所有 {0,} +:匹配至少一個字元 {1,} at least 1 ?:匹配零個或1個 {0,1} {}:要出現幾次甚麼東西 z{3}:zzz 範例 Yo後面有文字 參考連結 Best of Fluent 2012 regexr bilibili表嚴肅 regexone學習正規表達式的好地方 正規表達式]]></content>
+      <categories>
+        <category>Regular Expressions</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Using Composer Learning Unit Test Part 2]]></title>
+    <url>%2F2018%2F10%2F30%2FUsing-Composer-Learning-Unit-Test-Part-2%2F</url>
+    <content type="text"><![CDATA[PHP Unit Test 要如何直接用assertEquals的function呢? 因為每一次都會用到$this-&gt;assertEquals()有點多餘 找到實際定義assertEquals的function整理成一個檔案 讓phpunit.xml直接參考到bootstrap.php自定義的檔案 123// tests/bootstrap.phprequire __DIR__.'/../vendor/autoload.php';require __DIR__.'/../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php'; 測試的種類 Unit Test &lt; Integration Test &lt; Function Test &lt; Acceptance Test Unit Test Basic Test Integration Test 測試兩個獨立系統是否能正常運作 Function/Acceptance Test 測試過Unit Test和Integration Test不一定這一階段就會過 Acceptance Test/配合Selenium測試UI mock的概念 不在乎run的內容,只關注那個function是否有被呼叫到了 swap out the actual action 和new 物件的作法比較(會實際呼叫到物件定義的方法) 可以用於依賴注入(controller有使用到其他物件的資料) 12345$mock = Mockery::mock('MockDependency\Type\StripeBilling'); //要寫完整路徑$mock-&gt;shouldReceive('charge')-&gt;once()-&gt;andReturn('mocked Billing by Test');$purchase = new PurcharseController($mock);$result = $purchase-&gt;buy();var_dump($result); 依賴注入 如果有定義新的namespace，記得先用composer dump，autoload才找的到檔案 如果程式有在classmap中定義，require的時候就不用寫__DIR__取路徑 Single Responsibility 驗證controller的時候，記得加上return返回結果 mock andReturn最後不會返回一個值，不需要再用一個變數來接 用php指令+檔案位置來確認是否頁面能正常執行 1234567// 方法1:未使用依賴注入的寫法 require 'vendor/autoload.php'; $controller = new PurcharseController(); var_dump($controller-&gt;buy());// 方法2:使用依賴注入require 'vendor/autoload.php';var_dump((new PurcharseController(new StripeBilling))-&gt;buy());]]></content>
+      <categories>
+        <category>Unit Test</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Using Composer Learning Unit Test]]></title>
+    <url>%2F2018%2F10%2F29%2FComposer-Unit-Test%2F</url>
+    <content type="text"><![CDATA[PHPUnit Test卡關了 定義了User的Model還是找不到? 用Classmap的寫法來找到對應的model 定義classmap composer install:產生compsoer.json composer dump-autoload 每次有新的class的時候記得要用dump-autoload一次 定義好namespace的時候也要使用 用找歌曲的概念來解釋,一開始只有說要找甚麼歌,但是沒有說要找哪個歌手的甚麼專輯 alias p=./vendor/bin/phpunit 盡量把要測試的方法名稱寫&lt;b&gt;清楚一點&lt;/b&gt; 寫的長沒有關係,要有描述性 用&lt;b&gt;Annotation&lt;/b&gt;可以達到 把資料抽離出來 處理例外狀況 踩到exception的坑了 如果傳入錯誤的參數進去,拋出例外的時候要用多行註解,格式錯誤就無法正確的判斷拋出的例外類型 alias 是一個好東西,可以打很少的指令達到一樣的效果 alias p=./vendor/bin/phpunit alias hexoServer='hexo server --port $PORT --host $IP' 12345678910111213141516&#123; "require": &#123; "phpunit/phpunit": "^7.4", "codeception/codeception": "^2.5" &#125;, "autoload": &#123; "classmap" : [ "App/Models", "App/Libraries" ], "psr-4": &#123; "App\\": "app" &#125; &#125;&#125; Testing System Functions 1234567891011121314151617&lt;?php// 用namespace把Foo用到的time重新定義過// 注意:如果使用use的話會有重複定義的問題namespace App\Libraries;function time() &#123; return 'stud';&#125;class FooTest extends \PHPUnit\Framework\TestCase &#123; public function setUp() &#123; &#125; public function testDynamicFooTime() &#123; $this-&gt;assertEquals('stud', (new Foo)-&gt;go()); &#125;&#125; 參考教學: Testing System Functions Composer, Autoloading, Namespacing, and PHPUnit Phpunit Annotations Linux Alias]]></content>
+      <categories>
+        <category>Unit Test</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[CodeIgniter CRUD]]></title>
+    <url>%2F2018%2F10%2F28%2FCodeIgniter-CRUD%2F</url>
+    <content type="text"><![CDATA[CodeIgniter 3.1 123456789101112131415161718CREATE TABLE news ( id int(11) NOT NULL AUTO_INCREMENT, title varchar(128) NOT NULL, slug varchar(128) NOT NULL, text text NOT NULL, create_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '新增貼文時間', PRIMARY KEY(id), KEY slug (slug))CREATE TABLE posts ( id int NOT NULL AUTO_INCREMENT, title varchar(255) NOT NULL, slug varchar(255) NOT NULL, body text NOT NULL, create_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '新增貼文時間' PRIMARY KEY(id)) 1234RewriteEngine OnRewriteCond %&#123;REQUEST_FILENAME&#125; !-fRewriteCond %&#123;REQUEST_FILENAME&#125; !-dRewriteRule ^(.*)$ index.php/$1 [L] 準備12&lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"&gt;&lt;script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"&gt;&lt;/script&gt; 為什麼要用單一路口文件? 這樣使用會有甚麼問題 路徑長的醜醜的=&gt;才會有route的規則需要定義 http://localhost/codeIgniter/index.php/pages/view/ http://localhost/codeIgniter/index.php/news/index/ 建立controller和route 讓url變得好看 定義route規則 建立model slug把url去掉,只留下小寫的英文字母 有點像是簡單的描述,例如:/車子/帥氣的法拉利 可以用來當作唯一值用來識別某個資源(entry/resource) 詳細說明可以看stackoverflow解釋(what-is-a-slug) 和我想的比較不一樣的是,他把新聞系統的controller另外拆開 本來想說寫在一起的 分開也比較清楚 建立列表頁和檢視頁面 踩到的第一個坑是自己打錯字,找template的路徑 不需要為繼承的父類別加上namespace 改完route發現news不好使了 先註解起來查原因 檢視頁面的位置沒有改到view,從index那邊複製過來沒有修改到 原來是沒有加htaccess的關係阿 當發現怎麼改route都沒有用 印出來看有設定,而且怎麼敲url就是不出來這時候就該設定htaccess了 新增表單 把檢視的route設定放到最後面 刪除的坑(id) 加上要刪除的編號之後,突然發現沒有辦法用open_form的方法了 原先以為是因為寫法的關係造成的,結果是因為autoload沒有load到那個form的helper,殘念 沒有對應到controller的method名稱 編輯(slug)=&gt;和view帶一樣的 bootstrap pull left把放在右邊的顯示到左邊 要帶入view的slug進去,而不是用id 少input hidden的id也想成功? 新增navbar-right往右放 小bug 沒有取到URL參數的時候是取全部的文章 route的順序很重要,放錯了,url出不來,範圍比較小的放前面]]></content>
+      <categories>
+        <category>CodeIgniter</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[踩坑特集]]></title>
+    <url>%2F2018%2F10%2F26%2Fexperience%2F</url>
+    <content type="text"><![CDATA[踩坑特集 原本以為直接用bootstrap上面的jquery一定沒有問題，想不到ajax的時候出事了 typeError slim 踩到自己的坑，剛好把洞洞填起來 統一認action的post來決定要走哪一個表單 沒有在最開始加上session_start就在那邊用session 存在server的記憶體 JSON.parse回傳過來的值 require_once只有引入一次，結果需要引用多次(子留言) mysql_timezone 在mysql命令列中輸入，SET GLOBAL time_zone = 'Asia/Taipei'; SQL處理 real_escape_string($city); //PHP 7 建立第一個Sample就踩坑 用的是PHPUnit 7.4.3，貌似更新到PHPUnit 6之後的版本就要extends新的類別 原本以為是路徑的問題，但聰明的phpunit會把tests資料夾下的所有檔案都跑過一次]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Installing Ubuntu Laravel Environment]]></title>
+    <url>%2F2018%2F10%2F15%2FInstalling-Ubuntu-Laravel-Environment%2F</url>
+    <content type="text"><![CDATA[Prerequisite If you want to get latest version of php, you need to update first. Otherwise the lamp server will install older php version to your environment 123sudo apt-add-repository ppa:ondrej/phpsudo apt-get updatesudo apt-get install php7.0 Usefull Command sometime you need to check the installed packages in Ubuntu, you can use dpkg to list the packages status 1dpkg --get-selections | grep php Reference Laravel PHP 7 ubuntu 14.04版本無法安裝my sql 5.6 unable to locate php7 laravel Ubuntu]]></content>
+      <categories>
+        <category>Virtualbox</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Laravel Create Article]]></title>
+    <url>%2F2018%2F10%2F11%2FLaravel-Create-Article-1%2F</url>
+    <content type="text"><![CDATA[migrations use increments to auto_increment id's value string type can not be null when applying to id use timestamp to create two fields created_at updated_at when using factory, the table will be automately filled update time and create date to the relative fields Create Article 1234// create controller with resource methods&gt; php artisan make:controller ArticleController --resource// create model along with migration&gt; php artisan make:model Article --migration seeder there are two ways to insert data to table via command line 12&gt; php artisan db:seed&gt; php artisan migrate:refresh --seed both ways need adding customed seeder to Databaseseeder.php db:seed however only execute seeds run() function if you don't want to use factory to get fake data, you can just use db:seed command to insert your customed data. remember to add the seeder you create to Databaseseeder.php set index to field(migrations) belongsTo 123 // \database\migrations\2018_10_05_094912_message_board_table.php$table-&gt;unsignedInteger('user_id')-&gt;index(); 1234// app\Messageboard.php public function user() &#123; return $this-&gt;belongsTo(User::class); &#125;]]></content>
+      <categories>
+        <category>Laravel</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Tutorials]]></title>
+    <url>%2F2018%2F10%2F09%2Ftorials%2F</url>
+    <content type="text"><![CDATA[Frontend Lidemy PlayList Ngnix Ngnix Fundamentals Linux 吳光科老師 Linux下Nginx+PHP+MYSQL架构实战 Linux下Shell編程 Laravel Laravel E-commerce Let's Build a Multi-Purpose Laravel + Vue Application 用 Laravel + Vue js 打造即時資訊看板 後盾人代碼 Laravel開發]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Using Laravel AdminLTE]]></title>
+    <url>%2F2018%2F10%2F09%2Fsing-Laravel-AdminLTE%2F</url>
+    <content type="text"><![CDATA[使用composer require引用套件 1composer require jeroennoten/laravel-adminlte 配置config/app.php 找尋使用的套件包 1JeroenNoten\LaravelAdminLte\ServiceProvider::class, 執行publish命令 將vendor產生的template複製一份到public資料夾 1php artisan vendor:publish --provider="JeroenNoten\LaravelAdminLte\ServiceProvider" --tag=assets AdminLTE]]></content>
+      <categories>
+        <category>Laravel</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Laravel Intro]]></title>
+    <url>%2F2018%2F10%2F09%2Faravel-Intro%2F</url>
+    <content type="text"><![CDATA[安裝完設定主目錄到documentRoot 資料夾 storage:編譯後產生的檔案、log檔案，設定為可以寫入的權限 bootstrap:框架啟動加載的檔案 cache:加載後產生的檔案 vendor:composer命令模組 app:系統核心代碼 開權限 chmod -R 777 storage chmod -R 777 bootstrap/cache Artisan工匠 symfony console元件為基礎架構 php artisan list php artisan --version php artisan make:command SendEmails php artisan make:controller CustomerController 定義路由 與客戶端互動 用routes/web.php定義web相關的routes 用routes/api.php定義api相關的routes 路由動詞 get/post/delete/put 符合所有any 符合一部分match url helper透過url()轉向 Laravel Eloquent 繼承了Eloquent就相當於幹了很多事情 中間流(Builder) 建立了一個對象，在中間不斷地去改變它 用::訪問某個function，無論是否為static，__construct()都不會被調用 Builder對象不能直接存取Article對象，需要轉成終結對象，才能調用到裡面的屬性 模型關係 ORM 一對一:不需要中間表 多對多:用take優化性能 PHP的問題 一個網頁一個PHP:使用漏洞攻擊(MVC) 缺乏統一寫法:一個人離開要了解寫法(Framework) 每次都從頭開始:開發效率低(不用重新造輪子) Framework和Library差異 由開發者決定是否要用方法 四類Framework codeIgniter:支援最廣(適合接案使用) laravel:全功能(學習門檻高，底層用symfony) slim:簡約(restful API使用) phalcon:快速(C語言開發) Laravel環境難裝 用最新的PHP新功能 用罕見的Extension 指令很多 composer:安裝套件 artisan:cli tool 體驗高手如何寫出OOP 把商業邏輯無關又常常用到的功能抽出來 套件為主的開發方式，名稱衝突問題(NameSpace) ORM:SQL物件化 Migration:欄位開錯，版本控管 TDD:先寫測試在寫開發 TDD好處 對Spec更加了解 不用擔心重構的問題 提早發現架構的問題 參考 https://oomusou.io/laravel/laravel-for-newbie/ https://lvwenhan.com/laravel/421.html(Eloqent) https://lvwenhan.com/laravel/422.html(中間流) https://lvwenhan.com/laravel/423.html(模型關係) https://github.com/johnlui/Learn-Laravel-4 https://github.com/johnlui/Learn-Laravel-5/issues/16 https://www.jianshu.com/p/b0900bed6de8 https://gist.github.com/hootlex/da59b91c628a6688ceb1(run locally) http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-2-class-configuration-structure/ http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-3-class-artisan/ http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-4-class-routes/ https://medium.com/@shengyou/2018ironman-eos-for-php-developer-day14-4c5424fc7232(30天鐵人)]]></content>
+      <categories>
+        <category>Laravel</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Laravel Command]]></title>
+    <url>%2F2018%2F10%2F09%2Fst%2F</url>
+    <content type="text"><![CDATA[Tools Laragon Sublime Bootstrap Snippets composer require fzaninotto/faker Lang Laravel Lang composer require caouecs/laravel-lang:~3.0 second way to change language is to put json language file to lang folder Services Auth attempt(): to login and register session data. Verify email and unencrypted password logout() Migration 1234* php artisan make:migration UserTestTable* php artisan make:seeder UserTestSeeder* php artisan make:model UserTestSeeder* php artisan migrate:refresh --model=UserTestSeeder --seed FORM CRUD @csrf @method('DELETE'): filter request csrf php artisan make:policy PostPolicy: to avoid not authorize user to delete using @can('delete', $user) to toggle delete button @csrf @method('PUT'): fake update method using put instead Method Field Helpers Laravel Ide Helper Artisan Command 12345php artisan make:controller IndexControllerphp artisan make:controller UserController --resourcephp artisan route:listphp artisan migratephp artisan make:policy --model=User UserPolicy Session Driver change .env session_driver to session laravel will create sessoin table to record user login message once you change the driver type, you need to refresh all record to get the correct result 12php artisan session:tablephp artisan migrate:refresh --seed Create App Key &amp; Smtp Setting smtp gmail setting 12php artisan key:generatephp artisan make:mail RegMail env.php MAIL_DRIVER=smtp MAIL_HOST=smtp.gmail.com MAIL_PORT=587 MAIL_USERNAME=your@gmail.com MAIL_PASSWORD=yourgmailpassword MAIL_ENCRYPTION=tls create factory data 123// manually added records php artisan tinker factory(App\User::class, 20)-&gt;create(); 123456// execute by db:seed php artisan make:seeder UsersSeeder// rewrite the DatabaseSeeder.php run method by using factory// factory(App\User::class, 20)-&gt;create(); php artisan db:seed php artisan migrate:refresh --seed Using Policy create policy php artisan make:policy --model=user UserPolicy AuthServiceProvider add Policy 'App\User' =&gt; UserPolicy::class, remember to add namespace before using this policy authorize controller destroy method to execute delete method $this-&gt;authorize('delete', $user); Notice routes/web.php use get to access controller function alias name for changing back to home page use resource to create default CRUD method no need to create additional view blade files laravel 5.4 support emoji for MySQL 5.7.7 every time start the app Providers\AppServiceProvider.php config\app.php 12Route::get('/', 'IndexController@home')-&gt;name('home');Route::resource('user', 'UserController'); 1234public function boot()&#123; Schema::defaultStringLength(191);&#125;]]></content>
+      <categories>
+        <category>Laravel</category>
+      </categories>
+  </entry>
+</search>
