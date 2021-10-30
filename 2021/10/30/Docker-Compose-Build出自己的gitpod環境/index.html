@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Rootless Docker的解決方式 | Edwardyi Blog</title>
+  <meta name="author" content="Edwardyi">
+  
+  <meta name="description" content="年少輕狂的好日子，一懂事就結束">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Rootless Docker的解決方式"/>
+  <meta property="og:site_name" content="Edwardyi Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Edwardyi Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer', 'GTM-57XKRCL');</script>
+	<!-- End Google Tag Manager -->
+
+	
+  
+	<!-- facebook tag -->
+	<meta name="facebook-domain-verification" content="ehpewsl8kx5bmjcejqnpr91tmpdmeg" />
+	<!-- End facebook tag -->
+
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57XKRCL"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Edwardyi Blog</a></h1>
+  <h2><a href="/">To go forward you must backup</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/works">Works</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2021-10-30T03:31:00.000Z"><a href="/2021/10/30/Docker-Compose-Build出自己的gitpod環境/">2021-10-30</a></time>
+      
+      
+  
+    <h1 class="title">Rootless Docker的解決方式</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h6><span id="tags-docker-compose-gitpod">tags: <code>docker-compose</code> <code>gitpod</code></span></h6>
+<ul>
+<li>一般container執行起來的時候,會是用root的權限在container執行各種檔案的操作
+<ul>
+<li>當離開container之後,會發現volume建立的那些檔案都沒有辦法編輯
+<ul>
+<li>ls -al列出volume底下那些在container建立的檔案都會是root的權限</li>
+<li>為了解決這個問題,就需要改用rootless進入container進行後續的操作,但執行npm install會發現又需要root權限…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>解決方式有幾種
+<ul>
+<li>使用rootless docker(-userns-remap flag),實作方式可以參考==experimenting-with-rootless-docker==的連結</li>
+<li>使用docker volume將使用者與群組volume到container環境(要注意需要設定read-only,以免改到本地的群組設定),可以參考==using-current-user-when-running-container-in-docker-compose==的連結</li>
+<li>docker build image的時候,使用環境變數將當前登入的使用者與群組也一併新增上去,這是本篇文章採用的作法</li>
+</ul>
+</li>
+</ul>
+<h3><span id="dockerfile">Dockerfile</span></h3>
+<ul>
+<li>設定環境變數
+<ul>
+<li>如果USER_ID和GROUP_ID兩者都沒有設定會被設定為1001</li>
+</ul>
+</li>
+<li>切換root使用者</li>
+<li>從環境變數中取得群組編號,並建立群組</li>
+<li>新增current_user到image</li>
+<li>工作路徑設定為workspace</li>
+<li>設定User為current_user</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> gitpod/workspace-full</span><br><span class="line"></span><br><span class="line"><span class="comment"># @see https://dev.to/visuellverstehen/docker-docker-compose-and-permissions-2fih</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Define build arguments</span></span><br><span class="line"><span class="keyword">ARG</span> USER_ID</span><br><span class="line"><span class="keyword">ARG</span> GROUP_ID</span><br><span class="line"><span class="keyword">ARG</span> <span class="keyword">USER</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Define environment variables</span></span><br><span class="line"><span class="keyword">ENV</span> USER_ID=$USER_ID</span><br><span class="line"><span class="keyword">ENV</span> GROUP_ID=$GROUP_ID</span><br><span class="line"><span class="keyword">ENV</span> USER_ID=$&#123;USER_ID:-<span class="number">1001</span>&#125;</span><br><span class="line"><span class="keyword">ENV</span> GROUP_ID=$&#123;GROUP_ID:-<span class="number">1001</span>&#125;</span><br><span class="line"><span class="keyword">ENV</span> CURRENT_USER=$<span class="keyword">USER</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># output message</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$&#123;CURRENT_USER&#125;</span> is added <span class="variable">$&#123;USER_ID&#125;</span> <span class="variable">$&#123;GROUP_ID&#125;</span>&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># https://github.com/gitpod-io/workspace-images/blob/master/full/Dockerfile</span></span><br><span class="line"><span class="comment"># RUN as root user </span></span><br><span class="line"><span class="keyword">USER</span> root</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add group and user based on build arguments</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> addgroup --gid <span class="variable">$&#123;GROUP_ID&#125;</span> <span class="variable">$&#123;CURRENT_USER&#125;</span></span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> adduser --disabled-password --gecos <span class="string">&#x27;&#x27;</span> --uid <span class="variable">$&#123;USER_ID&#125;</span> --gid <span class="variable">$&#123;GROUP_ID&#125;</span> <span class="variable">$&#123;CURRENT_USER&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># npm install permission</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> sudo chown -R <span class="variable">$&#123;USER_ID&#125;</span>:<span class="variable">$&#123;GROUP_ID&#125;</span> <span class="string">&quot;/home/gitpod/.npm&quot;</span></span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> sudo chown -R <span class="variable">$&#123;USER_ID&#125;</span>:<span class="variable">$&#123;GROUP_ID&#125;</span> <span class="string">&quot;/home/gitpod/.nvm&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># INSTALL net-tools</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apt-get update &amp;&amp; apt-get install net-tools</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set user and group of working directory</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /workspace</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># RUN as current user</span></span><br><span class="line"><span class="keyword">USER</span> $&#123;CURRENT_USER&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="docker-composeyaml">docker-compose.yaml</span></h3>
+<ul>
+<li>將Dockerfile所需的環境變數在build的階段傳入進來</li>
+<li>如果image有設定工作路徑,docker-compose就可以不用另外設定工作路徑</li>
+<li>指定對外的port與volume位置</li>
+<li>開啟互動模式:(這樣設定完成之後即使下docker-compose up -d沒有服務正在執行,container也不會馬上斷掉)
+<ul>
+<li>stdin: true</li>
+<li>tty: true</li>
+</ul>
+</li>
+<li>在container建立起來的時候,執行post-install</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.2&#x27;</span></span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  hexo-local:</span><br><span class="line">    build:</span><br><span class="line">        context: .</span><br><span class="line">        dockerfile: ./Dockerfile</span><br><span class="line">        args:</span><br><span class="line">            USER_ID: $USER_ID</span><br><span class="line">            GROUP_ID: $GROUP_ID</span><br><span class="line">            <span class="keyword">USER</span>: $<span class="keyword">USER</span></span><br><span class="line">    working_dir: /workspace <span class="comment"># change working directory</span></span><br><span class="line">    volumes:</span><br><span class="line">      - $&#123;PWD&#125;:/workspace</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">&#x27;8101:80&#x27;</span></span><br><span class="line">    stdin_open: true <span class="comment"># https://stackoverflow.com/questions/36249744/interactive-shell-using-docker-compose</span></span><br><span class="line">    tty: true</span><br><span class="line">    command: sh /workspace/post-install.sh</span><br></pre></td></tr></table></figure>
+<h3><span id="常用指令">常用指令</span></h3>
+<ul>
+<li>export環境變數
+<ul>
+<li><a target="_blank" rel="noopener" href="http://env.sh">env.sh</a></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export USER_ID=$(id -u)</span><br><span class="line">export GROUP_ID=$(id -g)</span><br><span class="line">export USER=$(whoami)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>source &amp; build image</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source env.sh &amp;&amp; docker-compose build --no-cache</span><br></pre></td></tr></table></figure>
+<ul>
+<li>create container via docker-compose</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<ul>
+<li>enter container</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-composer exec hexo-local bash</span><br></pre></td></tr></table></figure>
+<h3><span id="docker-debug技巧">docker debug技巧</span></h3>
+<ul>
+<li>image
+<ul>
+<li>echo可以確認環境變數是否帶入正確</li>
+</ul>
+</li>
+<li>container
+<ul>
+<li>docker run與interactive mode來</li>
+<li>compose則可以設定tty和stdin為true來進入container</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -it -v `pwd`:/workspace -p <span class="number">8101</span>:<span class="number">80</span> -u <span class="number">0</span> gitpod/workspace-full</span><br></pre></td></tr></table></figure>
+<h3><span id="reference">Reference</span></h3>
+<p><a target="_blank" rel="noopener" href="https://medium.com/@tonistiigi/experimenting-with-rootless-docker-416c9ad8c0d6">experimenting-with-rootless-docker</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/64857370/using-current-user-when-running-container-in-docker-compose">using-current-user-when-running-container-in-docker-compose</a></p>
+<p><a target="_blank" rel="noopener" href="https://dev.to/visuellverstehen/docker-docker-compose-and-permissions-2fih">docker-&amp;-docker-compose-and-permissions</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:edwardyi.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <!-- /Algorithm/ -->
+    <li><a href="/Algorithm/">Algorithm</a><small>1</small></li>
+  
+    <!-- /Book-Reviews/ -->
+    <li><a href="/Book-Reviews/">Book Reviews</a><small>1</small></li>
+  
+    <!-- /Bootstrap/ -->
+    <li><a href="/Bootstrap/">Bootstrap</a><small>2</small></li>
+  
+    <!-- /CodeIgniter/ -->
+    <li><a href="/CodeIgniter/">CodeIgniter</a><small>1</small></li>
+  
+    <!-- /Codewars/ -->
+    <li><a href="/Codewars/">Codewars</a><small>1</small></li>
+  
+    <!-- /Docker/ -->
+    <li><a href="/Docker/">Docker</a><small>1</small></li>
+  
+    <!-- /Git/ -->
+    <li><a href="/Git/">Git</a><small>1</small></li>
+  
+    <!-- /Gitpod/ -->
+    <li><a href="/Gitpod/">Gitpod</a><small>1</small></li>
+  
+    <!-- /Java/ -->
+    <li><a href="/Java/">Java</a><small>1</small></li>
+  
+    <!-- /Javascript/ -->
+    <li><a href="/Javascript/">Javascript</a><small>1</small></li>
+  
+    <!-- /Jquery/ -->
+    <li><a href="/Jquery/">Jquery</a><small>1</small></li>
+  
+    <!-- /Laravel/ -->
+    <li><a href="/Laravel/">Laravel</a><small>4</small></li>
+  
+    <!-- /NodeJs/ -->
+    <li><a href="/NodeJs/">NodeJs</a><small>1</small></li>
+  
+    <!-- /ReactJs/ -->
+    <li><a href="/ReactJs/">ReactJs</a><small>2</small></li>
+  
+    <!-- /Regular-Expressions/ -->
+    <li><a href="/Regular-Expressions/">Regular Expressions</a><small>1</small></li>
+  
+    <!-- /Unit-Test/ -->
+    <li><a href="/Unit-Test/">Unit Test</a><small>3</small></li>
+  
+    <!-- /Virtualbox/ -->
+    <li><a href="/Virtualbox/">Virtualbox</a><small>1</small></li>
+  
+    <!-- /ReactJs/VueJs/ -->
+    <li><a href="/ReactJs/VueJs/">VueJs</a><small>2</small></li>
+  
+    <!-- /language/ -->
+    <li><a href="/language/">language</a><small>1</small></li>
+  
+    <!-- /postman/ -->
+    <li><a href="/postman/">postman</a><small>1</small></li>
+  
+    <!-- /scrimba/ -->
+    <li><a href="/scrimba/">scrimba</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  <script type="text/javascript">
+    amzn_assoc_placement = "adunit0";
+    amzn_assoc_search_bar = "true";
+    amzn_assoc_tracking_id = "edwardyispace-20";
+    amzn_assoc_search_bar_position = "bottom";
+    amzn_assoc_ad_mode = "search";
+    amzn_assoc_ad_type = "smart";
+    amzn_assoc_marketplace = "amazon";
+    amzn_assoc_region = "US";
+    amzn_assoc_title = "Shop Related Products";
+    amzn_assoc_default_search_phrase = "WD SSD";
+    amzn_assoc_default_category = "All";
+    amzn_assoc_linkid = "37b2ee2b21e636afb10606fa741d8491";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2021 Edwardyi
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'edwardyi-blog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

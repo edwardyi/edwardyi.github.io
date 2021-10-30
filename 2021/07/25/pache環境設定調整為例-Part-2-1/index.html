@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Gitpod &amp; Docker WorkFlow Part 2 | Edwardyi Blog</title>
+  <meta name="author" content="Edwardyi">
+  
+  <meta name="description" content="年少輕狂的好日子，一懂事就結束">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Gitpod &amp; Docker WorkFlow Part 2"/>
+  <meta property="og:site_name" content="Edwardyi Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Edwardyi Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer', 'GTM-57XKRCL');</script>
+	<!-- End Google Tag Manager -->
+
+	
+  
+	<!-- facebook tag -->
+	<meta name="facebook-domain-verification" content="ehpewsl8kx5bmjcejqnpr91tmpdmeg" />
+	<!-- End facebook tag -->
+
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57XKRCL"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Edwardyi Blog</a></h1>
+  <h2><a href="/">To go forward you must backup</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/works">Works</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2021-07-25T00:04:00.000Z"><a href="/2021/07/25/pache環境設定調整為例-Part-2-1/">2021-07-25</a></time>
+      
+      
+  
+    <h1 class="title">Gitpod &amp; Docker WorkFlow Part 2</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h6><span id="tags-yii-gitpod">tags: <code>yii</code> <code>gitpod</code></span></h6>
+<h2><span id="前情提要">前情提要</span></h2>
+<p>接續part 1提到的gitpod環境所遇到的問題，底下就列出幾個關鍵調整的地方</p>
+<h2><span id="gitpod-workflow">Gitpod WorkFlow</span></h2>
+<ul>
+<li>開啟gitpod.io網址開啟空白專案
+<ul>
+<li>使用git clone將專案複製到這個環境</li>
+<li>使用volumes
+<ul>
+<li>將當前的user與group的設定複製到container環境</li>
+<li>設定專案所需環境變數</li>
+</ul>
+</li>
+<li>調整dockerFile
+<ul>
+<li>將環境變數相關的檔案複製到container中</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3><span id="gitpod的base-image和full-workspace兩者之間的關係">Gitpod的Base Image和Full Workspace兩者之間的關係</span></h3>
+<ul>
+<li>gitpod image的dependency會長得像這樣</li>
+</ul>
+<p><img src="https://i.imgur.com/a1AzDHs.png" alt=""></p>
+<h4><span id="reference">Reference</span></h4>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/gitpod-io/workspace-images/blob/2e5340ee0f9c39aef3f499ba7a5466087e700fb9/base/Dockerfile">Base Dockerfile</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/gitpod-io/workspace-images/blob/3671677ff78059c6f5d94ec034903398a12bdec2/.circleci/config.yml">Config.yml</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/docker-library/buildpack-deps">FROM buildpack-deps:focal</a></p>
+</li>
+</ul>
+<h2><span id="code">Code</span></h2>
+<ul>
+<li>frontend/apache2/000-default.conf</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /app/frontend/web/&gt;</span><br><span class="line">        Options Indexes FollowSymLinks</span><br><span class="line">        AllowOverride All</span><br><span class="line">        Require all granted</span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">        # The ServerName directive sets the request scheme, hostname and port that</span><br><span class="line">        # the server uses to identify itself. This is used when creating</span><br><span class="line">        # redirection URLs. In the context of virtual hosts, the ServerName</span><br><span class="line">        # specifies what hostname must appear in the request&#x27;s Host: header to</span><br><span class="line">        # match this virtual host. For the default virtual host (this file) this</span><br><span class="line">        # value is not decisive as it is used as a last resort host regardless.</span><br><span class="line">        # However, you must set it for any further virtual host explicitly.</span><br><span class="line">        #ServerName www.example.com</span><br><span class="line"></span><br><span class="line">        ServerAdmin webmaster@localhost</span><br><span class="line">        DocumentRoot /app/frontend/web</span><br><span class="line"></span><br><span class="line">        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,</span><br><span class="line">        # error, crit, alert, emerg.</span><br><span class="line">        # It is also possible to configure the loglevel for particular</span><br><span class="line">        # modules, e.g.</span><br><span class="line">        #LogLevel info ssl:warn</span><br><span class="line"></span><br><span class="line">        ErrorLog $&#123;APACHE_LOG_DIR&#125;/error.log</span><br><span class="line">        CustomLog $&#123;APACHE_LOG_DIR&#125;/access.log combined</span><br><span class="line"></span><br><span class="line">        # For most configuration files from conf-available/, which are</span><br><span class="line">        # enabled or disabled at a global level, it is possible to</span><br><span class="line">        # include a line for only one particular virtual host. For example the</span><br><span class="line">        # following line enables the CGI configuration for this host only</span><br><span class="line">        # after it has been globally disabled with &quot;a2disconf&quot;.</span><br><span class="line">        #Include conf-available/serve-cgi-bin.conf</span><br><span class="line">        &lt;Directory &quot;/app/frontend/web/&quot;&gt;</span><br><span class="line">            # use mod_rewrite for pretty URL support</span><br><span class="line">            RewriteEngine on</span><br><span class="line">            # If a directory or a file exists, use the request directly</span><br><span class="line">            RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">            RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">            # Otherwise forward the request to index.php</span><br><span class="line">            RewriteRule . index.php</span><br><span class="line"></span><br><span class="line">            # use index.php as index file</span><br><span class="line">            DirectoryIndex index.php</span><br><span class="line"></span><br><span class="line">            # ...other settings...</span><br><span class="line">            # Apache 2.4</span><br><span class="line">            Require all granted</span><br><span class="line"></span><br><span class="line">            ## Apache 2.2</span><br><span class="line">            # Order allow,deny</span><br><span class="line">            # Allow from all</span><br><span class="line">        &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>dockerFile</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> yiisoftware/yii2-php:<span class="number">7.2</span>-apache</span><br><span class="line"></span><br><span class="line"><span class="comment"># Change document root for Apache</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> /apache2/000-default.conf /etc/apache2/sites-available/000-default.conf </span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>docker-compose.yml</li>
+</ul>
+<p>這兩行為關鍵:</p>
+<ul>
+<li>/etc/passwd:/etc/passwd:ro</li>
+<li>/etc/group:/etc/group:ro</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">frontend:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">frontend</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">20080</span><span class="string">:80</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="comment"># Re-use local composer cache via host-volume</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">~/.composer-docker/cache:/root/.composer/cache:delegated</span></span><br><span class="line">      <span class="comment"># Mount source-code for development</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./:/app</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/etc/passwd:/etc/passwd:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/etc/group:/etc/group:ro</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mysql</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a target="_blank" rel="noopener" href="//Docker/">Docker</a>
+  </div>
+
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:edwardyi.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <!-- /Algorithm/ -->
+    <li><a href="/Algorithm/">Algorithm</a><small>1</small></li>
+  
+    <!-- /Book-Reviews/ -->
+    <li><a href="/Book-Reviews/">Book Reviews</a><small>1</small></li>
+  
+    <!-- /Bootstrap/ -->
+    <li><a href="/Bootstrap/">Bootstrap</a><small>2</small></li>
+  
+    <!-- /CodeIgniter/ -->
+    <li><a href="/CodeIgniter/">CodeIgniter</a><small>1</small></li>
+  
+    <!-- /Codewars/ -->
+    <li><a href="/Codewars/">Codewars</a><small>1</small></li>
+  
+    <!-- /Docker/ -->
+    <li><a href="/Docker/">Docker</a><small>1</small></li>
+  
+    <!-- /Git/ -->
+    <li><a href="/Git/">Git</a><small>1</small></li>
+  
+    <!-- /Gitpod/ -->
+    <li><a href="/Gitpod/">Gitpod</a><small>1</small></li>
+  
+    <!-- /Java/ -->
+    <li><a href="/Java/">Java</a><small>1</small></li>
+  
+    <!-- /Javascript/ -->
+    <li><a href="/Javascript/">Javascript</a><small>1</small></li>
+  
+    <!-- /Jquery/ -->
+    <li><a href="/Jquery/">Jquery</a><small>1</small></li>
+  
+    <!-- /Laravel/ -->
+    <li><a href="/Laravel/">Laravel</a><small>4</small></li>
+  
+    <!-- /NodeJs/ -->
+    <li><a href="/NodeJs/">NodeJs</a><small>1</small></li>
+  
+    <!-- /ReactJs/ -->
+    <li><a href="/ReactJs/">ReactJs</a><small>2</small></li>
+  
+    <!-- /Regular-Expressions/ -->
+    <li><a href="/Regular-Expressions/">Regular Expressions</a><small>1</small></li>
+  
+    <!-- /Unit-Test/ -->
+    <li><a href="/Unit-Test/">Unit Test</a><small>3</small></li>
+  
+    <!-- /Virtualbox/ -->
+    <li><a href="/Virtualbox/">Virtualbox</a><small>1</small></li>
+  
+    <!-- /ReactJs/VueJs/ -->
+    <li><a href="/ReactJs/VueJs/">VueJs</a><small>2</small></li>
+  
+    <!-- /language/ -->
+    <li><a href="/language/">language</a><small>1</small></li>
+  
+    <!-- /postman/ -->
+    <li><a href="/postman/">postman</a><small>1</small></li>
+  
+    <!-- /scrimba/ -->
+    <li><a href="/scrimba/">scrimba</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  <script type="text/javascript">
+    amzn_assoc_placement = "adunit0";
+    amzn_assoc_search_bar = "true";
+    amzn_assoc_tracking_id = "edwardyispace-20";
+    amzn_assoc_search_bar_position = "bottom";
+    amzn_assoc_ad_mode = "search";
+    amzn_assoc_ad_type = "smart";
+    amzn_assoc_marketplace = "amazon";
+    amzn_assoc_region = "US";
+    amzn_assoc_title = "Shop Related Products";
+    amzn_assoc_default_search_phrase = "WD SSD";
+    amzn_assoc_default_category = "All";
+    amzn_assoc_linkid = "37b2ee2b21e636afb10606fa741d8491";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2021 Edwardyi
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'edwardyi-blog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

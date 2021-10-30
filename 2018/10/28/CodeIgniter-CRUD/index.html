@@ -1,0 +1,348 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CodeIgniter CRUD | Edwardyi Blog</title>
+  <meta name="author" content="Edwardyi">
+  
+  <meta name="description" content="年少輕狂的好日子，一懂事就結束">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="CodeIgniter CRUD"/>
+  <meta property="og:site_name" content="Edwardyi Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Edwardyi Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer', 'GTM-57XKRCL');</script>
+	<!-- End Google Tag Manager -->
+
+	
+  
+	<!-- facebook tag -->
+	<meta name="facebook-domain-verification" content="ehpewsl8kx5bmjcejqnpr91tmpdmeg" />
+	<!-- End facebook tag -->
+
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57XKRCL"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Edwardyi Blog</a></h1>
+  <h2><a href="/">To go forward you must backup</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/works">Works</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-28T02:40:00.000Z"><a href="/2018/10/28/CodeIgniter-CRUD/">2018-10-28</a></time>
+      
+      
+  
+    <h1 class="title">CodeIgniter CRUD</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>CodeIgniter 3.1</em></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> news (</span><br><span class="line">    id <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    title <span class="type">varchar</span>(<span class="number">128</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    slug <span class="type">varchar</span>(<span class="number">128</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    text text <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    create_at <span class="type">TIMESTAMP</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;新增貼文時間&#x27;</span>,</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY(id),</span><br><span class="line">    KEY slug (slug)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> posts (</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    title <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    slug <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    body text <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    create_at <span class="type">TIMESTAMP</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;新增貼文時間&#x27;</span></span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY(id)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine On</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">RewriteRule ^(.*)$ index.php/$1 [L]</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><figcaption><span>準備</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://code.jquery.com/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>為什麼要用單一路口文件?
+<ul>
+<li>這樣使用會有甚麼問題</li>
+<li>路徑長的醜醜的=&gt;才會有route的規則需要定義</li>
+<li><a target="_blank" rel="noopener" href="http://localhost/codeIgniter/index.php/pages/view/">http://localhost/codeIgniter/index.php/pages/view/</a></li>
+<li><a target="_blank" rel="noopener" href="http://localhost/codeIgniter/index.php/news/index/">http://localhost/codeIgniter/index.php/news/index/</a></li>
+</ul>
+</li>
+<li>建立controller和route
+<ul>
+<li>讓url變得好看</li>
+<li>定義route規則</li>
+</ul>
+</li>
+<li>建立model
+<ul>
+<li>slug把url去掉,只留下小寫的英文字母</li>
+<li>有點像是簡單的描述,例如:/車子/帥氣的法拉利</li>
+<li>可以用來當作唯一值用來識別某個資源(entry/resource)</li>
+<li>詳細說明可以看stackoverflow解釋(what-is-a-slug)</li>
+</ul>
+</li>
+<li>和我想的比較不一樣的是,他把新聞系統的controller另外拆開
+<ul>
+<li>本來想說寫在一起的</li>
+<li>分開也比較清楚</li>
+</ul>
+</li>
+<li>建立列表頁和檢視頁面</li>
+<li>踩到的第一個坑是自己打錯字,找template的路徑
+<ul>
+<li>不需要為繼承的父類別加上namespace</li>
+<li>改完route發現news不好使了
+<ul>
+<li>先註解起來查原因</li>
+<li>檢視頁面的位置沒有改到view,從index那邊複製過來沒有修改到</li>
+</ul>
+</li>
+<li>原來是沒有加htaccess的關係阿
+<ul>
+<li>當發現怎麼改route都沒有用</li>
+<li>印出來看有設定,而且怎麼敲url就是不出來這時候就該設定htaccess了</li>
+</ul>
+</li>
+<li>新增表單
+<ul>
+<li>把檢視的route設定放到最後面</li>
+</ul>
+</li>
+<li>刪除的坑(id)
+<ul>
+<li>加上要刪除的編號之後,突然發現沒有辦法用open_form的方法了</li>
+<li>原先以為是因為寫法的關係造成的,結果是因為autoload沒有load到那個form的helper,殘念</li>
+<li>沒有對應到controller的method名稱</li>
+</ul>
+</li>
+<li>編輯(slug)=&gt;和view帶一樣的
+<ul>
+<li>bootstrap pull left把放在右邊的顯示到左邊</li>
+<li>要帶入view的slug進去,而不是用id</li>
+<li>少input hidden的id也想成功?</li>
+</ul>
+</li>
+<li>新增navbar-right往右放</li>
+</ul>
+</li>
+<li>小bug
+<ul>
+<li>沒有取到URL參數的時候是取全部的文章</li>
+<li>route的順序很重要,放錯了,url出不來,範圍比較小的放前面</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a target="_blank" rel="noopener" href="//CodeIgniter/">CodeIgniter</a>
+  </div>
+
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:edwardyi.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <!-- /Algorithm/ -->
+    <li><a href="/Algorithm/">Algorithm</a><small>1</small></li>
+  
+    <!-- /Book-Reviews/ -->
+    <li><a href="/Book-Reviews/">Book Reviews</a><small>1</small></li>
+  
+    <!-- /Bootstrap/ -->
+    <li><a href="/Bootstrap/">Bootstrap</a><small>2</small></li>
+  
+    <!-- /CodeIgniter/ -->
+    <li><a href="/CodeIgniter/">CodeIgniter</a><small>1</small></li>
+  
+    <!-- /Codewars/ -->
+    <li><a href="/Codewars/">Codewars</a><small>1</small></li>
+  
+    <!-- /Docker/ -->
+    <li><a href="/Docker/">Docker</a><small>1</small></li>
+  
+    <!-- /Git/ -->
+    <li><a href="/Git/">Git</a><small>1</small></li>
+  
+    <!-- /Gitpod/ -->
+    <li><a href="/Gitpod/">Gitpod</a><small>1</small></li>
+  
+    <!-- /Java/ -->
+    <li><a href="/Java/">Java</a><small>1</small></li>
+  
+    <!-- /Javascript/ -->
+    <li><a href="/Javascript/">Javascript</a><small>1</small></li>
+  
+    <!-- /Jquery/ -->
+    <li><a href="/Jquery/">Jquery</a><small>1</small></li>
+  
+    <!-- /Laravel/ -->
+    <li><a href="/Laravel/">Laravel</a><small>4</small></li>
+  
+    <!-- /NodeJs/ -->
+    <li><a href="/NodeJs/">NodeJs</a><small>1</small></li>
+  
+    <!-- /ReactJs/ -->
+    <li><a href="/ReactJs/">ReactJs</a><small>2</small></li>
+  
+    <!-- /Regular-Expressions/ -->
+    <li><a href="/Regular-Expressions/">Regular Expressions</a><small>1</small></li>
+  
+    <!-- /Unit-Test/ -->
+    <li><a href="/Unit-Test/">Unit Test</a><small>3</small></li>
+  
+    <!-- /Virtualbox/ -->
+    <li><a href="/Virtualbox/">Virtualbox</a><small>1</small></li>
+  
+    <!-- /ReactJs/VueJs/ -->
+    <li><a href="/ReactJs/VueJs/">VueJs</a><small>2</small></li>
+  
+    <!-- /language/ -->
+    <li><a href="/language/">language</a><small>1</small></li>
+  
+    <!-- /postman/ -->
+    <li><a href="/postman/">postman</a><small>1</small></li>
+  
+    <!-- /scrimba/ -->
+    <li><a href="/scrimba/">scrimba</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  <script type="text/javascript">
+    amzn_assoc_placement = "adunit0";
+    amzn_assoc_search_bar = "true";
+    amzn_assoc_tracking_id = "edwardyispace-20";
+    amzn_assoc_search_bar_position = "bottom";
+    amzn_assoc_ad_mode = "search";
+    amzn_assoc_ad_type = "smart";
+    amzn_assoc_marketplace = "amazon";
+    amzn_assoc_region = "US";
+    amzn_assoc_title = "Shop Related Products";
+    amzn_assoc_default_search_phrase = "WD SSD";
+    amzn_assoc_default_category = "All";
+    amzn_assoc_linkid = "37b2ee2b21e636afb10606fa741d8491";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2021 Edwardyi
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'edwardyi-blog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

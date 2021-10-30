@@ -1,0 +1,1053 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Edwardyi Blog</title>
+  <meta name="author" content="Edwardyi">
+  
+  <meta name="description" content="年少輕狂的好日子，一懂事就結束">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Edwardyi Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Edwardyi Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer', 'GTM-57XKRCL');</script>
+	<!-- End Google Tag Manager -->
+
+	
+  
+	<!-- facebook tag -->
+	<meta name="facebook-domain-verification" content="ehpewsl8kx5bmjcejqnpr91tmpdmeg" />
+	<!-- End facebook tag -->
+
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57XKRCL"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Edwardyi Blog</a></h1>
+  <h2><a href="/">To go forward you must backup</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/works">Works</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2021-10-30T03:31:00.000Z"><a href="/2021/10/30/Docker-Compose-Build出自己的gitpod環境/">2021-10-30</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2021/10/30/Docker-Compose-Build出自己的gitpod環境/">Rootless Docker的解決方式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h6><span id="tags-docker-compose-gitpod">tags: <code>docker-compose</code> <code>gitpod</code></span></h6>
+<ul>
+<li>一般container執行起來的時候,會是用root的權限在container執行各種檔案的操作
+<ul>
+<li>當離開container之後,會發現volume建立的那些檔案都沒有辦法編輯
+<ul>
+<li>ls -al列出volume底下那些在container建立的檔案都會是root的權限</li>
+<li>為了解決這個問題,就需要改用rootless進入container進行後續的操作,但執行npm install會發現又需要root權限…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>解決方式有幾種
+<ul>
+<li>使用rootless docker(-userns-remap flag),實作方式可以參考==experimenting-with-rootless-docker==的連結</li>
+<li>使用docker volume將使用者與群組volume到container環境(要注意需要設定read-only,以免改到本地的群組設定),可以參考==using-current-user-when-running-container-in-docker-compose==的連結</li>
+<li>docker build image的時候,使用環境變數將當前登入的使用者與群組也一併新增上去,這是本篇文章採用的作法</li>
+</ul>
+</li>
+</ul>
+<h3><span id="dockerfile">Dockerfile</span></h3>
+<ul>
+<li>設定環境變數
+<ul>
+<li>如果USER_ID和GROUP_ID兩者都沒有設定會被設定為1001</li>
+</ul>
+</li>
+<li>切換root使用者</li>
+<li>從環境變數中取得群組編號,並建立群組</li>
+<li>新增current_user到image</li>
+<li>工作路徑設定為workspace</li>
+<li>設定User為current_user</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> gitpod/workspace-full</span><br><span class="line"></span><br><span class="line"><span class="comment"># @see https://dev.to/visuellverstehen/docker-docker-compose-and-permissions-2fih</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Define build arguments</span></span><br><span class="line"><span class="keyword">ARG</span> USER_ID</span><br><span class="line"><span class="keyword">ARG</span> GROUP_ID</span><br><span class="line"><span class="keyword">ARG</span> <span class="keyword">USER</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Define environment variables</span></span><br><span class="line"><span class="keyword">ENV</span> USER_ID=$USER_ID</span><br><span class="line"><span class="keyword">ENV</span> GROUP_ID=$GROUP_ID</span><br><span class="line"><span class="keyword">ENV</span> USER_ID=$&#123;USER_ID:-<span class="number">1001</span>&#125;</span><br><span class="line"><span class="keyword">ENV</span> GROUP_ID=$&#123;GROUP_ID:-<span class="number">1001</span>&#125;</span><br><span class="line"><span class="keyword">ENV</span> CURRENT_USER=$<span class="keyword">USER</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># output message</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$&#123;CURRENT_USER&#125;</span> is added <span class="variable">$&#123;USER_ID&#125;</span> <span class="variable">$&#123;GROUP_ID&#125;</span>&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># https://github.com/gitpod-io/workspace-images/blob/master/full/Dockerfile</span></span><br><span class="line"><span class="comment"># RUN as root user </span></span><br><span class="line"><span class="keyword">USER</span> root</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add group and user based on build arguments</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> addgroup --gid <span class="variable">$&#123;GROUP_ID&#125;</span> <span class="variable">$&#123;CURRENT_USER&#125;</span></span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> adduser --disabled-password --gecos <span class="string">&#x27;&#x27;</span> --uid <span class="variable">$&#123;USER_ID&#125;</span> --gid <span class="variable">$&#123;GROUP_ID&#125;</span> <span class="variable">$&#123;CURRENT_USER&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># npm install permission</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> sudo chown -R <span class="variable">$&#123;USER_ID&#125;</span>:<span class="variable">$&#123;GROUP_ID&#125;</span> <span class="string">&quot;/home/gitpod/.npm&quot;</span></span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> sudo chown -R <span class="variable">$&#123;USER_ID&#125;</span>:<span class="variable">$&#123;GROUP_ID&#125;</span> <span class="string">&quot;/home/gitpod/.nvm&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># INSTALL net-tools</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apt-get update &amp;&amp; apt-get install net-tools</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set user and group of working directory</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /workspace</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># RUN as current user</span></span><br><span class="line"><span class="keyword">USER</span> $&#123;CURRENT_USER&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="docker-composeyaml">docker-compose.yaml</span></h3>
+<ul>
+<li>將Dockerfile所需的環境變數在build的階段傳入進來</li>
+<li>如果image有設定工作路徑,docker-compose就可以不用另外設定工作路徑</li>
+<li>指定對外的port與volume位置</li>
+<li>開啟互動模式:(這樣設定完成之後即使下docker-compose up -d沒有服務正在執行,container也不會馬上斷掉)
+<ul>
+<li>stdin: true</li>
+<li>tty: true</li>
+</ul>
+</li>
+<li>在container建立起來的時候,執行post-install</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.2&#x27;</span></span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  hexo-local:</span><br><span class="line">    build:</span><br><span class="line">        context: .</span><br><span class="line">        dockerfile: ./Dockerfile</span><br><span class="line">        args:</span><br><span class="line">            USER_ID: $USER_ID</span><br><span class="line">            GROUP_ID: $GROUP_ID</span><br><span class="line">            <span class="keyword">USER</span>: $<span class="keyword">USER</span></span><br><span class="line">    working_dir: /workspace <span class="comment"># change working directory</span></span><br><span class="line">    volumes:</span><br><span class="line">      - $&#123;PWD&#125;:/workspace</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">&#x27;8101:80&#x27;</span></span><br><span class="line">    stdin_open: true <span class="comment"># https://stackoverflow.com/questions/36249744/interactive-shell-using-docker-compose</span></span><br><span class="line">    tty: true</span><br><span class="line">    command: sh /workspace/post-install.sh</span><br></pre></td></tr></table></figure>
+<h3><span id="常用指令">常用指令</span></h3>
+<ul>
+<li>export環境變數
+<ul>
+<li><a target="_blank" rel="noopener" href="http://env.sh">env.sh</a></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export USER_ID=$(id -u)</span><br><span class="line">export GROUP_ID=$(id -g)</span><br><span class="line">export USER=$(whoami)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>source &amp; build image</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source env.sh &amp;&amp; docker-compose build --no-cache</span><br></pre></td></tr></table></figure>
+<ul>
+<li>create container via docker-compose</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<ul>
+<li>enter container</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-composer exec hexo-local bash</span><br></pre></td></tr></table></figure>
+<h3><span id="docker-debug技巧">docker debug技巧</span></h3>
+<ul>
+<li>image
+<ul>
+<li>echo可以確認環境變數是否帶入正確</li>
+</ul>
+</li>
+<li>container
+<ul>
+<li>docker run與interactive mode來</li>
+<li>compose則可以設定tty和stdin為true來進入container</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -it -v `pwd`:/workspace -p <span class="number">8101</span>:<span class="number">80</span> -u <span class="number">0</span> gitpod/workspace-full</span><br></pre></td></tr></table></figure>
+<h3><span id="reference">Reference</span></h3>
+<p><a target="_blank" rel="noopener" href="https://medium.com/@tonistiigi/experimenting-with-rootless-docker-416c9ad8c0d6">experimenting-with-rootless-docker</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/64857370/using-current-user-when-running-container-in-docker-compose">using-current-user-when-running-container-in-docker-compose</a></p>
+<p><a target="_blank" rel="noopener" href="https://dev.to/visuellverstehen/docker-docker-compose-and-permissions-2fih">docker-&amp;-docker-compose-and-permissions</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2021-07-27T02:20:00.000Z"><a href="/2021/07/27/Gitpod-Env-Settings-Tips-Part-3/">2021-07-27</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2021/07/27/Gitpod-Env-Settings-Tips-Part-3/">Gitpod Env Settings &amp; Tips Part 3</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h6><span id="tags-yii-gitpod">tags: <code>yii</code> <code>gitpod</code></span></h6>
+<h2><span id="前情提要">前情提要</span></h2>
+<p>延續前兩次的Gitpod和Docker Workflow介紹，這次補上環境變數三種設定方式，推薦使用第三種方式，使用docker-compose將環境變數的參數複寫原本Dockerfile的PHP_USER_ID設定。</p>
+<h2><span id="知識點">知識點</span></h2>
+<ul>
+<li>docker images列出image id</li>
+<li>docker inspect比對兩者環境變數的差異</li>
+<li>dockerFile可以藉由args接收環境變數切換不同的版本</li>
+<li>docker-compose config檢查是否環境變數設定正確</li>
+<li>docker-compose build重新建立image</li>
+</ul>
+<h3><span id="build-flow">Build Flow</span></h3>
+<p><img src="https://i.imgur.com/4P3LxXH.png" alt=""></p>
+<h3><span id="三種方法">三種方法</span></h3>
+<h4><span id="法1">法1:</span></h4>
+<ul>
+<li>改DockerFile的Env</li>
+</ul>
+<p>=&gt; frontend/Dockerfile</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> yiisoftware/yii2-php:<span class="number">7.2</span>-apache</span><br><span class="line"><span class="comment"># FROM gitpod/workspace-full:latest</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Change document root for Apache</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> sed -i -e <span class="string">&#x27;s|/app/web|/app/frontend/web|g&#x27;</span> /etc/apache2/sites-available/000-default.conf</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Change PHP_USER_ID For Gitpod</span></span><br><span class="line"><span class="keyword">ENV</span> COMPOSER_ALLOW_SUPERUSER=<span class="number">1</span> \</span><br><span class="line">    PHP_USER_ID=<span class="number">33333</span></span><br></pre></td></tr></table></figure>
+<h4><span id="法2">法2:</span></h4>
+<ul>
+<li>使用docker-compose environment方法傳遞參數</li>
+</ul>
+<p>=&gt; docker-compose.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">frontend:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">frontend</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">COMPOSER_ALLOW_SUPERUSER=1</span> </span><br><span class="line">      <span class="bullet">-</span> <span class="string">PHP_USER_ID=33333</span></span><br></pre></td></tr></table></figure>
+<h4><span id="法3推薦作法">法3:(推薦作法)</span></h4>
+<ul>
+<li>由docker-compose.yaml載入env檔案</li>
+</ul>
+<p>=&gt; env</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Apache</span></span><br><span class="line"><span class="string">PHP_USER_ID=33333</span></span><br><span class="line"><span class="string">COMPOSER_ALLOW_SUPERUSER=1</span></span><br></pre></td></tr></table></figure>
+<p>=&gt; docker-compose.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">frontend:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">frontend</span></span><br><span class="line">    <span class="attr">env_file:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">.env</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/vZZSEX8.png" alt=""></p>
+<h3><span id="reference">Reference</span></h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/yiisoft/yii-base-web/issues/1">https://github.com/yiisoft/yii-base-web/issues/1</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/23836416/permission-issues-with-apache-inside-docker/35886387">https://stackoverflow.com/questions/23836416/permission-issues-with-apache-inside-docker/35886387</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2021-07-25T00:04:00.000Z"><a href="/2021/07/25/Gitpod-Guide-For-Apache2-Enviroment-Part-1/">2021-07-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2021/07/25/Gitpod-Guide-For-Apache2-Enviroment-Part-1/">Gitpod Guide For Apache2 Enviroment Part 1</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h6><span id="tags-yii-gitpod">tags: <code>yii</code> <code>gitpod</code></span></h6>
+<h2><span id="前情提要">前情提要</span></h2>
+<p>自從看了小馬介紹的gitpod的教學之後，覺得雲端IDE真是一個好東西，怎麼這麼晚才知道呢?經過幾次嘗試下來，發現以下的問題…</p>
+<h2><span id="issue">ISSUE</span></h2>
+<ul>
+<li>直接用gitpod.io網址開啟github repo會有權限的問題
+<ul>
+<li>docker-compose建立的container，開啟頁面會有403的錯誤訊息</li>
+</ul>
+</li>
+</ul>
+<h2><span id="root-cause">Root Cause</span></h2>
+<ul>
+<li>原因是因為apache執行是用www-data的權限，而非gitpod
+<ul>
+<li>進入container使用ps -aux檢查目前正在運行的process有哪些</li>
+</ul>
+</li>
+<li>gitpod官方才會因此告訴使用者建立專屬gitpod使用的Dockerfile，來解決這個問題</li>
+</ul>
+<h3><span id="to-be-continued">To be continued</span></h3>
+<p>欲知詳情，請待後續拆解…</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2021-07-25T00:04:00.000Z"><a href="/2021/07/25/pache環境設定調整為例-Part-2-1/">2021-07-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2021/07/25/pache環境設定調整為例-Part-2-1/">Gitpod &amp; Docker WorkFlow Part 2</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h6><span id="tags-yii-gitpod">tags: <code>yii</code> <code>gitpod</code></span></h6>
+<h2><span id="前情提要">前情提要</span></h2>
+<p>接續part 1提到的gitpod環境所遇到的問題，底下就列出幾個關鍵調整的地方</p>
+<h2><span id="gitpod-workflow">Gitpod WorkFlow</span></h2>
+<ul>
+<li>開啟gitpod.io網址開啟空白專案
+<ul>
+<li>使用git clone將專案複製到這個環境</li>
+<li>使用volumes
+<ul>
+<li>將當前的user與group的設定複製到container環境</li>
+<li>設定專案所需環境變數</li>
+</ul>
+</li>
+<li>調整dockerFile
+<ul>
+<li>將環境變數相關的檔案複製到container中</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3><span id="gitpod的base-image和full-workspace兩者之間的關係">Gitpod的Base Image和Full Workspace兩者之間的關係</span></h3>
+<ul>
+<li>gitpod image的dependency會長得像這樣</li>
+</ul>
+<p><img src="https://i.imgur.com/a1AzDHs.png" alt=""></p>
+<h4><span id="reference">Reference</span></h4>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/gitpod-io/workspace-images/blob/2e5340ee0f9c39aef3f499ba7a5466087e700fb9/base/Dockerfile">Base Dockerfile</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/gitpod-io/workspace-images/blob/3671677ff78059c6f5d94ec034903398a12bdec2/.circleci/config.yml">Config.yml</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/docker-library/buildpack-deps">FROM buildpack-deps:focal</a></p>
+</li>
+</ul>
+<h2><span id="code">Code</span></h2>
+<ul>
+<li>frontend/apache2/000-default.conf</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /app/frontend/web/&gt;</span><br><span class="line">        Options Indexes FollowSymLinks</span><br><span class="line">        AllowOverride All</span><br><span class="line">        Require all granted</span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">        # The ServerName directive sets the request scheme, hostname and port that</span><br><span class="line">        # the server uses to identify itself. This is used when creating</span><br><span class="line">        # redirection URLs. In the context of virtual hosts, the ServerName</span><br><span class="line">        # specifies what hostname must appear in the request&#x27;s Host: header to</span><br><span class="line">        # match this virtual host. For the default virtual host (this file) this</span><br><span class="line">        # value is not decisive as it is used as a last resort host regardless.</span><br><span class="line">        # However, you must set it for any further virtual host explicitly.</span><br><span class="line">        #ServerName www.example.com</span><br><span class="line"></span><br><span class="line">        ServerAdmin webmaster@localhost</span><br><span class="line">        DocumentRoot /app/frontend/web</span><br><span class="line"></span><br><span class="line">        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,</span><br><span class="line">        # error, crit, alert, emerg.</span><br><span class="line">        # It is also possible to configure the loglevel for particular</span><br><span class="line">        # modules, e.g.</span><br><span class="line">        #LogLevel info ssl:warn</span><br><span class="line"></span><br><span class="line">        ErrorLog $&#123;APACHE_LOG_DIR&#125;/error.log</span><br><span class="line">        CustomLog $&#123;APACHE_LOG_DIR&#125;/access.log combined</span><br><span class="line"></span><br><span class="line">        # For most configuration files from conf-available/, which are</span><br><span class="line">        # enabled or disabled at a global level, it is possible to</span><br><span class="line">        # include a line for only one particular virtual host. For example the</span><br><span class="line">        # following line enables the CGI configuration for this host only</span><br><span class="line">        # after it has been globally disabled with &quot;a2disconf&quot;.</span><br><span class="line">        #Include conf-available/serve-cgi-bin.conf</span><br><span class="line">        &lt;Directory &quot;/app/frontend/web/&quot;&gt;</span><br><span class="line">            # use mod_rewrite for pretty URL support</span><br><span class="line">            RewriteEngine on</span><br><span class="line">            # If a directory or a file exists, use the request directly</span><br><span class="line">            RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">            RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">            # Otherwise forward the request to index.php</span><br><span class="line">            RewriteRule . index.php</span><br><span class="line"></span><br><span class="line">            # use index.php as index file</span><br><span class="line">            DirectoryIndex index.php</span><br><span class="line"></span><br><span class="line">            # ...other settings...</span><br><span class="line">            # Apache 2.4</span><br><span class="line">            Require all granted</span><br><span class="line"></span><br><span class="line">            ## Apache 2.2</span><br><span class="line">            # Order allow,deny</span><br><span class="line">            # Allow from all</span><br><span class="line">        &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>dockerFile</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> yiisoftware/yii2-php:<span class="number">7.2</span>-apache</span><br><span class="line"></span><br><span class="line"><span class="comment"># Change document root for Apache</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> /apache2/000-default.conf /etc/apache2/sites-available/000-default.conf </span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>docker-compose.yml</li>
+</ul>
+<p>這兩行為關鍵:</p>
+<ul>
+<li>/etc/passwd:/etc/passwd:ro</li>
+<li>/etc/group:/etc/group:ro</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">frontend:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">frontend</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">20080</span><span class="string">:80</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="comment"># Re-use local composer cache via host-volume</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">~/.composer-docker/cache:/root/.composer/cache:delegated</span></span><br><span class="line">      <span class="comment"># Mount source-code for development</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./:/app</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/etc/passwd:/etc/passwd:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/etc/group:/etc/group:ro</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mysql</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-03-24T19:56:00.000Z"><a href="/2019/03/24/The-power-of-language-1/">2019-03-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/03/24/The-power-of-language-1/">The power of language</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>每一次挫折都是離成功更進一步，每一個成功都是藏在拐角後頭。如果你不多轉幾個彎，怎麼知道成功離你多遠。事實上，一次一步並不算遠，但你終將達成目標。</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=-Hi26Otz1To">語言具有改變思想的魔法喔！</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-03-24T19:51:00.000Z"><a href="/2019/03/24/Postman-Imgur-OAuth-2-0-Setting/">2019-03-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/03/24/Postman-Imgur-OAuth-2-0-Setting/">Postman Imgur OAuth 2.0 Setting</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>postman<br>
+- 建立變數<br>
+- global、collection、environment<br>
+- 用環境管理不同的變數<br>
+- 每一個Oauth的請求都有自己的token_url、authorize_url、callback_url</p>
+<ul>
+<li>OAuth四個步驟:
+<ul>
+<li>註冊、授權、請求、取得token
+<ul>
+<li>註冊:獲得client_id和client_secret</li>
+<li>授權
+<ul>
+<li>詢問使用者是否願意提供個人資料讓應用程式存取資料</li>
+<li>refresh and access tokens, an authorization_code, or a PIN code.</li>
+<li>用這些東西來換access_token and refresh_token.</li>
+</ul>
+</li>
+<li>授權種類:
+<ul>
+<li>access token:把它想成是存取使用者資料的一組資訊(像帳號密碼一樣)，一個月之後會過期</li>
+<li>refresh token:不會過期的access token</li>
+<li>authorization_code:伺服器用來取得access token和refresh token(存在只是為了交換token使用)</li>
+<li>PIN code:使用者用來取得access token和refresh token的方式(存在只是為了交換token使用)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://api.imgur.com/oauth2">https://api.imgur.com/oauth2</a></li>
+</ul>
+</li>
+</ul>
+<h4><span id="imgur-postman-setting">Imgur PostMan Setting</span></h4>
+<pre><code> Uri:https://api.imgur.com/3/account/me/images
+</code></pre>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=NRU_KdUSjD4">Testing OAuth2 Authorization Flow with Postman</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-02-20T22:09:00.000Z"><a href="/2019/02/20/Room-Manager-In-React-Vue-js/">2019-02-20</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/02/20/Room-Manager-In-React-Vue-js/">Room Manager In React/Vue.js</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <ul>
+<li>
+<p>標題放置於圖片前面的技巧</p>
+<ul>
+<li>外面圖片cover設定為relative
+<ul>
+<li>裡面設定absolute</li>
+<li>就可以讓標題指定到想放的位置，通常一開始會跑到很上面的地方</li>
+</ul>
+</li>
+<li>把圖片置中，讓縮放不會怪怪的
+<ul>
+<li>background-size: cover</li>
+<li>background-position: center center</li>
+</ul>
+</li>
+<li>偽元素增加錢字號
+<ul>
+<li>讓使用者可以直接複製金額而不會複製到錢號</li>
+</ul>
+</li>
+<li>設置圖片滑鼠移入放大縮小效果
+<ul>
+<li>background-image: url();</li>
+<li>background-size: 110% auto;</li>
+</ul>
+</li>
+<li>外框邊框效果與隱藏超出外框的設定
+<ul>
+<li>border-radius: 2px</li>
+<li>overflow: hidden</li>
+</ul>
+</li>
+<li>外框滑鼠滑入背景陰影
+<ul>
+<li>box-shadow: 0 10px 1px -5px rgba(0, 0, 0, 0.1)</li>
+</ul>
+</li>
+<li>利用標題屬性來排列元素，讓外面的元素可以設定邊距
+<ul>
+<li>h5英文說明欄位</li>
+<li>h4排列下方的價錢(本身已經是粗體字，而且在同一行)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Vue元件的第一個參數首字母可以是大寫也可以是小寫，之後一律小寫(把元件想成是自定義的html tag比較好明白)</p>
+<ul>
+<li>computed()方法沒有辦法用在background-image:url()，要改用methods</li>
+<li>透過使用methods，可以在設定style的時候，把url傳入，此時會產生相對應的css設定</li>
+<li>component目前還不知道要怎麼繼承父類別的methods，先將methods寫在component裡面</li>
+</ul>
+</li>
+<li>
+<p>使用font-awesome加入小圖示</p>
+<ul>
+<li>input是當行元素，要用v-model來綁定值</li>
+<li>select的值要用:value關聯回去原本的data</li>
+</ul>
+</li>
+<li>
+<p>CSS hack</p>
+<ul>
+<li>room_edit:設定邊框和邊距</li>
+<li>room_tag:呈現三個元素
+<ul>
+<li>h4:標題和垃圾桶</li>
+<li>input.toggle-check(type=“checkbox”):利用checkbox的偽元素隱藏或顯示編輯區域</li>
+<li>.edit_part:真正的編輯區域</li>
+</ul>
+</li>
+<li>＊外層要用label包住所有作用的區塊checkbox才有作用</li>
+</ul>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://codesandbox.io/s/github/edwardyi/room_manager_in_react/">Room Manager In React</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://codepen.io/edwardyi/pen/YBJGwE">Room Manager In Vue.js</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-02-15T07:47:00.000Z"><a href="/2019/02/15/Color-Picker-In-React/">2019-02-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/02/15/Color-Picker-In-React/">Color Picker Tool In React/Vue.js</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>這次的練習在於熟悉Vue元件的寫法，以及Bootstrap 4版面布局，Vue的元件第一個參數必須全部小寫，這點要特別注意。</p>
+<ul>
+<li>Html
+<ul>
+<li>注意codepen引用bootstrap時使用的版本(bootstrap 4)
+<ul>
+<li>如果想要同一行顯示用row包起來</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>React
+<ul>
+<li>思考如何取得與處理textarea的內容</li>
+</ul>
+</li>
+<li>Vue
+<ul>
+<li>元件:第一個元件的參數開頭需要全部小寫
+<ul>
+<li>使用元件的好處，能夠有自己的計算屬性</li>
+<li>從父類別繼承下來的屬性可以再重新計算成新的屬性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Javascript
+<ul>
+<li>Vue裡面的東西都是物件</li>
+<li>html中都是用等號和引號取得vue的物件或資料</li>
+<li>用:style屬性接收物件的css設定的物件
+<ul>
+<li>:style=“card.csscolor”</li>
+<li>:v-model=“color_cards”</li>
+<li>:v-for=“card in color_cards”</li>
+</ul>
+</li>
+<li>computed裡面接的是object類型的東西
+<ul>
+<li>計算出color_card字串切割後的值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CSS
+<ul>
+<li>hover:設定移動效果
+<ul>
+<li>transform: translate(5px, 5px);</li>
+<li>transition: 4s</li>
+</ul>
+</li>
+<li>codepen編譯pug和sass差異
+<ul>
+<li>編譯pug會重新整理頁面</li>
+<li>編譯sass不重新整理頁面,但會動態替換頁面的內容</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Source Code如下:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://codesandbox.io/s/github/edwardyi/ColorCardPicker">Color Card Picker In React</a></li>
+<li><a target="_blank" rel="noopener" href="https://codepen.io/edwardyi/pen/PVdNOz">Color Card Picker In Vue.js</a></li>
+</ul>
+<p>📗:<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=P_Q76_hV1L4">使用Vue.js建立sass色票工具</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-02-13T12:04:00.000Z"><a href="/2019/02/13/Introduction-to-Algorithms-Third-Edition/">2019-02-13</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/02/13/Introduction-to-Algorithms-Third-Edition/">Introduction to Algorithms Third Edition</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><a target="_blank" rel="noopener" href="https://www.amazon.com/gp/product/0262033844/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0262033844&amp;linkCode=as2&amp;tag=edwardyispace-20&amp;linkId=f46185c40bfc33c58b50935cd8fb256e"><img src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;MarketPlace=US&amp;ASIN=0262033844&amp;ServiceVersion=20070822&amp;ID=AsinImage&amp;WS=1&amp;Format=_SL250_&amp;tag=edwardyispace-20" alt="Introduction to Algorithms Third Edition"></a></p>
+<ul>
+<li>問題
+<ul>
+<li>問題的難度
+<ul>
+<li>由問題的規則決定問題的難度</li>
+<li>會影響computation model</li>
+<li>限制魔術方塊只能往前轉，就會增加解題的難度</li>
+</ul>
+</li>
+<li>解決問題的定義
+<ul>
+<li>用了兩個反證法來說明擂台法的正確性</li>
+<li>證明j*是最大的
+<ul>
+<li>j*=1的情況，不需要執行for loop，直接return j</li>
+<li>j*&gt;1的情況，比j大執行for loop，j被換成j*，最後回傳j</li>
+</ul>
+</li>
+<li>證明困難度不能再比n-1更低
+<ul>
+<li>如果是n-2的話,就會存在有兩個第一名,沒有辦法分出勝負</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>problem instance就是input
+<ul>
+<li>任何的input都要能夠滿足rule(algorithm)</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/6x7Xn5p.jpg" alt="Algorithm and problem instances"></p>
+<ul>
+<li>problem instance:所有輸入的序列串</li>
+<li>algorithm:
+<ul>
+<li>problem-oriented programming</li>
+<li>用執行的速度衡量演算法的好壞</li>
+<li>多個輸入經過演算法的處理之後產生唯一正確答案</li>
+<li>生活中的演算法，用最少做最好
+<ul>
+<li>評估東西的好壞
+<ul>
+<li>是不是盜版的商品</li>
+<li>東西的CP值/性價比高不高</li>
+</ul>
+</li>
+<li>找出最佳路徑</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>少用遞迴，用for while代替
+<ul>
+<li>遞迴是用stack的方式來存放未處理的函式</li>
+<li>不但當前的問題沒有解決還會產生很多子問題(以2的n次方產生問題)</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://therecyclebin.files.wordpress.com/2008/05/time-complexity.png" alt="Big O Complexity"></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=-muH40oK4cA&amp;t=2285s">ADA Lecture 1: Introduction</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=o4OfLD4IFSg">jessy 主講 圖說演算法</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-02-12T15:20:00.000Z"><a href="/2019/02/12/Learning-Object-Oriented-In-Java/">2019-02-12</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/02/12/Learning-Object-Oriented-In-Java/">Learning Object-Oriented Programming In Java</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <ul>
+<li>Class和Object的差別
+<ul>
+<li>class代表廣泛的非具體的抽象概念,可以是任何東西
+<ul>
+<li>例:IDE、圖書館、書</li>
+</ul>
+</li>
+<li>object是具體的東西
+<ul>
+<li>Netbeans、Eclipse、台北圖書館、倚天屠龍記</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Java和C語言的差異
+<ul>
+<li>Java在編譯的時候需要和其他Java文件一起編譯成一個工程(package)</li>
+<li>C語言直接編譯即可(gcc test.c -o test)</li>
+<li>定義類別的時候也不太一樣(全域變數)</li>
+</ul>
+</li>
+<li>兩個例子分別說明類的概念
+<ul>
+<li>張三和李四到銀行存錢
+<ul>
+<li>存款、提款</li>
+<li>建立帳戶的時候就需要給名稱和存款的額度</li>
+</ul>
+</li>
+<li>二哈繼承狗的類別
+<ul>
+<li>一般會給狗取名字,而狗也有自己的年齡和性別</li>
+<li>二哈繼承狗的類別,在eclipse當中可以直接override父類別建構方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>子類繼承父類
+<ul>
+<li>Eclipse產生的建構子會自動為相對應的成員變數進行賦值</li>
+<li>UML類圖,哈士奇繼承狗的類別</li>
+<li>overload:相同名稱不同參數會找到對應的方法呼叫</li>
+<li>override:覆寫父類別的方法
+<ul>
+<li>當子類出現和父類別一樣的方法時,就用子類別的方法</li>
+<li>子類只能夠存取protected的成員變量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>ArrayListTest.java</span><a target="_blank" rel="noopener" href="https://gist.github.com/edwardyi/88d2772df5b85e208f42473e75d09a50">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// 沒有加會有小紅線提示</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">public class ArrayListTest&#123;</span><br><span class="line">	public static void test1&#123;</span><br><span class="line">		int[] arr = new int[10];</span><br><span class="line">		arr[0] = 2;</span><br><span class="line">		arr[1] = 3;</span><br><span class="line">		for(int i=0; i&lt; arr.length; i++)&#123;</span><br><span class="line">			System.out.println(arr[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		// 沒有指定型別的話會出現小黃線</span><br><span class="line">		ArrayList&lt;Integer&gt; arr = new ArrayList&lt;Integer&gt;();</span><br><span class="line">		arr.add(1);</span><br><span class="line">		arr.add(3);</span><br><span class="line">		arr.add(5);</span><br><span class="line">		arr.remove(1); //移除第二個元素</span><br><span class="line">		for(int i=0; i&lt;arr.size(); i++)&#123;</span><br><span class="line">			// 使用get來取得陣列的值</span><br><span class="line">			System.out.println(arr.get(i));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<script src="//gist.github.com/88d2772df5b85e208f42473e75d09a50.js?file=find"></script>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av16930207">Java面向对象简介</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav id="pagination">
+  
+  
+    <a href="/page/2/" class="alignright next">Next</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:edwardyi.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <!-- /Algorithm/ -->
+    <li><a href="/Algorithm/">Algorithm</a><small>1</small></li>
+  
+    <!-- /Book-Reviews/ -->
+    <li><a href="/Book-Reviews/">Book Reviews</a><small>1</small></li>
+  
+    <!-- /Bootstrap/ -->
+    <li><a href="/Bootstrap/">Bootstrap</a><small>2</small></li>
+  
+    <!-- /CodeIgniter/ -->
+    <li><a href="/CodeIgniter/">CodeIgniter</a><small>1</small></li>
+  
+    <!-- /Codewars/ -->
+    <li><a href="/Codewars/">Codewars</a><small>1</small></li>
+  
+    <!-- /Docker/ -->
+    <li><a href="/Docker/">Docker</a><small>1</small></li>
+  
+    <!-- /Git/ -->
+    <li><a href="/Git/">Git</a><small>1</small></li>
+  
+    <!-- /Gitpod/ -->
+    <li><a href="/Gitpod/">Gitpod</a><small>1</small></li>
+  
+    <!-- /Java/ -->
+    <li><a href="/Java/">Java</a><small>1</small></li>
+  
+    <!-- /Javascript/ -->
+    <li><a href="/Javascript/">Javascript</a><small>1</small></li>
+  
+    <!-- /Jquery/ -->
+    <li><a href="/Jquery/">Jquery</a><small>1</small></li>
+  
+    <!-- /Laravel/ -->
+    <li><a href="/Laravel/">Laravel</a><small>4</small></li>
+  
+    <!-- /NodeJs/ -->
+    <li><a href="/NodeJs/">NodeJs</a><small>1</small></li>
+  
+    <!-- /ReactJs/ -->
+    <li><a href="/ReactJs/">ReactJs</a><small>2</small></li>
+  
+    <!-- /Regular-Expressions/ -->
+    <li><a href="/Regular-Expressions/">Regular Expressions</a><small>1</small></li>
+  
+    <!-- /Unit-Test/ -->
+    <li><a href="/Unit-Test/">Unit Test</a><small>3</small></li>
+  
+    <!-- /Virtualbox/ -->
+    <li><a href="/Virtualbox/">Virtualbox</a><small>1</small></li>
+  
+    <!-- /ReactJs/VueJs/ -->
+    <li><a href="/ReactJs/VueJs/">VueJs</a><small>2</small></li>
+  
+    <!-- /language/ -->
+    <li><a href="/language/">language</a><small>1</small></li>
+  
+    <!-- /postman/ -->
+    <li><a href="/postman/">postman</a><small>1</small></li>
+  
+    <!-- /scrimba/ -->
+    <li><a href="/scrimba/">scrimba</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  <script type="text/javascript">
+    amzn_assoc_placement = "adunit0";
+    amzn_assoc_search_bar = "true";
+    amzn_assoc_tracking_id = "edwardyispace-20";
+    amzn_assoc_search_bar_position = "bottom";
+    amzn_assoc_ad_mode = "search";
+    amzn_assoc_ad_type = "smart";
+    amzn_assoc_marketplace = "amazon";
+    amzn_assoc_region = "US";
+    amzn_assoc_title = "Shop Related Products";
+    amzn_assoc_default_search_phrase = "WD SSD";
+    amzn_assoc_default_category = "All";
+    amzn_assoc_linkid = "37b2ee2b21e636afb10606fa741d8491";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2021 Edwardyi
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'edwardyi-blog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

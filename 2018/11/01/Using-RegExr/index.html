@@ -1,0 +1,351 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Using RegExr | Edwardyi Blog</title>
+  <meta name="author" content="Edwardyi">
+  
+  <meta name="description" content="年少輕狂的好日子，一懂事就結束">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Using RegExr"/>
+  <meta property="og:site_name" content="Edwardyi Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Edwardyi Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer', 'GTM-57XKRCL');</script>
+	<!-- End Google Tag Manager -->
+
+	
+  
+	<!-- facebook tag -->
+	<meta name="facebook-domain-verification" content="ehpewsl8kx5bmjcejqnpr91tmpdmeg" />
+	<!-- End facebook tag -->
+
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57XKRCL"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Edwardyi Blog</a></h1>
+  <h2><a href="/">To go forward you must backup</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/works">Works</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-11-01T08:13:00.000Z"><a href="/2018/11/01/Using-RegExr/">2018-11-01</a></time>
+      
+      
+  
+    <h1 class="title">Using RegExr</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3><span id="正規表達式">正規表達式</span></h3>
+<ul>
+<li>.+:某
+<ul>
+<li>.+searchItem</li>
+</ul>
+</li>
+<li>.:代表任何東西
+<ul>
+<li>任意一個東西</li>
+<li>小丑卡，可以代表任何東西</li>
+<li>萬用任意(wildcard)</li>
+<li>如果想要match到點的話,要跳脫/.</li>
+<li>王…</li>
+<li>匹配3.14 =&gt; 3.14</li>
+</ul>
+</li>
+<li>\w:
+<ul>
+<li>所有的數字、文字和底線(可以用來檢查用戶名稱)</li>
+<li>\W:\w的補集(加減乘除)</li>
+</ul>
+</li>
+<li>\d:
+<ul>
+<li>匹配數字</li>
+<li>\D:\d的補集(除了數字以外)</li>
+</ul>
+</li>
+<li>\s:
+<ul>
+<li>匹配空格、tab</li>
+<li>\S:\s的補集(除了空白以外)</li>
+</ul>
+</li>
+<li>[]:可以是甚麼的字元
+<ul>
+<li>[^b]og:不是b</li>
+<li></li>
+<li></li>
+<li>轉成unicode:19968-40869</li>
+</ul>
+</li>
+<li>():分組(常用)
+<ul>
+<li>(\w+)</li>
+</ul>
+</li>
+<li>*:匹配所有
+<ul>
+<li>{0,}</li>
+</ul>
+</li>
+<li>+:匹配至少一個字元
+<ul>
+<li>{1,} at least 1</li>
+</ul>
+</li>
+<li>?:匹配零個或1個
+<ul>
+<li>{0,1}</li>
+</ul>
+</li>
+<li>{}:要出現幾次甚麼東西
+<ul>
+<li>z{3}:zzz</li>
+</ul>
+</li>
+</ul>
+<p><em>範例</em></p>
+<ul>
+<li><a href="regexr.com/42ajm">Yo後面有文字</a></li>
+</ul>
+<p><em>參考連結</em></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=EkluES9Rvak">Best of Fluent 2012</a></li>
+<li><a target="_blank" rel="noopener" href="https://regexr.com/">regexr</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av18182693">bilibili表嚴肅</a></li>
+<li><a target="_blank" rel="noopener" href="https://regexone.com/lesson/wildcards_dot?">regexone學習正規表達式的好地方</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=2CwzOjYbi-w&amp;list=PLXbU-2B80FvCKj0aqdpudCqpif2vNuING">正規表達式</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a target="_blank" rel="noopener" href="//Regular-Expressions/">Regular Expressions</a>
+  </div>
+
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:edwardyi.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <!-- /Algorithm/ -->
+    <li><a href="/Algorithm/">Algorithm</a><small>1</small></li>
+  
+    <!-- /Book-Reviews/ -->
+    <li><a href="/Book-Reviews/">Book Reviews</a><small>1</small></li>
+  
+    <!-- /Bootstrap/ -->
+    <li><a href="/Bootstrap/">Bootstrap</a><small>2</small></li>
+  
+    <!-- /CodeIgniter/ -->
+    <li><a href="/CodeIgniter/">CodeIgniter</a><small>1</small></li>
+  
+    <!-- /Codewars/ -->
+    <li><a href="/Codewars/">Codewars</a><small>1</small></li>
+  
+    <!-- /Docker/ -->
+    <li><a href="/Docker/">Docker</a><small>1</small></li>
+  
+    <!-- /Git/ -->
+    <li><a href="/Git/">Git</a><small>1</small></li>
+  
+    <!-- /Gitpod/ -->
+    <li><a href="/Gitpod/">Gitpod</a><small>1</small></li>
+  
+    <!-- /Java/ -->
+    <li><a href="/Java/">Java</a><small>1</small></li>
+  
+    <!-- /Javascript/ -->
+    <li><a href="/Javascript/">Javascript</a><small>1</small></li>
+  
+    <!-- /Jquery/ -->
+    <li><a href="/Jquery/">Jquery</a><small>1</small></li>
+  
+    <!-- /Laravel/ -->
+    <li><a href="/Laravel/">Laravel</a><small>4</small></li>
+  
+    <!-- /NodeJs/ -->
+    <li><a href="/NodeJs/">NodeJs</a><small>1</small></li>
+  
+    <!-- /ReactJs/ -->
+    <li><a href="/ReactJs/">ReactJs</a><small>2</small></li>
+  
+    <!-- /Regular-Expressions/ -->
+    <li><a href="/Regular-Expressions/">Regular Expressions</a><small>1</small></li>
+  
+    <!-- /Unit-Test/ -->
+    <li><a href="/Unit-Test/">Unit Test</a><small>3</small></li>
+  
+    <!-- /Virtualbox/ -->
+    <li><a href="/Virtualbox/">Virtualbox</a><small>1</small></li>
+  
+    <!-- /ReactJs/VueJs/ -->
+    <li><a href="/ReactJs/VueJs/">VueJs</a><small>2</small></li>
+  
+    <!-- /language/ -->
+    <li><a href="/language/">language</a><small>1</small></li>
+  
+    <!-- /postman/ -->
+    <li><a href="/postman/">postman</a><small>1</small></li>
+  
+    <!-- /scrimba/ -->
+    <li><a href="/scrimba/">scrimba</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  <script type="text/javascript">
+    amzn_assoc_placement = "adunit0";
+    amzn_assoc_search_bar = "true";
+    amzn_assoc_tracking_id = "edwardyispace-20";
+    amzn_assoc_search_bar_position = "bottom";
+    amzn_assoc_ad_mode = "search";
+    amzn_assoc_ad_type = "smart";
+    amzn_assoc_marketplace = "amazon";
+    amzn_assoc_region = "US";
+    amzn_assoc_title = "Shop Related Products";
+    amzn_assoc_default_search_phrase = "WD SSD";
+    amzn_assoc_default_category = "All";
+    amzn_assoc_linkid = "37b2ee2b21e636afb10606fa741d8491";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2021 Edwardyi
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'edwardyi-blog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

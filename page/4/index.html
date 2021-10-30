@@ -1,0 +1,538 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Page 4 | Edwardyi Blog</title>
+  <meta name="author" content="Edwardyi">
+  
+  <meta name="description" content="年少輕狂的好日子，一懂事就結束">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Edwardyi Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Edwardyi Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer', 'GTM-57XKRCL');</script>
+	<!-- End Google Tag Manager -->
+
+	
+  
+	<!-- facebook tag -->
+	<meta name="facebook-domain-verification" content="ehpewsl8kx5bmjcejqnpr91tmpdmeg" />
+	<!-- End facebook tag -->
+
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57XKRCL"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Edwardyi Blog</a></h1>
+  <h2><a href="/">To go forward you must backup</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/works">Works</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-09T16:17:00.000Z"><a href="/2018/10/09/sing-Laravel-AdminLTE/">2018-10-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/09/sing-Laravel-AdminLTE/">Using Laravel AdminLTE</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h4><span id="使用composer-require引用套件">使用composer require引用套件</span></h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require jeroennoten/laravel-adminlte</span><br></pre></td></tr></table></figure>
+<h4><span id="配置configappphp">配置config/app.php</span></h4>
+<ul>
+<li>找尋使用的套件包</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JeroenNoten\LaravelAdminLte\ServiceProvider::class,</span><br></pre></td></tr></table></figure>
+<h4><span id="執行publish命令">執行publish命令</span></h4>
+<ul>
+<li>將vendor產生的template複製一份到public資料夾</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php artisan vendor:publish --provider=<span class="string">&quot;JeroenNoten\LaravelAdminLte\ServiceProvider&quot;</span> --tag=assets</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://github.com/jeroennoten/Laravel-AdminLTE">AdminLTE</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-09T09:23:00.000Z"><a href="/2018/10/09/aravel-Intro/">2018-10-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/09/aravel-Intro/">Laravel Intro</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2><span id="安裝完設定主目錄到documentroot">安裝完設定主目錄到documentRoot</span></h2>
+<h2><span id="資料夾">資料夾</span></h2>
+<ul>
+<li>storage:編譯後產生的檔案、log檔案，設定為可以寫入的權限</li>
+<li>bootstrap:框架啟動加載的檔案</li>
+<li>cache:加載後產生的檔案</li>
+<li>vendor:composer命令模組</li>
+<li>app:系統核心代碼</li>
+</ul>
+<h2><span id="開權限">開權限</span></h2>
+<ul>
+<li>chmod -R 777 storage</li>
+<li>chmod -R 777 bootstrap/cache</li>
+</ul>
+<h2><span id="artisan工匠">Artisan工匠</span></h2>
+<ul>
+<li>symfony console元件為基礎架構</li>
+<li>php artisan list</li>
+<li>php artisan --version</li>
+<li>php artisan make:command SendEmails</li>
+<li>php artisan make:controller CustomerController</li>
+</ul>
+<h2><span id="定義路由">定義路由</span></h2>
+<ul>
+<li>與客戶端互動</li>
+<li>用routes/web.php定義web相關的routes</li>
+<li>用routes/api.php定義api相關的routes</li>
+</ul>
+<h2><span id="路由動詞">路由動詞</span></h2>
+<ul>
+<li>get/post/delete/put</li>
+<li>符合所有any</li>
+<li>符合一部分match</li>
+<li>url helper透過url()轉向</li>
+</ul>
+<h1><span id="laravel-eloquent">Laravel Eloquent</span></h1>
+<h2><span id="繼承了eloquent就相當於幹了很多事情">繼承了Eloquent就相當於幹了很多事情</span></h2>
+<h2><span id="中間流builder">中間流(Builder)</span></h2>
+<ul>
+<li>建立了一個對象，在中間不斷地去改變它</li>
+<li>用::訪問某個function，無論是否為static，__construct()都不會被調用</li>
+<li>Builder對象不能直接存取Article對象，需要轉成終結對象，才能調用到裡面的屬性</li>
+</ul>
+<h2><span id="模型關係">模型關係</span></h2>
+<h3><span id="orm">ORM</span></h3>
+<ul>
+<li>一對一:不需要中間表</li>
+<li>多對多:用take優化性能</li>
+</ul>
+<h2><span id="php的問題">PHP的問題</span></h2>
+<ul>
+<li>一個網頁一個PHP:使用漏洞攻擊(MVC)</li>
+<li>缺乏統一寫法:一個人離開要了解寫法(Framework)</li>
+<li>每次都從頭開始:開發效率低(不用重新造輪子)</li>
+</ul>
+<h2><span id="framework和library差異">Framework和Library差異</span></h2>
+<ul>
+<li>由開發者決定是否要用方法</li>
+</ul>
+<h2><span id="四類framework">四類Framework</span></h2>
+<ul>
+<li>codeIgniter:支援最廣(適合接案使用)</li>
+<li>laravel:全功能(學習門檻高，底層用symfony)</li>
+<li>slim:簡約(restful API使用)</li>
+<li>phalcon:快速(C語言開發)</li>
+</ul>
+<h2><span id="laravel環境難裝">Laravel環境難裝</span></h2>
+<ul>
+<li>用最新的PHP新功能</li>
+<li>用罕見的Extension</li>
+</ul>
+<h2><span id="指令很多">指令很多</span></h2>
+<ul>
+<li>composer:安裝套件</li>
+<li>artisan:cli tool</li>
+</ul>
+<h2><span id="體驗高手如何寫出oop">體驗高手如何寫出OOP</span></h2>
+<ul>
+<li>把商業邏輯無關又常常用到的功能抽出來</li>
+<li>套件為主的開發方式，名稱衝突問題(NameSpace)</li>
+<li>ORM:SQL物件化</li>
+<li>Migration:欄位開錯，版本控管</li>
+<li>TDD:先寫測試在寫開發</li>
+</ul>
+<h2><span id="tdd好處">TDD好處</span></h2>
+<ul>
+<li>對Spec更加了解</li>
+<li>不用擔心重構的問題</li>
+<li>提早發現架構的問題</li>
+</ul>
+<h3><span id="參考">參考</span></h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://oomusou.io/laravel/laravel-for-newbie/">https://oomusou.io/laravel/laravel-for-newbie/</a></li>
+<li><a target="_blank" rel="noopener" href="https://lvwenhan.com/laravel/421.html(Eloqent)">https://lvwenhan.com/laravel/421.html(Eloqent)</a></li>
+<li><a target="_blank" rel="noopener" href="https://lvwenhan.com/laravel/422.html(%E4%B8%AD%E9%96%93%E6%B5%81)">https://lvwenhan.com/laravel/422.html(中間流)</a></li>
+<li><a target="_blank" rel="noopener" href="https://lvwenhan.com/laravel/423.html(%E6%A8%A1%E5%9E%8B%E9%97%9C%E4%BF%82)">https://lvwenhan.com/laravel/423.html(模型關係)</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/johnlui/Learn-Laravel-4">https://github.com/johnlui/Learn-Laravel-4</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/johnlui/Learn-Laravel-5/issues/16">https://github.com/johnlui/Learn-Laravel-5/issues/16</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b0900bed6de8">https://www.jianshu.com/p/b0900bed6de8</a></li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/hootlex/da59b91c628a6688ceb1">https://gist.github.com/hootlex/da59b91c628a6688ceb1</a>(run locally)</li>
+<li><a target="_blank" rel="noopener" href="http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-2-class-configuration-structure/">http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-2-class-configuration-structure/</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-3-class-artisan/">http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-3-class-artisan/</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-4-class-routes/">http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-4-class-routes/</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@shengyou/2018ironman-eos-for-php-developer-day14-4c5424fc7232(30%E5%A4%A9%E9%90%B5%E4%BA%BA)">https://medium.com/@shengyou/2018ironman-eos-for-php-developer-day14-4c5424fc7232(30天鐵人)</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-09T08:57:00.000Z"><a href="/2018/10/09/st/">2018-10-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/09/st/">Laravel Command</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2><span id="tools">Tools</span></h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://laragon.org/">Laragon</a></li>
+<li><a target="_blank" rel="noopener" href="https://packagecontrol.io/packages/Bootstrap%204%20Snippets">Sublime Bootstrap Snippets</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fzaninotto/Faker#installation">composer require fzaninotto/faker</a></li>
+</ul>
+<h2><span id="lang">Lang</span></h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/caouecs/Laravel-lang">Laravel Lang</a></li>
+<li>composer require caouecs/laravel-lang:~3.0</li>
+<li>second way to change language is to put json language file to lang folder</li>
+</ul>
+<h2><span id="services">Services</span></h2>
+<ul>
+<li>Auth
+<ul>
+<li>attempt(): to login and register session data. Verify email and unencrypted password</li>
+<li>logout()</li>
+</ul>
+</li>
+</ul>
+<h2><span id="migration">Migration</span></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* php artisan make:migration UserTestTable</span><br><span class="line">* php artisan make:seeder UserTestSeeder</span><br><span class="line">* php artisan make:model UserTestSeeder</span><br><span class="line">* php artisan migrate:refresh --model=UserTestSeeder --seed</span><br></pre></td></tr></table></figure>
+<h2><span id="form-crud">FORM CRUD</span></h2>
+<ul>
+<li>@csrf @method(‘DELETE’): filter request</li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/5.7/csrf">csrf</a></li>
+<li>php artisan make:policy PostPolicy: to avoid not authorize user to delete</li>
+<li>using @can(‘delete’, $user) to toggle delete button</li>
+<li>@csrf @method(‘PUT’): fake update method using put instead</li>
+<li><a target="_blank" rel="noopener" href="https://laravel.tw/docs/5.2/helpers#method-method-field">Method Field</a></li>
+</ul>
+<h2><span id="helpers">Helpers</span></h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/barryvdh/laravel-ide-helper">Laravel Ide Helper</a></li>
+</ul>
+<h2><span id="artisan-command">Artisan Command</span></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:controller IndexController</span><br><span class="line">php artisan make:controller UserController --resource</span><br><span class="line">php artisan route:list</span><br><span class="line">php artisan migrate</span><br><span class="line">php artisan make:policy --model=User UserPolicy</span><br></pre></td></tr></table></figure>
+<h2><span id="session-driver">Session Driver</span></h2>
+<ul>
+<li>change .env session_driver to session
+<ul>
+<li>laravel will create sessoin table to record user login message</li>
+<li>once you change the driver type, you need to refresh all record to get the correct result</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php artisan session:table</span><br><span class="line">php artisan migrate:refresh --seed</span><br></pre></td></tr></table></figure>
+<h2><span id="create-app-key-amp-smtp-setting">Create App Key &amp; Smtp Setting</span></h2>
+<p><a target="_blank" rel="noopener" href="https://support.google.com/mail/answer/7126229?hl=zh-Hant">smtp gmail setting</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php artisan key:generate</span><br><span class="line">php artisan make:mail RegMail</span><br></pre></td></tr></table></figure>
+<ul>
+<li>env.php
+<ul>
+<li>MAIL_DRIVER=smtp</li>
+<li>MAIL_HOST=<a target="_blank" rel="noopener" href="http://smtp.gmail.com">smtp.gmail.com</a></li>
+<li>MAIL_PORT=587</li>
+<li><a href="mailto:MAIL_USERNAME=your@gmail.com">MAIL_USERNAME=your@gmail.com</a></li>
+<li>MAIL_PASSWORD=yourgmailpassword</li>
+<li>MAIL_ENCRYPTION=tls</li>
+</ul>
+</li>
+</ul>
+<h3><span id="create-factory-data">create factory data</span></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// manually added records</span><br><span class="line"> php artisan tinker</span><br><span class="line"> factory(App\User::class, 20)-&gt;create();</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// execute by db:seed</span><br><span class="line"> php artisan make:seeder UsersSeeder</span><br><span class="line">// rewrite the DatabaseSeeder.php run method by using factory</span><br><span class="line">// factory(App\User::class, 20)-&gt;create();</span><br><span class="line"> php artisan db:seed</span><br><span class="line"> php artisan migrate:refresh --seed</span><br></pre></td></tr></table></figure>
+<h2><span id="using-policy">Using Policy</span></h2>
+<ul>
+<li>create policy
+<ul>
+<li>php artisan make:policy --model=user UserPolicy</li>
+</ul>
+</li>
+<li>AuthServiceProvider add Policy
+<ul>
+<li>‘App\User’ =&gt; UserPolicy::class,</li>
+<li>remember to add namespace before using this policy</li>
+</ul>
+</li>
+<li>authorize controller destroy method to execute delete method
+<ul>
+<li>$this-&gt;authorize(‘delete’, $user);</li>
+</ul>
+</li>
+</ul>
+<h2><span id="notice">Notice</span></h2>
+<ul>
+<li>routes/web.php</li>
+</ul>
+<ol>
+<li>use get to access controller function
+<ul>
+<li>alias name for changing back to home page</li>
+</ul>
+</li>
+<li>use resource to create default CRUD method
+<ul>
+<li>no need to create additional view blade files</li>
+</ul>
+</li>
+<li>laravel 5.4 support emoji for MySQL 5.7.7
+<ul>
+<li>every time start the app</li>
+<li>Providers\AppServiceProvider.php</li>
+<li>config\app.php</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Route::get(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;IndexController@home&#x27;</span>)-&gt;name(<span class="string">&#x27;home&#x27;</span>);</span><br><span class="line">Route::resource(<span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;UserController&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public function boot()</span><br><span class="line">&#123;</span><br><span class="line">    Schema::defaultStringLength(191);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/3/" class="alignleft prev">Prev</a>
+  
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:edwardyi.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <!-- /Algorithm/ -->
+    <li><a href="/Algorithm/">Algorithm</a><small>1</small></li>
+  
+    <!-- /Book-Reviews/ -->
+    <li><a href="/Book-Reviews/">Book Reviews</a><small>1</small></li>
+  
+    <!-- /Bootstrap/ -->
+    <li><a href="/Bootstrap/">Bootstrap</a><small>2</small></li>
+  
+    <!-- /CodeIgniter/ -->
+    <li><a href="/CodeIgniter/">CodeIgniter</a><small>1</small></li>
+  
+    <!-- /Codewars/ -->
+    <li><a href="/Codewars/">Codewars</a><small>1</small></li>
+  
+    <!-- /Docker/ -->
+    <li><a href="/Docker/">Docker</a><small>1</small></li>
+  
+    <!-- /Git/ -->
+    <li><a href="/Git/">Git</a><small>1</small></li>
+  
+    <!-- /Gitpod/ -->
+    <li><a href="/Gitpod/">Gitpod</a><small>1</small></li>
+  
+    <!-- /Java/ -->
+    <li><a href="/Java/">Java</a><small>1</small></li>
+  
+    <!-- /Javascript/ -->
+    <li><a href="/Javascript/">Javascript</a><small>1</small></li>
+  
+    <!-- /Jquery/ -->
+    <li><a href="/Jquery/">Jquery</a><small>1</small></li>
+  
+    <!-- /Laravel/ -->
+    <li><a href="/Laravel/">Laravel</a><small>4</small></li>
+  
+    <!-- /NodeJs/ -->
+    <li><a href="/NodeJs/">NodeJs</a><small>1</small></li>
+  
+    <!-- /ReactJs/ -->
+    <li><a href="/ReactJs/">ReactJs</a><small>2</small></li>
+  
+    <!-- /Regular-Expressions/ -->
+    <li><a href="/Regular-Expressions/">Regular Expressions</a><small>1</small></li>
+  
+    <!-- /Unit-Test/ -->
+    <li><a href="/Unit-Test/">Unit Test</a><small>3</small></li>
+  
+    <!-- /Virtualbox/ -->
+    <li><a href="/Virtualbox/">Virtualbox</a><small>1</small></li>
+  
+    <!-- /ReactJs/VueJs/ -->
+    <li><a href="/ReactJs/VueJs/">VueJs</a><small>2</small></li>
+  
+    <!-- /language/ -->
+    <li><a href="/language/">language</a><small>1</small></li>
+  
+    <!-- /postman/ -->
+    <li><a href="/postman/">postman</a><small>1</small></li>
+  
+    <!-- /scrimba/ -->
+    <li><a href="/scrimba/">scrimba</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  <script type="text/javascript">
+    amzn_assoc_placement = "adunit0";
+    amzn_assoc_search_bar = "true";
+    amzn_assoc_tracking_id = "edwardyispace-20";
+    amzn_assoc_search_bar_position = "bottom";
+    amzn_assoc_ad_mode = "search";
+    amzn_assoc_ad_type = "smart";
+    amzn_assoc_marketplace = "amazon";
+    amzn_assoc_region = "US";
+    amzn_assoc_title = "Shop Related Products";
+    amzn_assoc_default_search_phrase = "WD SSD";
+    amzn_assoc_default_category = "All";
+    amzn_assoc_linkid = "37b2ee2b21e636afb10606fa741d8491";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2021 Edwardyi
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'edwardyi-blog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

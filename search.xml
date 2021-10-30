@@ -1,0 +1,2210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>A Brief History of Tomorrow</title>
+    <url>/2019/01/21/A-Brief-History-of-Tomorrow/</url>
+    <content><![CDATA[<p><a href="https://www.amazon.com/gp/product/B01N5SBX3W/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B01N5SBX3W&amp;linkCode=as2&amp;tag=edwardyispace-20&amp;linkId=6a88e6229848b7706d2a2fa124bae0bf"><img src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;MarketPlace=US&amp;ASIN=B01N5SBX3W&amp;ServiceVersion=20070822&amp;ID=AsinImage&amp;WS=1&amp;Format=_SL250_&amp;tag=edwardyispace-20" alt="人類大命運"></a></p>
+<p>目前才看到40幾頁,就用好幾個有趣的例子來解釋人類的發展史,非常值得一看。</p>
+<p>Ted演說筆記:</p>
+<p><img src="https://i.imgur.com/stnYOLj.jpg" alt="Why humans run the world"></p>
+<ul>
+<li>Because we can create something that people believe , the fictional entities become more and more powerful</li>
+<li>rich people become god, poor people become useless</li>
+</ul>
+<p>Ted演說影片:<br>
+<a href="https://www.youtube.com/watch?v=nzj7Wg4DAbs">Why humans run the world | Yuval Noah Harari</a></p>
+<p>40幾頁的筆記:</p>
+<p><img src="https://i.imgur.com/R3d9ubC.jpg" alt="Homo Deus The Brief History of Tomorrow"></p>
+]]></content>
+      <categories>
+        <category>Book Reviews</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Bootstrap 4 Navbar/Dropdown Cheatsheet</title>
+    <url>/2018/11/05/Bootstrap-4-Navbar-Dropdown-Cheatsheet/</url>
+    <content><![CDATA[<h3><span id="navbar導行列">Navbar導行列</span></h3>
+<p><em>分結構和樣式</em></p>
+<ul>
+<li>結構
+<ul>
+<li>nav.navbar</li>
+<li>nav.navbar-expand-xl</li>
+<li>ul.navbar-nav</li>
+<li>li.nav-item</li>
+<li>a.nav-link</li>
+</ul>
+</li>
+<li>樣式
+<ul>
+<li>nav.navbar-dark</li>
+<li>nav.navbar-light</li>
+<li>nav.bg-dark</li>
+<li>nav.bg-light</li>
+</ul>
+</li>
+<li>位置
+<ul>
+<li>nav.fixed-top</li>
+<li>nav.fixed-bottom</li>
+<li>nav.sticky-top</li>
+</ul>
+</li>
+<li>顯示/隱藏
+<ul>
+<li>button.navbar-toggler
+<ul>
+<li>data-toggle = “collapse”</li>
+<li>data-target = “#target_name”</li>
+</ul>
+</li>
+<li>span.navbar-toggler-icon</li>
+<li>div.collapse</li>
+<li>div.navbar-collapse</li>
+<li>id = “target_name”</li>
+</ul>
+</li>
+<li>下拉選單
+<ul>
+<li>li.dropdown</li>
+<li>a.dropdown-toggle
+<ul>
+<li>data-toggle = ‘dropdown’</li>
+<li>id = ‘#target_name’</li>
+</ul>
+</li>
+<li>div.dropdown-menu</li>
+<li>div.dropdown-divider
+<ul>
+<li>aria-labelledby = target_name</li>
+</ul>
+</li>
+<li>a.dropdown-item</li>
+</ul>
+</li>
+</ul>
+<p><em><strong>踩坑</strong></em></p>
+<ul>
+<li>如果沒有加上下拉選單的aria-labelledby的屬性，會出現只能展開無法收合的問題</li>
+<li>caret已經不支持了，改用dropdown-toggle的class</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Bootstrap</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Bootstrap 4</title>
+    <url>/2018/11/02/Bootstrap-4/</url>
+    <content><![CDATA[<ul>
+<li>一般不要去改依賴庫的程式，那個工作讓依賴包管理來處理就好
+<ul>
+<li>對修改封閉</li>
+</ul>
+</li>
+<li>快捷鍵
+<ul>
+<li>ctrl+delete:刪除一個單詞</li>
+<li>lipsum:產生dumy words
+<ul>
+<li>不知道為什麼一開始cloud9會沒有辦法識別</li>
+<li>之後反而要打Lorem了，怪怪的</li>
+</ul>
+</li>
+<li>cloud 9預設Emmet plugin</li>
+</ul>
+</li>
+<li>三塊的布局
+<ul>
+<li>col-sm-xx(加起來要是12)</li>
+</ul>
+</li>
+<li>導覽列
+<ul>
+<li>上方navbar
+<ul>
+<li>最外層用div.navbar</li>
+<li>內層有個div.nav.navbar-header</li>
+<li>導航列用ul.nav.navbar-nav</li>
+</ul>
+</li>
+<li>bootstrap 4:
+<ul>
+<li>mr-auto:向左靠(margin-right-auto)</li>
+<li>ml-auto:向右靠(margin-left-auto)</li>
+<li>navbar-expand-lg:當網頁是一般螢幕的時候展開</li>
+<li>navbar-collapse:隱藏起來</li>
+<li>navbar-toggler-icon</li>
+</ul>
+</li>
+<li>和上方文字對齊，加上row的div
+<ul>
+<li>因為row有css的樣式，把他的margin和padding覆蓋掉</li>
+</ul>
+</li>
+<li>踩到官網3.3.1 slim.js的問題
+<ul>
+<li>用的太新了，改用六角學院的連結就有用(3.2.1.slim)</li>
+<li>小畫面的時候會沒有辦法toggle導覽列</li>
+</ul>
+</li>
+<li>修改Logo
+<ul>
+<li>background-image:url(設定圖片位置)</li>
+<li>background-size:
+<ul>
+<li>cover(圖片填充，會發現整個圖片重複了，而且覺得太滿了一點)</li>
+<li>80%</li>
+</ul>
+</li>
+<li>background-repeat:no-repeat
+<ul>
+<li>調整background-size圖片重複的問題</li>
+</ul>
+</li>
+<li>background-position:調整圖片位置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>左方sidebar
+<ul>
+<li>多增加一個sidebar的類，比較明確，避免改到其他的地方的樣式</li>
+<li>list-group-item</li>
+<li>學會了怎麼用emmet添加多個假的item
+<ul>
+<li>div.list-group&gt;(a[#].list-group-item.list-group-item-hover{item$})*5</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>中間區塊
+<ul>
+<li>圖片設置
+<ul>
+<li>讓圖片限制在一個範圍內</li>
+<li>max-width:100%(讓他不會超過外面元素的100%)</li>
+<li>col-xs-xx:在bootstrap 4不管用拉(用col-md-{})</li>
+</ul>
+</li>
+<li>整理共用樣式用逗號串接</li>
+<li>grid system如果要顯示在同一列要用row包起來</li>
+<li>用一個div包起來info
+<ul>
+<li>也方便統一裡面的樣式</li>
+</ul>
+</li>
+<li>調整title行距
+<ul>
+<li>改成超連結，display:block</li>
+</ul>
+</li>
+<li>clearfix:bootstrap 3需要清除float</li>
+</ul>
+</li>
+<li>右方區塊
+<ul>
+<li>一般放業務有關的訊息</li>
+<li>不能用數字命名阿</li>
+<li>把標題字調大</li>
+<li>不確定怎麼把右方標題的上下間距調大一些</li>
+</ul>
+</li>
+<li>新聞詳細頁
+<ul>
+<li>lorem*10</li>
+<li>Label用法</li>
+</ul>
+</li>
+</ul>
+<p><em>參考連結</em></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=23bpce-5s8I">bootstrap 4教學</a></li>
+<li><a href="https://designshack.net/articles/css/7-awesome-emmet-html-time-saving-tips/">Awesome emmet</a></li>
+<li><a href="https://dummyimage.com/">dummyimage</a></li>
+<li><a href="https://stackoverflow.com/questions/41794746/col-xs-not-working-in-bootstrap-4">col-xs in bootstrap 4</a></li>
+<li><a href="https://www.youtube.com/watch?v=qmPmwdshCMw">Grid System bootstrap 4</a></li>
+<li><a href="https://getbootstrap.com/docs/4.0/migration/">Migration to bootstrap 4</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Bootstrap</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CodeIgniter CRUD</title>
+    <url>/2018/10/28/CodeIgniter-CRUD/</url>
+    <content><![CDATA[<p><em>CodeIgniter 3.1</em></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> news (</span><br><span class="line">    id <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    title <span class="type">varchar</span>(<span class="number">128</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    slug <span class="type">varchar</span>(<span class="number">128</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    text text <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    create_at <span class="type">TIMESTAMP</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;新增貼文時間&#x27;</span>,</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY(id),</span><br><span class="line">    KEY slug (slug)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> posts (</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    title <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    slug <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    body text <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    create_at <span class="type">TIMESTAMP</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;新增貼文時間&#x27;</span></span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY(id)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RewriteEngine On</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">RewriteRule ^(.*)$ index.php/$1 [L]</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><figcaption><span>準備</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://code.jquery.com/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>為什麼要用單一路口文件?
+<ul>
+<li>這樣使用會有甚麼問題</li>
+<li>路徑長的醜醜的=&gt;才會有route的規則需要定義</li>
+<li><a href="http://localhost/codeIgniter/index.php/pages/view/">http://localhost/codeIgniter/index.php/pages/view/</a></li>
+<li><a href="http://localhost/codeIgniter/index.php/news/index/">http://localhost/codeIgniter/index.php/news/index/</a></li>
+</ul>
+</li>
+<li>建立controller和route
+<ul>
+<li>讓url變得好看</li>
+<li>定義route規則</li>
+</ul>
+</li>
+<li>建立model
+<ul>
+<li>slug把url去掉,只留下小寫的英文字母</li>
+<li>有點像是簡單的描述,例如:/車子/帥氣的法拉利</li>
+<li>可以用來當作唯一值用來識別某個資源(entry/resource)</li>
+<li>詳細說明可以看stackoverflow解釋(what-is-a-slug)</li>
+</ul>
+</li>
+<li>和我想的比較不一樣的是,他把新聞系統的controller另外拆開
+<ul>
+<li>本來想說寫在一起的</li>
+<li>分開也比較清楚</li>
+</ul>
+</li>
+<li>建立列表頁和檢視頁面</li>
+<li>踩到的第一個坑是自己打錯字,找template的路徑
+<ul>
+<li>不需要為繼承的父類別加上namespace</li>
+<li>改完route發現news不好使了
+<ul>
+<li>先註解起來查原因</li>
+<li>檢視頁面的位置沒有改到view,從index那邊複製過來沒有修改到</li>
+</ul>
+</li>
+<li>原來是沒有加htaccess的關係阿
+<ul>
+<li>當發現怎麼改route都沒有用</li>
+<li>印出來看有設定,而且怎麼敲url就是不出來這時候就該設定htaccess了</li>
+</ul>
+</li>
+<li>新增表單
+<ul>
+<li>把檢視的route設定放到最後面</li>
+</ul>
+</li>
+<li>刪除的坑(id)
+<ul>
+<li>加上要刪除的編號之後,突然發現沒有辦法用open_form的方法了</li>
+<li>原先以為是因為寫法的關係造成的,結果是因為autoload沒有load到那個form的helper,殘念</li>
+<li>沒有對應到controller的method名稱</li>
+</ul>
+</li>
+<li>編輯(slug)=&gt;和view帶一樣的
+<ul>
+<li>bootstrap pull left把放在右邊的顯示到左邊</li>
+<li>要帶入view的slug進去,而不是用id</li>
+<li>少input hidden的id也想成功?</li>
+</ul>
+</li>
+<li>新增navbar-right往右放</li>
+</ul>
+</li>
+<li>小bug
+<ul>
+<li>沒有取到URL參數的時候是取全部的文章</li>
+<li>route的順序很重要,放錯了,url出不來,範圍比較小的放前面</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>CodeIgniter</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Color Picker Tool In React/Vue.js</title>
+    <url>/2019/02/15/Color-Picker-In-React/</url>
+    <content><![CDATA[<p>這次的練習在於熟悉Vue元件的寫法，以及Bootstrap 4版面布局，Vue的元件第一個參數必須全部小寫，這點要特別注意。</p>
+<ul>
+<li>Html
+<ul>
+<li>注意codepen引用bootstrap時使用的版本(bootstrap 4)
+<ul>
+<li>如果想要同一行顯示用row包起來</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>React
+<ul>
+<li>思考如何取得與處理textarea的內容</li>
+</ul>
+</li>
+<li>Vue
+<ul>
+<li>元件:第一個元件的參數開頭需要全部小寫
+<ul>
+<li>使用元件的好處，能夠有自己的計算屬性</li>
+<li>從父類別繼承下來的屬性可以再重新計算成新的屬性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Javascript
+<ul>
+<li>Vue裡面的東西都是物件</li>
+<li>html中都是用等號和引號取得vue的物件或資料</li>
+<li>用:style屬性接收物件的css設定的物件
+<ul>
+<li>:style=“card.csscolor”</li>
+<li>:v-model=“color_cards”</li>
+<li>:v-for=“card in color_cards”</li>
+</ul>
+</li>
+<li>computed裡面接的是object類型的東西
+<ul>
+<li>計算出color_card字串切割後的值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CSS
+<ul>
+<li>hover:設定移動效果
+<ul>
+<li>transform: translate(5px, 5px);</li>
+<li>transition: 4s</li>
+</ul>
+</li>
+<li>codepen編譯pug和sass差異
+<ul>
+<li>編譯pug會重新整理頁面</li>
+<li>編譯sass不重新整理頁面,但會動態替換頁面的內容</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Source Code如下:</p>
+<ul>
+<li><a href="https://codesandbox.io/s/github/edwardyi/ColorCardPicker">Color Card Picker In React</a></li>
+<li><a href="https://codepen.io/edwardyi/pen/PVdNOz">Color Card Picker In Vue.js</a></li>
+</ul>
+<p>📗:<a href="https://www.youtube.com/watch?v=P_Q76_hV1L4">使用Vue.js建立sass色票工具</a></p>
+]]></content>
+      <categories>
+        <category>ReactJs</category>
+        <category>VueJs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Using Composer Learning Unit Test</title>
+    <url>/2018/10/29/Composer-Unit-Test/</url>
+    <content><![CDATA[<p><em>PHPUnit Test卡關了</em></p>
+<ul>
+<li>定義了User的Model還是找不到?
+<ul>
+<li>用Classmap的寫法來找到對應的model</li>
+</ul>
+</li>
+<li>定義classmap
+<ul>
+<li>composer install:產生compsoer.json</li>
+<li>composer dump-autoload
+<ul>
+<li>每次有新的class的時候記得要用dump-autoload一次</li>
+<li>定義好namespace的時候也要使用</li>
+<li>用找歌曲的概念來解釋,一開始只有說要找甚麼歌,但是沒有說要找哪個歌手的甚麼專輯</li>
+</ul>
+</li>
+<li>alias p=./vendor/bin/phpunit</li>
+</ul>
+</li>
+<li>盡量把要測試的方法名稱寫<b>清楚一點</b>
+<ul>
+<li>寫的長沒有關係,要有描述性</li>
+<li>用<b>Annotation</b>可以達到
+<ul>
+<li>把資料抽離出來</li>
+<li>處理例外狀況</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>踩到exception的坑了
+<ul>
+<li>如果傳入錯誤的參數進去,拋出例外的時候要用多行註解,格式錯誤就無法正確的判斷拋出的例外類型</li>
+</ul>
+</li>
+<li>alias 是一個好東西,可以打很少的指令達到一樣的效果
+<ul>
+<li>alias p=./vendor/bin/phpunit</li>
+<li>alias hexoServer=‘hexo server --port $PORT --host $IP’</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;require&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;phpunit/phpunit&quot;</span>: <span class="string">&quot;^7.4&quot;</span>,</span><br><span class="line">        <span class="string">&quot;codeception/codeception&quot;</span>: <span class="string">&quot;^2.5&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    <span class="string">&quot;autoload&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;classmap&quot;</span> : [</span><br><span class="line">            <span class="string">&quot;App/Models&quot;</span>,</span><br><span class="line">            <span class="string">&quot;App/Libraries&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;psr-4&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;App\\&quot;</span>: <span class="string">&quot;app&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><em>Testing System Functions</em></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 用namespace把Foo用到的time重新定義過</span></span><br><span class="line"><span class="comment">// 注意:如果使用use的話會有重複定義的問題</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Libraries</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">time</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;stud&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FooTest</span> <span class="keyword">extends</span> \<span class="title">PHPUnit</span>\<span class="title">Framework</span>\<span class="title">TestCase</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setUp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testDynamicFooTime</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;assertEquals(<span class="string">&#x27;stud&#x27;</span>, (<span class="keyword">new</span> Foo)-&gt;go());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>參考教學:<br>
+<a href="https://www.youtube.com/watch?v=AXh8kc76hCo&amp;list=PLH9Ysf6G9Ue3libSiqkuSju7_2OnQSz1w&amp;index=4">Testing System Functions</a><br>
+<a href="https://www.youtube.com/watch?v=84j61_aI0q8">Composer, Autoloading, Namespacing, and PHPUnit</a><br>
+<a href="https://phpunit.de/manual/6.5/en/appendixes.annotations.html#appendixes.annotations.expectedException">Phpunit Annotations</a><br>
+<a href="https://blog.hsin.tw/2015/linux-alias-works-always/">Linux Alias</a></p>
+]]></content>
+      <categories>
+        <category>Unit Test</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Find The Parity Outlier</title>
+    <url>/2018/12/13/Find-The-Parity-Outlier/</url>
+    <content><![CDATA[<ul>
+<li>Find The Parity Outlier
+<ul>
+<li>javascript filter練習</li>
+</ul>
+</li>
+<li>考慮
+<ul>
+<li>陣列的總個數會影響加總最後是奇數還是偶數的結果
+<ul>
+<li>偶數個奇數相加會變成偶數</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>測試
+<ul>
+<li>針對奇數個數的情況進行確認</li>
+<li>測試順序互換是否影響最後的結果</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function findOutlier(integers)&#123;</span><br><span class="line">   let evenNum = 0, oddNum = 0;</span><br><span class="line">   for(let i=0; i&lt;integers.length;i++) &#123;</span><br><span class="line">      if(integers[i] % 2 == 0) &#123;</span><br><span class="line">         evenNum++;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">         oddNum++;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   return integers.filter(val =&gt; &#123;</span><br><span class="line">     val = val &lt; 0 ? -val : val</span><br><span class="line">     return (val % 2==0 &amp;&amp; evenNum == 1) ||</span><br><span class="line">            (val % 2==1 &amp;&amp; oddNum == 1)</span><br><span class="line">   &#125;)[0]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Test.assertEquals(findOutlier([ 0, 2 ,-1]), -1)</span><br><span class="line">Test.assertEquals(findOutlier([1, 2, 3]), 2)</span><br><span class="line">Test.assertEquals(findOutlier([2,6,8,10,3]), 3)</span><br><span class="line">Test.assertEquals(findOutlier([0,0,3,0,0]), 3)</span><br><span class="line">Test.assertEquals(findOutlier([1,1,1,0,1,7,7,1]), 0)</span><br><span class="line">Test.assertEquals(findOutlier([17,6,8,10,6,12,24,36]),17)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Codewars</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Gitpod Env Settings &amp; Tips Part 3</title>
+    <url>/2021/07/27/Gitpod-Env-Settings-Tips-Part-3/</url>
+    <content><![CDATA[<h6><span id="tags-yii-gitpod">tags: <code>yii</code> <code>gitpod</code></span></h6>
+<h2><span id="前情提要">前情提要</span></h2>
+<p>延續前兩次的Gitpod和Docker Workflow介紹，這次補上環境變數三種設定方式，推薦使用第三種方式，使用docker-compose將環境變數的參數複寫原本Dockerfile的PHP_USER_ID設定。</p>
+<h2><span id="知識點">知識點</span></h2>
+<ul>
+<li>docker images列出image id</li>
+<li>docker inspect比對兩者環境變數的差異</li>
+<li>dockerFile可以藉由args接收環境變數切換不同的版本</li>
+<li>docker-compose config檢查是否環境變數設定正確</li>
+<li>docker-compose build重新建立image</li>
+</ul>
+<h3><span id="build-flow">Build Flow</span></h3>
+<p><img src="https://i.imgur.com/4P3LxXH.png" alt=""></p>
+<h3><span id="三種方法">三種方法</span></h3>
+<h4><span id="法1">法1:</span></h4>
+<ul>
+<li>改DockerFile的Env</li>
+</ul>
+<p>=&gt; frontend/Dockerfile</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> yiisoftware/yii2-php:<span class="number">7.2</span>-apache</span><br><span class="line"><span class="comment"># FROM gitpod/workspace-full:latest</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Change document root for Apache</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> sed -i -e <span class="string">&#x27;s|/app/web|/app/frontend/web|g&#x27;</span> /etc/apache2/sites-available/000-default.conf</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Change PHP_USER_ID For Gitpod</span></span><br><span class="line"><span class="keyword">ENV</span> COMPOSER_ALLOW_SUPERUSER=<span class="number">1</span> \</span><br><span class="line">    PHP_USER_ID=<span class="number">33333</span></span><br></pre></td></tr></table></figure>
+<h4><span id="法2">法2:</span></h4>
+<ul>
+<li>使用docker-compose environment方法傳遞參數</li>
+</ul>
+<p>=&gt; docker-compose.yml</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">frontend:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">frontend</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">COMPOSER_ALLOW_SUPERUSER=1</span> </span><br><span class="line">      <span class="bullet">-</span> <span class="string">PHP_USER_ID=33333</span></span><br></pre></td></tr></table></figure>
+<h4><span id="法3推薦作法">法3:(推薦作法)</span></h4>
+<ul>
+<li>由docker-compose.yaml載入env檔案</li>
+</ul>
+<p>=&gt; env</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">## Apache</span></span><br><span class="line"><span class="string">PHP_USER_ID=33333</span></span><br><span class="line"><span class="string">COMPOSER_ALLOW_SUPERUSER=1</span></span><br></pre></td></tr></table></figure>
+<p>=&gt; docker-compose.yml</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">frontend:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">frontend</span></span><br><span class="line">    <span class="attr">env_file:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">.env</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/vZZSEX8.png" alt=""></p>
+<h3><span id="reference">Reference</span></h3>
+<p><a href="https://github.com/yiisoft/yii-base-web/issues/1">https://github.com/yiisoft/yii-base-web/issues/1</a></p>
+<p><a href="https://stackoverflow.com/questions/23836416/permission-issues-with-apache-inside-docker/35886387">https://stackoverflow.com/questions/23836416/permission-issues-with-apache-inside-docker/35886387</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Gitpod Guide For Apache2 Enviroment Part 1</title>
+    <url>/2021/07/25/Gitpod-Guide-For-Apache2-Enviroment-Part-1/</url>
+    <content><![CDATA[<h6><span id="tags-yii-gitpod">tags: <code>yii</code> <code>gitpod</code></span></h6>
+<h2><span id="前情提要">前情提要</span></h2>
+<p>自從看了小馬介紹的gitpod的教學之後，覺得雲端IDE真是一個好東西，怎麼這麼晚才知道呢?經過幾次嘗試下來，發現以下的問題…</p>
+<h2><span id="issue">ISSUE</span></h2>
+<ul>
+<li>直接用gitpod.io網址開啟github repo會有權限的問題
+<ul>
+<li>docker-compose建立的container，開啟頁面會有403的錯誤訊息</li>
+</ul>
+</li>
+</ul>
+<h2><span id="root-cause">Root Cause</span></h2>
+<ul>
+<li>原因是因為apache執行是用www-data的權限，而非gitpod
+<ul>
+<li>進入container使用ps -aux檢查目前正在運行的process有哪些</li>
+</ul>
+</li>
+<li>gitpod官方才會因此告訴使用者建立專屬gitpod使用的Dockerfile，來解決這個問題</li>
+</ul>
+<h3><span id="to-be-continued">To be continued</span></h3>
+<p>欲知詳情，請待後續拆解…</p>
+]]></content>
+      <categories>
+        <category>Gitpod</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Installing Ubuntu Laravel Environment</title>
+    <url>/2018/10/15/Installing-Ubuntu-Laravel-Environment/</url>
+    <content><![CDATA[<h2><span id="prerequisite">Prerequisite</span></h2>
+<ul>
+<li>If you want to get latest version of php, you need to update first.</li>
+<li>Otherwise the lamp server will install older php version to your environment</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-add-repository ppa:ondrej/php</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install php7.0</span><br></pre></td></tr></table></figure>
+<h2><span id="usefull-command">Usefull Command</span></h2>
+<ul>
+<li>sometime you need to check the installed packages in Ubuntu, you can use dpkg to list the packages status</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dpkg --get-selections | grep php</span><br></pre></td></tr></table></figure>
+<h2><span id="reference">Reference</span></h2>
+<p><a href="https://gist.github.com/santoshachari/87bf77baeb45a65eb83b553aceb135a3">Laravel PHP 7</a><br>
+<a href="https://ithelp.ithome.com.tw/questions/10185637">ubuntu 14.04版本無法安裝my sql 5.6</a></p>
+<p><a href="https://askubuntu.com/questions/715944/unable-to-locate-package-php7-0">unable to locate php7</a></p>
+<p><a href="http://seanphpbook.blogspot.com/2016/08/linuxlaravel-ubuntu-1604-laravel-52.html">laravel Ubuntu</a></p>
+]]></content>
+      <categories>
+        <category>Virtualbox</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Introduction to Algorithms Third Edition</title>
+    <url>/2019/02/13/Introduction-to-Algorithms-Third-Edition/</url>
+    <content><![CDATA[<p><a href="https://www.amazon.com/gp/product/0262033844/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0262033844&amp;linkCode=as2&amp;tag=edwardyispace-20&amp;linkId=f46185c40bfc33c58b50935cd8fb256e"><img src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;MarketPlace=US&amp;ASIN=0262033844&amp;ServiceVersion=20070822&amp;ID=AsinImage&amp;WS=1&amp;Format=_SL250_&amp;tag=edwardyispace-20" alt="Introduction to Algorithms Third Edition"></a></p>
+<ul>
+<li>問題
+<ul>
+<li>問題的難度
+<ul>
+<li>由問題的規則決定問題的難度</li>
+<li>會影響computation model</li>
+<li>限制魔術方塊只能往前轉，就會增加解題的難度</li>
+</ul>
+</li>
+<li>解決問題的定義
+<ul>
+<li>用了兩個反證法來說明擂台法的正確性</li>
+<li>證明j*是最大的
+<ul>
+<li>j*=1的情況，不需要執行for loop，直接return j</li>
+<li>j*&gt;1的情況，比j大執行for loop，j被換成j*，最後回傳j</li>
+</ul>
+</li>
+<li>證明困難度不能再比n-1更低
+<ul>
+<li>如果是n-2的話,就會存在有兩個第一名,沒有辦法分出勝負</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>problem instance就是input
+<ul>
+<li>任何的input都要能夠滿足rule(algorithm)</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/6x7Xn5p.jpg" alt="Algorithm and problem instances"></p>
+<ul>
+<li>problem instance:所有輸入的序列串</li>
+<li>algorithm:
+<ul>
+<li>problem-oriented programming</li>
+<li>用執行的速度衡量演算法的好壞</li>
+<li>多個輸入經過演算法的處理之後產生唯一正確答案</li>
+<li>生活中的演算法，用最少做最好
+<ul>
+<li>評估東西的好壞
+<ul>
+<li>是不是盜版的商品</li>
+<li>東西的CP值/性價比高不高</li>
+</ul>
+</li>
+<li>找出最佳路徑</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>少用遞迴，用for while代替
+<ul>
+<li>遞迴是用stack的方式來存放未處理的函式</li>
+<li>不但當前的問題沒有解決還會產生很多子問題(以2的n次方產生問題)</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://therecyclebin.files.wordpress.com/2008/05/time-complexity.png" alt="Big O Complexity"></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=-muH40oK4cA&amp;t=2285s">ADA Lecture 1: Introduction</a></li>
+<li><a href="https://www.youtube.com/watch?v=o4OfLD4IFSg">jessy 主講 圖說演算法</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Javascript Functional Programming</title>
+    <url>/2018/11/07/Javascript-Functional-Programming/</url>
+    <content><![CDATA[<h1><span id="functional-programming">Functional Programming</span></h1>
+<ul>
+<li>Less Bug/Code
+<ul>
+<li>Composable High order function(filter、map、reduce)</li>
+<li>Functions are values</li>
+<li>function inside a function, we call callback(stack)</li>
+</ul>
+</li>
+<li>Map
+<ul>
+<li>Arrow Function can write less code. It means less bug
+<ul>
+<li>you can remove function &amp; return keyword when using arrow function</li>
+<li>if you have multiple operations in our reduce function need return keyword</li>
+</ul>
+</li>
+<li>map function just like filter function and it takes callback function as parameter</li>
+</ul>
+</li>
+<li>Reduce
+<ul>
+<li>can do anything like find, map or filter do</li>
+<li>the difference between map and reduce is that it need initial value behind the function</li>
+<li>the second parameter must be value, can not be variable</li>
+</ul>
+</li>
+</ul>
+<h3><span id="csv-to-json-formatusing-nodejs">CSV to json format(Using NodeJS)</span></h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var fs = require(&#x27;fs&#x27;);</span><br><span class="line">var output = fs.readFileSync(&#x27;data/data.txt&#x27;, &#x27;utf8&#x27;)</span><br><span class="line">            .trim()</span><br><span class="line">            .split(&quot;\n&quot;)</span><br><span class="line">            .map((row) =&gt; row.split(&#x27;,&#x27;))</span><br><span class="line">            .reduce((customers,row)=&gt;&#123;</span><br><span class="line">                // 如果沒有值就用空的當預設值，之後push才不會有問題</span><br><span class="line">                customers[row[0]] = customers[row[0]] || [];</span><br><span class="line">                customers[row[0]].push(&#123;</span><br><span class="line">                     &#x27;product&#x27;:row[1],</span><br><span class="line">                     &#x27;price&#x27;:row[2],</span><br><span class="line">                     &#x27;amount&#x27;:row[3]</span><br><span class="line">                &#125;);</span><br><span class="line">                return customers;</span><br><span class="line">            &#125;, &#123;&#125;);</span><br><span class="line"></span><br><span class="line">console.log(&#x27;output&#x27;,JSON.stringify(output, null, 2));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mark johansson,waffle iron,80,2</span><br><span class="line">mark johansson,blender,200,1</span><br><span class="line">mark johansson,knife,10,4</span><br><span class="line">Nikita Smith,waffle iron,80,1</span><br><span class="line">Nikita Smith,knife,10,2</span><br><span class="line">Nikita Smith,pot,20,3</span><br></pre></td></tr></table></figure>
+<h3><span id="recursive">recursive</span></h3>
+<pre><code>- maxium call of stack
+- es5 having the maxium call of stack limitation, but es6 removed this limitation by using bubble simulation
+    -  tail call optimization.
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var getMenuTree = (category, parent) =&gt; &#123;</span><br><span class="line">    let nodeResult = &#123;&#125;;</span><br><span class="line">    category</span><br><span class="line">    .filter((c) =&gt; c.parent_id == parent)</span><br><span class="line">    .forEach((c) =&gt; nodeResult[c.id] = getMenuTree(category, c.id));</span><br><span class="line">    return nodeResult;</span><br><span class="line">&#125;;</span><br><span class="line">var categories = JSON.parse(fs.readFileSync(&#x27;data/menutree.json&#x27;, &#x27;utf8&#x27;));</span><br><span class="line"></span><br><span class="line">//&#x27;hello&#x27;,categories,</span><br><span class="line">console.log(JSON.stringify(getMenuTree(categories, null), null, 2));</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#123;&quot;id&quot;:&quot;animals&quot;,&quot;parent_id&quot;:null&#125;,&#123;&quot;id&quot;:&quot;mammals&quot;,&quot;parent_id&quot;:&quot;animals&quot;&#125;,&#123;&quot;id&quot;:&quot;cats&quot;,&quot;parent_id&quot;:&quot;mammals&quot;&#125;,&#123;&quot;id&quot;:&quot;dogs&quot;,&quot;parent_id&quot;:&quot;mammals&quot;&#125;,&#123;&quot;id&quot;:&quot;chihuahua&quot;,&quot;parent_id&quot;:&quot;dogs&quot;&#125;,&#123;&quot;id&quot;:&quot;labrador&quot;,&quot;parent_id&quot;:&quot;dogs&quot;&#125;,&#123;&quot;id&quot;:&quot;persian&quot;,&quot;parent_id&quot;:&quot;cats&quot;&#125;,&#123;&quot;id&quot;:&quot;siamese&quot;,&quot;parent_id&quot;:&quot;cats&quot;&#125;]</span><br></pre></td></tr></table></figure>
+<h3><span id="funcdoor">FuncDoor</span></h3>
+<ul>
+<li>Using FuncDoor
+<ul>
+<li>need passing one string parameter and one function parameter</li>
+<li>they will map together when be called</li>
+<li>pass each value to each function and return the new structures</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var fs = require(&#x27;fs&#x27;);</span><br><span class="line"></span><br><span class="line">var reduceCustomer = (output) =&gt; output.reduce((output,row)=&gt;&#123;</span><br><span class="line">    // 如果沒有值就用空的當預設值，之後push才不會有問題</span><br><span class="line">    output[row[0]] = output[row[0]] || [];</span><br><span class="line">    output[row[0]].push(&#123;</span><br><span class="line">         &#x27;product&#x27;:row[1],</span><br><span class="line">         &#x27;price&#x27;:row[2],</span><br><span class="line">         &#x27;amount&#x27;:row[3]</span><br><span class="line">    &#125;);</span><br><span class="line">    return output;</span><br><span class="line">&#125;, &#123;&#125;);</span><br><span class="line"></span><br><span class="line">var funcDoor = (path, fn) =&gt; &#123;</span><br><span class="line">    var rawData = (path) =&gt;  fs.readFileSync(path, &#x27;utf8&#x27;)</span><br><span class="line">            .trim()</span><br><span class="line">            .split(&quot;\n&quot;);</span><br><span class="line">    // 要傳入參數，否則最後的結果還是function</span><br><span class="line">    var result = (path)=&gt;fn(rawData(path).map((row) =&gt; &#123;</span><br><span class="line">      return row.split(&#x27;,&#x27;)</span><br><span class="line">    &#125; ));</span><br><span class="line">    return result(path);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">console.log( funcDoor(&#x27;data/data.txt&#x27;, reduceCustomer));</span><br><span class="line">// return;</span><br><span class="line">// console.log(&#x27;output&#x27;,JSON.stringify(convertJson(&#x27;data/data.txt&#x27;), null, 2));</span><br><span class="line"></span><br><span class="line">var reduceCsv = (output) =&gt; output.reduce((output, row) =&gt; &#123;</span><br><span class="line">        // 直接整理到一個result的key，之後就不用煩惱怎麼把key移掉</span><br><span class="line">        output[&#x27;result&#x27;] =  output[&#x27;result&#x27;]||[];</span><br><span class="line">        let input = &#123;</span><br><span class="line">            &#x27;id&#x27;:row[0],</span><br><span class="line">            &#x27;parent_id&#x27;:row[1]!=&#x27;null&#x27; ? row[1] : JSON.parse(row[1])</span><br><span class="line">        &#125;;</span><br><span class="line">        output[&#x27;result&#x27;].push(input);</span><br><span class="line">        // output[i] = input;</span><br><span class="line">        return output</span><br><span class="line">    &#125; ,&#123;&#125;)[&#x27;result&#x27;]</span><br><span class="line">let menuTreeResult;</span><br><span class="line">console.log(menuTreeResult = funcDoor(&#x27;data/menutree.txt&#x27;, reduceCsv));</span><br><span class="line">fs.writeFile(&#x27;./data/menutree.json&#x27;,JSON.stringify(menuTreeResult, null ,2));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Wl98eZpkp-c&amp;list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84">Reduce basics - Part 3 of Functional Programming in JavaScript</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Jquery Form Validate</title>
+    <url>/2018/11/06/Jquery-Form-Validate/</url>
+    <content><![CDATA[<ul>
+<li>normalize css和jquery來製作表單
+<ul>
+<li>能夠在各個瀏覽器呈現差不多的結果</li>
+<li>用input-control而不是form-control，比較清楚</li>
+</ul>
+</li>
+<li>版面居中
+<ul>
+<li>wrap定義max-width不一定會用到</li>
+<li>實際用到的是wrap-sm</li>
+</ul>
+</li>
+<li>使用*確認每個元素的布局
+<ul>
+<li>先把結構確定下來，具體的不在乎</li>
+</ul>
+</li>
+<li>搞清楚我們要甚麼?
+<ul>
+<li>可以直接挖一口井就完事了
+<ul>
+<li>直接定義到main.js</li>
+</ul>
+</li>
+<li>也可以搞一個自然水系統，雖然一開始要照顧的情況比較多，之後只要幾個設定就完事了
+<ul>
+<li>在input裡面建立data-rule</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>‘use strict’
+<ul>
+<li>不汙染全局變量</li>
+<li>main.js中負責傳入string和驗證規則</li>
+<li>另外建立一個validate.js來接收string和驗證規則</li>
+</ul>
+</li>
+<li>使用jquery內建的方法過濾資料
+<ul>
+<li>trim()和isNumeric()</li>
+<li>val!==0的判斷是用來處理trim之後為空的情況</li>
+<li>use strict其實用前面!val的寫法來判斷即可</li>
+</ul>
+</li>
+<li>JSON.parse
+<ul>
+<li>如果要讓值變成字串，要用雙引號</li>
+<li>會用到正規表達式</li>
+</ul>
+</li>
+<li>寫一個專門找Input的模組
+<ul>
+<li>*:至少0個以上的字元</li>
+<li>+:至少1個以上的字元(因為有require的規則可以驗證，不用+)</li>
+<li>isValid的方法寫道validate的模組裡面</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Jquery</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Laravel Create Article</title>
+    <url>/2018/10/11/Laravel-Create-Article-1/</url>
+    <content><![CDATA[<h3><span id="migrations">migrations</span></h3>
+<ul>
+<li>use increments to auto_increment id’s value
+<ul>
+<li>string type can not be null when applying to id</li>
+</ul>
+</li>
+<li>use timestamp to create two fields
+<ul>
+<li>created_at</li>
+<li>updated_at</li>
+</ul>
+</li>
+<li>when using factory, the table will be automately filled update time and create date to the relative fields</li>
+</ul>
+<h3><span id="create-article">Create Article</span></h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// create controller with resource methods</span><br><span class="line">&gt; php artisan make:controller ArticleController --resource</span><br><span class="line">// create model along with migration</span><br><span class="line">&gt; php artisan make:model Article --migration</span><br></pre></td></tr></table></figure>
+<h3><span id="seeder">seeder</span></h3>
+<ul>
+<li>there are two ways to insert data to table via command line</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; php artisan db:seed</span><br><span class="line">&gt; php artisan migrate:refresh --seed</span><br></pre></td></tr></table></figure>
+<ul>
+<li>both ways need adding customed seeder to Databaseseeder.php
+<ul>
+<li>db:seed however only execute seeds run() function</li>
+</ul>
+</li>
+<li>if you don’t want to use factory to get fake data, you can just use db:seed command to insert your customed data.</li>
+<li>remember to add the seeder you create to Databaseseeder.php</li>
+</ul>
+<h3><span id="set-index-to-fieldmigrations">set index to field(migrations)</span></h3>
+<ul>
+<li>belongsTo</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="comment">// \database\migrations\2018_10_05_094912_message_board_table.php</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$table</span>-&gt;unsignedInteger(<span class="string">&#x27;user_id&#x27;</span>)-&gt;index();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// app\Messageboard.php</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">user</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;belongsTo(User::class);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Laravel</category>
+      </categories>
+  </entry>
+  <entry>
+    <title> Learn React</title>
+    <url>/2018/12/28/Learn-React/</url>
+    <content><![CDATA[<ul>
+<li>Why react
+<ul>
+<li>Virtual DOM</li>
+<li>Reusable(and clearer) Web Components</li>
+<li>Maintained by Facebook
+<ul>
+<li>Hirable</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>jsx是甚麼?
+<ul>
+<li>可以用來把html轉換為javascript語法</li>
+<li>所以在jsx裡面的class不能只寫class,要寫成className
+<ul>
+<li>通常一個html的元素會有很多class,叫做classList感覺比較符合使用的情境</li>
+<li>一般的javascript是使用document DOM api進行元素的讀取與解析</li>
+</ul>
+</li>
+<li>import React from 'react’來解析jsx
+<ul>
+<li>ReactDOM專門負責render</li>
+</ul>
+</li>
+<li>virtual DOM
+<ul>
+<li>component tree
+<ul>
+<li>只能定義一個元素,但互相嵌入的方式合併數個不同的元素</li>
+<li>最後都會被jsx解析成一般的元素(html tag)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>常用寫法
+<ul>
+<li>命名camelcase</li>
+<li>命名的時候function的名稱和檔案名稱大小寫相同,方便之後維護</li>
+<li>使用function直接return元素</li>
+<li>不加路徑位置es6會找已經安裝的module</li>
+</ul>
+</li>
+<li>不同的寫法
+<ul>
+<li>單行寫法
+<ul>
+<li>可以使用arrow function、匿名函式</li>
+</ul>
+</li>
+<li>不加上分號(;)
+<ul>
+<li>for loop要用分號,為了區別不同的statement</li>
+</ul>
+</li>
+<li>大括號用來解析Javascript</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;`$&#123;variable&#125;  $&#123;variable2&#125;`&#125;</span><br><span class="line">&#123;variable&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在設定style的時候需要傳入object進去
+<ul>
+<li>用大括號刮起來的地方jsx會去解析</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;&#123;color:#ccc, paddingTop:&#x27;10px&#x27;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>- 設定元件的屬性可以透過props參數來取得
+</code></pre>
+<ul>
+<li>Anki React
+<ul>
+<li>ReactDOMServer.renderToNodeStream(element)</li>
+<li>ReactDOMServer.renderToStaticNodeStream(element)
+<ul>
+<li>simple static page</li>
+</ul>
+</li>
+<li>React.createElemnt(type, [props], […children])</li>
+<li>React.cloneElement(element, [props], […children])
+<ul>
+<li>複製指定的元素,本身有的屬性會進行合併</li>
+</ul>
+</li>
+<li>React.isValidElement(object)</li>
+</ul>
+</li>
+<li><a href="https://scrimba.com/p/p7P5Hd/cbykBfa">Props and Styling Practice</a></li>
+<li><a href="https://www.jianshu.com/p/47c8e364d0bc?appinstall=1&amp;mType=Group">彻底理解React 之React SSR、React服务端渲染，教你从零搭建配置</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>scrimba</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Learning Object-Oriented Programming In Java</title>
+    <url>/2019/02/12/Learning-Object-Oriented-In-Java/</url>
+    <content><![CDATA[<ul>
+<li>Class和Object的差別
+<ul>
+<li>class代表廣泛的非具體的抽象概念,可以是任何東西
+<ul>
+<li>例:IDE、圖書館、書</li>
+</ul>
+</li>
+<li>object是具體的東西
+<ul>
+<li>Netbeans、Eclipse、台北圖書館、倚天屠龍記</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Java和C語言的差異
+<ul>
+<li>Java在編譯的時候需要和其他Java文件一起編譯成一個工程(package)</li>
+<li>C語言直接編譯即可(gcc test.c -o test)</li>
+<li>定義類別的時候也不太一樣(全域變數)</li>
+</ul>
+</li>
+<li>兩個例子分別說明類的概念
+<ul>
+<li>張三和李四到銀行存錢
+<ul>
+<li>存款、提款</li>
+<li>建立帳戶的時候就需要給名稱和存款的額度</li>
+</ul>
+</li>
+<li>二哈繼承狗的類別
+<ul>
+<li>一般會給狗取名字,而狗也有自己的年齡和性別</li>
+<li>二哈繼承狗的類別,在eclipse當中可以直接override父類別建構方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>子類繼承父類
+<ul>
+<li>Eclipse產生的建構子會自動為相對應的成員變數進行賦值</li>
+<li>UML類圖,哈士奇繼承狗的類別</li>
+<li>overload:相同名稱不同參數會找到對應的方法呼叫</li>
+<li>override:覆寫父類別的方法
+<ul>
+<li>當子類出現和父類別一樣的方法時,就用子類別的方法</li>
+<li>子類只能夠存取protected的成員變量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>ArrayListTest.java</span><a href="https://gist.github.com/edwardyi/88d2772df5b85e208f42473e75d09a50">link</a></figcaption><table><tr><td class="code"><pre><span class="line">// 沒有加會有小紅線提示</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">public class ArrayListTest&#123;</span><br><span class="line">	public static void test1&#123;</span><br><span class="line">		int[] arr = new int[10];</span><br><span class="line">		arr[0] = 2;</span><br><span class="line">		arr[1] = 3;</span><br><span class="line">		for(int i=0; i&lt; arr.length; i++)&#123;</span><br><span class="line">			System.out.println(arr[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		// 沒有指定型別的話會出現小黃線</span><br><span class="line">		ArrayList&lt;Integer&gt; arr = new ArrayList&lt;Integer&gt;();</span><br><span class="line">		arr.add(1);</span><br><span class="line">		arr.add(3);</span><br><span class="line">		arr.add(5);</span><br><span class="line">		arr.remove(1); //移除第二個元素</span><br><span class="line">		for(int i=0; i&lt;arr.size(); i++)&#123;</span><br><span class="line">			// 使用get來取得陣列的值</span><br><span class="line">			System.out.println(arr.get(i));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<script src="//gist.github.com/88d2772df5b85e208f42473e75d09a50.js?file=find"></script>
+<ul>
+<li><a href="https://www.bilibili.com/video/av16930207">Java面向对象简介</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>NPM Portable</title>
+    <url>/2018/12/07/NPM-Portable/</url>
+    <content><![CDATA[<h5><span id="情境">情境:</span></h5>
+<ul>
+<li>為了在不同的電腦都能使用nodejs搭配sublime text 3開發,如果是windows系統可以嘗試以下步驟:</li>
+</ul>
+<h5><span id="配置">配置:</span></h5>
+<ul>
+<li>先在官網下載最新的nodejs zip</li>
+<li><a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></li>
+<li>解壓縮後,切換到資料夾下確認版本</li>
+<li>node -v</li>
+<li>npm version:查看所有版本號</li>
+<li>設定環境變數
+<ul>
+<li>echo %PATH%</li>
+<li>set PATH=%PATH%;%cd%</li>
+<li>當前解壓縮後的nodejs路徑</li>
+</ul>
+</li>
+<li>sublime text 3</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = &#x27;6f4c264a24d933ce70df5dedcf1dcaee&#x27; + &#x27;ebe013ee18cced0ef93d5f746d80ef60&#x27;; pf = &#x27;Package Control.sublime-package&#x27;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &#x27;http://packagecontrol.io/&#x27; + pf.replace(&#x27; &#x27;, &#x27;%20&#x27;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&#x27;Error validating download (got %s instead of %s), please try manual install&#x27; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &#x27;wb&#x27; ).write(by)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://packagecontrol.io/installation">https://packagecontrol.io/installation</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>NodeJs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Postman Imgur OAuth 2.0 Setting</title>
+    <url>/2019/03/24/Postman-Imgur-OAuth-2-0-Setting/</url>
+    <content><![CDATA[<p>postman<br>
+- 建立變數<br>
+- global、collection、environment<br>
+- 用環境管理不同的變數<br>
+- 每一個Oauth的請求都有自己的token_url、authorize_url、callback_url</p>
+<ul>
+<li>OAuth四個步驟:
+<ul>
+<li>註冊、授權、請求、取得token
+<ul>
+<li>註冊:獲得client_id和client_secret</li>
+<li>授權
+<ul>
+<li>詢問使用者是否願意提供個人資料讓應用程式存取資料</li>
+<li>refresh and access tokens, an authorization_code, or a PIN code.</li>
+<li>用這些東西來換access_token and refresh_token.</li>
+</ul>
+</li>
+<li>授權種類:
+<ul>
+<li>access token:把它想成是存取使用者資料的一組資訊(像帳號密碼一樣)，一個月之後會過期</li>
+<li>refresh token:不會過期的access token</li>
+<li>authorization_code:伺服器用來取得access token和refresh token(存在只是為了交換token使用)</li>
+<li>PIN code:使用者用來取得access token和refresh token的方式(存在只是為了交換token使用)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://api.imgur.com/oauth2">https://api.imgur.com/oauth2</a></li>
+</ul>
+</li>
+</ul>
+<h4><span id="imgur-postman-setting">Imgur PostMan Setting</span></h4>
+<pre><code> Uri:https://api.imgur.com/3/account/me/images
+</code></pre>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=NRU_KdUSjD4">Testing OAuth2 Authorization Flow with Postman</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>postman</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SDL圖形編程</title>
+    <url>/2019/01/16/SDL%E5%9C%96%E5%BD%A2%E7%B7%A8%E7%A8%8B/</url>
+    <content><![CDATA[<h3><span id="配置方法">配置方法</span></h3>
+<ul>
+<li>Code Block
+<ul>
+<li>需要再Build Options中設定Libraries和Linkers
+<ul>
+<li>方便Code Block調用第三方函式庫</li>
+</ul>
+</li>
+<li>出現dll找不到的問題,需要把MinGw下的dll放到專案下</li>
+</ul>
+</li>
+<li>autocomplete配置
+<ul>
+<li>Settings可以配置libraries路徑,配置完成後重新開啟專案就有自動提示功能</li>
+</ul>
+</li>
+<li>主函數要傳兩個參數進去
+<ul>
+<li>int argc</li>
+<li>char** argv</li>
+</ul>
+</li>
+<li>SDL_Create_Window
+<ul>
+<li>建立視窗
+<ul>
+<li>視窗標題</li>
+<li>設定位置:x,y
+<ul>
+<li>不設定視窗位置,讓系統決定出現的位置
+<ul>
+<li>SDL_WINDOWPOS_UNDEFINED</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>設定視窗大小</li>
+<li>設定狀態:SDL_WINDOW_SHOWN</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SDL_Surface生命週期
+<ul>
+<li>SDL_GETWindowSurface(window)</li>
+<li>SDL_FreeSurface(surface)</li>
+<li>SDL_DestoryWindow(window)</li>
+<li>SDL_Quit()</li>
+</ul>
+</li>
+<li>把窗口卡住
+<ul>
+<li>不利於動畫製作
+<ul>
+<li>SDL_Delay(3000)</li>
+</ul>
+</li>
+<li>用死循環卡住窗口
+<ul>
+<li>占用資源太大(CPU資源)</li>
+</ul>
+</li>
+<li>用事件比較好,窗口運行不斷查看事件
+<ul>
+<li>SDL_Event event</li>
+<li>SDL_POLLEvent(&amp;event)</li>
+<li>沒有寫任何定義會關不掉窗口(因為不知道要幹嘛)</li>
+</ul>
+</li>
+<li>SDL_FillRect(surface, NULL, 0)
+<ul>
+<li>把移動之後出現的空白軌跡給塗成黑色</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>更新Surface<br>
+- 每一個圖片都需要貼到一個Surface上面<br>
+- 用SDL_BlitSurface()貼上去<br>
+- SDL_UpdateWindowSurface(window)
+<ul>
+<li>載入圖片
+<ul>
+<li>Load_BMP:24位圖(不支持alpha通道,不支援透明度)</li>
+<li>IMG_Load:載入Png(SDL_Image)</li>
+</ul>
+</li>
+<li>載入音效
+<ul>
+<li>mixer(SDL2-mixer)</li>
+<li>wav:無損壓縮,適合用於短的音樂</li>
+<li>mp3:壓縮格式,適合用於長的音樂(背景音樂)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://www.bilibili.com/video/av9846821">SDL教程</a></li>
+</ul>
+<h3><span id="sdl-render-template">SDL Render template</span></h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;SDL2/SDL.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WINDOW_WIDTH 800;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WINDOW_HEIGHT 600;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> args, <span class="keyword">char</span>** argv)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	SDL_Window* window = SDL_CreateWindow(<span class="string">&quot;Hello&quot;</span>, SDL_WINDOW_UNDEFINED, SDL_WINDOW_UNDEFINED, WINDOW_WIDTH,WINDOW_HEIGHT,SDL_WINDOW_SHOWN);</span><br><span class="line">	SDL_Render* rend = SDL_CreateRender(window, <span class="number">-1</span>, SDL_RENDER_ACCELERATED);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">bool</span> quit = <span class="literal">false</span>;</span><br><span class="line">	SDL_Event event;</span><br><span class="line">	<span class="keyword">while</span>(!quit)&#123;</span><br><span class="line">		<span class="keyword">while</span>(SDL_PollEvent(&amp;event))&#123;</span><br><span class="line">			<span class="keyword">if</span>(event.type == SDL_QUIT) &#123;</span><br><span class="line">				quit = <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		SDL_Delay(<span class="number">10</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	SDL_DestroyWindow(window);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>Room Manager In React/Vue.js</title>
+    <url>/2019/02/20/Room-Manager-In-React-Vue-js/</url>
+    <content><![CDATA[<ul>
+<li>
+<p>標題放置於圖片前面的技巧</p>
+<ul>
+<li>外面圖片cover設定為relative
+<ul>
+<li>裡面設定absolute</li>
+<li>就可以讓標題指定到想放的位置，通常一開始會跑到很上面的地方</li>
+</ul>
+</li>
+<li>把圖片置中，讓縮放不會怪怪的
+<ul>
+<li>background-size: cover</li>
+<li>background-position: center center</li>
+</ul>
+</li>
+<li>偽元素增加錢字號
+<ul>
+<li>讓使用者可以直接複製金額而不會複製到錢號</li>
+</ul>
+</li>
+<li>設置圖片滑鼠移入放大縮小效果
+<ul>
+<li>background-image: url();</li>
+<li>background-size: 110% auto;</li>
+</ul>
+</li>
+<li>外框邊框效果與隱藏超出外框的設定
+<ul>
+<li>border-radius: 2px</li>
+<li>overflow: hidden</li>
+</ul>
+</li>
+<li>外框滑鼠滑入背景陰影
+<ul>
+<li>box-shadow: 0 10px 1px -5px rgba(0, 0, 0, 0.1)</li>
+</ul>
+</li>
+<li>利用標題屬性來排列元素，讓外面的元素可以設定邊距
+<ul>
+<li>h5英文說明欄位</li>
+<li>h4排列下方的價錢(本身已經是粗體字，而且在同一行)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Vue元件的第一個參數首字母可以是大寫也可以是小寫，之後一律小寫(把元件想成是自定義的html tag比較好明白)</p>
+<ul>
+<li>computed()方法沒有辦法用在background-image:url()，要改用methods</li>
+<li>透過使用methods，可以在設定style的時候，把url傳入，此時會產生相對應的css設定</li>
+<li>component目前還不知道要怎麼繼承父類別的methods，先將methods寫在component裡面</li>
+</ul>
+</li>
+<li>
+<p>使用font-awesome加入小圖示</p>
+<ul>
+<li>input是當行元素，要用v-model來綁定值</li>
+<li>select的值要用:value關聯回去原本的data</li>
+</ul>
+</li>
+<li>
+<p>CSS hack</p>
+<ul>
+<li>room_edit:設定邊框和邊距</li>
+<li>room_tag:呈現三個元素
+<ul>
+<li>h4:標題和垃圾桶</li>
+<li>input.toggle-check(type=“checkbox”):利用checkbox的偽元素隱藏或顯示編輯區域</li>
+<li>.edit_part:真正的編輯區域</li>
+</ul>
+</li>
+<li>＊外層要用label包住所有作用的區塊checkbox才有作用</li>
+</ul>
+</li>
+<li>
+<p><a href="https://codesandbox.io/s/github/edwardyi/room_manager_in_react/">Room Manager In React</a></p>
+</li>
+<li>
+<p><a href="https://codepen.io/edwardyi/pen/YBJGwE">Room Manager In Vue.js</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>ReactJs</category>
+        <category>VueJs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>TDD Using PHPUnit</title>
+    <url>/2018/11/15/TDD-Using-PHPUnit/</url>
+    <content><![CDATA[<h3><span id="phpunit-test">PHPUnit Test</span></h3>
+<ul>
+<li>Composer.json定義版本號</li>
+<li>PHPUnit.xml定義單元測試的規則
+<ul>
+<li>檔案名稱用Test當後綴</li>
+<li>方法名稱用test當前綴</li>
+</ul>
+</li>
+<li>增加可讀性
+<ul>
+<li>@test註解</li>
+<li>function的名稱可以用底線來連結</li>
+<li>CamelCase plugin
+<ul>
+<li>(V) a_product_has_a_name</li>
+<li>(X) AProductHasAName</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>新增一個屬性,結果原先的unit test變成不通過
+<ul>
+<li>construct少傳一個參數,兩種解法
+<ul>
+<li>給預設值</li>
+<li>修改舊的測試方法,把要傳的參數也加上去</li>
+</ul>
+</li>
+<li>filter方法,可以針對要測試的方法指定方法名稱或類別名稱</li>
+</ul>
+</li>
+<li>原則
+<ul>
+<li>根據unit test回傳的錯誤訊息來調整代碼</li>
+</ul>
+</li>
+<li>測試Order
+<ul>
+<li>一個Order有多個商品,加總起來個數和總經額要經過測試</li>
+<li>assertCount()計算陣列元素個數</li>
+</ul>
+</li>
+<li>重構
+<ul>
+<li>setUp()把物件整理出來,單元測試在執行前會先執行setUp的方法</li>
+<li>缺點:耦合度提高,牽一髮動全身</li>
+<li>stop-on-error:Stop execution upon first error</li>
+</ul>
+</li>
+<li>測試Model的資料
+<ul>
+<li>測試最多觀看文章資料</li>
+<li>use DatabaseTransaction,執行完之後會在執行rollback</li>
+<li>安裝sqlite
+<ul>
+<li>sudo apt-get install php7.2-sqlite</li>
+<li>修改/etc/php/php7.2/php.ini的,把分號拿掉</li>
+</ul>
+</li>
+<li>自己做一次發現卡住
+<ul>
+<li>少做了修改database的預設配置文件(config/database.php)
+<ul>
+<li>env(‘DB_CONNECTION’, ‘sqlite’),</li>
+</ul>
+</li>
+<li>php artisan make:modol Article -m
+<ul>
+<li>建立model文件和migration文件</li>
+<li>修改migration的定義</li>
+</ul>
+</li>
+<li>用model::class來創建紀錄</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>新增團隊案例
+<ul>
+<li>一個團隊可以加入多個User,多對多關係</li>
+<li>拋出例外可以整理成protected的function比較容易閱讀</li>
+</ul>
+</li>
+<li>Feature和Unit Test的差異
+<ul>
+<li>Feature測試模仿實際操作的過程</li>
+<li>Unit Test則是每一個拆開的方法(向洋蔥一樣,最核心的部分就是單元測試)</li>
+</ul>
+</li>
+<li>安裝phpunit watch
+<ul>
+<li>composer global require spatie/phpunit-watcher</li>
+<li>composer require spatie/phpunit-watcher --dev
+<ul>
+<li>要require進來才可以用,光是安裝是沒有用的</li>
+</ul>
+</li>
+<li>phpunit-watcher watch</li>
+</ul>
+</li>
+<li>laravel 5.4之後才支持dusk針對瀏覽器的測試</li>
+</ul>
+<h3><span id="phpunit-in-action">PHPUnit In Action</span></h3>
+<ul>
+<li>踩坑了,結果書中已經有說這個問題
+<ul>
+<li>使用了 Data Provider 的測試，它的輸出將無法注入到其他相依於它的測試</li>
+</ul>
+</li>
+<li>加上namespace測試一下會不會重現laravel例外的問題
+<ul>
+<li>結果依然沒有辦法重現QQ</li>
+<li>用get_class打上完整的namespace類別名稱,有取到那個類別,但是單元測試不給過</li>
+</ul>
+</li>
+<li>測試了一般的Exception才給過,感動</li>
+<li>phpunit --configuration
+<ul>
+<li>產生phpunit.xml</li>
+<li>方便整合測試使用(CI)</li>
+</ul>
+</li>
+<li>產生測試報告
+<ul>
+<li>phpunit --coverage-html ./report tests</li>
+</ul>
+</li>
+</ul>
+<h3><span id="移除團隊成員unit-test">移除團隊成員(Unit Test)</span></h3>
+<ul>
+<li>一個團隊有多個人,每個人記錄一組team_id(所屬的團隊)</li>
+<li>新增多個團隊成員
+<ul>
+<li>instanceof判斷是不是User的Model</li>
+<li>如果是的話就用save,不是就用saveMany(Collection)</li>
+</ul>
+</li>
+<li>移除多個團隊成員
+<ul>
+<li>remove():移除User的team_id</li>
+<li>注意:User的team_id要是fillable才可以</li>
+<li>兩種方法可以移除collection的team_id
+<ul>
+<li>參數法:each每一個user做update</li>
+<li>關聯法:透過members()關聯,whereIn條件搭配使用pluck update</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>php 7.2會有count不能count collection的問題
+<ul>
+<li><a href="https://github.com/Automattic/jetpack/issues/8420">PHP 7.2: Warning: count()</a></li>
+<li><a href="https://secure.php.net/manual/en/migration72.incompatible.php">Backward incompatible changes ¶</a></li>
+</ul>
+</li>
+<li><a href="https://www.codecasts.com/series/learn-to-write-php-unit-test/episodes/8">测试团队移除成员的功能</a></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 方法1:參數法</span><br><span class="line">$users-&gt;each(function($user)&#123;</span><br><span class="line">  return $user-&gt;update([&#x27;team_id&#x27;=&gt;null]);</span><br><span class="line">&#125;);</span><br><span class="line">// 方法2:關聯法pluck</span><br><span class="line">return $this-&gt;members()-&gt;whereIn(&#x27;id&#x27;, $users-&gt;pluck(&#x27;id&#x27;))-&gt;update([&#x27;team_id&#x27;=&gt;null]);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3><span id="參考連結">參考連結</span></h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=R1aO4Tmw3zA&amp;list=PLKERDLXpXl_jJQiQOHDLimnulasAK3T5b">TDD in Unity</a></li>
+<li><a href="https://www.youtube.com/watch?v=o-C_2ZELZHY">Laravel E-Commerce - Testing with PHPUnit - Part 29</a></li>
+<li><a href="https://www.codecasts.com/">codecasts</a></li>
+<li><a href="https://www.codecasts.com/series/learn-to-write-php-unit-test/episodes/1">learn-to-write-php-unit-test</a></li>
+<li><a href="https://www.youtube.com/watch?v=YjvSyWInHeE">Laravel Dusk Tutorials | Introduction and Installation #1</a></li>
+<li><a href="https://stackoverflow.com/questions/38949781/pdo-exception-driver-not-found-in-laravel-for-sqlite/41545116">driver not found的問題</a></li>
+<li><a href="https://www.youtube.com/watch?time_continue=3&amp;v=eE3-COBmE1g">Eloquont unit test laravel 5.7</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Unit Test</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>The power of language</title>
+    <url>/2019/03/24/The-power-of-language-1/</url>
+    <content><![CDATA[<p>每一次挫折都是離成功更進一步，每一個成功都是藏在拐角後頭。如果你不多轉幾個彎，怎麼知道成功離你多遠。事實上，一次一步並不算遠，但你終將達成目標。</p>
+<p><a href="https://www.youtube.com/watch?v=-Hi26Otz1To">語言具有改變思想的魔法喔！</a></p>
+]]></content>
+      <categories>
+        <category>language</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Using Composer Learning Unit Test Part 2</title>
+    <url>/2018/10/30/Using-Composer-Learning-Unit-Test-Part-2/</url>
+    <content><![CDATA[<p><em>PHP Unit Test</em></p>
+<ul>
+<li>要如何直接用assertEquals的function呢?
+<ul>
+<li>因為每一次都會用到$this-&gt;assertEquals()有點多餘</li>
+<li>找到實際定義assertEquals的function整理成一個檔案</li>
+<li>讓phpunit.xml直接參考到bootstrap.php自定義的檔案</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// tests/bootstrap.php</span></span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">&#x27;/../vendor/autoload.php&#x27;</span>;</span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">&#x27;/../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php&#x27;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>測試的種類</p>
+<ul>
+<li>Unit Test &lt; Integration Test &lt; Function Test &lt; Acceptance Test</li>
+<li>Unit Test
+<ul>
+<li>Basic Test</li>
+</ul>
+</li>
+<li>Integration Test
+<ul>
+<li>測試兩個獨立系統是否能正常運作</li>
+</ul>
+</li>
+<li>Function/Acceptance Test
+<ul>
+<li>測試過Unit Test和Integration Test不一定這一階段就會過</li>
+<li>Acceptance Test/配合Selenium測試UI</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>mock的概念</p>
+<ul>
+<li>不在乎run的內容,只關注那個function是否有被呼叫到了</li>
+<li>swap out the actual action</li>
+<li>和new 物件的作法比較(會實際呼叫到物件定義的方法)</li>
+<li>可以用於依賴注入(controller有使用到其他物件的資料)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$mock</span> = Mockery::mock(<span class="string">&#x27;MockDependency\Type\StripeBilling&#x27;</span>); <span class="comment">//要寫完整路徑</span></span><br><span class="line"><span class="variable">$mock</span>-&gt;shouldReceive(<span class="string">&#x27;charge&#x27;</span>)-&gt;once()-&gt;andReturn(<span class="string">&#x27;mocked Billing by Test&#x27;</span>);</span><br><span class="line"><span class="variable">$purchase</span> = <span class="keyword">new</span> PurcharseController(<span class="variable">$mock</span>);</span><br><span class="line"><span class="variable">$result</span> = <span class="variable">$purchase</span>-&gt;buy();</span><br><span class="line">var_dump(<span class="variable">$result</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>依賴注入
+<ul>
+<li>如果有定義新的namespace，記得先用composer dump，autoload才找的到檔案</li>
+<li>如果程式有在classmap中定義，require的時候就不用寫__DIR__取路徑</li>
+<li>Single Responsibility</li>
+</ul>
+</li>
+<li>驗證controller的時候，記得加上return返回結果
+<ul>
+<li>mock andReturn最後不會返回一個值，不需要再用一個變數來接</li>
+<li>用<em>php指令+檔案位置</em>來確認是否頁面能正常執行</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 方法1:未使用依賴注入的寫法</span></span><br><span class="line"> <span class="keyword">require</span> <span class="string">&#x27;vendor/autoload.php&#x27;</span>;</span><br><span class="line"> <span class="variable">$controller</span> = <span class="keyword">new</span> PurcharseController();</span><br><span class="line"> var_dump(<span class="variable">$controller</span>-&gt;buy());</span><br><span class="line"><span class="comment">// 方法2:使用依賴注入</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">&#x27;vendor/autoload.php&#x27;</span>;</span><br><span class="line">var_dump((<span class="keyword">new</span> PurcharseController(<span class="keyword">new</span> StripeBilling))-&gt;buy());</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Unit Test</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Using NodeJs Unit Testing(Jest)</title>
+    <url>/2018/11/08/Using-NodeJs-Unit-Testing-Jest/</url>
+    <content><![CDATA[<ul>
+<li>Why Unit Testing
+<ul>
+<li>project starts simple, but grows more and more complex</li>
+<li>horrifying functions start a simple way</li>
+<li>You must think longer than your nose goes(Swedish sayings proverb)</li>
+</ul>
+</li>
+<li>add shipping
+<ul>
+<li>if the total amount is greater than 1000, then it’s free</li>
+<li>instead of thinking lots of cases at the same time, we break it down by several isolated steps</li>
+</ul>
+</li>
+<li>add taxes</li>
+<li>Happy Test
+<ul>
+<li>the main function the most time program spend</li>
+</ul>
+</li>
+</ul>
+<h3><span id="tdd-3-ways">TDD 3 ways</span></h3>
+<pre><code>- obvious implementation
+- fake it until you make it
+- triangalation
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function orderFilterTotal(order) &#123;</span><br><span class="line">    // 直接返回結果不需要再用一個變數來接</span><br><span class="line">    // 三元表達式(item.quantity ? item.quantity : 1)</span><br><span class="line">    return order.items</span><br><span class="line">    .reduce((total, item) =&gt; &#123;return (item.price * (item.quantity || 1) + total) &#125;, 0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if(orderFilterTotal(&#123;</span><br><span class="line">    items: [</span><br><span class="line">        &#123;name:&#x27;cat food&#x27;, price: 8, quantity: 2&#125;,</span><br><span class="line">        &#123;name:&#x27;cat cage&#x27;, price: 800, quantity: 3&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;) != 2416) &#123;</span><br><span class="line">    throw new Error(&quot;Check Fail: Quantity Error)&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(orderFilterTotal(&#123;</span><br><span class="line">    items: [</span><br><span class="line">        &#123;name:&#x27;cat food&#x27;, price: 3&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;) != 3) &#123;</span><br><span class="line">    throw new Error(&quot;Check Fail: No Quantity&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if(orderFilterTotal(&#123;</span><br><span class="line">    items: [</span><br><span class="line">        &#123;name:&#x27;cat food&#x27;, price: 8&#125;,</span><br><span class="line">        &#123;name:&#x27;cat cage&#x27;, price: 800&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;) != 808) &#123;</span><br><span class="line">    throw new Error(&quot;Check Fail: Happy Test(Example 1)&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(orderFilterTotal(&#123;</span><br><span class="line">    items: [</span><br><span class="line">        &#123;name:&#x27;cat toy&#x27;, price: 30&#125;,</span><br><span class="line">        &#123;name:&#x27;cat towel&#x27;, price: 40&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;) != 70) &#123;</span><br><span class="line">    throw new Error(&quot;Check Fail: Happy Test(Example 2)&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="jest-auto-test">Jest Auto Test</span></h3>
+<ul>
+<li>You need to notice your test file name to be xxxx.test.js format
+<ul>
+<li>it doesn’t matter the test file goes, but the file name matter</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// Happy Path</span><br><span class="line">it(&#x27;works&#x27;, () =&gt; &#123;</span><br><span class="line">    expect(1).toBe(1);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>Using RegExr</title>
+    <url>/2018/11/01/Using-RegExr/</url>
+    <content><![CDATA[<h3><span id="正規表達式">正規表達式</span></h3>
+<ul>
+<li>.+:某
+<ul>
+<li>.+searchItem</li>
+</ul>
+</li>
+<li>.:代表任何東西
+<ul>
+<li>任意一個東西</li>
+<li>小丑卡，可以代表任何東西</li>
+<li>萬用任意(wildcard)</li>
+<li>如果想要match到點的話,要跳脫/.</li>
+<li>王…</li>
+<li>匹配3.14 =&gt; 3.14</li>
+</ul>
+</li>
+<li>\w:
+<ul>
+<li>所有的數字、文字和底線(可以用來檢查用戶名稱)</li>
+<li>\W:\w的補集(加減乘除)</li>
+</ul>
+</li>
+<li>\d:
+<ul>
+<li>匹配數字</li>
+<li>\D:\d的補集(除了數字以外)</li>
+</ul>
+</li>
+<li>\s:
+<ul>
+<li>匹配空格、tab</li>
+<li>\S:\s的補集(除了空白以外)</li>
+</ul>
+</li>
+<li>[]:可以是甚麼的字元
+<ul>
+<li>[^b]og:不是b</li>
+<li></li>
+<li></li>
+<li>轉成unicode:19968-40869</li>
+</ul>
+</li>
+<li>():分組(常用)
+<ul>
+<li>(\w+)</li>
+</ul>
+</li>
+<li>*:匹配所有
+<ul>
+<li>{0,}</li>
+</ul>
+</li>
+<li>+:匹配至少一個字元
+<ul>
+<li>{1,} at least 1</li>
+</ul>
+</li>
+<li>?:匹配零個或1個
+<ul>
+<li>{0,1}</li>
+</ul>
+</li>
+<li>{}:要出現幾次甚麼東西
+<ul>
+<li>z{3}:zzz</li>
+</ul>
+</li>
+</ul>
+<p><em>範例</em></p>
+<ul>
+<li><a href="regexr.com/42ajm">Yo後面有文字</a></li>
+</ul>
+<p><em>參考連結</em></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=EkluES9Rvak">Best of Fluent 2012</a></li>
+<li><a href="https://regexr.com/">regexr</a></li>
+<li><a href="https://www.bilibili.com/video/av18182693">bilibili表嚴肅</a></li>
+<li><a href="https://regexone.com/lesson/wildcards_dot?">regexone學習正規表達式的好地方</a></li>
+<li><a href="https://www.youtube.com/watch?v=2CwzOjYbi-w&amp;list=PLXbU-2B80FvCKj0aqdpudCqpif2vNuING">正規表達式</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Regular Expressions</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Laravel Intro</title>
+    <url>/2018/10/09/aravel-Intro/</url>
+    <content><![CDATA[<h2><span id="安裝完設定主目錄到documentroot">安裝完設定主目錄到documentRoot</span></h2>
+<h2><span id="資料夾">資料夾</span></h2>
+<ul>
+<li>storage:編譯後產生的檔案、log檔案，設定為可以寫入的權限</li>
+<li>bootstrap:框架啟動加載的檔案</li>
+<li>cache:加載後產生的檔案</li>
+<li>vendor:composer命令模組</li>
+<li>app:系統核心代碼</li>
+</ul>
+<h2><span id="開權限">開權限</span></h2>
+<ul>
+<li>chmod -R 777 storage</li>
+<li>chmod -R 777 bootstrap/cache</li>
+</ul>
+<h2><span id="artisan工匠">Artisan工匠</span></h2>
+<ul>
+<li>symfony console元件為基礎架構</li>
+<li>php artisan list</li>
+<li>php artisan --version</li>
+<li>php artisan make:command SendEmails</li>
+<li>php artisan make:controller CustomerController</li>
+</ul>
+<h2><span id="定義路由">定義路由</span></h2>
+<ul>
+<li>與客戶端互動</li>
+<li>用routes/web.php定義web相關的routes</li>
+<li>用routes/api.php定義api相關的routes</li>
+</ul>
+<h2><span id="路由動詞">路由動詞</span></h2>
+<ul>
+<li>get/post/delete/put</li>
+<li>符合所有any</li>
+<li>符合一部分match</li>
+<li>url helper透過url()轉向</li>
+</ul>
+<h1><span id="laravel-eloquent">Laravel Eloquent</span></h1>
+<h2><span id="繼承了eloquent就相當於幹了很多事情">繼承了Eloquent就相當於幹了很多事情</span></h2>
+<h2><span id="中間流builder">中間流(Builder)</span></h2>
+<ul>
+<li>建立了一個對象，在中間不斷地去改變它</li>
+<li>用::訪問某個function，無論是否為static，__construct()都不會被調用</li>
+<li>Builder對象不能直接存取Article對象，需要轉成終結對象，才能調用到裡面的屬性</li>
+</ul>
+<h2><span id="模型關係">模型關係</span></h2>
+<h3><span id="orm">ORM</span></h3>
+<ul>
+<li>一對一:不需要中間表</li>
+<li>多對多:用take優化性能</li>
+</ul>
+<h2><span id="php的問題">PHP的問題</span></h2>
+<ul>
+<li>一個網頁一個PHP:使用漏洞攻擊(MVC)</li>
+<li>缺乏統一寫法:一個人離開要了解寫法(Framework)</li>
+<li>每次都從頭開始:開發效率低(不用重新造輪子)</li>
+</ul>
+<h2><span id="framework和library差異">Framework和Library差異</span></h2>
+<ul>
+<li>由開發者決定是否要用方法</li>
+</ul>
+<h2><span id="四類framework">四類Framework</span></h2>
+<ul>
+<li>codeIgniter:支援最廣(適合接案使用)</li>
+<li>laravel:全功能(學習門檻高，底層用symfony)</li>
+<li>slim:簡約(restful API使用)</li>
+<li>phalcon:快速(C語言開發)</li>
+</ul>
+<h2><span id="laravel環境難裝">Laravel環境難裝</span></h2>
+<ul>
+<li>用最新的PHP新功能</li>
+<li>用罕見的Extension</li>
+</ul>
+<h2><span id="指令很多">指令很多</span></h2>
+<ul>
+<li>composer:安裝套件</li>
+<li>artisan:cli tool</li>
+</ul>
+<h2><span id="體驗高手如何寫出oop">體驗高手如何寫出OOP</span></h2>
+<ul>
+<li>把商業邏輯無關又常常用到的功能抽出來</li>
+<li>套件為主的開發方式，名稱衝突問題(NameSpace)</li>
+<li>ORM:SQL物件化</li>
+<li>Migration:欄位開錯，版本控管</li>
+<li>TDD:先寫測試在寫開發</li>
+</ul>
+<h2><span id="tdd好處">TDD好處</span></h2>
+<ul>
+<li>對Spec更加了解</li>
+<li>不用擔心重構的問題</li>
+<li>提早發現架構的問題</li>
+</ul>
+<h3><span id="參考">參考</span></h3>
+<ul>
+<li><a href="https://oomusou.io/laravel/laravel-for-newbie/">https://oomusou.io/laravel/laravel-for-newbie/</a></li>
+<li><a href="https://lvwenhan.com/laravel/421.html(Eloqent)">https://lvwenhan.com/laravel/421.html(Eloqent)</a></li>
+<li><a href="https://lvwenhan.com/laravel/422.html(%E4%B8%AD%E9%96%93%E6%B5%81)">https://lvwenhan.com/laravel/422.html(中間流)</a></li>
+<li><a href="https://lvwenhan.com/laravel/423.html(%E6%A8%A1%E5%9E%8B%E9%97%9C%E4%BF%82)">https://lvwenhan.com/laravel/423.html(模型關係)</a></li>
+<li><a href="https://github.com/johnlui/Learn-Laravel-4">https://github.com/johnlui/Learn-Laravel-4</a></li>
+<li><a href="https://github.com/johnlui/Learn-Laravel-5/issues/16">https://github.com/johnlui/Learn-Laravel-5/issues/16</a></li>
+<li><a href="https://www.jianshu.com/p/b0900bed6de8">https://www.jianshu.com/p/b0900bed6de8</a></li>
+<li><a href="https://gist.github.com/hootlex/da59b91c628a6688ceb1">https://gist.github.com/hootlex/da59b91c628a6688ceb1</a>(run locally)</li>
+<li><a href="http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-2-class-configuration-structure/">http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-2-class-configuration-structure/</a></li>
+<li><a href="http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-3-class-artisan/">http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-3-class-artisan/</a></li>
+<li><a href="http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-4-class-routes/">http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-4-class-routes/</a></li>
+<li><a href="https://medium.com/@shengyou/2018ironman-eos-for-php-developer-day14-4c5424fc7232(30%E5%A4%A9%E9%90%B5%E4%BA%BA)">https://medium.com/@shengyou/2018ironman-eos-for-php-developer-day14-4c5424fc7232(30天鐵人)</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Laravel</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>踩坑特集</title>
+    <url>/2018/10/26/experience/</url>
+    <content><![CDATA[<p><em>踩坑特集</em></p>
+<ul>
+<li>原本以為直接用bootstrap上面的jquery一定沒有問題，想不到ajax的時候出事了
+<ul>
+<li><a href="https://stackoverflow.com/questions/18271251/typeerror-ajax-is-not-a-function">typeError slim</a></li>
+</ul>
+</li>
+<li>踩到自己的坑，剛好把洞洞填起來
+<ul>
+<li>統一認action的post來決定要走哪一個表單</li>
+<li>沒有在最開始加上session_start就在那邊用session</li>
+<li>存在server的記憶體</li>
+</ul>
+</li>
+<li>JSON.parse回傳過來的值</li>
+<li>require_once只有引入一次，結果需要引用多次(子留言)
+<ul>
+<li>mysql_timezone
+<ul>
+<li>在mysql命令列中輸入，SET GLOBAL time_zone = ‘Asia/Taipei’;</li>
+</ul>
+</li>
+<li>SQL處理
+<ul>
+<li>real_escape_string($city); //PHP 7</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>建立第一個Sample就踩坑
+<ul>
+<li>用的是PHPUnit 7.4.3，貌似更新到PHPUnit 6之後的版本就要extends新的類別</li>
+<li>原本以為是路徑的問題，但聰明的phpunit會把tests資料夾下的所有檔案都跑過一次</li>
+</ul>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Git Memo</title>
+    <url>/2018/11/02/it-Memo/</url>
+    <content><![CDATA[<p><em>還魂藥Git</em></p>
+<ul>
+<li>兩個方法建立repository
+<ul>
+<li>git init:沒有資料夾會創建一個以repository為名稱的資料夾</li>
+<li>git clone:從既有的專案取得檔案</li>
+</ul>
+</li>
+<li>基本用法
+<ul>
+<li>git diff:比對差異</li>
+<li>git log -p:查看commit的結果(把差異也顯示到命令提示字元上)</li>
+<li>git add .:把異動加到暫存區()</li>
+<li>git commit -m “[init]在這裡打上異動”</li>
+<li>git status:查看commit狀態</li>
+<li>git checkout 1234567(七位以上commit-id) #還原到哪一個版本</li>
+</ul>
+</li>
+<li>異動的三個狀態
+<ul>
+<li>修改(modified)  =&gt; add改變狀態到staged</li>
+<li>暫存(staged)    =&gt; commit改變狀態到committed</li>
+<li>提交(committed) =&gt; log -p看修改紀錄</li>
+<li>還原(checkout)  =&gt; checkout 1234567</li>
+</ul>
+</li>
+<li>git log
+<ul>
+<li>–oneline:全部一行顯示</li>
+<li>p:查看異動內容</li>
+<li>–all顯示所有</li>
+</ul>
+</li>
+<li>git tag
+<ul>
+<li>在當前的分支中建立tag，和commit一樣也可以加上描述</li>
+<li>應用情境:非常複雜的節點</li>
+<li>-a v1 -m “第一版完成”</li>
+<li>
+<ul>
+<li>a:annotation(加了之後訊息比較全面)</li>
+</ul>
+</li>
+<li>–delete v1</li>
+<li>checkout v1</li>
+</ul>
+</li>
+<li>git show v1(標籤名稱)
+<ul>
+<li>列出所有commit和tag標籤的描述</li>
+</ul>
+</li>
+<li>git remote
+<ul>
+<li>都不輸入查看remote，預設是origin</li>
+<li>add localName <a href="http://github.com/userId/project.git">http://github.com/userId/project.git</a></li>
+<li>-v顯示fetch和push的位置</li>
+</ul>
+</li>
+<li>git push
+<ul>
+<li>origin branch</li>
+</ul>
+</li>
+<li>git pull
+<ul>
+<li>git fetch &amp;&amp; git merge</li>
+<li>同步資料</li>
+</ul>
+</li>
+<li>git merge
+<ul>
+<li>上面的異動是自己的</li>
+<li>下面的是已經在master上面的異動</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Gitpod &amp; Docker WorkFlow Part 2</title>
+    <url>/2021/07/25/pache%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%E8%AA%BF%E6%95%B4%E7%82%BA%E4%BE%8B-Part-2-1/</url>
+    <content><![CDATA[<h6><span id="tags-yii-gitpod">tags: <code>yii</code> <code>gitpod</code></span></h6>
+<h2><span id="前情提要">前情提要</span></h2>
+<p>接續part 1提到的gitpod環境所遇到的問題，底下就列出幾個關鍵調整的地方</p>
+<h2><span id="gitpod-workflow">Gitpod WorkFlow</span></h2>
+<ul>
+<li>開啟gitpod.io網址開啟空白專案
+<ul>
+<li>使用git clone將專案複製到這個環境</li>
+<li>使用volumes
+<ul>
+<li>將當前的user與group的設定複製到container環境</li>
+<li>設定專案所需環境變數</li>
+</ul>
+</li>
+<li>調整dockerFile
+<ul>
+<li>將環境變數相關的檔案複製到container中</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3><span id="gitpod的base-image和full-workspace兩者之間的關係">Gitpod的Base Image和Full Workspace兩者之間的關係</span></h3>
+<ul>
+<li>gitpod image的dependency會長得像這樣</li>
+</ul>
+<p><img src="https://i.imgur.com/a1AzDHs.png" alt=""></p>
+<h4><span id="reference">Reference</span></h4>
+<ul>
+<li>
+<p><a href="https://github.com/gitpod-io/workspace-images/blob/2e5340ee0f9c39aef3f499ba7a5466087e700fb9/base/Dockerfile">Base Dockerfile</a></p>
+</li>
+<li>
+<p><a href="https://github.com/gitpod-io/workspace-images/blob/3671677ff78059c6f5d94ec034903398a12bdec2/.circleci/config.yml">Config.yml</a></p>
+</li>
+<li>
+<p><a href="https://github.com/docker-library/buildpack-deps">FROM buildpack-deps:focal</a></p>
+</li>
+</ul>
+<h2><span id="code">Code</span></h2>
+<ul>
+<li>frontend/apache2/000-default.conf</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;Directory /app/frontend/web/&gt;</span><br><span class="line">        Options Indexes FollowSymLinks</span><br><span class="line">        AllowOverride All</span><br><span class="line">        Require all granted</span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">        # The ServerName directive sets the request scheme, hostname and port that</span><br><span class="line">        # the server uses to identify itself. This is used when creating</span><br><span class="line">        # redirection URLs. In the context of virtual hosts, the ServerName</span><br><span class="line">        # specifies what hostname must appear in the request&#x27;s Host: header to</span><br><span class="line">        # match this virtual host. For the default virtual host (this file) this</span><br><span class="line">        # value is not decisive as it is used as a last resort host regardless.</span><br><span class="line">        # However, you must set it for any further virtual host explicitly.</span><br><span class="line">        #ServerName www.example.com</span><br><span class="line"></span><br><span class="line">        ServerAdmin webmaster@localhost</span><br><span class="line">        DocumentRoot /app/frontend/web</span><br><span class="line"></span><br><span class="line">        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,</span><br><span class="line">        # error, crit, alert, emerg.</span><br><span class="line">        # It is also possible to configure the loglevel for particular</span><br><span class="line">        # modules, e.g.</span><br><span class="line">        #LogLevel info ssl:warn</span><br><span class="line"></span><br><span class="line">        ErrorLog $&#123;APACHE_LOG_DIR&#125;/error.log</span><br><span class="line">        CustomLog $&#123;APACHE_LOG_DIR&#125;/access.log combined</span><br><span class="line"></span><br><span class="line">        # For most configuration files from conf-available/, which are</span><br><span class="line">        # enabled or disabled at a global level, it is possible to</span><br><span class="line">        # include a line for only one particular virtual host. For example the</span><br><span class="line">        # following line enables the CGI configuration for this host only</span><br><span class="line">        # after it has been globally disabled with &quot;a2disconf&quot;.</span><br><span class="line">        #Include conf-available/serve-cgi-bin.conf</span><br><span class="line">        &lt;Directory &quot;/app/frontend/web/&quot;&gt;</span><br><span class="line">            # use mod_rewrite for pretty URL support</span><br><span class="line">            RewriteEngine on</span><br><span class="line">            # If a directory or a file exists, use the request directly</span><br><span class="line">            RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">            RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">            # Otherwise forward the request to index.php</span><br><span class="line">            RewriteRule . index.php</span><br><span class="line"></span><br><span class="line">            # use index.php as index file</span><br><span class="line">            DirectoryIndex index.php</span><br><span class="line"></span><br><span class="line">            # ...other settings...</span><br><span class="line">            # Apache 2.4</span><br><span class="line">            Require all granted</span><br><span class="line"></span><br><span class="line">            ## Apache 2.2</span><br><span class="line">            # Order allow,deny</span><br><span class="line">            # Allow from all</span><br><span class="line">        &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>dockerFile</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> yiisoftware/yii2-php:<span class="number">7.2</span>-apache</span><br><span class="line"></span><br><span class="line"><span class="comment"># Change document root for Apache</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> /apache2/000-default.conf /etc/apache2/sites-available/000-default.conf </span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>docker-compose.yml</li>
+</ul>
+<p>這兩行為關鍵:</p>
+<ul>
+<li>/etc/passwd:/etc/passwd:ro</li>
+<li>/etc/group:/etc/group:ro</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">frontend:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">frontend</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">20080</span><span class="string">:80</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="comment"># Re-use local composer cache via host-volume</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">~/.composer-docker/cache:/root/.composer/cache:delegated</span></span><br><span class="line">      <span class="comment"># Mount source-code for development</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./:/app</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/etc/passwd:/etc/passwd:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/etc/group:/etc/group:ro</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mysql</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Using Laravel AdminLTE</title>
+    <url>/2018/10/09/sing-Laravel-AdminLTE/</url>
+    <content><![CDATA[<h4><span id="使用composer-require引用套件">使用composer require引用套件</span></h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer require jeroennoten/laravel-adminlte</span><br></pre></td></tr></table></figure>
+<h4><span id="配置configappphp">配置config/app.php</span></h4>
+<ul>
+<li>找尋使用的套件包</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">JeroenNoten\LaravelAdminLte\ServiceProvider::class,</span><br></pre></td></tr></table></figure>
+<h4><span id="執行publish命令">執行publish命令</span></h4>
+<ul>
+<li>將vendor產生的template複製一份到public資料夾</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">php artisan vendor:publish --provider=<span class="string">&quot;JeroenNoten\LaravelAdminLte\ServiceProvider&quot;</span> --tag=assets</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/jeroennoten/Laravel-AdminLTE">AdminLTE</a></p>
+]]></content>
+      <categories>
+        <category>Laravel</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Laravel Command</title>
+    <url>/2018/10/09/st/</url>
+    <content><![CDATA[<h2><span id="tools">Tools</span></h2>
+<ul>
+<li><a href="https://laragon.org/">Laragon</a></li>
+<li><a href="https://packagecontrol.io/packages/Bootstrap%204%20Snippets">Sublime Bootstrap Snippets</a></li>
+<li><a href="https://github.com/fzaninotto/Faker#installation">composer require fzaninotto/faker</a></li>
+</ul>
+<h2><span id="lang">Lang</span></h2>
+<ul>
+<li><a href="https://github.com/caouecs/Laravel-lang">Laravel Lang</a></li>
+<li>composer require caouecs/laravel-lang:~3.0</li>
+<li>second way to change language is to put json language file to lang folder</li>
+</ul>
+<h2><span id="services">Services</span></h2>
+<ul>
+<li>Auth
+<ul>
+<li>attempt(): to login and register session data. Verify email and unencrypted password</li>
+<li>logout()</li>
+</ul>
+</li>
+</ul>
+<h2><span id="migration">Migration</span></h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">* php artisan make:migration UserTestTable</span><br><span class="line">* php artisan make:seeder UserTestSeeder</span><br><span class="line">* php artisan make:model UserTestSeeder</span><br><span class="line">* php artisan migrate:refresh --model=UserTestSeeder --seed</span><br></pre></td></tr></table></figure>
+<h2><span id="form-crud">FORM CRUD</span></h2>
+<ul>
+<li>@csrf @method(‘DELETE’): filter request</li>
+<li><a href="https://laravel.com/docs/5.7/csrf">csrf</a></li>
+<li>php artisan make:policy PostPolicy: to avoid not authorize user to delete</li>
+<li>using @can(‘delete’, $user) to toggle delete button</li>
+<li>@csrf @method(‘PUT’): fake update method using put instead</li>
+<li><a href="https://laravel.tw/docs/5.2/helpers#method-method-field">Method Field</a></li>
+</ul>
+<h2><span id="helpers">Helpers</span></h2>
+<ul>
+<li><a href="https://github.com/barryvdh/laravel-ide-helper">Laravel Ide Helper</a></li>
+</ul>
+<h2><span id="artisan-command">Artisan Command</span></h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">php artisan make:controller IndexController</span><br><span class="line">php artisan make:controller UserController --resource</span><br><span class="line">php artisan route:list</span><br><span class="line">php artisan migrate</span><br><span class="line">php artisan make:policy --model=User UserPolicy</span><br></pre></td></tr></table></figure>
+<h2><span id="session-driver">Session Driver</span></h2>
+<ul>
+<li>change .env session_driver to session
+<ul>
+<li>laravel will create sessoin table to record user login message</li>
+<li>once you change the driver type, you need to refresh all record to get the correct result</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">php artisan session:table</span><br><span class="line">php artisan migrate:refresh --seed</span><br></pre></td></tr></table></figure>
+<h2><span id="create-app-key-amp-smtp-setting">Create App Key &amp; Smtp Setting</span></h2>
+<p><a href="https://support.google.com/mail/answer/7126229?hl=zh-Hant">smtp gmail setting</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">php artisan key:generate</span><br><span class="line">php artisan make:mail RegMail</span><br></pre></td></tr></table></figure>
+<ul>
+<li>env.php
+<ul>
+<li>MAIL_DRIVER=smtp</li>
+<li>MAIL_HOST=<a href="http://smtp.gmail.com">smtp.gmail.com</a></li>
+<li>MAIL_PORT=587</li>
+<li><a href="mailto:MAIL_USERNAME=your@gmail.com">MAIL_USERNAME=your@gmail.com</a></li>
+<li>MAIL_PASSWORD=yourgmailpassword</li>
+<li>MAIL_ENCRYPTION=tls</li>
+</ul>
+</li>
+</ul>
+<h3><span id="create-factory-data">create factory data</span></h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// manually added records</span><br><span class="line"> php artisan tinker</span><br><span class="line"> factory(App\User::class, 20)-&gt;create();</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// execute by db:seed</span><br><span class="line"> php artisan make:seeder UsersSeeder</span><br><span class="line">// rewrite the DatabaseSeeder.php run method by using factory</span><br><span class="line">// factory(App\User::class, 20)-&gt;create();</span><br><span class="line"> php artisan db:seed</span><br><span class="line"> php artisan migrate:refresh --seed</span><br></pre></td></tr></table></figure>
+<h2><span id="using-policy">Using Policy</span></h2>
+<ul>
+<li>create policy
+<ul>
+<li>php artisan make:policy --model=user UserPolicy</li>
+</ul>
+</li>
+<li>AuthServiceProvider add Policy
+<ul>
+<li>‘App\User’ =&gt; UserPolicy::class,</li>
+<li>remember to add namespace before using this policy</li>
+</ul>
+</li>
+<li>authorize controller destroy method to execute delete method
+<ul>
+<li>$this-&gt;authorize(‘delete’, $user);</li>
+</ul>
+</li>
+</ul>
+<h2><span id="notice">Notice</span></h2>
+<ul>
+<li>routes/web.php</li>
+</ul>
+<ol>
+<li>use get to access controller function
+<ul>
+<li>alias name for changing back to home page</li>
+</ul>
+</li>
+<li>use resource to create default CRUD method
+<ul>
+<li>no need to create additional view blade files</li>
+</ul>
+</li>
+<li>laravel 5.4 support emoji for MySQL 5.7.7
+<ul>
+<li>every time start the app</li>
+<li>Providers\AppServiceProvider.php</li>
+<li>config\app.php</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">Route::get(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;IndexController@home&#x27;</span>)-&gt;name(<span class="string">&#x27;home&#x27;</span>);</span><br><span class="line">Route::resource(<span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;UserController&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public function boot()</span><br><span class="line">&#123;</span><br><span class="line">    Schema::defaultStringLength(191);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Laravel</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Tutorials</title>
+    <url>/2018/10/09/torials/</url>
+    <content><![CDATA[<h2><span id="frontend">Frontend</span></h2>
+<p><a href="https://www.youtube.com/channel/UCJw78bnBvSEZBChEWvwWbGQ/playlists">Lidemy PlayList</a></p>
+<h2><span id="ngnix">Ngnix</span></h2>
+<p><a href="https://www.youtube.com/watch?v=ys54MOtlwhs&amp;list=PLKKWlNc5I5bTOvpUoGZW9DtHbMq5ZC-g9">Ngnix Fundamentals</a></p>
+<h2><span id="linux">Linux</span></h2>
+<h4><span id="吳光科老師">吳光科老師</span></h4>
+<p><a href="https://www.bilibili.com/video/av18372532/">Linux下Nginx+PHP+MYSQL架构实战</a></p>
+<p><a href="https://ke.qq.com/webcourse/index.html#cid=85810&amp;term_id=100084133&amp;taid=149198574014258&amp;vid=f1404qechrb">Linux下Shell編程</a></p>
+<h2><span id="laravel">Laravel</span></h2>
+<p><a href="https://www.youtube.com/watch?v=o5PWIuDTgxg&amp;list=PLEhEHUEU3x5oPTli631ZX9cxl6cU_sDaR">Laravel E-commerce</a></p>
+<p><a href="https://www.youtube.com/watch?v=wM4L_yDGqpo&amp;list=PLB4AdipoHpxaHDLIaMdtro1eXnQtl_UvE">Let’s Build a Multi-Purpose Laravel + Vue Application</a></p>
+<p><a href="https://www.youtube.com/watch?v=tl_9igRwRME">用 Laravel + Vue js 打造即時資訊看板</a></p>
+<p><a href="https://gitee.com/houdunwang/video">後盾人代碼</a></p>
+<p><a href="https://space.bilibili.com/277339333/#/video">Laravel開發</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Rootless Docker的解決方式</title>
+    <url>/2021/10/30/Docker-Compose-Build%E5%87%BA%E8%87%AA%E5%B7%B1%E7%9A%84gitpod%E7%92%B0%E5%A2%83/</url>
+    <content><![CDATA[<h6><span id="tags-docker-compose-gitpod">tags: <code>docker-compose</code> <code>gitpod</code></span></h6>
+<ul>
+<li>一般container執行起來的時候,會是用root的權限在container執行各種檔案的操作
+<ul>
+<li>當離開container之後,會發現volume建立的那些檔案都沒有辦法編輯
+<ul>
+<li>ls -al列出volume底下那些在container建立的檔案都會是root的權限</li>
+<li>為了解決這個問題,就需要改用rootless進入container進行後續的操作,但執行npm install會發現又需要root權限…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>解決方式有幾種
+<ul>
+<li>使用rootless docker(-userns-remap flag),實作方式可以參考==experimenting-with-rootless-docker==的連結</li>
+<li>使用docker volume將使用者與群組volume到container環境(要注意需要設定read-only,以免改到本地的群組設定),可以參考==using-current-user-when-running-container-in-docker-compose==的連結</li>
+<li>docker build image的時候,使用環境變數將當前登入的使用者與群組也一併新增上去,這是本篇文章採用的作法</li>
+</ul>
+</li>
+</ul>
+<h3><span id="dockerfile">Dockerfile</span></h3>
+<ul>
+<li>設定環境變數
+<ul>
+<li>如果USER_ID和GROUP_ID兩者都沒有設定會被設定為1001</li>
+</ul>
+</li>
+<li>切換root使用者</li>
+<li>從環境變數中取得群組編號,並建立群組</li>
+<li>新增current_user到image</li>
+<li>工作路徑設定為workspace</li>
+<li>設定User為current_user</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> gitpod/workspace-full</span><br><span class="line"></span><br><span class="line"><span class="comment"># @see https://dev.to/visuellverstehen/docker-docker-compose-and-permissions-2fih</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Define build arguments</span></span><br><span class="line"><span class="keyword">ARG</span> USER_ID</span><br><span class="line"><span class="keyword">ARG</span> GROUP_ID</span><br><span class="line"><span class="keyword">ARG</span> <span class="keyword">USER</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Define environment variables</span></span><br><span class="line"><span class="keyword">ENV</span> USER_ID=$USER_ID</span><br><span class="line"><span class="keyword">ENV</span> GROUP_ID=$GROUP_ID</span><br><span class="line"><span class="keyword">ENV</span> USER_ID=$&#123;USER_ID:-<span class="number">1001</span>&#125;</span><br><span class="line"><span class="keyword">ENV</span> GROUP_ID=$&#123;GROUP_ID:-<span class="number">1001</span>&#125;</span><br><span class="line"><span class="keyword">ENV</span> CURRENT_USER=$<span class="keyword">USER</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># output message</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$&#123;CURRENT_USER&#125;</span> is added <span class="variable">$&#123;USER_ID&#125;</span> <span class="variable">$&#123;GROUP_ID&#125;</span>&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># https://github.com/gitpod-io/workspace-images/blob/master/full/Dockerfile</span></span><br><span class="line"><span class="comment"># RUN as root user </span></span><br><span class="line"><span class="keyword">USER</span> root</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add group and user based on build arguments</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> addgroup --gid <span class="variable">$&#123;GROUP_ID&#125;</span> <span class="variable">$&#123;CURRENT_USER&#125;</span></span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> adduser --disabled-password --gecos <span class="string">&#x27;&#x27;</span> --uid <span class="variable">$&#123;USER_ID&#125;</span> --gid <span class="variable">$&#123;GROUP_ID&#125;</span> <span class="variable">$&#123;CURRENT_USER&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># npm install permission</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> sudo chown -R <span class="variable">$&#123;USER_ID&#125;</span>:<span class="variable">$&#123;GROUP_ID&#125;</span> <span class="string">&quot;/home/gitpod/.npm&quot;</span></span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> sudo chown -R <span class="variable">$&#123;USER_ID&#125;</span>:<span class="variable">$&#123;GROUP_ID&#125;</span> <span class="string">&quot;/home/gitpod/.nvm&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># INSTALL net-tools</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apt-get update &amp;&amp; apt-get install net-tools</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set user and group of working directory</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /workspace</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># RUN as current user</span></span><br><span class="line"><span class="keyword">USER</span> $&#123;CURRENT_USER&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="docker-composeyaml">docker-compose.yaml</span></h3>
+<ul>
+<li>將Dockerfile所需的環境變數在build的階段傳入進來</li>
+<li>如果image有設定工作路徑,docker-compose就可以不用另外設定工作路徑</li>
+<li>指定對外的port與volume位置</li>
+<li>開啟互動模式:(這樣設定完成之後即使下docker-compose up -d沒有服務正在執行,container也不會馬上斷掉)
+<ul>
+<li>stdin: true</li>
+<li>tty: true</li>
+</ul>
+</li>
+<li>在container建立起來的時候,執行post-install</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.2&#x27;</span></span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  hexo-local:</span><br><span class="line">    build:</span><br><span class="line">        context: .</span><br><span class="line">        dockerfile: ./Dockerfile</span><br><span class="line">        args:</span><br><span class="line">            USER_ID: $USER_ID</span><br><span class="line">            GROUP_ID: $GROUP_ID</span><br><span class="line">            <span class="keyword">USER</span>: $<span class="keyword">USER</span></span><br><span class="line">    working_dir: /workspace <span class="comment"># change working directory</span></span><br><span class="line">    volumes:</span><br><span class="line">      - $&#123;PWD&#125;:/workspace</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">&#x27;8101:80&#x27;</span></span><br><span class="line">    stdin_open: true <span class="comment"># https://stackoverflow.com/questions/36249744/interactive-shell-using-docker-compose</span></span><br><span class="line">    tty: true</span><br><span class="line">    command: sh /workspace/post-install.sh</span><br></pre></td></tr></table></figure>
+<h3><span id="常用指令">常用指令</span></h3>
+<ul>
+<li>export環境變數
+<ul>
+<li><a href="http://env.sh">env.sh</a></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">export USER_ID=$(id -u)</span><br><span class="line">export GROUP_ID=$(id -g)</span><br><span class="line">export USER=$(whoami)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>source &amp; build image</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">source env.sh &amp;&amp; docker-compose build --no-cache</span><br></pre></td></tr></table></figure>
+<ul>
+<li>create container via docker-compose</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<ul>
+<li>enter container</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">docker-composer exec hexo-local bash</span><br></pre></td></tr></table></figure>
+<h3><span id="docker-debug技巧">docker debug技巧</span></h3>
+<ul>
+<li>image
+<ul>
+<li>echo可以確認環境變數是否帶入正確</li>
+</ul>
+</li>
+<li>container
+<ul>
+<li>docker run與interactive mode來</li>
+<li>compose則可以設定tty和stdin為true來進入container</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">docker run --rm -it -v `pwd`:/workspace -p <span class="number">8101</span>:<span class="number">80</span> -u <span class="number">0</span> gitpod/workspace-full</span><br></pre></td></tr></table></figure>
+<h3><span id="reference">Reference</span></h3>
+<p><a href="https://medium.com/@tonistiigi/experimenting-with-rootless-docker-416c9ad8c0d6">experimenting-with-rootless-docker</a></p>
+<p><a href="https://stackoverflow.com/questions/64857370/using-current-user-when-running-container-in-docker-compose">using-current-user-when-running-container-in-docker-compose</a></p>
+<p><a href="https://dev.to/visuellverstehen/docker-docker-compose-and-permissions-2fih">docker-&amp;-docker-compose-and-permissions</a></p>
+]]></content>
+  </entry>
+</search>

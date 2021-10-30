@@ -1,0 +1,1117 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Page 3 | Edwardyi Blog</title>
+  <meta name="author" content="Edwardyi">
+  
+  <meta name="description" content="年少輕狂的好日子，一懂事就結束">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Edwardyi Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Edwardyi Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer', 'GTM-57XKRCL');</script>
+	<!-- End Google Tag Manager -->
+
+	
+  
+	<!-- facebook tag -->
+	<meta name="facebook-domain-verification" content="ehpewsl8kx5bmjcejqnpr91tmpdmeg" />
+	<!-- End facebook tag -->
+
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57XKRCL"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Edwardyi Blog</a></h1>
+  <h2><a href="/">To go forward you must backup</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/works">Works</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-11-02T11:00:00.000Z"><a href="/2018/11/02/Bootstrap-4/">2018-11-02</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/11/02/Bootstrap-4/">Bootstrap 4</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <ul>
+<li>一般不要去改依賴庫的程式，那個工作讓依賴包管理來處理就好
+<ul>
+<li>對修改封閉</li>
+</ul>
+</li>
+<li>快捷鍵
+<ul>
+<li>ctrl+delete:刪除一個單詞</li>
+<li>lipsum:產生dumy words
+<ul>
+<li>不知道為什麼一開始cloud9會沒有辦法識別</li>
+<li>之後反而要打Lorem了，怪怪的</li>
+</ul>
+</li>
+<li>cloud 9預設Emmet plugin</li>
+</ul>
+</li>
+<li>三塊的布局
+<ul>
+<li>col-sm-xx(加起來要是12)</li>
+</ul>
+</li>
+<li>導覽列
+<ul>
+<li>上方navbar
+<ul>
+<li>最外層用div.navbar</li>
+<li>內層有個div.nav.navbar-header</li>
+<li>導航列用ul.nav.navbar-nav</li>
+</ul>
+</li>
+<li>bootstrap 4:
+<ul>
+<li>mr-auto:向左靠(margin-right-auto)</li>
+<li>ml-auto:向右靠(margin-left-auto)</li>
+<li>navbar-expand-lg:當網頁是一般螢幕的時候展開</li>
+<li>navbar-collapse:隱藏起來</li>
+<li>navbar-toggler-icon</li>
+</ul>
+</li>
+<li>和上方文字對齊，加上row的div
+<ul>
+<li>因為row有css的樣式，把他的margin和padding覆蓋掉</li>
+</ul>
+</li>
+<li>踩到官網3.3.1 slim.js的問題
+<ul>
+<li>用的太新了，改用六角學院的連結就有用(3.2.1.slim)</li>
+<li>小畫面的時候會沒有辦法toggle導覽列</li>
+</ul>
+</li>
+<li>修改Logo
+<ul>
+<li>background-image:url(設定圖片位置)</li>
+<li>background-size:
+<ul>
+<li>cover(圖片填充，會發現整個圖片重複了，而且覺得太滿了一點)</li>
+<li>80%</li>
+</ul>
+</li>
+<li>background-repeat:no-repeat
+<ul>
+<li>調整background-size圖片重複的問題</li>
+</ul>
+</li>
+<li>background-position:調整圖片位置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>左方sidebar
+<ul>
+<li>多增加一個sidebar的類，比較明確，避免改到其他的地方的樣式</li>
+<li>list-group-item</li>
+<li>學會了怎麼用emmet添加多個假的item
+<ul>
+<li>div.list-group&gt;(a[#].list-group-item.list-group-item-hover{item$})*5</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>中間區塊
+<ul>
+<li>圖片設置
+<ul>
+<li>讓圖片限制在一個範圍內</li>
+<li>max-width:100%(讓他不會超過外面元素的100%)</li>
+<li>col-xs-xx:在bootstrap 4不管用拉(用col-md-{})</li>
+</ul>
+</li>
+<li>整理共用樣式用逗號串接</li>
+<li>grid system如果要顯示在同一列要用row包起來</li>
+<li>用一個div包起來info
+<ul>
+<li>也方便統一裡面的樣式</li>
+</ul>
+</li>
+<li>調整title行距
+<ul>
+<li>改成超連結，display:block</li>
+</ul>
+</li>
+<li>clearfix:bootstrap 3需要清除float</li>
+</ul>
+</li>
+<li>右方區塊
+<ul>
+<li>一般放業務有關的訊息</li>
+<li>不能用數字命名阿</li>
+<li>把標題字調大</li>
+<li>不確定怎麼把右方標題的上下間距調大一些</li>
+</ul>
+</li>
+<li>新聞詳細頁
+<ul>
+<li>lorem*10</li>
+<li>Label用法</li>
+</ul>
+</li>
+</ul>
+<p><em>參考連結</em></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=23bpce-5s8I">bootstrap 4教學</a></li>
+<li><a target="_blank" rel="noopener" href="https://designshack.net/articles/css/7-awesome-emmet-html-time-saving-tips/">Awesome emmet</a></li>
+<li><a target="_blank" rel="noopener" href="https://dummyimage.com/">dummyimage</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/41794746/col-xs-not-working-in-bootstrap-4">col-xs in bootstrap 4</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=qmPmwdshCMw">Grid System bootstrap 4</a></li>
+<li><a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/4.0/migration/">Migration to bootstrap 4</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-11-02T10:58:00.000Z"><a href="/2018/11/02/it-Memo/">2018-11-02</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/11/02/it-Memo/">Git Memo</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>還魂藥Git</em></p>
+<ul>
+<li>兩個方法建立repository
+<ul>
+<li>git init:沒有資料夾會創建一個以repository為名稱的資料夾</li>
+<li>git clone:從既有的專案取得檔案</li>
+</ul>
+</li>
+<li>基本用法
+<ul>
+<li>git diff:比對差異</li>
+<li>git log -p:查看commit的結果(把差異也顯示到命令提示字元上)</li>
+<li>git add .:把異動加到暫存區()</li>
+<li>git commit -m “[init]在這裡打上異動”</li>
+<li>git status:查看commit狀態</li>
+<li>git checkout 1234567(七位以上commit-id) #還原到哪一個版本</li>
+</ul>
+</li>
+<li>異動的三個狀態
+<ul>
+<li>修改(modified)  =&gt; add改變狀態到staged</li>
+<li>暫存(staged)    =&gt; commit改變狀態到committed</li>
+<li>提交(committed) =&gt; log -p看修改紀錄</li>
+<li>還原(checkout)  =&gt; checkout 1234567</li>
+</ul>
+</li>
+<li>git log
+<ul>
+<li>–oneline:全部一行顯示</li>
+<li>p:查看異動內容</li>
+<li>–all顯示所有</li>
+</ul>
+</li>
+<li>git tag
+<ul>
+<li>在當前的分支中建立tag，和commit一樣也可以加上描述</li>
+<li>應用情境:非常複雜的節點</li>
+<li>-a v1 -m “第一版完成”</li>
+<li>
+<ul>
+<li>a:annotation(加了之後訊息比較全面)</li>
+</ul>
+</li>
+<li>–delete v1</li>
+<li>checkout v1</li>
+</ul>
+</li>
+<li>git show v1(標籤名稱)
+<ul>
+<li>列出所有commit和tag標籤的描述</li>
+</ul>
+</li>
+<li>git remote
+<ul>
+<li>都不輸入查看remote，預設是origin</li>
+<li>add localName <a target="_blank" rel="noopener" href="http://github.com/userId/project.git">http://github.com/userId/project.git</a></li>
+<li>-v顯示fetch和push的位置</li>
+</ul>
+</li>
+<li>git push
+<ul>
+<li>origin branch</li>
+</ul>
+</li>
+<li>git pull
+<ul>
+<li>git fetch &amp;&amp; git merge</li>
+<li>同步資料</li>
+</ul>
+</li>
+<li>git merge
+<ul>
+<li>上面的異動是自己的</li>
+<li>下面的是已經在master上面的異動</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-11-01T08:13:00.000Z"><a href="/2018/11/01/Using-RegExr/">2018-11-01</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/11/01/Using-RegExr/">Using RegExr</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3><span id="正規表達式">正規表達式</span></h3>
+<ul>
+<li>.+:某
+<ul>
+<li>.+searchItem</li>
+</ul>
+</li>
+<li>.:代表任何東西
+<ul>
+<li>任意一個東西</li>
+<li>小丑卡，可以代表任何東西</li>
+<li>萬用任意(wildcard)</li>
+<li>如果想要match到點的話,要跳脫/.</li>
+<li>王…</li>
+<li>匹配3.14 =&gt; 3.14</li>
+</ul>
+</li>
+<li>\w:
+<ul>
+<li>所有的數字、文字和底線(可以用來檢查用戶名稱)</li>
+<li>\W:\w的補集(加減乘除)</li>
+</ul>
+</li>
+<li>\d:
+<ul>
+<li>匹配數字</li>
+<li>\D:\d的補集(除了數字以外)</li>
+</ul>
+</li>
+<li>\s:
+<ul>
+<li>匹配空格、tab</li>
+<li>\S:\s的補集(除了空白以外)</li>
+</ul>
+</li>
+<li>[]:可以是甚麼的字元
+<ul>
+<li>[^b]og:不是b</li>
+<li></li>
+<li></li>
+<li>轉成unicode:19968-40869</li>
+</ul>
+</li>
+<li>():分組(常用)
+<ul>
+<li>(\w+)</li>
+</ul>
+</li>
+<li>*:匹配所有
+<ul>
+<li>{0,}</li>
+</ul>
+</li>
+<li>+:匹配至少一個字元
+<ul>
+<li>{1,} at least 1</li>
+</ul>
+</li>
+<li>?:匹配零個或1個
+<ul>
+<li>{0,1}</li>
+</ul>
+</li>
+<li>{}:要出現幾次甚麼東西
+<ul>
+<li>z{3}:zzz</li>
+</ul>
+</li>
+</ul>
+<p><em>範例</em></p>
+<ul>
+<li><a href="regexr.com/42ajm">Yo後面有文字</a></li>
+</ul>
+<p><em>參考連結</em></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=EkluES9Rvak">Best of Fluent 2012</a></li>
+<li><a target="_blank" rel="noopener" href="https://regexr.com/">regexr</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av18182693">bilibili表嚴肅</a></li>
+<li><a target="_blank" rel="noopener" href="https://regexone.com/lesson/wildcards_dot?">regexone學習正規表達式的好地方</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=2CwzOjYbi-w&amp;list=PLXbU-2B80FvCKj0aqdpudCqpif2vNuING">正規表達式</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-30T02:58:00.000Z"><a href="/2018/10/30/Using-Composer-Learning-Unit-Test-Part-2/">2018-10-30</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/30/Using-Composer-Learning-Unit-Test-Part-2/">Using Composer Learning Unit Test Part 2</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>PHP Unit Test</em></p>
+<ul>
+<li>要如何直接用assertEquals的function呢?
+<ul>
+<li>因為每一次都會用到$this-&gt;assertEquals()有點多餘</li>
+<li>找到實際定義assertEquals的function整理成一個檔案</li>
+<li>讓phpunit.xml直接參考到bootstrap.php自定義的檔案</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tests/bootstrap.php</span></span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">&#x27;/../vendor/autoload.php&#x27;</span>;</span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">&#x27;/../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php&#x27;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>測試的種類</p>
+<ul>
+<li>Unit Test &lt; Integration Test &lt; Function Test &lt; Acceptance Test</li>
+<li>Unit Test
+<ul>
+<li>Basic Test</li>
+</ul>
+</li>
+<li>Integration Test
+<ul>
+<li>測試兩個獨立系統是否能正常運作</li>
+</ul>
+</li>
+<li>Function/Acceptance Test
+<ul>
+<li>測試過Unit Test和Integration Test不一定這一階段就會過</li>
+<li>Acceptance Test/配合Selenium測試UI</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>mock的概念</p>
+<ul>
+<li>不在乎run的內容,只關注那個function是否有被呼叫到了</li>
+<li>swap out the actual action</li>
+<li>和new 物件的作法比較(會實際呼叫到物件定義的方法)</li>
+<li>可以用於依賴注入(controller有使用到其他物件的資料)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$mock</span> = Mockery::mock(<span class="string">&#x27;MockDependency\Type\StripeBilling&#x27;</span>); <span class="comment">//要寫完整路徑</span></span><br><span class="line"><span class="variable">$mock</span>-&gt;shouldReceive(<span class="string">&#x27;charge&#x27;</span>)-&gt;once()-&gt;andReturn(<span class="string">&#x27;mocked Billing by Test&#x27;</span>);</span><br><span class="line"><span class="variable">$purchase</span> = <span class="keyword">new</span> PurcharseController(<span class="variable">$mock</span>);</span><br><span class="line"><span class="variable">$result</span> = <span class="variable">$purchase</span>-&gt;buy();</span><br><span class="line">var_dump(<span class="variable">$result</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>依賴注入
+<ul>
+<li>如果有定義新的namespace，記得先用composer dump，autoload才找的到檔案</li>
+<li>如果程式有在classmap中定義，require的時候就不用寫__DIR__取路徑</li>
+<li>Single Responsibility</li>
+</ul>
+</li>
+<li>驗證controller的時候，記得加上return返回結果
+<ul>
+<li>mock andReturn最後不會返回一個值，不需要再用一個變數來接</li>
+<li>用<em>php指令+檔案位置</em>來確認是否頁面能正常執行</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法1:未使用依賴注入的寫法</span></span><br><span class="line"> <span class="keyword">require</span> <span class="string">&#x27;vendor/autoload.php&#x27;</span>;</span><br><span class="line"> <span class="variable">$controller</span> = <span class="keyword">new</span> PurcharseController();</span><br><span class="line"> var_dump(<span class="variable">$controller</span>-&gt;buy());</span><br><span class="line"><span class="comment">// 方法2:使用依賴注入</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">&#x27;vendor/autoload.php&#x27;</span>;</span><br><span class="line">var_dump((<span class="keyword">new</span> PurcharseController(<span class="keyword">new</span> StripeBilling))-&gt;buy());</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-29T09:06:00.000Z"><a href="/2018/10/29/Composer-Unit-Test/">2018-10-29</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/29/Composer-Unit-Test/">Using Composer Learning Unit Test</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>PHPUnit Test卡關了</em></p>
+<ul>
+<li>定義了User的Model還是找不到?
+<ul>
+<li>用Classmap的寫法來找到對應的model</li>
+</ul>
+</li>
+<li>定義classmap
+<ul>
+<li>composer install:產生compsoer.json</li>
+<li>composer dump-autoload
+<ul>
+<li>每次有新的class的時候記得要用dump-autoload一次</li>
+<li>定義好namespace的時候也要使用</li>
+<li>用找歌曲的概念來解釋,一開始只有說要找甚麼歌,但是沒有說要找哪個歌手的甚麼專輯</li>
+</ul>
+</li>
+<li>alias p=./vendor/bin/phpunit</li>
+</ul>
+</li>
+<li>盡量把要測試的方法名稱寫<b>清楚一點</b>
+<ul>
+<li>寫的長沒有關係,要有描述性</li>
+<li>用<b>Annotation</b>可以達到
+<ul>
+<li>把資料抽離出來</li>
+<li>處理例外狀況</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>踩到exception的坑了
+<ul>
+<li>如果傳入錯誤的參數進去,拋出例外的時候要用多行註解,格式錯誤就無法正確的判斷拋出的例外類型</li>
+</ul>
+</li>
+<li>alias 是一個好東西,可以打很少的指令達到一樣的效果
+<ul>
+<li>alias p=./vendor/bin/phpunit</li>
+<li>alias hexoServer=‘hexo server --port $PORT --host $IP’</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;require&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;phpunit/phpunit&quot;</span>: <span class="string">&quot;^7.4&quot;</span>,</span><br><span class="line">        <span class="string">&quot;codeception/codeception&quot;</span>: <span class="string">&quot;^2.5&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    <span class="string">&quot;autoload&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;classmap&quot;</span> : [</span><br><span class="line">            <span class="string">&quot;App/Models&quot;</span>,</span><br><span class="line">            <span class="string">&quot;App/Libraries&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;psr-4&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;App\\&quot;</span>: <span class="string">&quot;app&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><em>Testing System Functions</em></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 用namespace把Foo用到的time重新定義過</span></span><br><span class="line"><span class="comment">// 注意:如果使用use的話會有重複定義的問題</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Libraries</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">time</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;stud&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FooTest</span> <span class="keyword">extends</span> \<span class="title">PHPUnit</span>\<span class="title">Framework</span>\<span class="title">TestCase</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setUp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testDynamicFooTime</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;assertEquals(<span class="string">&#x27;stud&#x27;</span>, (<span class="keyword">new</span> Foo)-&gt;go());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>參考教學:<br>
+<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=AXh8kc76hCo&amp;list=PLH9Ysf6G9Ue3libSiqkuSju7_2OnQSz1w&amp;index=4">Testing System Functions</a><br>
+<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=84j61_aI0q8">Composer, Autoloading, Namespacing, and PHPUnit</a><br>
+<a target="_blank" rel="noopener" href="https://phpunit.de/manual/6.5/en/appendixes.annotations.html#appendixes.annotations.expectedException">Phpunit Annotations</a><br>
+<a target="_blank" rel="noopener" href="https://blog.hsin.tw/2015/linux-alias-works-always/">Linux Alias</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-28T02:40:00.000Z"><a href="/2018/10/28/CodeIgniter-CRUD/">2018-10-28</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/28/CodeIgniter-CRUD/">CodeIgniter CRUD</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>CodeIgniter 3.1</em></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> news (</span><br><span class="line">    id <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    title <span class="type">varchar</span>(<span class="number">128</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    slug <span class="type">varchar</span>(<span class="number">128</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    text text <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    create_at <span class="type">TIMESTAMP</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;新增貼文時間&#x27;</span>,</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY(id),</span><br><span class="line">    KEY slug (slug)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> posts (</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    title <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    slug <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    body text <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    create_at <span class="type">TIMESTAMP</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;新增貼文時間&#x27;</span></span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY(id)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine On</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">RewriteRule ^(.*)$ index.php/$1 [L]</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><figcaption><span>準備</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://code.jquery.com/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>為什麼要用單一路口文件?
+<ul>
+<li>這樣使用會有甚麼問題</li>
+<li>路徑長的醜醜的=&gt;才會有route的規則需要定義</li>
+<li><a target="_blank" rel="noopener" href="http://localhost/codeIgniter/index.php/pages/view/">http://localhost/codeIgniter/index.php/pages/view/</a></li>
+<li><a target="_blank" rel="noopener" href="http://localhost/codeIgniter/index.php/news/index/">http://localhost/codeIgniter/index.php/news/index/</a></li>
+</ul>
+</li>
+<li>建立controller和route
+<ul>
+<li>讓url變得好看</li>
+<li>定義route規則</li>
+</ul>
+</li>
+<li>建立model
+<ul>
+<li>slug把url去掉,只留下小寫的英文字母</li>
+<li>有點像是簡單的描述,例如:/車子/帥氣的法拉利</li>
+<li>可以用來當作唯一值用來識別某個資源(entry/resource)</li>
+<li>詳細說明可以看stackoverflow解釋(what-is-a-slug)</li>
+</ul>
+</li>
+<li>和我想的比較不一樣的是,他把新聞系統的controller另外拆開
+<ul>
+<li>本來想說寫在一起的</li>
+<li>分開也比較清楚</li>
+</ul>
+</li>
+<li>建立列表頁和檢視頁面</li>
+<li>踩到的第一個坑是自己打錯字,找template的路徑
+<ul>
+<li>不需要為繼承的父類別加上namespace</li>
+<li>改完route發現news不好使了
+<ul>
+<li>先註解起來查原因</li>
+<li>檢視頁面的位置沒有改到view,從index那邊複製過來沒有修改到</li>
+</ul>
+</li>
+<li>原來是沒有加htaccess的關係阿
+<ul>
+<li>當發現怎麼改route都沒有用</li>
+<li>印出來看有設定,而且怎麼敲url就是不出來這時候就該設定htaccess了</li>
+</ul>
+</li>
+<li>新增表單
+<ul>
+<li>把檢視的route設定放到最後面</li>
+</ul>
+</li>
+<li>刪除的坑(id)
+<ul>
+<li>加上要刪除的編號之後,突然發現沒有辦法用open_form的方法了</li>
+<li>原先以為是因為寫法的關係造成的,結果是因為autoload沒有load到那個form的helper,殘念</li>
+<li>沒有對應到controller的method名稱</li>
+</ul>
+</li>
+<li>編輯(slug)=&gt;和view帶一樣的
+<ul>
+<li>bootstrap pull left把放在右邊的顯示到左邊</li>
+<li>要帶入view的slug進去,而不是用id</li>
+<li>少input hidden的id也想成功?</li>
+</ul>
+</li>
+<li>新增navbar-right往右放</li>
+</ul>
+</li>
+<li>小bug
+<ul>
+<li>沒有取到URL參數的時候是取全部的文章</li>
+<li>route的順序很重要,放錯了,url出不來,範圍比較小的放前面</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-26T02:39:23.000Z"><a href="/2018/10/26/experience/">2018-10-26</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/26/experience/">踩坑特集</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>踩坑特集</em></p>
+<ul>
+<li>原本以為直接用bootstrap上面的jquery一定沒有問題，想不到ajax的時候出事了
+<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/18271251/typeerror-ajax-is-not-a-function">typeError slim</a></li>
+</ul>
+</li>
+<li>踩到自己的坑，剛好把洞洞填起來
+<ul>
+<li>統一認action的post來決定要走哪一個表單</li>
+<li>沒有在最開始加上session_start就在那邊用session</li>
+<li>存在server的記憶體</li>
+</ul>
+</li>
+<li>JSON.parse回傳過來的值</li>
+<li>require_once只有引入一次，結果需要引用多次(子留言)
+<ul>
+<li>mysql_timezone
+<ul>
+<li>在mysql命令列中輸入，SET GLOBAL time_zone = ‘Asia/Taipei’;</li>
+</ul>
+</li>
+<li>SQL處理
+<ul>
+<li>real_escape_string($city); //PHP 7</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>建立第一個Sample就踩坑
+<ul>
+<li>用的是PHPUnit 7.4.3，貌似更新到PHPUnit 6之後的版本就要extends新的類別</li>
+<li>原本以為是路徑的問題，但聰明的phpunit會把tests資料夾下的所有檔案都跑過一次</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-15T18:43:00.000Z"><a href="/2018/10/15/Installing-Ubuntu-Laravel-Environment/">2018-10-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/15/Installing-Ubuntu-Laravel-Environment/">Installing Ubuntu Laravel Environment</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2><span id="prerequisite">Prerequisite</span></h2>
+<ul>
+<li>If you want to get latest version of php, you need to update first.</li>
+<li>Otherwise the lamp server will install older php version to your environment</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-add-repository ppa:ondrej/php</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install php7.0</span><br></pre></td></tr></table></figure>
+<h2><span id="usefull-command">Usefull Command</span></h2>
+<ul>
+<li>sometime you need to check the installed packages in Ubuntu, you can use dpkg to list the packages status</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg --get-selections | grep php</span><br></pre></td></tr></table></figure>
+<h2><span id="reference">Reference</span></h2>
+<p><a target="_blank" rel="noopener" href="https://gist.github.com/santoshachari/87bf77baeb45a65eb83b553aceb135a3">Laravel PHP 7</a><br>
+<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/questions/10185637">ubuntu 14.04版本無法安裝my sql 5.6</a></p>
+<p><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/715944/unable-to-locate-package-php7-0">unable to locate php7</a></p>
+<p><a target="_blank" rel="noopener" href="http://seanphpbook.blogspot.com/2016/08/linuxlaravel-ubuntu-1604-laravel-52.html">laravel Ubuntu</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-11T13:24:00.000Z"><a href="/2018/10/11/Laravel-Create-Article-1/">2018-10-11</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/11/Laravel-Create-Article-1/">Laravel Create Article</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3><span id="migrations">migrations</span></h3>
+<ul>
+<li>use increments to auto_increment id’s value
+<ul>
+<li>string type can not be null when applying to id</li>
+</ul>
+</li>
+<li>use timestamp to create two fields
+<ul>
+<li>created_at</li>
+<li>updated_at</li>
+</ul>
+</li>
+<li>when using factory, the table will be automately filled update time and create date to the relative fields</li>
+</ul>
+<h3><span id="create-article">Create Article</span></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// create controller with resource methods</span><br><span class="line">&gt; php artisan make:controller ArticleController --resource</span><br><span class="line">// create model along with migration</span><br><span class="line">&gt; php artisan make:model Article --migration</span><br></pre></td></tr></table></figure>
+<h3><span id="seeder">seeder</span></h3>
+<ul>
+<li>there are two ways to insert data to table via command line</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; php artisan db:seed</span><br><span class="line">&gt; php artisan migrate:refresh --seed</span><br></pre></td></tr></table></figure>
+<ul>
+<li>both ways need adding customed seeder to Databaseseeder.php
+<ul>
+<li>db:seed however only execute seeds run() function</li>
+</ul>
+</li>
+<li>if you don’t want to use factory to get fake data, you can just use db:seed command to insert your customed data.</li>
+<li>remember to add the seeder you create to Databaseseeder.php</li>
+</ul>
+<h3><span id="set-index-to-fieldmigrations">set index to field(migrations)</span></h3>
+<ul>
+<li>belongsTo</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// \database\migrations\2018_10_05_094912_message_board_table.php</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$table</span>-&gt;unsignedInteger(<span class="string">&#x27;user_id&#x27;</span>)-&gt;index();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app\Messageboard.php</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">user</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;belongsTo(User::class);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-09T16:56:26.000Z"><a href="/2018/10/09/torials/">2018-10-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/09/torials/">Tutorials</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2><span id="frontend">Frontend</span></h2>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCJw78bnBvSEZBChEWvwWbGQ/playlists">Lidemy PlayList</a></p>
+<h2><span id="ngnix">Ngnix</span></h2>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ys54MOtlwhs&amp;list=PLKKWlNc5I5bTOvpUoGZW9DtHbMq5ZC-g9">Ngnix Fundamentals</a></p>
+<h2><span id="linux">Linux</span></h2>
+<h4><span id="吳光科老師">吳光科老師</span></h4>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av18372532/">Linux下Nginx+PHP+MYSQL架构实战</a></p>
+<p><a target="_blank" rel="noopener" href="https://ke.qq.com/webcourse/index.html#cid=85810&amp;term_id=100084133&amp;taid=149198574014258&amp;vid=f1404qechrb">Linux下Shell編程</a></p>
+<h2><span id="laravel">Laravel</span></h2>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=o5PWIuDTgxg&amp;list=PLEhEHUEU3x5oPTli631ZX9cxl6cU_sDaR">Laravel E-commerce</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=wM4L_yDGqpo&amp;list=PLB4AdipoHpxaHDLIaMdtro1eXnQtl_UvE">Let’s Build a Multi-Purpose Laravel + Vue Application</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=tl_9igRwRME">用 Laravel + Vue js 打造即時資訊看板</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/houdunwang/video">後盾人代碼</a></p>
+<p><a target="_blank" rel="noopener" href="https://space.bilibili.com/277339333/#/video">Laravel開發</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/2/" class="alignleft prev">Prev</a>
+  
+  
+    <a href="/page/4/" class="alignright next">Next</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:edwardyi.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <!-- /Algorithm/ -->
+    <li><a href="/Algorithm/">Algorithm</a><small>1</small></li>
+  
+    <!-- /Book-Reviews/ -->
+    <li><a href="/Book-Reviews/">Book Reviews</a><small>1</small></li>
+  
+    <!-- /Bootstrap/ -->
+    <li><a href="/Bootstrap/">Bootstrap</a><small>2</small></li>
+  
+    <!-- /CodeIgniter/ -->
+    <li><a href="/CodeIgniter/">CodeIgniter</a><small>1</small></li>
+  
+    <!-- /Codewars/ -->
+    <li><a href="/Codewars/">Codewars</a><small>1</small></li>
+  
+    <!-- /Docker/ -->
+    <li><a href="/Docker/">Docker</a><small>1</small></li>
+  
+    <!-- /Git/ -->
+    <li><a href="/Git/">Git</a><small>1</small></li>
+  
+    <!-- /Gitpod/ -->
+    <li><a href="/Gitpod/">Gitpod</a><small>1</small></li>
+  
+    <!-- /Java/ -->
+    <li><a href="/Java/">Java</a><small>1</small></li>
+  
+    <!-- /Javascript/ -->
+    <li><a href="/Javascript/">Javascript</a><small>1</small></li>
+  
+    <!-- /Jquery/ -->
+    <li><a href="/Jquery/">Jquery</a><small>1</small></li>
+  
+    <!-- /Laravel/ -->
+    <li><a href="/Laravel/">Laravel</a><small>4</small></li>
+  
+    <!-- /NodeJs/ -->
+    <li><a href="/NodeJs/">NodeJs</a><small>1</small></li>
+  
+    <!-- /ReactJs/ -->
+    <li><a href="/ReactJs/">ReactJs</a><small>2</small></li>
+  
+    <!-- /Regular-Expressions/ -->
+    <li><a href="/Regular-Expressions/">Regular Expressions</a><small>1</small></li>
+  
+    <!-- /Unit-Test/ -->
+    <li><a href="/Unit-Test/">Unit Test</a><small>3</small></li>
+  
+    <!-- /Virtualbox/ -->
+    <li><a href="/Virtualbox/">Virtualbox</a><small>1</small></li>
+  
+    <!-- /ReactJs/VueJs/ -->
+    <li><a href="/ReactJs/VueJs/">VueJs</a><small>2</small></li>
+  
+    <!-- /language/ -->
+    <li><a href="/language/">language</a><small>1</small></li>
+  
+    <!-- /postman/ -->
+    <li><a href="/postman/">postman</a><small>1</small></li>
+  
+    <!-- /scrimba/ -->
+    <li><a href="/scrimba/">scrimba</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  <script type="text/javascript">
+    amzn_assoc_placement = "adunit0";
+    amzn_assoc_search_bar = "true";
+    amzn_assoc_tracking_id = "edwardyispace-20";
+    amzn_assoc_search_bar_position = "bottom";
+    amzn_assoc_ad_mode = "search";
+    amzn_assoc_ad_type = "smart";
+    amzn_assoc_marketplace = "amazon";
+    amzn_assoc_region = "US";
+    amzn_assoc_title = "Shop Related Products";
+    amzn_assoc_default_search_phrase = "WD SSD";
+    amzn_assoc_default_category = "All";
+    amzn_assoc_linkid = "37b2ee2b21e636afb10606fa741d8491";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2021 Edwardyi
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'edwardyi-blog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
