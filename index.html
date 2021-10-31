@@ -99,8 +99,8 @@
 </li>
 <li>解決方式有幾種
 <ul>
-<li>使用rootless docker(-userns-remap flag),實作方式可以參考==experimenting-with-rootless-docker==的連結</li>
-<li>使用docker volume將使用者與群組volume到container環境(要注意需要設定read-only,以免改到本地的群組設定),可以參考==using-current-user-when-running-container-in-docker-compose==的連結</li>
+<li>使用rootless docker(-userns-remap flag),實作方式可以參考下方<em>experimenting-with-rootless-docker</em>的連結</li>
+<li>使用docker volume將使用者與群組volume到container環境(要注意需要設定read-only,以免改到本地的群組設定),可以參考<em>using-current-user-when-running-container-in-docker-compose</em>的連結</li>
 <li>docker build image的時候,使用環境變數將當前登入的使用者與群組也一併新增上去,這是本篇文章採用的作法</li>
 </ul>
 </li>
