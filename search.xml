@@ -2115,8 +2115,8 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Rootless Docker的解決方式</title>
-    <url>/2021/10/30/Docker-Compose-Build%E5%87%BA%E8%87%AA%E5%B7%B1%E7%9A%84gitpod%E7%92%B0%E5%A2%83/</url>
+    <title>Rootless Docker</title>
+    <url>/2021/10/30/Rootless-Docker/</url>
     <content><![CDATA[<h6><span id="tags-docker-compose-gitpod">tags: <code>docker-compose</code> <code>gitpod</code></span></h6>
 <ul>
 <li>一般container執行起來的時候,會是用root的權限在container執行各種檔案的操作
