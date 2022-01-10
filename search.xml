@@ -2245,7 +2245,7 @@
 </ul>
 <p><img src="https://i.imgur.com/tKU1GQV.png" alt=""></p>
 <p><img src="https://i.imgur.com/NAwYQDY.png" alt=""></p>
-<h3><span id="總結">總結</span></h3>
+<h3><span id="安裝後">安裝後</span></h3>
 <ul>
 <li>
 <p>比較麻煩的是之後要使用root權限逐一將應用程式安裝回來</p>
@@ -2255,6 +2255,12 @@
 </li>
 </ul>
 <p><img src="https://i.imgur.com/7A3qqtq.png" alt=""></p>
+<ul>
+<li>調整筆電音效設定</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> &quot;options snd-hda-intel dmic_detect=<span class="number">0</span>&quot; | sudo tee -a</span><br><span class="line">/etc/modprobe.d/alsa-base.conf</span><br><span class="line"><span class="built_in">echo</span> &quot;options snd-hda-intel model=laptop-amic enable=yes&quot; | sudo tee -a</span><br><span class="line">/etc/modprobe.d/alsa-base.conf</span><br></pre></td></tr></table></figure>
+<p>做完這幾步就大功告成拉。</p>
+<p>謝謝大家耐心的看完這篇教學，有任何想法也歡迎留言喔。</p>
 ]]></content>
   </entry>
 </search>
