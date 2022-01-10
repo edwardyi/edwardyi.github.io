@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Using Composer Learning Unit Test Part 2 | Edwardyi Blog</title>
+  <title>Ubuntu ReInstall Guide | Edwardyi Blog</title>
   <meta name="author" content="Edwardyi">
   
   <meta name="description" content="年少輕狂的好日子，一懂事就結束">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Using Composer Learning Unit Test Part 2"/>
+  <meta property="og:title" content="Ubuntu ReInstall Guide"/>
   <meta property="og:site_name" content="Edwardyi Blog"/>
 
   
@@ -74,87 +74,67 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-10-30T02:58:00.000Z"><a href="/2018/10/30/Using-Composer-Learning-Unit-Test-Part-2/">2018-10-30</a></time>
+        <time datetime="2022-01-10T03:11:38.000Z"><a href="/2022/01/10/Ubuntu-ReInstall-Guide/">2022-01-10</a></time>
       
       
   
-    <h1 class="title">Using Composer Learning Unit Test Part 2</h1>
+    <h1 class="title">Ubuntu ReInstall Guide</h1>
   
 
     </header>
     <div class="entry">
       
-        <p><em>PHP Unit Test</em></p>
+        <h6><span id="tags-ubuntu">tags: <code>ubuntu</code></span></h6>
+<p>為了在ubuntu執行line程式(exe檔)，裝了wine移除之後發現藍芽還有telegram沒有辦法正常開啟，決定重新安裝ubuntu，順手記錄一下這次處理的過程</p>
+<h5><span id="重裝前準備">重裝前準備</span></h5>
 <ul>
-<li>要如何直接用assertEquals的function呢?
+<li>備份家目錄
 <ul>
-<li>因為每一次都會用到$this-&gt;assertEquals()有點多餘</li>
-<li>找到實際定義assertEquals的function整理成一個檔案</li>
-<li>讓phpunit.xml直接參考到bootstrap.php自定義的檔案</li>
+<li>不需要將群組以及權限複製過去</li>
 </ul>
 </li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tests/bootstrap.php</span></span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">&#x27;/../vendor/autoload.php&#x27;</span>;</span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">&#x27;/../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php&#x27;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rsync -aP --no-p --no-g --chmod=ugo=rwX /home/<span class="variable">$USER</span>/ /media/<span class="variable">$USER</span>/backup_dir</span><br></pre></td></tr></table></figure>
+<ul>
+<li>備份應用程式：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># backup</span></span><br><span class="line">sudo dpkg --get-selections &gt; package.list</span><br><span class="line"></span><br><span class="line"><span class="comment">#restore</span></span><br><span class="line">sudo dpkg --set-selections &lt; package.list</span><br><span class="line">sudo apt-get dselect-upgrade</span><br></pre></td></tr></table></figure>
+<h5><span id="配置">配置</span></h5>
+<ul>
+<li>如果要沿用之前的home目錄，需要將home目錄在加入回這次安裝的項目中，注意不要選到格式化的選項
+<ul>
+<li>原本用途的選項是不使用此分割區，調整成ext4日誌式檔案系統</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/lBGXuz8.png" alt=""></p>
+<p><img src="https://i.imgur.com/pHx7uM4.png" alt=""></p>
+<ul>
+<li>三磁區會被格式化，分別是swap、boot和root
+<ul>
+<li>需要注意格式化的選項是被勾起的狀態</li>
+<li>swap分區無法被勾選起來</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/tKU1GQV.png" alt=""></p>
+<p><img src="https://i.imgur.com/NAwYQDY.png" alt=""></p>
+<h5><span id="重裝很簡單">重裝很簡單</span></h5>
 <ul>
 <li>
-<p>測試的種類</p>
-<ul>
-<li>Unit Test &lt; Integration Test &lt; Function Test &lt; Acceptance Test</li>
-<li>Unit Test
-<ul>
-<li>Basic Test</li>
-</ul>
-</li>
-<li>Integration Test
-<ul>
-<li>測試兩個獨立系統是否能正常運作</li>
-</ul>
-</li>
-<li>Function/Acceptance Test
-<ul>
-<li>測試過Unit Test和Integration Test不一定這一階段就會過</li>
-<li>Acceptance Test/配合Selenium測試UI</li>
-</ul>
-</li>
-</ul>
+<p>比較麻煩的是之後要使用root權限逐一將應用程式安裝回來</p>
 </li>
 <li>
-<p>mock的概念</p>
-<ul>
-<li>不在乎run的內容,只關注那個function是否有被呼叫到了</li>
-<li>swap out the actual action</li>
-<li>和new 物件的作法比較(會實際呼叫到物件定義的方法)</li>
-<li>可以用於依賴注入(controller有使用到其他物件的資料)</li>
-</ul>
+<p>調整語系與輸入法設定</p>
 </li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$mock</span> = Mockery::mock(<span class="string">&#x27;MockDependency\Type\StripeBilling&#x27;</span>); <span class="comment">//要寫完整路徑</span></span><br><span class="line"><span class="variable">$mock</span>-&gt;shouldReceive(<span class="string">&#x27;charge&#x27;</span>)-&gt;once()-&gt;andReturn(<span class="string">&#x27;mocked Billing by Test&#x27;</span>);</span><br><span class="line"><span class="variable">$purchase</span> = <span class="keyword">new</span> PurcharseController(<span class="variable">$mock</span>);</span><br><span class="line"><span class="variable">$result</span> = <span class="variable">$purchase</span>-&gt;buy();</span><br><span class="line">var_dump(<span class="variable">$result</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ul>
-<li>依賴注入
-<ul>
-<li>如果有定義新的namespace，記得先用composer dump，autoload才找的到檔案</li>
-<li>如果程式有在classmap中定義，require的時候就不用寫__DIR__取路徑</li>
-<li>Single Responsibility</li>
-</ul>
-</li>
-<li>驗證controller的時候，記得加上return返回結果
-<ul>
-<li>mock andReturn最後不會返回一個值，不需要再用一個變數來接</li>
-<li>用<em>php指令+檔案位置</em>來確認是否頁面能正常執行</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法1:未使用依賴注入的寫法</span></span><br><span class="line"> <span class="keyword">require</span> <span class="string">&#x27;vendor/autoload.php&#x27;</span>;</span><br><span class="line"> <span class="variable">$controller</span> = <span class="keyword">new</span> PurcharseController();</span><br><span class="line"> var_dump(<span class="variable">$controller</span>-&gt;buy());</span><br><span class="line"><span class="comment">// 方法2:使用依賴注入</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">&#x27;vendor/autoload.php&#x27;</span>;</span><br><span class="line">var_dump((<span class="keyword">new</span> PurcharseController(<span class="keyword">new</span> StripeBilling))-&gt;buy());</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/7A3qqtq.png" alt=""></p>
+
       
     </div>
     <footer>
       
         
-  
-  <div class="categories">
-    <a target="_blank" rel="noopener" href="//Unit-Test/">Unit Test</a>
-  </div>
-
         
         
   <div class="addthis addthis_toolbox addthis_default_style">

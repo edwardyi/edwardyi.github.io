@@ -2207,4 +2207,54 @@
 <p><a href="https://dev.to/visuellverstehen/docker-docker-compose-and-permissions-2fih">docker-&amp;-docker-compose-and-permissions</a></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>Ubuntu ReInstall Guide</title>
+    <url>/2022/01/10/Ubuntu-ReInstall-Guide/</url>
+    <content><![CDATA[<h6><span id="tags-ubuntu">tags: <code>ubuntu</code></span></h6>
+<p>為了在ubuntu執行line程式(exe檔)，裝了wine移除之後發現藍芽還有telegram沒有辦法正常開啟，決定重新安裝ubuntu，順手記錄一下這次處理的過程</p>
+<h5><span id="重裝前準備">重裝前準備</span></h5>
+<ul>
+<li>備份家目錄
+<ul>
+<li>不需要將群組以及權限複製過去</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo rsync -aP --no-p --no-g --chmod=ugo=rwX /home/<span class="variable">$USER</span>/ /media/<span class="variable">$USER</span>/backup_dir</span><br></pre></td></tr></table></figure>
+<ul>
+<li>備份應用程式：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># backup</span></span><br><span class="line">sudo dpkg --get-selections &gt; package.list</span><br><span class="line"></span><br><span class="line"><span class="comment">#restore</span></span><br><span class="line">sudo dpkg --set-selections &lt; package.list</span><br><span class="line">sudo apt-get dselect-upgrade</span><br></pre></td></tr></table></figure>
+<h5><span id="配置">配置</span></h5>
+<ul>
+<li>如果要沿用之前的home目錄，需要將home目錄在加入回這次安裝的項目中，注意不要選到格式化的選項
+<ul>
+<li>原本用途的選項是不使用此分割區，調整成ext4日誌式檔案系統</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/lBGXuz8.png" alt=""></p>
+<p><img src="https://i.imgur.com/pHx7uM4.png" alt=""></p>
+<ul>
+<li>三磁區會被格式化，分別是swap、boot和root
+<ul>
+<li>需要注意格式化的選項是被勾起的狀態</li>
+<li>swap分區無法被勾選起來</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/tKU1GQV.png" alt=""></p>
+<p><img src="https://i.imgur.com/NAwYQDY.png" alt=""></p>
+<h5><span id="重裝很簡單">重裝很簡單</span></h5>
+<ul>
+<li>
+<p>比較麻煩的是之後要使用root權限逐一將應用程式安裝回來</p>
+</li>
+<li>
+<p>調整語系與輸入法設定</p>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/7A3qqtq.png" alt=""></p>
+]]></content>
+  </entry>
 </search>
