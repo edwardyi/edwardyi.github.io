@@ -75,6 +75,75 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2018-10-11T13:24:00.000Z"><a href="/2018/10/11/Laravel-Create-Article-1/">2018-10-11</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/11/Laravel-Create-Article-1/">Laravel Create Article</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3><span id="migrations">migrations</span></h3>
+<ul>
+<li>use increments to auto_increment id’s value
+<ul>
+<li>string type can not be null when applying to id</li>
+</ul>
+</li>
+<li>use timestamp to create two fields
+<ul>
+<li>created_at</li>
+<li>updated_at</li>
+</ul>
+</li>
+<li>when using factory, the table will be automately filled update time and create date to the relative fields</li>
+</ul>
+<h3><span id="create-article">Create Article</span></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// create controller with resource methods</span><br><span class="line">&gt; php artisan make:controller ArticleController --resource</span><br><span class="line">// create model along with migration</span><br><span class="line">&gt; php artisan make:model Article --migration</span><br></pre></td></tr></table></figure>
+<h3><span id="seeder">seeder</span></h3>
+<ul>
+<li>there are two ways to insert data to table via command line</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; php artisan db:seed</span><br><span class="line">&gt; php artisan migrate:refresh --seed</span><br></pre></td></tr></table></figure>
+<ul>
+<li>both ways need adding customed seeder to Databaseseeder.php
+<ul>
+<li>db:seed however only execute seeds run() function</li>
+</ul>
+</li>
+<li>if you don’t want to use factory to get fake data, you can just use db:seed command to insert your customed data.</li>
+<li>remember to add the seeder you create to Databaseseeder.php</li>
+</ul>
+<h3><span id="set-index-to-fieldmigrations">set index to field(migrations)</span></h3>
+<ul>
+<li>belongsTo</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// \database\migrations\2018_10_05_094912_message_board_table.php</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$table</span>-&gt;unsignedInteger(<span class="string">&#x27;user_id&#x27;</span>)-&gt;index();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app\Messageboard.php</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">user</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;belongsTo(User::class);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2018-10-09T16:56:26.000Z"><a href="/2018/10/09/torials/">2018-10-09</a></time>
       
       
@@ -474,7 +543,7 @@
     <li><a href="/Codewars/">Codewars</a><small>1</small></li>
   
     <!-- /Docker/ -->
-    <li><a href="/Docker/">Docker</a><small>1</small></li>
+    <li><a href="/Docker/">Docker</a><small>2</small></li>
   
     <!-- /Git/ -->
     <li><a href="/Git/">Git</a><small>1</small></li>
@@ -502,6 +571,9 @@
   
     <!-- /Regular-Expressions/ -->
     <li><a href="/Regular-Expressions/">Regular Expressions</a><small>1</small></li>
+  
+    <!-- /Ubuntu/ -->
+    <li><a href="/Ubuntu/">Ubuntu</a><small>1</small></li>
   
     <!-- /Unit-Test/ -->
     <li><a href="/Unit-Test/">Unit Test</a><small>3</small></li>

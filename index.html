@@ -75,7 +75,50 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2022-01-10T03:11:38.000Z"><a href="/2022/01/10/Ubuntu-ReInstall-Guide/">2022-01-10</a></time>
+        <time datetime="2022-01-15T03:07:00.000Z"><a href="/2022/01/15/debian-update-err-on-docker-container/">2022-01-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2022/01/15/debian-update-err-on-docker-container/">debian update err on docker container</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h6><span id="tags-docker">tags: <code>docker</code></span></h6>
+<p>在使用docker debian的image時，第一次在build container，還能正常update。<br>
+然而，調整DockerFile之後重build，卻沒有辦法正常update，反而出現 Could not connect to <a target="_blank" rel="noopener" href="http://security.debian.org:80">security.debian.org:80</a> (127.0.0.1). - connect (111: Connection refused)的錯誤訊息</p>
+<p>Err:1 <a target="_blank" rel="noopener" href="http://deb.debian.org/debian">http://deb.debian.org/debian</a> bullseye InRelease</p>
+<p>出現這個問題，只要做下面這兩個動作：</p>
+<h3><span id="調整docker的預設dns設定">調整docker的預設dns設定</span></h3>
+<ul>
+<li>/etc/docker/daemon.json</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;dns&quot;</span>: [<span class="string">&quot;8.8.8.8&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="重啟docker服務">重啟docker服務</span></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service docker restart</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2022-01-10T03:11:00.000Z"><a href="/2022/01/10/Ubuntu-ReInstall-Guide/">2022-01-10</a></time>
       
       
   
@@ -800,106 +843,6 @@
 
 
 
-  
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-02-13T12:04:00.000Z"><a href="/2019/02/13/Introduction-to-Algorithms-Third-Edition/">2019-02-13</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/02/13/Introduction-to-Algorithms-Third-Edition/">Introduction to Algorithms Third Edition</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p><a target="_blank" rel="noopener" href="https://www.amazon.com/gp/product/0262033844/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0262033844&amp;linkCode=as2&amp;tag=edwardyispace-20&amp;linkId=f46185c40bfc33c58b50935cd8fb256e"><img src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;MarketPlace=US&amp;ASIN=0262033844&amp;ServiceVersion=20070822&amp;ID=AsinImage&amp;WS=1&amp;Format=_SL250_&amp;tag=edwardyispace-20" alt="Introduction to Algorithms Third Edition"></a></p>
-<ul>
-<li>問題
-<ul>
-<li>問題的難度
-<ul>
-<li>由問題的規則決定問題的難度</li>
-<li>會影響computation model</li>
-<li>限制魔術方塊只能往前轉，就會增加解題的難度</li>
-</ul>
-</li>
-<li>解決問題的定義
-<ul>
-<li>用了兩個反證法來說明擂台法的正確性</li>
-<li>證明j*是最大的
-<ul>
-<li>j*=1的情況，不需要執行for loop，直接return j</li>
-<li>j*&gt;1的情況，比j大執行for loop，j被換成j*，最後回傳j</li>
-</ul>
-</li>
-<li>證明困難度不能再比n-1更低
-<ul>
-<li>如果是n-2的話,就會存在有兩個第一名,沒有辦法分出勝負</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>problem instance就是input
-<ul>
-<li>任何的input都要能夠滿足rule(algorithm)</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://i.imgur.com/6x7Xn5p.jpg" alt="Algorithm and problem instances"></p>
-<ul>
-<li>problem instance:所有輸入的序列串</li>
-<li>algorithm:
-<ul>
-<li>problem-oriented programming</li>
-<li>用執行的速度衡量演算法的好壞</li>
-<li>多個輸入經過演算法的處理之後產生唯一正確答案</li>
-<li>生活中的演算法，用最少做最好
-<ul>
-<li>評估東西的好壞
-<ul>
-<li>是不是盜版的商品</li>
-<li>東西的CP值/性價比高不高</li>
-</ul>
-</li>
-<li>找出最佳路徑</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>少用遞迴，用for while代替
-<ul>
-<li>遞迴是用stack的方式來存放未處理的函式</li>
-<li>不但當前的問題沒有解決還會產生很多子問題(以2的n次方產生問題)</li>
-</ul>
-</li>
-</ul>
-<p><img src="http://therecyclebin.files.wordpress.com/2008/05/time-complexity.png" alt="Big O Complexity"></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=-muH40oK4cA&amp;t=2285s">ADA Lecture 1: Introduction</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=o4OfLD4IFSg">jessy 主講 圖說演算法</a></li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
 
 <nav id="pagination">
   
@@ -937,7 +880,7 @@
     <li><a href="/Codewars/">Codewars</a><small>1</small></li>
   
     <!-- /Docker/ -->
-    <li><a href="/Docker/">Docker</a><small>1</small></li>
+    <li><a href="/Docker/">Docker</a><small>2</small></li>
   
     <!-- /Git/ -->
     <li><a href="/Git/">Git</a><small>1</small></li>
@@ -965,6 +908,9 @@
   
     <!-- /Regular-Expressions/ -->
     <li><a href="/Regular-Expressions/">Regular Expressions</a><small>1</small></li>
+  
+    <!-- /Ubuntu/ -->
+    <li><a href="/Ubuntu/">Ubuntu</a><small>1</small></li>
   
     <!-- /Unit-Test/ -->
     <li><a href="/Unit-Test/">Unit Test</a><small>3</small></li>

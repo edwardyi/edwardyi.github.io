@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://edwardyi.github.io/2022/01/15/debian-update-err-on-docker-container/</loc>
+    
+    <lastmod>2022-01-15</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://edwardyi.github.io/2022/01/10/Ubuntu-ReInstall-Guide/</loc>
     
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     
   </url>
   
@@ -249,7 +256,7 @@
 
   <url>
     <loc>https://edwardyi.github.io/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -259,147 +266,154 @@
   
   <url>
     <loc>https://edwardyi.github.io/Book-Reviews/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/Bootstrap/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/CodeIgniter/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/ReactJs/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/Unit-Test/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/Codewars/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/Gitpod/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/Virtualbox/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/Algorithm/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/Javascript/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/Jquery/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/ReactJs/VueJs/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/Laravel/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/scrimba/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/Java/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/NodeJs/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/postman/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/language/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/Regular-Expressions/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/Git/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://edwardyi.github.io/Docker/</loc>
-    <lastmod>2022-01-10</lastmod>
+    <lastmod>2022-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://edwardyi.github.io/Ubuntu/</loc>
+    <lastmod>2022-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
