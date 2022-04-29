@@ -75,6 +75,90 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2018-11-07T08:53:00.000Z"><a href="/2018/11/07/Javascript-Functional-Programming/">2018-11-07</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/11/07/Javascript-Functional-Programming/">Javascript Functional Programming</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1><span id="functional-programming">Functional Programming</span></h1>
+<ul>
+<li>Less Bug/Code
+<ul>
+<li>Composable High order function(filter、map、reduce)</li>
+<li>Functions are values</li>
+<li>function inside a function, we call callback(stack)</li>
+</ul>
+</li>
+<li>Map
+<ul>
+<li>Arrow Function can write less code. It means less bug
+<ul>
+<li>you can remove function &amp; return keyword when using arrow function</li>
+<li>if you have multiple operations in our reduce function need return keyword</li>
+</ul>
+</li>
+<li>map function just like filter function and it takes callback function as parameter</li>
+</ul>
+</li>
+<li>Reduce
+<ul>
+<li>can do anything like find, map or filter do</li>
+<li>the difference between map and reduce is that it need initial value behind the function</li>
+<li>the second parameter must be value, can not be variable</li>
+</ul>
+</li>
+</ul>
+<h3><span id="csv-to-json-formatusing-nodejs">CSV to json format(Using NodeJS)</span></h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&#x27;fs&#x27;);</span><br><span class="line">var output = fs.readFileSync(&#x27;data/data.txt&#x27;, &#x27;utf8&#x27;)</span><br><span class="line">            .trim()</span><br><span class="line">            .split(&quot;\n&quot;)</span><br><span class="line">            .map((row) =&gt; row.split(&#x27;,&#x27;))</span><br><span class="line">            .reduce((customers,row)=&gt;&#123;</span><br><span class="line">                // 如果沒有值就用空的當預設值，之後push才不會有問題</span><br><span class="line">                customers[row[0]] = customers[row[0]] || [];</span><br><span class="line">                customers[row[0]].push(&#123;</span><br><span class="line">                     &#x27;product&#x27;:row[1],</span><br><span class="line">                     &#x27;price&#x27;:row[2],</span><br><span class="line">                     &#x27;amount&#x27;:row[3]</span><br><span class="line">                &#125;);</span><br><span class="line">                return customers;</span><br><span class="line">            &#125;, &#123;&#125;);</span><br><span class="line"></span><br><span class="line">console.log(&#x27;output&#x27;,JSON.stringify(output, null, 2));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mark johansson,waffle iron,80,2</span><br><span class="line">mark johansson,blender,200,1</span><br><span class="line">mark johansson,knife,10,4</span><br><span class="line">Nikita Smith,waffle iron,80,1</span><br><span class="line">Nikita Smith,knife,10,2</span><br><span class="line">Nikita Smith,pot,20,3</span><br></pre></td></tr></table></figure>
+<h3><span id="recursive">recursive</span></h3>
+<pre><code>- maxium call of stack
+- es5 having the maxium call of stack limitation, but es6 removed this limitation by using bubble simulation
+    -  tail call optimization.
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var getMenuTree = (category, parent) =&gt; &#123;</span><br><span class="line">    let nodeResult = &#123;&#125;;</span><br><span class="line">    category</span><br><span class="line">    .filter((c) =&gt; c.parent_id == parent)</span><br><span class="line">    .forEach((c) =&gt; nodeResult[c.id] = getMenuTree(category, c.id));</span><br><span class="line">    return nodeResult;</span><br><span class="line">&#125;;</span><br><span class="line">var categories = JSON.parse(fs.readFileSync(&#x27;data/menutree.json&#x27;, &#x27;utf8&#x27;));</span><br><span class="line"></span><br><span class="line">//&#x27;hello&#x27;,categories,</span><br><span class="line">console.log(JSON.stringify(getMenuTree(categories, null), null, 2));</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#123;&quot;id&quot;:&quot;animals&quot;,&quot;parent_id&quot;:null&#125;,&#123;&quot;id&quot;:&quot;mammals&quot;,&quot;parent_id&quot;:&quot;animals&quot;&#125;,&#123;&quot;id&quot;:&quot;cats&quot;,&quot;parent_id&quot;:&quot;mammals&quot;&#125;,&#123;&quot;id&quot;:&quot;dogs&quot;,&quot;parent_id&quot;:&quot;mammals&quot;&#125;,&#123;&quot;id&quot;:&quot;chihuahua&quot;,&quot;parent_id&quot;:&quot;dogs&quot;&#125;,&#123;&quot;id&quot;:&quot;labrador&quot;,&quot;parent_id&quot;:&quot;dogs&quot;&#125;,&#123;&quot;id&quot;:&quot;persian&quot;,&quot;parent_id&quot;:&quot;cats&quot;&#125;,&#123;&quot;id&quot;:&quot;siamese&quot;,&quot;parent_id&quot;:&quot;cats&quot;&#125;]</span><br></pre></td></tr></table></figure>
+<h3><span id="funcdoor">FuncDoor</span></h3>
+<ul>
+<li>Using FuncDoor
+<ul>
+<li>need passing one string parameter and one function parameter</li>
+<li>they will map together when be called</li>
+<li>pass each value to each function and return the new structures</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&#x27;fs&#x27;);</span><br><span class="line"></span><br><span class="line">var reduceCustomer = (output) =&gt; output.reduce((output,row)=&gt;&#123;</span><br><span class="line">    // 如果沒有值就用空的當預設值，之後push才不會有問題</span><br><span class="line">    output[row[0]] = output[row[0]] || [];</span><br><span class="line">    output[row[0]].push(&#123;</span><br><span class="line">         &#x27;product&#x27;:row[1],</span><br><span class="line">         &#x27;price&#x27;:row[2],</span><br><span class="line">         &#x27;amount&#x27;:row[3]</span><br><span class="line">    &#125;);</span><br><span class="line">    return output;</span><br><span class="line">&#125;, &#123;&#125;);</span><br><span class="line"></span><br><span class="line">var funcDoor = (path, fn) =&gt; &#123;</span><br><span class="line">    var rawData = (path) =&gt;  fs.readFileSync(path, &#x27;utf8&#x27;)</span><br><span class="line">            .trim()</span><br><span class="line">            .split(&quot;\n&quot;);</span><br><span class="line">    // 要傳入參數，否則最後的結果還是function</span><br><span class="line">    var result = (path)=&gt;fn(rawData(path).map((row) =&gt; &#123;</span><br><span class="line">      return row.split(&#x27;,&#x27;)</span><br><span class="line">    &#125; ));</span><br><span class="line">    return result(path);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">console.log( funcDoor(&#x27;data/data.txt&#x27;, reduceCustomer));</span><br><span class="line">// return;</span><br><span class="line">// console.log(&#x27;output&#x27;,JSON.stringify(convertJson(&#x27;data/data.txt&#x27;), null, 2));</span><br><span class="line"></span><br><span class="line">var reduceCsv = (output) =&gt; output.reduce((output, row) =&gt; &#123;</span><br><span class="line">        // 直接整理到一個result的key，之後就不用煩惱怎麼把key移掉</span><br><span class="line">        output[&#x27;result&#x27;] =  output[&#x27;result&#x27;]||[];</span><br><span class="line">        let input = &#123;</span><br><span class="line">            &#x27;id&#x27;:row[0],</span><br><span class="line">            &#x27;parent_id&#x27;:row[1]!=&#x27;null&#x27; ? row[1] : JSON.parse(row[1])</span><br><span class="line">        &#125;;</span><br><span class="line">        output[&#x27;result&#x27;].push(input);</span><br><span class="line">        // output[i] = input;</span><br><span class="line">        return output</span><br><span class="line">    &#125; ,&#123;&#125;)[&#x27;result&#x27;]</span><br><span class="line">let menuTreeResult;</span><br><span class="line">console.log(menuTreeResult = funcDoor(&#x27;data/menutree.txt&#x27;, reduceCsv));</span><br><span class="line">fs.writeFile(&#x27;./data/menutree.json&#x27;,JSON.stringify(menuTreeResult, null ,2));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Wl98eZpkp-c&amp;list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84">Reduce basics - Part 3 of Functional Programming in JavaScript</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2018-11-06T10:59:00.000Z"><a href="/2018/11/06/Jquery-Form-Validate/">2018-11-06</a></time>
       
       
@@ -979,54 +1063,6 @@
 </ul>
 </li>
 </ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-10-15T18:43:00.000Z"><a href="/2018/10/15/Installing-Ubuntu-Laravel-Environment/">2018-10-15</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/10/15/Installing-Ubuntu-Laravel-Environment/">Installing Ubuntu Laravel Environment</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2><span id="prerequisite">Prerequisite</span></h2>
-<ul>
-<li>If you want to get latest version of php, you need to update first.</li>
-<li>Otherwise the lamp server will install older php version to your environment</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-add-repository ppa:ondrej/php</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install php7.0</span><br></pre></td></tr></table></figure>
-<h2><span id="usefull-command">Usefull Command</span></h2>
-<ul>
-<li>sometime you need to check the installed packages in Ubuntu, you can use dpkg to list the packages status</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg --get-selections | grep php</span><br></pre></td></tr></table></figure>
-<h2><span id="reference">Reference</span></h2>
-<p><a target="_blank" rel="noopener" href="https://gist.github.com/santoshachari/87bf77baeb45a65eb83b553aceb135a3">Laravel PHP 7</a><br>
-<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/questions/10185637">ubuntu 14.04版本無法安裝my sql 5.6</a></p>
-<p><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/715944/unable-to-locate-package-php7-0">unable to locate php7</a></p>
-<p><a target="_blank" rel="noopener" href="http://seanphpbook.blogspot.com/2016/08/linuxlaravel-ubuntu-1604-laravel-52.html">laravel Ubuntu</a></p>
 
       
     </div>

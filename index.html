@@ -75,6 +75,49 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2022-04-29T00:29:51.000Z"><a href="/2022/04/29/PM-Tool-Excalidraw/">2022-04-29</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2022/04/29/PM-Tool-Excalidraw/">PM Tool Excalidraw</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h6><span id="tags-tool">tags: <code>tool</code></span></h6>
+<p>PM開源工具免登入，支援多人協作</p>
+<h3><span id="中文手寫風格設定">中文手寫風格設定</span></h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/xswitch/idkjhjggpffolpidfkikidcokdkdaogg">安裝xswitch</a></li>
+</ul>
+<p>下方的範例是使用雲林黑體，如果想調整成其他中文字體格式，可以點擊<a target="_blank" rel="noopener" href="https://github.com/yuleshow/chinese-fonts">chinese fonts</a>查看其他不同的字體設定</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	[</span><br><span class="line">    	<span class="attr">&quot;proxy&quot;</span> : [</span><br><span class="line">        	<span class="string">&quot;https://excalidraw.com/Virgil.woff2&quot;</span>,</span><br><span class="line">            <span class="string">&quot;https://github.com/yuleshow/chinese-fonts/blob/master/%E9%9B%B2%E6%9E%97%E9%BB%91%E9%AB%94/YunlinSans-Bold.ttf?raw=true&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/mebtte/excalidraw">支持自定义字体的 Excalidraw</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2022-01-15T03:07:00.000Z"><a href="/2022/01/15/debian-update-err-on-docker-container/">2022-01-15</a></time>
       
       
@@ -732,105 +775,6 @@
 <p><a target="_blank" rel="noopener" href="https://codepen.io/edwardyi/pen/YBJGwE">Room Manager In Vue.js</a></p>
 </li>
 </ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-02-15T07:47:00.000Z"><a href="/2019/02/15/Color-Picker-In-React/">2019-02-15</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/02/15/Color-Picker-In-React/">Color Picker Tool In React/Vue.js</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>這次的練習在於熟悉Vue元件的寫法，以及Bootstrap 4版面布局，Vue的元件第一個參數必須全部小寫，這點要特別注意。</p>
-<ul>
-<li>Html
-<ul>
-<li>注意codepen引用bootstrap時使用的版本(bootstrap 4)
-<ul>
-<li>如果想要同一行顯示用row包起來</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>React
-<ul>
-<li>思考如何取得與處理textarea的內容</li>
-</ul>
-</li>
-<li>Vue
-<ul>
-<li>元件:第一個元件的參數開頭需要全部小寫
-<ul>
-<li>使用元件的好處，能夠有自己的計算屬性</li>
-<li>從父類別繼承下來的屬性可以再重新計算成新的屬性</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Javascript
-<ul>
-<li>Vue裡面的東西都是物件</li>
-<li>html中都是用等號和引號取得vue的物件或資料</li>
-<li>用:style屬性接收物件的css設定的物件
-<ul>
-<li>:style=“card.csscolor”</li>
-<li>:v-model=“color_cards”</li>
-<li>:v-for=“card in color_cards”</li>
-</ul>
-</li>
-<li>computed裡面接的是object類型的東西
-<ul>
-<li>計算出color_card字串切割後的值</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>CSS
-<ul>
-<li>hover:設定移動效果
-<ul>
-<li>transform: translate(5px, 5px);</li>
-<li>transition: 4s</li>
-</ul>
-</li>
-<li>codepen編譯pug和sass差異
-<ul>
-<li>編譯pug會重新整理頁面</li>
-<li>編譯sass不重新整理頁面,但會動態替換頁面的內容</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>Source Code如下:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://codesandbox.io/s/github/edwardyi/ColorCardPicker">Color Card Picker In React</a></li>
-<li><a target="_blank" rel="noopener" href="https://codepen.io/edwardyi/pen/PVdNOz">Color Card Picker In Vue.js</a></li>
-</ul>
-<p>📗:<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=P_Q76_hV1L4">使用Vue.js建立sass色票工具</a></p>
 
       
     </div>

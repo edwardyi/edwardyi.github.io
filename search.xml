@@ -2288,4 +2288,20 @@
         <category>Docker</category>
       </categories>
   </entry>
+  <entry>
+    <title>PM Tool Excalidraw</title>
+    <url>/2022/04/29/PM-Tool-Excalidraw/</url>
+    <content><![CDATA[<h6><span id="tags-tool">tags: <code>tool</code></span></h6>
+<p>PM開源工具免登入，支援多人協作</p>
+<h3><span id="中文手寫風格設定">中文手寫風格設定</span></h3>
+<ul>
+<li><a href="https://chrome.google.com/webstore/detail/xswitch/idkjhjggpffolpidfkikidcokdkdaogg">安裝xswitch</a></li>
+</ul>
+<p>下方的範例是使用雲林黑體，如果想調整成其他中文字體格式，可以點擊<a href="https://github.com/yuleshow/chinese-fonts">chinese fonts</a>查看其他不同的字體設定</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	[</span><br><span class="line">    	<span class="attr">&quot;proxy&quot;</span> : [</span><br><span class="line">        	<span class="string">&quot;https://excalidraw.com/Virgil.woff2&quot;</span>,</span><br><span class="line">            <span class="string">&quot;https://github.com/yuleshow/chinese-fonts/blob/master/%E9%9B%B2%E6%9E%97%E9%BB%91%E9%AB%94/YunlinSans-Bold.ttf?raw=true&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://github.com/mebtte/excalidraw">支持自定义字体的 Excalidraw</a></li>
+</ul>
+]]></content>
+  </entry>
 </search>
