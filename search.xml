@@ -2304,4 +2304,276 @@
 </ul>
 ]]></content>
   </entry>
+  <entry>
+    <title>Xiaomi 7 Root on windows</title>
+    <url>/2022/08/07/Xiaomi-7-Root-on-windows/</url>
+    <content><![CDATA[<h6><span id="tags-小米-刷機">tags: <code>小米</code> <code>刷機</code></span></h6>
+<h2><span id="小米刷機步驟">小米刷機步驟</span></h2>
+<h3><span id="註冊小米帳號綁定手機號">註冊小米帳號，綁定手機號</span></h3>
+<ul>
+<li>這一步驟需要預先把sim卡裝到想要刷機的小米手機上</li>
+<li>註冊後的手機號碼需要等168小時(一週之後)才有辦法進行下一個步驟</li>
+</ul>
+<h3><span id="oem解鎖">OEM解鎖</span></h3>
+<ul>
+<li>在關於手機的選單下，連續點擊MIUI版本，成為開發人員</li>
+<li>切回上個選單中的更多設定會多出開發者選項
+<ul>
+<li>點進開發者選項後，會有裝置解鎖狀態，可以查看目前手機的解鎖狀態</li>
+</ul>
+</li>
+<li>進入開發者模式，開啟OEM解鎖與啟用USB偵錯</li>
+</ul>
+<h3><span id="下載小米官方解鎖工具">下載小米官方解鎖工具</span></h3>
+<ul>
+<li>使用一開始註冊的小米帳號登入小米官方解鎖工具
+<ul>
+<li>登入後將手機關機後，長按關機鍵與聲音鍵下進入fastboot模式</li>
+<li>此時小米官方解鎖工具的解鎖按鈕會由灰色轉為可以點擊的狀態，即可解鎖小米手機</li>
+</ul>
+</li>
+</ul>
+<h3><span id="問題排除">問題排除</span></h3>
+<ul>
+<li>
+<p>確認adb連線是否正常</p>
+<ul>
+<li>usb連接上手機後，執行adb devices確認是否能正常取得裝置的資訊</li>
+</ul>
+</li>
+<li>
+<p>進入fastboot模式，將手機用USB連接上電腦後左上角出現press any key to shutdown</p>
+<ul>
+<li>如在Windows系統下以系統管理員身份執行下方的指令，或更換成USB 2.0的設備就可以解決這個問題</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags\<span class="number">18</span>D1D00D0100&quot; /v &quot;osvc&quot; /t REG_BINARY /d &quot;<span class="number">0000</span>&quot; /f</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags\<span class="number">18</span>D1D00D0100&quot; /v &quot;SkipContainerIdQuery&quot; /t REG_BINARY /d &quot;<span class="number">01000000</span>&quot; /f</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags\<span class="number">18</span>D1D00D0100&quot; /v &quot;SkipBOSDescriptorQuery&quot; /t REG_BINARY /d &quot;<span class="number">01000000</span>&quot; /f</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure>
+<h3><span id="參考資料">參考資料</span></h3>
+<ul>
+<li>
+<p>press any key to shutdown解法</p>
+<ul>
+<li><a href="https://miuiver.com/press-any-key-to-shutdown/">https://miuiver.com/press-any-key-to-shutdown/</a></li>
+</ul>
+</li>
+<li>
+<p>Linux可以用XiaoMiToolV2來刷機</p>
+<ul>
+<li><a href="https://github.com/francescotescari/XiaoMiToolV2/releases">https://github.com/francescotescari/XiaoMiToolV2/releases</a></li>
+</ul>
+</li>
+<li>
+<p>各種手機型號刷機的方式可以參考阿哲的講解</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=AcWvTfdm1vE">https://www.youtube.com/watch?v=AcWvTfdm1vE</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Xiaomi 7 Root on windows</title>
+    <url>/2022/08/07/aomi-7-Root-on-windows/</url>
+    <content><![CDATA[<h6><span id="tags-小米-刷機">tags: <code>小米</code> <code>刷機</code></span></h6>
+<h2><span id="小米刷機步驟">小米刷機步驟</span></h2>
+<h3><span id="註冊小米帳號綁定手機號">註冊小米帳號，綁定手機號</span></h3>
+<ul>
+<li>這一步驟需要預先把sim卡裝到想要刷機的小米手機上</li>
+<li>註冊後的手機號碼需要等168小時(一週之後)才有辦法進行下一個步驟</li>
+</ul>
+<h3><span id="oem解鎖">OEM解鎖</span></h3>
+<ul>
+<li>在關於手機的選單下，連續點擊MIUI版本，成為開發人員</li>
+<li>切回上個選單中的更多設定會多出開發者選項
+<ul>
+<li>點進開發者選項後，會有裝置解鎖狀態，可以查看目前手機的解鎖狀態</li>
+</ul>
+</li>
+<li>進入開發者模式，開啟OEM解鎖與啟用USB偵錯</li>
+</ul>
+<h3><span id="下載小米官方解鎖工具">下載小米官方解鎖工具</span></h3>
+<ul>
+<li>使用一開始註冊的小米帳號登入小米官方解鎖工具
+<ul>
+<li>登入後將手機關機後，長按關機鍵與聲音鍵下進入fastboot模式</li>
+<li>此時小米官方解鎖工具的解鎖按鈕會由灰色轉為可以點擊的狀態，即可解鎖小米手機</li>
+</ul>
+</li>
+</ul>
+<h3><span id="問題排除">問題排除</span></h3>
+<ul>
+<li>
+<p>確認adb連線是否正常</p>
+<ul>
+<li>usb連接上手機後，執行adb devices確認是否能正常取得裝置的資訊</li>
+</ul>
+</li>
+<li>
+<p>進入fastboot模式，將手機用USB連接上電腦後左上角出現press any key to shutdown</p>
+<ul>
+<li>如在Windows系統下以系統管理員身份執行下方的指令，或更換成USB 2.0的設備就可以解決這個問題</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags\<span class="number">18</span>D1D00D0100&quot; /v &quot;osvc&quot; /t REG_BINARY /d &quot;<span class="number">0000</span>&quot; /f</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags\<span class="number">18</span>D1D00D0100&quot; /v &quot;SkipContainerIdQuery&quot; /t REG_BINARY /d &quot;<span class="number">01000000</span>&quot; /f</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags\<span class="number">18</span>D1D00D0100&quot; /v &quot;SkipBOSDescriptorQuery&quot; /t REG_BINARY /d &quot;<span class="number">01000000</span>&quot; /f</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure>
+<h3><span id="參考資料">參考資料</span></h3>
+<ul>
+<li>
+<p>press any key to shutdown解法</p>
+<ul>
+<li><a href="https://miuiver.com/press-any-key-to-shutdown/">https://miuiver.com/press-any-key-to-shutdown/</a></li>
+</ul>
+</li>
+<li>
+<p>Linux可以用XiaoMiToolV2來刷機</p>
+<ul>
+<li><a href="https://github.com/francescotescari/XiaoMiToolV2/releases">https://github.com/francescotescari/XiaoMiToolV2/releases</a></li>
+</ul>
+</li>
+<li>
+<p>各種手機型號刷機的方式可以參考阿哲的講解</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=AcWvTfdm1vE">https://www.youtube.com/watch?v=AcWvTfdm1vE</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Xiaomi 7 Root on windows</title>
+    <url>/2022/08/07/iaomi-7-Root-on-windows/</url>
+    <content><![CDATA[<h6><span id="tags-小米-刷機">tags: <code>小米</code> <code>刷機</code></span></h6>
+<h2><span id="小米刷機步驟">小米刷機步驟</span></h2>
+<h3><span id="註冊小米帳號綁定手機號">註冊小米帳號，綁定手機號</span></h3>
+<ul>
+<li>這一步驟需要預先把sim卡裝到想要刷機的小米手機上</li>
+<li>註冊後的手機號碼需要等168小時(一週之後)才有辦法進行下一個步驟</li>
+</ul>
+<h3><span id="oem解鎖">OEM解鎖</span></h3>
+<ul>
+<li>在關於手機的選單下，連續點擊MIUI版本，成為開發人員</li>
+<li>切回上個選單中的更多設定會多出開發者選項
+<ul>
+<li>點進開發者選項後，會有裝置解鎖狀態，可以查看目前手機的解鎖狀態</li>
+</ul>
+</li>
+<li>進入開發者模式，開啟OEM解鎖與啟用USB偵錯</li>
+</ul>
+<h3><span id="下載小米官方解鎖工具">下載小米官方解鎖工具</span></h3>
+<ul>
+<li>使用一開始註冊的小米帳號登入小米官方解鎖工具
+<ul>
+<li>登入後將手機關機後，長按關機鍵與聲音鍵下進入fastboot模式</li>
+<li>此時小米官方解鎖工具的解鎖按鈕會由灰色轉為可以點擊的狀態，即可解鎖小米手機</li>
+</ul>
+</li>
+</ul>
+<h3><span id="問題排除">問題排除</span></h3>
+<ul>
+<li>
+<p>確認adb連線是否正常</p>
+<ul>
+<li>usb連接上手機後，執行adb devices確認是否能正常取得裝置的資訊</li>
+</ul>
+</li>
+<li>
+<p>進入fastboot模式，將手機用USB連接上電腦後左上角出現press any key to shutdown</p>
+<ul>
+<li>如在Windows系統下以系統管理員身份執行下方的指令，或更換成USB 2.0的設備就可以解決這個問題</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags\<span class="number">18</span>D1D00D0100&quot; /v &quot;osvc&quot; /t REG_BINARY /d &quot;<span class="number">0000</span>&quot; /f</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags\<span class="number">18</span>D1D00D0100&quot; /v &quot;SkipContainerIdQuery&quot; /t REG_BINARY /d &quot;<span class="number">01000000</span>&quot; /f</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags\<span class="number">18</span>D1D00D0100&quot; /v &quot;SkipBOSDescriptorQuery&quot; /t REG_BINARY /d &quot;<span class="number">01000000</span>&quot; /f</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure>
+<h3><span id="參考資料">參考資料</span></h3>
+<ul>
+<li>
+<p>press any key to shutdown解法</p>
+<ul>
+<li><a href="https://miuiver.com/press-any-key-to-shutdown/">https://miuiver.com/press-any-key-to-shutdown/</a></li>
+</ul>
+</li>
+<li>
+<p>Linux可以用XiaoMiToolV2來刷機</p>
+<ul>
+<li><a href="https://github.com/francescotescari/XiaoMiToolV2/releases">https://github.com/francescotescari/XiaoMiToolV2/releases</a></li>
+</ul>
+</li>
+<li>
+<p>各種手機型號刷機的方式可以參考阿哲的講解</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=AcWvTfdm1vE">https://www.youtube.com/watch?v=AcWvTfdm1vE</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Xiaomi 7 Root on windows</title>
+    <url>/2022/08/07/omi-7-Root-on-windows/</url>
+    <content><![CDATA[<h6><span id="tags-小米-刷機">tags: <code>小米</code> <code>刷機</code></span></h6>
+<h2><span id="小米刷機步驟">小米刷機步驟</span></h2>
+<h3><span id="註冊小米帳號綁定手機號">註冊小米帳號，綁定手機號</span></h3>
+<ul>
+<li>這一步驟需要預先把sim卡裝到想要刷機的小米手機上</li>
+<li>註冊後的手機號碼需要等168小時(一週之後)才有辦法進行下一個步驟</li>
+</ul>
+<h3><span id="oem解鎖">OEM解鎖</span></h3>
+<ul>
+<li>在關於手機的選單下，連續點擊MIUI版本，成為開發人員</li>
+<li>切回上個選單中的更多設定會多出開發者選項
+<ul>
+<li>點進開發者選項後，會有裝置解鎖狀態，可以查看目前手機的解鎖狀態</li>
+</ul>
+</li>
+<li>進入開發者模式，開啟OEM解鎖與啟用USB偵錯</li>
+</ul>
+<h3><span id="下載小米官方解鎖工具">下載小米官方解鎖工具</span></h3>
+<ul>
+<li>使用一開始註冊的小米帳號登入小米官方解鎖工具
+<ul>
+<li>登入後將手機關機後，長按關機鍵與聲音鍵下進入fastboot模式</li>
+<li>此時小米官方解鎖工具的解鎖按鈕會由灰色轉為可以點擊的狀態，即可解鎖小米手機</li>
+</ul>
+</li>
+</ul>
+<h3><span id="問題排除">問題排除</span></h3>
+<ul>
+<li>
+<p>確認adb連線是否正常</p>
+<ul>
+<li>usb連接上手機後，執行adb devices確認是否能正常取得裝置的資訊</li>
+</ul>
+</li>
+<li>
+<p>進入fastboot模式，將手機用USB連接上電腦後左上角出現press any key to shutdown</p>
+<ul>
+<li>如在Windows系統下以系統管理員身份執行下方的指令，或更換成USB 2.0的設備就可以解決這個問題</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags\<span class="number">18</span>D1D00D0100&quot; /v &quot;osvc&quot; /t REG_BINARY /d &quot;<span class="number">0000</span>&quot; /f</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags\<span class="number">18</span>D1D00D0100&quot; /v &quot;SkipContainerIdQuery&quot; /t REG_BINARY /d &quot;<span class="number">01000000</span>&quot; /f</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags\<span class="number">18</span>D1D00D0100&quot; /v &quot;SkipBOSDescriptorQuery&quot; /t REG_BINARY /d &quot;<span class="number">01000000</span>&quot; /f</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure>
+<h3><span id="參考資料">參考資料</span></h3>
+<ul>
+<li>
+<p>press any key to shutdown解法</p>
+<ul>
+<li><a href="https://miuiver.com/press-any-key-to-shutdown/">https://miuiver.com/press-any-key-to-shutdown/</a></li>
+</ul>
+</li>
+<li>
+<p>Linux可以用XiaoMiToolV2來刷機</p>
+<ul>
+<li><a href="https://github.com/francescotescari/XiaoMiToolV2/releases">https://github.com/francescotescari/XiaoMiToolV2/releases</a></li>
+</ul>
+</li>
+<li>
+<p>各種手機型號刷機的方式可以參考阿哲的講解</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=AcWvTfdm1vE">https://www.youtube.com/watch?v=AcWvTfdm1vE</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+  </entry>
 </search>
