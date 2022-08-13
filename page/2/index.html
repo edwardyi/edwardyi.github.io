@@ -75,198 +75,6 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2021-07-25T00:04:00.000Z"><a href="/2021/07/25/pache環境設定調整為例-Part-2-1/">2021-07-25</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/07/25/pache環境設定調整為例-Part-2-1/">Gitpod &amp; Docker WorkFlow Part 2</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h6><span id="tags-yii-gitpod">tags: <code>yii</code> <code>gitpod</code></span></h6>
-<h2><span id="前情提要">前情提要</span></h2>
-<p>接續part 1提到的gitpod環境所遇到的問題，底下就列出幾個關鍵調整的地方</p>
-<h2><span id="gitpod-workflow">Gitpod WorkFlow</span></h2>
-<ul>
-<li>開啟gitpod.io網址開啟空白專案
-<ul>
-<li>使用git clone將專案複製到這個環境</li>
-<li>使用volumes
-<ul>
-<li>將當前的user與group的設定複製到container環境</li>
-<li>設定專案所需環境變數</li>
-</ul>
-</li>
-<li>調整dockerFile
-<ul>
-<li>將環境變數相關的檔案複製到container中</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3><span id="gitpod的base-image和full-workspace兩者之間的關係">Gitpod的Base Image和Full Workspace兩者之間的關係</span></h3>
-<ul>
-<li>gitpod image的dependency會長得像這樣</li>
-</ul>
-<p><img src="https://i.imgur.com/a1AzDHs.png" alt=""></p>
-<h4><span id="reference">Reference</span></h4>
-<ul>
-<li>
-<p><a target="_blank" rel="noopener" href="https://github.com/gitpod-io/workspace-images/blob/2e5340ee0f9c39aef3f499ba7a5466087e700fb9/base/Dockerfile">Base Dockerfile</a></p>
-</li>
-<li>
-<p><a target="_blank" rel="noopener" href="https://github.com/gitpod-io/workspace-images/blob/3671677ff78059c6f5d94ec034903398a12bdec2/.circleci/config.yml">Config.yml</a></p>
-</li>
-<li>
-<p><a target="_blank" rel="noopener" href="https://github.com/docker-library/buildpack-deps">FROM buildpack-deps:focal</a></p>
-</li>
-</ul>
-<h2><span id="code">Code</span></h2>
-<ul>
-<li>frontend/apache2/000-default.conf</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /app/frontend/web/&gt;</span><br><span class="line">        Options Indexes FollowSymLinks</span><br><span class="line">        AllowOverride All</span><br><span class="line">        Require all granted</span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">        # The ServerName directive sets the request scheme, hostname and port that</span><br><span class="line">        # the server uses to identify itself. This is used when creating</span><br><span class="line">        # redirection URLs. In the context of virtual hosts, the ServerName</span><br><span class="line">        # specifies what hostname must appear in the request&#x27;s Host: header to</span><br><span class="line">        # match this virtual host. For the default virtual host (this file) this</span><br><span class="line">        # value is not decisive as it is used as a last resort host regardless.</span><br><span class="line">        # However, you must set it for any further virtual host explicitly.</span><br><span class="line">        #ServerName www.example.com</span><br><span class="line"></span><br><span class="line">        ServerAdmin webmaster@localhost</span><br><span class="line">        DocumentRoot /app/frontend/web</span><br><span class="line"></span><br><span class="line">        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,</span><br><span class="line">        # error, crit, alert, emerg.</span><br><span class="line">        # It is also possible to configure the loglevel for particular</span><br><span class="line">        # modules, e.g.</span><br><span class="line">        #LogLevel info ssl:warn</span><br><span class="line"></span><br><span class="line">        ErrorLog $&#123;APACHE_LOG_DIR&#125;/error.log</span><br><span class="line">        CustomLog $&#123;APACHE_LOG_DIR&#125;/access.log combined</span><br><span class="line"></span><br><span class="line">        # For most configuration files from conf-available/, which are</span><br><span class="line">        # enabled or disabled at a global level, it is possible to</span><br><span class="line">        # include a line for only one particular virtual host. For example the</span><br><span class="line">        # following line enables the CGI configuration for this host only</span><br><span class="line">        # after it has been globally disabled with &quot;a2disconf&quot;.</span><br><span class="line">        #Include conf-available/serve-cgi-bin.conf</span><br><span class="line">        &lt;Directory &quot;/app/frontend/web/&quot;&gt;</span><br><span class="line">            # use mod_rewrite for pretty URL support</span><br><span class="line">            RewriteEngine on</span><br><span class="line">            # If a directory or a file exists, use the request directly</span><br><span class="line">            RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">            RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">            # Otherwise forward the request to index.php</span><br><span class="line">            RewriteRule . index.php</span><br><span class="line"></span><br><span class="line">            # use index.php as index file</span><br><span class="line">            DirectoryIndex index.php</span><br><span class="line"></span><br><span class="line">            # ...other settings...</span><br><span class="line">            # Apache 2.4</span><br><span class="line">            Require all granted</span><br><span class="line"></span><br><span class="line">            ## Apache 2.2</span><br><span class="line">            # Order allow,deny</span><br><span class="line">            # Allow from all</span><br><span class="line">        &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>dockerFile</li>
-</ul>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> yiisoftware/yii2-php:<span class="number">7.2</span>-apache</span><br><span class="line"></span><br><span class="line"><span class="comment"># Change document root for Apache</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> /apache2/000-default.conf /etc/apache2/sites-available/000-default.conf </span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>docker-compose.yml</li>
-</ul>
-<p>這兩行為關鍵:</p>
-<ul>
-<li>/etc/passwd:/etc/passwd:ro</li>
-<li>/etc/group:/etc/group:ro</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">frontend:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">frontend</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">20080</span><span class="string">:80</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="comment"># Re-use local composer cache via host-volume</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">~/.composer-docker/cache:/root/.composer/cache:delegated</span></span><br><span class="line">      <span class="comment"># Mount source-code for development</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./:/app</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/etc/passwd:/etc/passwd:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/etc/group:/etc/group:ro</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mysql</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-03-24T19:56:00.000Z"><a href="/2019/03/24/The-power-of-language-1/">2019-03-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/03/24/The-power-of-language-1/">The power of language</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>每一次挫折都是離成功更進一步，每一個成功都是藏在拐角後頭。如果你不多轉幾個彎，怎麼知道成功離你多遠。事實上，一次一步並不算遠，但你終將達成目標。</p>
-<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=-Hi26Otz1To">語言具有改變思想的魔法喔！</a></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-03-24T19:51:00.000Z"><a href="/2019/03/24/Postman-Imgur-OAuth-2-0-Setting/">2019-03-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/03/24/Postman-Imgur-OAuth-2-0-Setting/">Postman Imgur OAuth 2.0 Setting</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>postman<br>
-- 建立變數<br>
-- global、collection、environment<br>
-- 用環境管理不同的變數<br>
-- 每一個Oauth的請求都有自己的token_url、authorize_url、callback_url</p>
-<ul>
-<li>OAuth四個步驟:
-<ul>
-<li>註冊、授權、請求、取得token
-<ul>
-<li>註冊:獲得client_id和client_secret</li>
-<li>授權
-<ul>
-<li>詢問使用者是否願意提供個人資料讓應用程式存取資料</li>
-<li>refresh and access tokens, an authorization_code, or a PIN code.</li>
-<li>用這些東西來換access_token and refresh_token.</li>
-</ul>
-</li>
-<li>授權種類:
-<ul>
-<li>access token:把它想成是存取使用者資料的一組資訊(像帳號密碼一樣)，一個月之後會過期</li>
-<li>refresh token:不會過期的access token</li>
-<li>authorization_code:伺服器用來取得access token和refresh token(存在只是為了交換token使用)</li>
-<li>PIN code:使用者用來取得access token和refresh token的方式(存在只是為了交換token使用)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://api.imgur.com/oauth2">https://api.imgur.com/oauth2</a></li>
-</ul>
-</li>
-</ul>
-<h4><span id="imgur-postman-setting">Imgur PostMan Setting</span></h4>
-<pre><code> Uri:https://api.imgur.com/3/account/me/images
-</code></pre>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=NRU_KdUSjD4">Testing OAuth2 Authorization Flow with Postman</a></li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
         <time datetime="2019-02-20T22:09:00.000Z"><a href="/2019/02/20/Room-Manager-In-React-Vue-js/">2019-02-20</a></time>
       
       
@@ -948,6 +756,318 @@
 </li>
 <li><a target="_blank" rel="noopener" href="https://scrimba.com/p/p7P5Hd/cbykBfa">Props and Styling Practice</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/47c8e364d0bc?appinstall=1&amp;mType=Group">彻底理解React 之React SSR、React服务端渲染，教你从零搭建配置</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-12-13T13:46:00.000Z"><a href="/2018/12/13/Find-The-Parity-Outlier/">2018-12-13</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/12/13/Find-The-Parity-Outlier/">Find The Parity Outlier</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <ul>
+<li>Find The Parity Outlier
+<ul>
+<li>javascript filter練習</li>
+</ul>
+</li>
+<li>考慮
+<ul>
+<li>陣列的總個數會影響加總最後是奇數還是偶數的結果
+<ul>
+<li>偶數個奇數相加會變成偶數</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>測試
+<ul>
+<li>針對奇數個數的情況進行確認</li>
+<li>測試順序互換是否影響最後的結果</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function findOutlier(integers)&#123;</span><br><span class="line">   let evenNum = 0, oddNum = 0;</span><br><span class="line">   for(let i=0; i&lt;integers.length;i++) &#123;</span><br><span class="line">      if(integers[i] % 2 == 0) &#123;</span><br><span class="line">         evenNum++;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">         oddNum++;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   return integers.filter(val =&gt; &#123;</span><br><span class="line">     val = val &lt; 0 ? -val : val</span><br><span class="line">     return (val % 2==0 &amp;&amp; evenNum == 1) ||</span><br><span class="line">            (val % 2==1 &amp;&amp; oddNum == 1)</span><br><span class="line">   &#125;)[0]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Test.assertEquals(findOutlier([ 0, 2 ,-1]), -1)</span><br><span class="line">Test.assertEquals(findOutlier([1, 2, 3]), 2)</span><br><span class="line">Test.assertEquals(findOutlier([2,6,8,10,3]), 3)</span><br><span class="line">Test.assertEquals(findOutlier([0,0,3,0,0]), 3)</span><br><span class="line">Test.assertEquals(findOutlier([1,1,1,0,1,7,7,1]), 0)</span><br><span class="line">Test.assertEquals(findOutlier([17,6,8,10,6,12,24,36]),17)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-12-07T05:19:00.000Z"><a href="/2018/12/07/NPM-Portable/">2018-12-07</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/12/07/NPM-Portable/">NPM Portable</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h5><span id="情境">情境:</span></h5>
+<ul>
+<li>為了在不同的電腦都能使用nodejs搭配sublime text 3開發,如果是windows系統可以嘗試以下步驟:</li>
+</ul>
+<h5><span id="配置">配置:</span></h5>
+<ul>
+<li>先在官網下載最新的nodejs zip</li>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></li>
+<li>解壓縮後,切換到資料夾下確認版本</li>
+<li>node -v</li>
+<li>npm version:查看所有版本號</li>
+<li>設定環境變數
+<ul>
+<li>echo %PATH%</li>
+<li>set PATH=%PATH%;%cd%</li>
+<li>當前解壓縮後的nodejs路徑</li>
+</ul>
+</li>
+<li>sublime text 3</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = &#x27;6f4c264a24d933ce70df5dedcf1dcaee&#x27; + &#x27;ebe013ee18cced0ef93d5f746d80ef60&#x27;; pf = &#x27;Package Control.sublime-package&#x27;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &#x27;http://packagecontrol.io/&#x27; + pf.replace(&#x27; &#x27;, &#x27;%20&#x27;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&#x27;Error validating download (got %s instead of %s), please try manual install&#x27; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &#x27;wb&#x27; ).write(by)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://packagecontrol.io/installation">https://packagecontrol.io/installation</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-11-15T08:43:00.000Z"><a href="/2018/11/15/TDD-Using-PHPUnit/">2018-11-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/11/15/TDD-Using-PHPUnit/">TDD Using PHPUnit</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3><span id="phpunit-test">PHPUnit Test</span></h3>
+<ul>
+<li>Composer.json定義版本號</li>
+<li>PHPUnit.xml定義單元測試的規則
+<ul>
+<li>檔案名稱用Test當後綴</li>
+<li>方法名稱用test當前綴</li>
+</ul>
+</li>
+<li>增加可讀性
+<ul>
+<li>@test註解</li>
+<li>function的名稱可以用底線來連結</li>
+<li>CamelCase plugin
+<ul>
+<li>(V) a_product_has_a_name</li>
+<li>(X) AProductHasAName</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>新增一個屬性,結果原先的unit test變成不通過
+<ul>
+<li>construct少傳一個參數,兩種解法
+<ul>
+<li>給預設值</li>
+<li>修改舊的測試方法,把要傳的參數也加上去</li>
+</ul>
+</li>
+<li>filter方法,可以針對要測試的方法指定方法名稱或類別名稱</li>
+</ul>
+</li>
+<li>原則
+<ul>
+<li>根據unit test回傳的錯誤訊息來調整代碼</li>
+</ul>
+</li>
+<li>測試Order
+<ul>
+<li>一個Order有多個商品,加總起來個數和總經額要經過測試</li>
+<li>assertCount()計算陣列元素個數</li>
+</ul>
+</li>
+<li>重構
+<ul>
+<li>setUp()把物件整理出來,單元測試在執行前會先執行setUp的方法</li>
+<li>缺點:耦合度提高,牽一髮動全身</li>
+<li>stop-on-error:Stop execution upon first error</li>
+</ul>
+</li>
+<li>測試Model的資料
+<ul>
+<li>測試最多觀看文章資料</li>
+<li>use DatabaseTransaction,執行完之後會在執行rollback</li>
+<li>安裝sqlite
+<ul>
+<li>sudo apt-get install php7.2-sqlite</li>
+<li>修改/etc/php/php7.2/php.ini的,把分號拿掉</li>
+</ul>
+</li>
+<li>自己做一次發現卡住
+<ul>
+<li>少做了修改database的預設配置文件(config/database.php)
+<ul>
+<li>env(‘DB_CONNECTION’, ‘sqlite’),</li>
+</ul>
+</li>
+<li>php artisan make:modol Article -m
+<ul>
+<li>建立model文件和migration文件</li>
+<li>修改migration的定義</li>
+</ul>
+</li>
+<li>用model::class來創建紀錄</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>新增團隊案例
+<ul>
+<li>一個團隊可以加入多個User,多對多關係</li>
+<li>拋出例外可以整理成protected的function比較容易閱讀</li>
+</ul>
+</li>
+<li>Feature和Unit Test的差異
+<ul>
+<li>Feature測試模仿實際操作的過程</li>
+<li>Unit Test則是每一個拆開的方法(向洋蔥一樣,最核心的部分就是單元測試)</li>
+</ul>
+</li>
+<li>安裝phpunit watch
+<ul>
+<li>composer global require spatie/phpunit-watcher</li>
+<li>composer require spatie/phpunit-watcher --dev
+<ul>
+<li>要require進來才可以用,光是安裝是沒有用的</li>
+</ul>
+</li>
+<li>phpunit-watcher watch</li>
+</ul>
+</li>
+<li>laravel 5.4之後才支持dusk針對瀏覽器的測試</li>
+</ul>
+<h3><span id="phpunit-in-action">PHPUnit In Action</span></h3>
+<ul>
+<li>踩坑了,結果書中已經有說這個問題
+<ul>
+<li>使用了 Data Provider 的測試，它的輸出將無法注入到其他相依於它的測試</li>
+</ul>
+</li>
+<li>加上namespace測試一下會不會重現laravel例外的問題
+<ul>
+<li>結果依然沒有辦法重現QQ</li>
+<li>用get_class打上完整的namespace類別名稱,有取到那個類別,但是單元測試不給過</li>
+</ul>
+</li>
+<li>測試了一般的Exception才給過,感動</li>
+<li>phpunit --configuration
+<ul>
+<li>產生phpunit.xml</li>
+<li>方便整合測試使用(CI)</li>
+</ul>
+</li>
+<li>產生測試報告
+<ul>
+<li>phpunit --coverage-html ./report tests</li>
+</ul>
+</li>
+</ul>
+<h3><span id="移除團隊成員unit-test">移除團隊成員(Unit Test)</span></h3>
+<ul>
+<li>一個團隊有多個人,每個人記錄一組team_id(所屬的團隊)</li>
+<li>新增多個團隊成員
+<ul>
+<li>instanceof判斷是不是User的Model</li>
+<li>如果是的話就用save,不是就用saveMany(Collection)</li>
+</ul>
+</li>
+<li>移除多個團隊成員
+<ul>
+<li>remove():移除User的team_id</li>
+<li>注意:User的team_id要是fillable才可以</li>
+<li>兩種方法可以移除collection的team_id
+<ul>
+<li>參數法:each每一個user做update</li>
+<li>關聯法:透過members()關聯,whereIn條件搭配使用pluck update</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>php 7.2會有count不能count collection的問題
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Automattic/jetpack/issues/8420">PHP 7.2: Warning: count()</a></li>
+<li><a target="_blank" rel="noopener" href="https://secure.php.net/manual/en/migration72.incompatible.php">Backward incompatible changes ¶</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.codecasts.com/series/learn-to-write-php-unit-test/episodes/8">测试团队移除成员的功能</a></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 方法1:參數法</span><br><span class="line">$users-&gt;each(function($user)&#123;</span><br><span class="line">  return $user-&gt;update([&#x27;team_id&#x27;=&gt;null]);</span><br><span class="line">&#125;);</span><br><span class="line">// 方法2:關聯法pluck</span><br><span class="line">return $this-&gt;members()-&gt;whereIn(&#x27;id&#x27;, $users-&gt;pluck(&#x27;id&#x27;))-&gt;update([&#x27;team_id&#x27;=&gt;null]);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3><span id="參考連結">參考連結</span></h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=R1aO4Tmw3zA&amp;list=PLKERDLXpXl_jJQiQOHDLimnulasAK3T5b">TDD in Unity</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=o-C_2ZELZHY">Laravel E-Commerce - Testing with PHPUnit - Part 29</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.codecasts.com/">codecasts</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.codecasts.com/series/learn-to-write-php-unit-test/episodes/1">learn-to-write-php-unit-test</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=YjvSyWInHeE">Laravel Dusk Tutorials | Introduction and Installation #1</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/38949781/pdo-exception-driver-not-found-in-laravel-for-sqlite/41545116">driver not found的問題</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?time_continue=3&amp;v=eE3-COBmE1g">Eloquont unit test laravel 5.7</a></li>
 </ul>
 
       

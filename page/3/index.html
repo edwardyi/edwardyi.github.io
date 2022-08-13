@@ -75,318 +75,6 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-12-13T13:46:00.000Z"><a href="/2018/12/13/Find-The-Parity-Outlier/">2018-12-13</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/12/13/Find-The-Parity-Outlier/">Find The Parity Outlier</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <ul>
-<li>Find The Parity Outlier
-<ul>
-<li>javascript filter練習</li>
-</ul>
-</li>
-<li>考慮
-<ul>
-<li>陣列的總個數會影響加總最後是奇數還是偶數的結果
-<ul>
-<li>偶數個奇數相加會變成偶數</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>測試
-<ul>
-<li>針對奇數個數的情況進行確認</li>
-<li>測試順序互換是否影響最後的結果</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function findOutlier(integers)&#123;</span><br><span class="line">   let evenNum = 0, oddNum = 0;</span><br><span class="line">   for(let i=0; i&lt;integers.length;i++) &#123;</span><br><span class="line">      if(integers[i] % 2 == 0) &#123;</span><br><span class="line">         evenNum++;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">         oddNum++;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   return integers.filter(val =&gt; &#123;</span><br><span class="line">     val = val &lt; 0 ? -val : val</span><br><span class="line">     return (val % 2==0 &amp;&amp; evenNum == 1) ||</span><br><span class="line">            (val % 2==1 &amp;&amp; oddNum == 1)</span><br><span class="line">   &#125;)[0]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Test.assertEquals(findOutlier([ 0, 2 ,-1]), -1)</span><br><span class="line">Test.assertEquals(findOutlier([1, 2, 3]), 2)</span><br><span class="line">Test.assertEquals(findOutlier([2,6,8,10,3]), 3)</span><br><span class="line">Test.assertEquals(findOutlier([0,0,3,0,0]), 3)</span><br><span class="line">Test.assertEquals(findOutlier([1,1,1,0,1,7,7,1]), 0)</span><br><span class="line">Test.assertEquals(findOutlier([17,6,8,10,6,12,24,36]),17)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-12-07T05:19:00.000Z"><a href="/2018/12/07/NPM-Portable/">2018-12-07</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/12/07/NPM-Portable/">NPM Portable</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h5><span id="情境">情境:</span></h5>
-<ul>
-<li>為了在不同的電腦都能使用nodejs搭配sublime text 3開發,如果是windows系統可以嘗試以下步驟:</li>
-</ul>
-<h5><span id="配置">配置:</span></h5>
-<ul>
-<li>先在官網下載最新的nodejs zip</li>
-<li><a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></li>
-<li>解壓縮後,切換到資料夾下確認版本</li>
-<li>node -v</li>
-<li>npm version:查看所有版本號</li>
-<li>設定環境變數
-<ul>
-<li>echo %PATH%</li>
-<li>set PATH=%PATH%;%cd%</li>
-<li>當前解壓縮後的nodejs路徑</li>
-</ul>
-</li>
-<li>sublime text 3</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = &#x27;6f4c264a24d933ce70df5dedcf1dcaee&#x27; + &#x27;ebe013ee18cced0ef93d5f746d80ef60&#x27;; pf = &#x27;Package Control.sublime-package&#x27;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &#x27;http://packagecontrol.io/&#x27; + pf.replace(&#x27; &#x27;, &#x27;%20&#x27;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&#x27;Error validating download (got %s instead of %s), please try manual install&#x27; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &#x27;wb&#x27; ).write(by)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://packagecontrol.io/installation">https://packagecontrol.io/installation</a></li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-11-15T08:43:00.000Z"><a href="/2018/11/15/TDD-Using-PHPUnit/">2018-11-15</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/11/15/TDD-Using-PHPUnit/">TDD Using PHPUnit</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3><span id="phpunit-test">PHPUnit Test</span></h3>
-<ul>
-<li>Composer.json定義版本號</li>
-<li>PHPUnit.xml定義單元測試的規則
-<ul>
-<li>檔案名稱用Test當後綴</li>
-<li>方法名稱用test當前綴</li>
-</ul>
-</li>
-<li>增加可讀性
-<ul>
-<li>@test註解</li>
-<li>function的名稱可以用底線來連結</li>
-<li>CamelCase plugin
-<ul>
-<li>(V) a_product_has_a_name</li>
-<li>(X) AProductHasAName</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>新增一個屬性,結果原先的unit test變成不通過
-<ul>
-<li>construct少傳一個參數,兩種解法
-<ul>
-<li>給預設值</li>
-<li>修改舊的測試方法,把要傳的參數也加上去</li>
-</ul>
-</li>
-<li>filter方法,可以針對要測試的方法指定方法名稱或類別名稱</li>
-</ul>
-</li>
-<li>原則
-<ul>
-<li>根據unit test回傳的錯誤訊息來調整代碼</li>
-</ul>
-</li>
-<li>測試Order
-<ul>
-<li>一個Order有多個商品,加總起來個數和總經額要經過測試</li>
-<li>assertCount()計算陣列元素個數</li>
-</ul>
-</li>
-<li>重構
-<ul>
-<li>setUp()把物件整理出來,單元測試在執行前會先執行setUp的方法</li>
-<li>缺點:耦合度提高,牽一髮動全身</li>
-<li>stop-on-error:Stop execution upon first error</li>
-</ul>
-</li>
-<li>測試Model的資料
-<ul>
-<li>測試最多觀看文章資料</li>
-<li>use DatabaseTransaction,執行完之後會在執行rollback</li>
-<li>安裝sqlite
-<ul>
-<li>sudo apt-get install php7.2-sqlite</li>
-<li>修改/etc/php/php7.2/php.ini的,把分號拿掉</li>
-</ul>
-</li>
-<li>自己做一次發現卡住
-<ul>
-<li>少做了修改database的預設配置文件(config/database.php)
-<ul>
-<li>env(‘DB_CONNECTION’, ‘sqlite’),</li>
-</ul>
-</li>
-<li>php artisan make:modol Article -m
-<ul>
-<li>建立model文件和migration文件</li>
-<li>修改migration的定義</li>
-</ul>
-</li>
-<li>用model::class來創建紀錄</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>新增團隊案例
-<ul>
-<li>一個團隊可以加入多個User,多對多關係</li>
-<li>拋出例外可以整理成protected的function比較容易閱讀</li>
-</ul>
-</li>
-<li>Feature和Unit Test的差異
-<ul>
-<li>Feature測試模仿實際操作的過程</li>
-<li>Unit Test則是每一個拆開的方法(向洋蔥一樣,最核心的部分就是單元測試)</li>
-</ul>
-</li>
-<li>安裝phpunit watch
-<ul>
-<li>composer global require spatie/phpunit-watcher</li>
-<li>composer require spatie/phpunit-watcher --dev
-<ul>
-<li>要require進來才可以用,光是安裝是沒有用的</li>
-</ul>
-</li>
-<li>phpunit-watcher watch</li>
-</ul>
-</li>
-<li>laravel 5.4之後才支持dusk針對瀏覽器的測試</li>
-</ul>
-<h3><span id="phpunit-in-action">PHPUnit In Action</span></h3>
-<ul>
-<li>踩坑了,結果書中已經有說這個問題
-<ul>
-<li>使用了 Data Provider 的測試，它的輸出將無法注入到其他相依於它的測試</li>
-</ul>
-</li>
-<li>加上namespace測試一下會不會重現laravel例外的問題
-<ul>
-<li>結果依然沒有辦法重現QQ</li>
-<li>用get_class打上完整的namespace類別名稱,有取到那個類別,但是單元測試不給過</li>
-</ul>
-</li>
-<li>測試了一般的Exception才給過,感動</li>
-<li>phpunit --configuration
-<ul>
-<li>產生phpunit.xml</li>
-<li>方便整合測試使用(CI)</li>
-</ul>
-</li>
-<li>產生測試報告
-<ul>
-<li>phpunit --coverage-html ./report tests</li>
-</ul>
-</li>
-</ul>
-<h3><span id="移除團隊成員unit-test">移除團隊成員(Unit Test)</span></h3>
-<ul>
-<li>一個團隊有多個人,每個人記錄一組team_id(所屬的團隊)</li>
-<li>新增多個團隊成員
-<ul>
-<li>instanceof判斷是不是User的Model</li>
-<li>如果是的話就用save,不是就用saveMany(Collection)</li>
-</ul>
-</li>
-<li>移除多個團隊成員
-<ul>
-<li>remove():移除User的team_id</li>
-<li>注意:User的team_id要是fillable才可以</li>
-<li>兩種方法可以移除collection的team_id
-<ul>
-<li>參數法:each每一個user做update</li>
-<li>關聯法:透過members()關聯,whereIn條件搭配使用pluck update</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>php 7.2會有count不能count collection的問題
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/Automattic/jetpack/issues/8420">PHP 7.2: Warning: count()</a></li>
-<li><a target="_blank" rel="noopener" href="https://secure.php.net/manual/en/migration72.incompatible.php">Backward incompatible changes ¶</a></li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://www.codecasts.com/series/learn-to-write-php-unit-test/episodes/8">测试团队移除成员的功能</a></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 方法1:參數法</span><br><span class="line">$users-&gt;each(function($user)&#123;</span><br><span class="line">  return $user-&gt;update([&#x27;team_id&#x27;=&gt;null]);</span><br><span class="line">&#125;);</span><br><span class="line">// 方法2:關聯法pluck</span><br><span class="line">return $this-&gt;members()-&gt;whereIn(&#x27;id&#x27;, $users-&gt;pluck(&#x27;id&#x27;))-&gt;update([&#x27;team_id&#x27;=&gt;null]);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3><span id="參考連結">參考連結</span></h3>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=R1aO4Tmw3zA&amp;list=PLKERDLXpXl_jJQiQOHDLimnulasAK3T5b">TDD in Unity</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=o-C_2ZELZHY">Laravel E-Commerce - Testing with PHPUnit - Part 29</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.codecasts.com/">codecasts</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.codecasts.com/series/learn-to-write-php-unit-test/episodes/1">learn-to-write-php-unit-test</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=YjvSyWInHeE">Laravel Dusk Tutorials | Introduction and Installation #1</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/38949781/pdo-exception-driver-not-found-in-laravel-for-sqlite/41545116">driver not found的問題</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?time_continue=3&amp;v=eE3-COBmE1g">Eloquont unit test laravel 5.7</a></li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
         <time datetime="2018-11-08T10:07:00.000Z"><a href="/2018/11/08/Using-NodeJs-Unit-Testing-Jest/">2018-11-08</a></time>
       
       
@@ -1088,6 +776,291 @@
 <li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av18182693">bilibili表嚴肅</a></li>
 <li><a target="_blank" rel="noopener" href="https://regexone.com/lesson/wildcards_dot?">regexone學習正規表達式的好地方</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=2CwzOjYbi-w&amp;list=PLXbU-2B80FvCKj0aqdpudCqpif2vNuING">正規表達式</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-30T02:58:00.000Z"><a href="/2018/10/30/Using-Composer-Learning-Unit-Test-Part-2/">2018-10-30</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/30/Using-Composer-Learning-Unit-Test-Part-2/">Using Composer Learning Unit Test Part 2</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>PHP Unit Test</em></p>
+<ul>
+<li>要如何直接用assertEquals的function呢?
+<ul>
+<li>因為每一次都會用到$this-&gt;assertEquals()有點多餘</li>
+<li>找到實際定義assertEquals的function整理成一個檔案</li>
+<li>讓phpunit.xml直接參考到bootstrap.php自定義的檔案</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tests/bootstrap.php</span></span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">&#x27;/../vendor/autoload.php&#x27;</span>;</span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">&#x27;/../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php&#x27;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>測試的種類</p>
+<ul>
+<li>Unit Test &lt; Integration Test &lt; Function Test &lt; Acceptance Test</li>
+<li>Unit Test
+<ul>
+<li>Basic Test</li>
+</ul>
+</li>
+<li>Integration Test
+<ul>
+<li>測試兩個獨立系統是否能正常運作</li>
+</ul>
+</li>
+<li>Function/Acceptance Test
+<ul>
+<li>測試過Unit Test和Integration Test不一定這一階段就會過</li>
+<li>Acceptance Test/配合Selenium測試UI</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>mock的概念</p>
+<ul>
+<li>不在乎run的內容,只關注那個function是否有被呼叫到了</li>
+<li>swap out the actual action</li>
+<li>和new 物件的作法比較(會實際呼叫到物件定義的方法)</li>
+<li>可以用於依賴注入(controller有使用到其他物件的資料)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$mock</span> = Mockery::mock(<span class="string">&#x27;MockDependency\Type\StripeBilling&#x27;</span>); <span class="comment">//要寫完整路徑</span></span><br><span class="line"><span class="variable">$mock</span>-&gt;shouldReceive(<span class="string">&#x27;charge&#x27;</span>)-&gt;once()-&gt;andReturn(<span class="string">&#x27;mocked Billing by Test&#x27;</span>);</span><br><span class="line"><span class="variable">$purchase</span> = <span class="keyword">new</span> PurcharseController(<span class="variable">$mock</span>);</span><br><span class="line"><span class="variable">$result</span> = <span class="variable">$purchase</span>-&gt;buy();</span><br><span class="line">var_dump(<span class="variable">$result</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>依賴注入
+<ul>
+<li>如果有定義新的namespace，記得先用composer dump，autoload才找的到檔案</li>
+<li>如果程式有在classmap中定義，require的時候就不用寫__DIR__取路徑</li>
+<li>Single Responsibility</li>
+</ul>
+</li>
+<li>驗證controller的時候，記得加上return返回結果
+<ul>
+<li>mock andReturn最後不會返回一個值，不需要再用一個變數來接</li>
+<li>用<em>php指令+檔案位置</em>來確認是否頁面能正常執行</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法1:未使用依賴注入的寫法</span></span><br><span class="line"> <span class="keyword">require</span> <span class="string">&#x27;vendor/autoload.php&#x27;</span>;</span><br><span class="line"> <span class="variable">$controller</span> = <span class="keyword">new</span> PurcharseController();</span><br><span class="line"> var_dump(<span class="variable">$controller</span>-&gt;buy());</span><br><span class="line"><span class="comment">// 方法2:使用依賴注入</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">&#x27;vendor/autoload.php&#x27;</span>;</span><br><span class="line">var_dump((<span class="keyword">new</span> PurcharseController(<span class="keyword">new</span> StripeBilling))-&gt;buy());</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-29T09:06:00.000Z"><a href="/2018/10/29/Composer-Unit-Test/">2018-10-29</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/29/Composer-Unit-Test/">Using Composer Learning Unit Test</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>PHPUnit Test卡關了</em></p>
+<ul>
+<li>定義了User的Model還是找不到?
+<ul>
+<li>用Classmap的寫法來找到對應的model</li>
+</ul>
+</li>
+<li>定義classmap
+<ul>
+<li>composer install:產生compsoer.json</li>
+<li>composer dump-autoload
+<ul>
+<li>每次有新的class的時候記得要用dump-autoload一次</li>
+<li>定義好namespace的時候也要使用</li>
+<li>用找歌曲的概念來解釋,一開始只有說要找甚麼歌,但是沒有說要找哪個歌手的甚麼專輯</li>
+</ul>
+</li>
+<li>alias p=./vendor/bin/phpunit</li>
+</ul>
+</li>
+<li>盡量把要測試的方法名稱寫<b>清楚一點</b>
+<ul>
+<li>寫的長沒有關係,要有描述性</li>
+<li>用<b>Annotation</b>可以達到
+<ul>
+<li>把資料抽離出來</li>
+<li>處理例外狀況</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>踩到exception的坑了
+<ul>
+<li>如果傳入錯誤的參數進去,拋出例外的時候要用多行註解,格式錯誤就無法正確的判斷拋出的例外類型</li>
+</ul>
+</li>
+<li>alias 是一個好東西,可以打很少的指令達到一樣的效果
+<ul>
+<li>alias p=./vendor/bin/phpunit</li>
+<li>alias hexoServer=‘hexo server --port $PORT --host $IP’</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;require&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;phpunit/phpunit&quot;</span>: <span class="string">&quot;^7.4&quot;</span>,</span><br><span class="line">        <span class="string">&quot;codeception/codeception&quot;</span>: <span class="string">&quot;^2.5&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    <span class="string">&quot;autoload&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;classmap&quot;</span> : [</span><br><span class="line">            <span class="string">&quot;App/Models&quot;</span>,</span><br><span class="line">            <span class="string">&quot;App/Libraries&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;psr-4&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;App\\&quot;</span>: <span class="string">&quot;app&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><em>Testing System Functions</em></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 用namespace把Foo用到的time重新定義過</span></span><br><span class="line"><span class="comment">// 注意:如果使用use的話會有重複定義的問題</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Libraries</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">time</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;stud&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FooTest</span> <span class="keyword">extends</span> \<span class="title">PHPUnit</span>\<span class="title">Framework</span>\<span class="title">TestCase</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setUp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testDynamicFooTime</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;assertEquals(<span class="string">&#x27;stud&#x27;</span>, (<span class="keyword">new</span> Foo)-&gt;go());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>參考教學:<br>
+<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=AXh8kc76hCo&amp;list=PLH9Ysf6G9Ue3libSiqkuSju7_2OnQSz1w&amp;index=4">Testing System Functions</a><br>
+<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=84j61_aI0q8">Composer, Autoloading, Namespacing, and PHPUnit</a><br>
+<a target="_blank" rel="noopener" href="https://phpunit.de/manual/6.5/en/appendixes.annotations.html#appendixes.annotations.expectedException">Phpunit Annotations</a><br>
+<a target="_blank" rel="noopener" href="https://blog.hsin.tw/2015/linux-alias-works-always/">Linux Alias</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-10-28T02:40:00.000Z"><a href="/2018/10/28/CodeIgniter-CRUD/">2018-10-28</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/28/CodeIgniter-CRUD/">CodeIgniter CRUD</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>CodeIgniter 3.1</em></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> news (</span><br><span class="line">    id <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    title <span class="type">varchar</span>(<span class="number">128</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    slug <span class="type">varchar</span>(<span class="number">128</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    text text <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    create_at <span class="type">TIMESTAMP</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;新增貼文時間&#x27;</span>,</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY(id),</span><br><span class="line">    KEY slug (slug)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> posts (</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    title <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    slug <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    body text <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    create_at <span class="type">TIMESTAMP</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;新增貼文時間&#x27;</span></span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY(id)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine On</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">RewriteRule ^(.*)$ index.php/$1 [L]</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><figcaption><span>準備</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://code.jquery.com/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>為什麼要用單一路口文件?
+<ul>
+<li>這樣使用會有甚麼問題</li>
+<li>路徑長的醜醜的=&gt;才會有route的規則需要定義</li>
+<li><a target="_blank" rel="noopener" href="http://localhost/codeIgniter/index.php/pages/view/">http://localhost/codeIgniter/index.php/pages/view/</a></li>
+<li><a target="_blank" rel="noopener" href="http://localhost/codeIgniter/index.php/news/index/">http://localhost/codeIgniter/index.php/news/index/</a></li>
+</ul>
+</li>
+<li>建立controller和route
+<ul>
+<li>讓url變得好看</li>
+<li>定義route規則</li>
+</ul>
+</li>
+<li>建立model
+<ul>
+<li>slug把url去掉,只留下小寫的英文字母</li>
+<li>有點像是簡單的描述,例如:/車子/帥氣的法拉利</li>
+<li>可以用來當作唯一值用來識別某個資源(entry/resource)</li>
+<li>詳細說明可以看stackoverflow解釋(what-is-a-slug)</li>
+</ul>
+</li>
+<li>和我想的比較不一樣的是,他把新聞系統的controller另外拆開
+<ul>
+<li>本來想說寫在一起的</li>
+<li>分開也比較清楚</li>
+</ul>
+</li>
+<li>建立列表頁和檢視頁面</li>
+<li>踩到的第一個坑是自己打錯字,找template的路徑
+<ul>
+<li>不需要為繼承的父類別加上namespace</li>
+<li>改完route發現news不好使了
+<ul>
+<li>先註解起來查原因</li>
+<li>檢視頁面的位置沒有改到view,從index那邊複製過來沒有修改到</li>
+</ul>
+</li>
+<li>原來是沒有加htaccess的關係阿
+<ul>
+<li>當發現怎麼改route都沒有用</li>
+<li>印出來看有設定,而且怎麼敲url就是不出來這時候就該設定htaccess了</li>
+</ul>
+</li>
+<li>新增表單
+<ul>
+<li>把檢視的route設定放到最後面</li>
+</ul>
+</li>
+<li>刪除的坑(id)
+<ul>
+<li>加上要刪除的編號之後,突然發現沒有辦法用open_form的方法了</li>
+<li>原先以為是因為寫法的關係造成的,結果是因為autoload沒有load到那個form的helper,殘念</li>
+<li>沒有對應到controller的method名稱</li>
+</ul>
+</li>
+<li>編輯(slug)=&gt;和view帶一樣的
+<ul>
+<li>bootstrap pull left把放在右邊的顯示到左邊</li>
+<li>要帶入view的slug進去,而不是用id</li>
+<li>少input hidden的id也想成功?</li>
+</ul>
+</li>
+<li>新增navbar-right往右放</li>
+</ul>
+</li>
+<li>小bug
+<ul>
+<li>沒有取到URL參數的時候是取全部的文章</li>
+<li>route的順序很重要,放錯了,url出不來,範圍比較小的放前面</li>
+</ul>
+</li>
 </ul>
 
       
