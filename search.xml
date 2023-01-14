@@ -2372,4 +2372,46 @@
 </ul>
 ]]></content>
   </entry>
+  <entry>
+    <title>Ubuntu 22.04 Upgrade Guide &amp; Notes</title>
+    <url>/2023/01/14/Ubuntu-22-04-Upgrade-Guide-Notes/</url>
+    <content><![CDATA[<h6><span id="tags-ubuntu">tags: <code>Ubuntu</code></span></h6>
+<h2><span id="backups">Backups</span></h2>
+<ul>
+<li>backup your home directories data</li>
+<li>make sure your social accounts, such as facebook account or gmail account, can be verified from other devices</li>
+</ul>
+<h2><span id="upgrade-system-packages">Upgrade System Packages</span></h2>
+<h3><span id="make-sure-there-is-at-least-166mb-of-available-spaces-in-boot-directory">Make sure there is at least 166Mb of available spaces in boot directory</span></h3>
+<ul>
+<li>If the boot directory is still not enough during the upgrade, you can change the compression method from lz4 to xz through the initramfs.conf configuration file.
+<ul>
+<li>/etc/initramfs-tools/initramfs.conf</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">COMPRESS=xz</span><br></pre></td></tr></table></figure>
+<h2><span id="download-iso-file-amp-upgrades">Download iso file &amp; Upgrades</span></h2>
+<ul>
+<li>To avoid upgrade failure, you can also use the ventoy tool to reinstall the operating system. It is recommended to download the ISO file of the operating system</li>
+</ul>
+<h3><span id="upgrade-commands">Upgrade Commands</span></h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt list --upgradable</span><br><span class="line">sudo apt update &amp;&amp; sudo apt upgrade -y</span><br><span class="line">sudo reboot</span><br><span class="line">lsb_release -a</span><br><span class="line">sudo ufw allow 1022/tcp</span><br><span class="line">sudo ufw reload</span><br><span class="line">sudo ufw status</span><br><span class="line">sudo apt install update-manager-core</span><br><span class="line">sudo do-release-upgrade -d</span><br></pre></td></tr></table></figure>
+<h3><span id="check-your-upgrade-result">Check your upgrade result</span></h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">lsb_release -a</span><br><span class="line">uname -mrs</span><br></pre></td></tr></table></figure>
+<h2><span id="take-away">Take Away</span></h2>
+<h3><span id="about-the-system-directories">About the system directories</span></h3>
+<ul>
+<li>
+<p>/root: recommended to use the same root directory for the upgrade.</p>
+<ul>
+<li>perform the operating system upgrade in the same root directory, because keep the old directory there may be conflicts after the upgrade.</li>
+</ul>
+</li>
+<li>
+<p>/boot: The autoremove command will remove packages that are no longer needed in an installed package. These packages are usually packages that were previously installed and are no longer needed.</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt autoremove</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
 </search>

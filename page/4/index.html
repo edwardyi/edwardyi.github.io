@@ -75,6 +75,116 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2018-10-28T02:40:00.000Z"><a href="/2018/10/28/CodeIgniter-CRUD/">2018-10-28</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/10/28/CodeIgniter-CRUD/">CodeIgniter CRUD</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><em>CodeIgniter 3.1</em></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> news (</span><br><span class="line">    id <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    title <span class="type">varchar</span>(<span class="number">128</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    slug <span class="type">varchar</span>(<span class="number">128</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    text text <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    create_at <span class="type">TIMESTAMP</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;新增貼文時間&#x27;</span>,</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY(id),</span><br><span class="line">    KEY slug (slug)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> posts (</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    title <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    slug <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    body text <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    create_at <span class="type">TIMESTAMP</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;新增貼文時間&#x27;</span></span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY(id)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine On</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">RewriteRule ^(.*)$ index.php/$1 [L]</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><figcaption><span>準備</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://code.jquery.com/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>為什麼要用單一路口文件?
+<ul>
+<li>這樣使用會有甚麼問題</li>
+<li>路徑長的醜醜的=&gt;才會有route的規則需要定義</li>
+<li><a target="_blank" rel="noopener" href="http://localhost/codeIgniter/index.php/pages/view/">http://localhost/codeIgniter/index.php/pages/view/</a></li>
+<li><a target="_blank" rel="noopener" href="http://localhost/codeIgniter/index.php/news/index/">http://localhost/codeIgniter/index.php/news/index/</a></li>
+</ul>
+</li>
+<li>建立controller和route
+<ul>
+<li>讓url變得好看</li>
+<li>定義route規則</li>
+</ul>
+</li>
+<li>建立model
+<ul>
+<li>slug把url去掉,只留下小寫的英文字母</li>
+<li>有點像是簡單的描述,例如:/車子/帥氣的法拉利</li>
+<li>可以用來當作唯一值用來識別某個資源(entry/resource)</li>
+<li>詳細說明可以看stackoverflow解釋(what-is-a-slug)</li>
+</ul>
+</li>
+<li>和我想的比較不一樣的是,他把新聞系統的controller另外拆開
+<ul>
+<li>本來想說寫在一起的</li>
+<li>分開也比較清楚</li>
+</ul>
+</li>
+<li>建立列表頁和檢視頁面</li>
+<li>踩到的第一個坑是自己打錯字,找template的路徑
+<ul>
+<li>不需要為繼承的父類別加上namespace</li>
+<li>改完route發現news不好使了
+<ul>
+<li>先註解起來查原因</li>
+<li>檢視頁面的位置沒有改到view,從index那邊複製過來沒有修改到</li>
+</ul>
+</li>
+<li>原來是沒有加htaccess的關係阿
+<ul>
+<li>當發現怎麼改route都沒有用</li>
+<li>印出來看有設定,而且怎麼敲url就是不出來這時候就該設定htaccess了</li>
+</ul>
+</li>
+<li>新增表單
+<ul>
+<li>把檢視的route設定放到最後面</li>
+</ul>
+</li>
+<li>刪除的坑(id)
+<ul>
+<li>加上要刪除的編號之後,突然發現沒有辦法用open_form的方法了</li>
+<li>原先以為是因為寫法的關係造成的,結果是因為autoload沒有load到那個form的helper,殘念</li>
+<li>沒有對應到controller的method名稱</li>
+</ul>
+</li>
+<li>編輯(slug)=&gt;和view帶一樣的
+<ul>
+<li>bootstrap pull left把放在右邊的顯示到左邊</li>
+<li>要帶入view的slug進去,而不是用id</li>
+<li>少input hidden的id也想成功?</li>
+</ul>
+</li>
+<li>新增navbar-right往右放</li>
+</ul>
+</li>
+<li>小bug
+<ul>
+<li>沒有取到URL參數的時候是取全部的文章</li>
+<li>route的順序很重要,放錯了,url出不來,範圍比較小的放前面</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2018-10-26T02:39:23.000Z"><a href="/2018/10/26/experience/">2018-10-26</a></time>
       
       
@@ -737,7 +847,7 @@
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2022 Edwardyi
+  &copy; 2023 Edwardyi
   
 </div>
 <div class="clearfix"></div></footer>

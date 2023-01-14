@@ -75,6 +75,75 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2023-01-14T03:38:23.000Z"><a href="/2023/01/14/Ubuntu-22-04-Upgrade-Guide-Notes/">2023-01-14</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2023/01/14/Ubuntu-22-04-Upgrade-Guide-Notes/">Ubuntu 22.04 Upgrade Guide &amp; Notes</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h6><span id="tags-ubuntu">tags: <code>Ubuntu</code></span></h6>
+<h2><span id="backups">Backups</span></h2>
+<ul>
+<li>backup your home directories data</li>
+<li>make sure your social accounts, such as facebook account or gmail account, can be verified from other devices</li>
+</ul>
+<h2><span id="upgrade-system-packages">Upgrade System Packages</span></h2>
+<h3><span id="make-sure-there-is-at-least-166mb-of-available-spaces-in-boot-directory">Make sure there is at least 166Mb of available spaces in boot directory</span></h3>
+<ul>
+<li>If the boot directory is still not enough during the upgrade, you can change the compression method from lz4 to xz through the initramfs.conf configuration file.
+<ul>
+<li>/etc/initramfs-tools/initramfs.conf</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COMPRESS=xz</span><br></pre></td></tr></table></figure>
+<h2><span id="download-iso-file-amp-upgrades">Download iso file &amp; Upgrades</span></h2>
+<ul>
+<li>To avoid upgrade failure, you can also use the ventoy tool to reinstall the operating system. It is recommended to download the ISO file of the operating system</li>
+</ul>
+<h3><span id="upgrade-commands">Upgrade Commands</span></h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt list --upgradable</span><br><span class="line">sudo apt update &amp;&amp; sudo apt upgrade -y</span><br><span class="line">sudo reboot</span><br><span class="line">lsb_release -a</span><br><span class="line">sudo ufw allow 1022/tcp</span><br><span class="line">sudo ufw reload</span><br><span class="line">sudo ufw status</span><br><span class="line">sudo apt install update-manager-core</span><br><span class="line">sudo do-release-upgrade -d</span><br></pre></td></tr></table></figure>
+<h3><span id="check-your-upgrade-result">Check your upgrade result</span></h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br><span class="line">uname -mrs</span><br></pre></td></tr></table></figure>
+<h2><span id="take-away">Take Away</span></h2>
+<h3><span id="about-the-system-directories">About the system directories</span></h3>
+<ul>
+<li>
+<p>/root: recommended to use the same root directory for the upgrade.</p>
+<ul>
+<li>perform the operating system upgrade in the same root directory, because keep the old directory there may be conflicts after the upgrade.</li>
+</ul>
+</li>
+<li>
+<p>/boot: The autoremove command will remove packages that are no longer needed in an installed package. These packages are usually packages that were previously installed and are no longer needed.</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt autoremove</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2022-08-07T12:01:00.000Z"><a href="/2022/08/07/iaomi-7-Root-on-windows/">2022-08-07</a></time>
       
       
@@ -701,76 +770,6 @@
 
 
 
-  
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-03-24T19:51:00.000Z"><a href="/2019/03/24/Postman-Imgur-OAuth-2-0-Setting/">2019-03-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/03/24/Postman-Imgur-OAuth-2-0-Setting/">Postman Imgur OAuth 2.0 Setting</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>postman<br>
-- 建立變數<br>
-- global、collection、environment<br>
-- 用環境管理不同的變數<br>
-- 每一個Oauth的請求都有自己的token_url、authorize_url、callback_url</p>
-<ul>
-<li>OAuth四個步驟:
-<ul>
-<li>註冊、授權、請求、取得token
-<ul>
-<li>註冊:獲得client_id和client_secret</li>
-<li>授權
-<ul>
-<li>詢問使用者是否願意提供個人資料讓應用程式存取資料</li>
-<li>refresh and access tokens, an authorization_code, or a PIN code.</li>
-<li>用這些東西來換access_token and refresh_token.</li>
-</ul>
-</li>
-<li>授權種類:
-<ul>
-<li>access token:把它想成是存取使用者資料的一組資訊(像帳號密碼一樣)，一個月之後會過期</li>
-<li>refresh token:不會過期的access token</li>
-<li>authorization_code:伺服器用來取得access token和refresh token(存在只是為了交換token使用)</li>
-<li>PIN code:使用者用來取得access token和refresh token的方式(存在只是為了交換token使用)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://api.imgur.com/oauth2">https://api.imgur.com/oauth2</a></li>
-</ul>
-</li>
-</ul>
-<h4><span id="imgur-postman-setting">Imgur PostMan Setting</span></h4>
-<pre><code> Uri:https://api.imgur.com/3/account/me/images
-</code></pre>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=NRU_KdUSjD4">Testing OAuth2 Authorization Flow with Postman</a></li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
 
 <nav id="pagination">
   
@@ -886,7 +885,7 @@
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2022 Edwardyi
+  &copy; 2023 Edwardyi
   
 </div>
 <div class="clearfix"></div></footer>
