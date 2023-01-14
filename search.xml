@@ -2412,6 +2412,9 @@
 <p>/boot: The autoremove command will remove packages that are no longer needed in an installed package. These packages are usually packages that were previously installed and are no longer needed.</p>
 </li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt autoremove</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt autoremove</span><br></pre></td></tr></table></figure>
+<h2><span id="references">References</span></h2>
+<p><a href="https://www.youtube.com/watch?v=PtJXKdejbV0">https://www.youtube.com/watch?v=PtJXKdejbV0</a></p>
+]]></content>
   </entry>
 </search>
